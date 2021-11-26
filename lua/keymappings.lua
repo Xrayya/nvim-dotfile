@@ -1,7 +1,7 @@
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
-map('n', '<Space>', 'NOP', opts)
+map('n', '<Space>', '', opts)
 vim.g.mapleader = " "
 
 -- no hl
@@ -28,7 +28,7 @@ vim.cmd('command! Vb normal! <C-v>')
 --map('n', '<C-W>',   ':bdelete<CR>', opts)
 
 -- <TAB> COomplete
-map('i', '<expr> <TAB>', 'pumvisible() ? \"\\<C-n>\" : \"\\<TAB>\"', opts)
+-- map('i', '<expr> <TAB>', 'pumvisible() ? \"\\<C-n>\" : \"\\<TAB>\"', opts)
 
 -- Better indenting
 map('v', '<', '<gv', opts)

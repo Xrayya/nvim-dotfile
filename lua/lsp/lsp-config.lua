@@ -1,15 +1,23 @@
 -- LSP config (the mappings used in the default file don't quite work right)
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
+-- local map = vim.api.nvim_set_keymap
+-- local opts = { noremap = true, silent = true }
 
-map('n', 'gd',       'lua vim.lsp.buf.definition()<CR>', opts)
-map('n', 'gD',       'lua vim.lsp.buf.declaration()<CR>', opts)
-map('n', 'gr',       'lua vim.lsp.buf.references()<CR>', opts)
-map('n', 'gi',       'lua vim.lsp.buf.implementation()<CR>', opts)
-map('n', 'K',        'lua vim.lsp.buf.hover()<CR>', opts)
-map('n', '<C-S-k>',  'lua vim.lsp.buf.signature_help()<CR>', opts)
-map('n', '<C-n>',    'lua vim.lsp.diagnostic.goto_next()<CR>', opts)
-map('n', '<C-p>',    'lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+-- map('n', 'gd',       'lua vim.lsp.buf.definition()<CR>', opts)
+-- map('n', 'gD',       'lua vim.lsp.buf.declaration()<CR>', opts)
+-- map('n', 'gr',       'lua vim.lsp.buf.references()<CR>', opts)
+-- map('n', 'gi',       'lua vim.lsp.buf.implementation()<CR>', opts)
+-- map('n', 'K',        'lua vim.lsp.buf.hover()<CR>', opts)
+-- map('n', '<C-S-k>',  'lua vim.lsp.buf.signature_help()<CR>', opts)
+-- map('n', '<C-n>',    'lua vim.lsp.diagnostic.goto_next()<CR>', opts)
+-- map('n', '<C-p>',    'lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
+
+-- Lspconfig icon sign
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+
+for type, icon in pairs(signs) do
+  local hl = "DiagnosticSign" .. type
+  vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
+end
 
 -- Nvim-lsp-installer config
 local lsp_installer = require("nvim-lsp-installer")
