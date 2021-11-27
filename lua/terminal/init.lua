@@ -1,14 +1,32 @@
--- let g:floaterm_title=""
--- let g:floaterm_shell="powershell.exe -NoLogo"
+require("toggleterm").setup{
+  size = function(term)
+    if term.direction == "horizontal" then
+      return 38
+    elseif term.direction == "vertical" then
+      return vim.o.columns * 0.4
+    end
+  end,
+  start_in_insert = false,
+  insert_mappings = false,
+  direction = 'horizontal',
+  close_on_exit = true,
+}
 
--- tnoremap <silent> <M-i> <C-\><C-n>:FloatermToggle<CR>
--- noremap <silent> <M-i> :FloatermToggle<CR>
+vim.cmd('nnoremap <silent><c-t> :1ToggleTerm<CR>')
+vim.cmd('nnoremap <silent><c-s-T> :2ToggleTerm<CR>')
 
-vim.g.floaterm_title = ""
-vim.g.floaterm_shell = "powershell.exe -NoLogo"
+vim.cmd('tnoremap <silent><esc> <C-\\><c-n>')
 
-local map = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
+vim.cmd([[
+  autocmd TermEnter term://*toggleterm#*
+        \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>]])
 
-map('n', '<M-i>', ':FloatermToggle<CR>', opts)
-map('t', '<M-i>', '<C-\\><C-n>:FloatermToggle<CR>', opts)
+-- function _G.set_terminal_keymaps()
+--   local opts = {noremap = true}
+--   vim.api.nvim_set_keymap('t', '<esc>', [[<C-\><C-n>]], opts)
+--   vim.api.nvim_set_keymap('t', '<C-h>', [[<C-\><C-n><C-W>h]], opts)
+--   vim.api.nvim_set_keymap('t', '<C-j>', [[<C-\><C-n><C-W>j]], opts)
+--   vim.api.nvim_set_keymap('t', '<C-k>', [[<C-\><C-n><C-W>k]], opts)
+--   vim.api.nvim_set_keymap('t', '<C-l>', [[<C-\><C-n><C-W>l]], opts)
+-- end
+-- vim.cmd('autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()')

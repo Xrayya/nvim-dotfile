@@ -84,9 +84,8 @@ return require('packer').startup(function(use)
   -- Telescope
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'}, {'nvim-lua/popup.nvim'} }
+    requires = { {'nvim-lua/plenary.nvim'} }
   }
-  use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
 
   -- Whichkey
   use 'folke/which-key.nvim'
@@ -114,8 +113,7 @@ return require('packer').startup(function(use)
   }
 
   -- Terminal
-  use "numToStr/FTerm.nvim"
-  use 'voldikss/vim-floaterm'
+  use {"akinsho/toggleterm.nvim"}
 
   -- Colorizer
   use 'norcalli/nvim-colorizer.lua'
