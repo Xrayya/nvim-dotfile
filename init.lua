@@ -22,5 +22,3 @@ require('buffer')
 require('telescope')
 require('dashboard')
 require('terminal')
-
-require'colorizer'.setup()

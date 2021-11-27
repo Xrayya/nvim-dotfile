@@ -107,6 +107,7 @@ return require('packer').startup(function(use)
     requires = {
       'nvim-lua/plenary.nvim'
     },
+    tag = 'release',
     config = function()
       require('gitsigns').setup()
     end
@@ -116,6 +117,9 @@ return require('packer').startup(function(use)
   use {"akinsho/toggleterm.nvim"}
 
   -- Colorizer
-  use 'norcalli/nvim-colorizer.lua'
+  use {
+    'norcalli/nvim-colorizer.lua',
+    config = function() require'colorizer'.setup() end,
+  }
 
 end)
