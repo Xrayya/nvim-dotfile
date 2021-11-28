@@ -6,6 +6,10 @@ local toggle_float = function ()
   local float = Terminal:new({direction = "float"})
   return float:toggle()
 end
+local toggle_lazygit = function ()
+  local lazy = Terminal:new({cmd = "lazygit", direction = "float"})
+  return lazy:toggle()
+end
 
 wk.register({
   ["<leader>"] = {
@@ -84,6 +88,7 @@ wk.register({
       d = { "<cmd>4ToggleTerm<CR>", "Terminal 4" },
       e = { "<cmd>5ToggleTerm<CR>", "Terminal 5" },
       f = { toggle_float, "Terminal (floating)" },
+      l = { toggle_lazygit, "Terminal (lazygit)" },
     },
     w = { ":w<cr>", "Write (save)" },
     W = { ":wq<cr>", "Write (save) and quit" },
