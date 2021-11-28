@@ -6,7 +6,7 @@ require("toggleterm").setup{
       return vim.o.columns * 0.4
     end
   end,
-  start_in_insert = false,
+  start_in_insert = true,
   insert_mappings = false,
   direction = 'horizontal',
   close_on_exit = true,
@@ -15,7 +15,7 @@ require("toggleterm").setup{
 -- vim.cmd('nnoremap <silent><c-t> :1ToggleTerm<CR>')
 -- vim.cmd('nnoremap <silent><c-s-T> :2ToggleTerm<CR>')
 
-vim.cmd('tnoremap <silent><esc> <C-\\><c-n>')
+vim.cmd('tnoremap <silent><esc><esc> <C-\\><c-n>')
 
 -- vim.cmd([[
 --   autocmd TermEnter term://*toggleterm#*
