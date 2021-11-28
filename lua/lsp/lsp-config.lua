@@ -30,7 +30,36 @@ lsp_installer.settings({
         }
     }
 })
-lsp_installer.on_server_ready(function (server) server:setup {} end)
+
+lsp_installer.on_server_ready(function(server)
+  -- local opt = {}
+  --   if server.name == "sumneko_lua" then
+  --     opt.settings = {
+  --       function ()
+  --         local opts = {
+  --           settings = {
+  --             Lua = {
+  --               diagnostics = {
+  --                 globals = { "vim" },
+  --               },
+  --               workspace = {
+  --                 library = {
+  --                   [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+  --                   [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+  --                 },
+  --                 maxPreload = 100000,
+  --                 preloadFileSize = 10000,
+  --               },
+  --             },
+  --           },
+  --         }
+  --         return opts
+  --       end
+  --     }
+  --   end
+  -- server:setup(opt)
+  server:setup {}
+end)
 
 -- Rooter
 vim.g.rooter_patterns = {'.git'}

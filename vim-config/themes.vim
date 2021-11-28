@@ -3,7 +3,8 @@ let g:nvcode_termcolors=256
 
 set termguicolors
 
-colorscheme nvcode
+"colorscheme nvcode
+colorscheme rose-pine
 "colorscheme PaperColor
 "colorscheme panda
 "colorscheme onedark

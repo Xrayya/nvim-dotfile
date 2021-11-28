@@ -12,14 +12,14 @@ require("toggleterm").setup{
   close_on_exit = true,
 }
 
-vim.cmd('nnoremap <silent><c-t> :1ToggleTerm<CR>')
-vim.cmd('nnoremap <silent><c-s-T> :2ToggleTerm<CR>')
+-- vim.cmd('nnoremap <silent><c-t> :1ToggleTerm<CR>')
+-- vim.cmd('nnoremap <silent><c-s-T> :2ToggleTerm<CR>')
 
 vim.cmd('tnoremap <silent><esc> <C-\\><c-n>')
 
-vim.cmd([[
-  autocmd TermEnter term://*toggleterm#*
-        \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>]])
+-- vim.cmd([[
+--   autocmd TermEnter term://*toggleterm#*
+--         \ tnoremap <silent><c-t> <Cmd>exe v:count1 . "ToggleTerm"<CR>]])
 
 -- function _G.set_terminal_keymaps()
 --   local opts = {noremap = true}

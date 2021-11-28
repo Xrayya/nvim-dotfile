@@ -4,17 +4,30 @@ return require('packer').startup(function(use)
 
   -- Themes & Treesitter
   use 'NLKNguyen/papercolor-theme'
-  use 'LunarVim/onedarker.nvim'
-  use 'christianchiarulli/nvcode-color-schemes.vim'
+  use {
+    'navarasu/onedark.nvim',
+    config = function ()
+      vim.g.onedark_style = 'deep'
+    end
+  }
+  use {
+    'Xrayya/nvcode-color-schemes.vim',
+    branch = 'delete-onedark'
+  }
   use 'Avimitin/neovim-deus'
-  --use 'markvincze/panda-vim'
+  use({
+      'rose-pine/neovim',
+      as = 'rose-pine',
+      config = function()
+          vim.g.rose_pine_variant = 'base'
+      end
+  })
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
   -- Nvimtree
   use {
     'kyazdani42/nvim-tree.lua',
       requires = 'kyazdani42/nvim-web-devicons',
-      config = function() require'nvim-tree'.setup {} end
   }
 
   -- Statusline and bufferline
@@ -45,16 +58,20 @@ return require('packer').startup(function(use)
     'williamboman/nvim-lsp-installer',
   }
 
+  -- LSP Saga
+  use 'tami5/lspsaga.nvim'
+
   -- Autocompletion
   use 'hrsh7th/nvim-cmp'
   use 'hrsh7th/cmp-nvim-lsp'
+  use 'hrsh7th/cmp-nvim-lua'
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
   use 'onsails/lspkind-nvim'
   -- use {
   --   'tzachar/cmp-tabnine',  -- Tabnine for cmp
-  --   run='./install.sh',
+  --   -- run='sh ./install.sh',
   --   requires = 'hrsh7th/nvim-cmp'
   -- }
 

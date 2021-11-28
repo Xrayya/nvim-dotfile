@@ -1,11 +1,10 @@
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
+require('keymappings.whichkey-config')
+
 map('n', '<Space>', '', opts)
 vim.g.mapleader = " "
-
--- no hl
-map('n', '<Leader>h', ':set hlsearch!<CR>', opts)
 
 -- Use alt + hjkl to resize windows
 map('n', '<M-Down>',  ':resize -1<CR>', opts)
