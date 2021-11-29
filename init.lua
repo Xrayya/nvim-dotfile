@@ -14,6 +14,7 @@ require('lsp.saga')
 -- Plug-config
 vim.cmd('source ~/AppData/Local/nvim/vim-config/themes.vim')
 vim.cmd('source ~/AppData/Local/nvim/vim-config/nvide.vim')
+vim.cmd('source ~/AppData/Local/nvim/vim-config/fold-config.vim')
 require('treesitter')
 require('tree')
 require('gitsigns-config')
