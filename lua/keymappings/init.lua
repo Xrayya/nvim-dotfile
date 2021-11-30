@@ -27,7 +27,13 @@ vim.cmd('command! Vb normal! <C-v>')
 --map('n', '<C-W>',   ':bdelete<CR>', opts)
 
 -- <TAB> COomplete
--- map('i', '<expr> <TAB>', 'pumvisible() ? \"\\<C-n>\" : \"\\<TAB>\"', opts)
+map('i', '<expr> <TAB>', 'pumvisible() ? \"\\<C-n>\" : \"\\<TAB>\"', opts)
+map('i', '<expr> <S-TAB>', 'pumvisible() ? \"\\<C-p>\" : \"\\<TAB>\"', opts)
+
+-- Keep it centered
+map('n', 'n', 'nzzzv', opts)
+map('n', 'N', 'Nzzzv', opts)
+map('n', 'J', 'mzJ`z', opts)
 
 -- Better indenting
 map('v', '<', '<gv', opts)
