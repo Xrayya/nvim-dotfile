@@ -10,7 +10,7 @@ require('gitsigns').setup {
   numhl      = true, -- Toggle with `:Gitsigns toggle_numhl`
   linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
   word_diff  = false, -- Toggle with `:Gitsigns toggle_word_diff`
-  keymaps = {
+  keymaps = {},
     -- Default keymap options
     -- noremap = true,
 
@@ -31,7 +31,7 @@ require('gitsigns').setup {
     -- -- Text objects
     -- ['o ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>',
     -- ['x ih'] = ':<C-U>lua require"gitsigns.actions".select_hunk()<CR>'
-  },
+  -- },
   watch_gitdir = {
     interval = 1000,
     follow_files = true

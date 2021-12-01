@@ -55,8 +55,9 @@ wk.register({
       b = { "<cmd>lua require\"gitsigns\".blame_line()<CR>", "Blame line" },
       p = { "<cmd>lua require\"gitsigns\".preview_hunk()<CR>", "Preview hunk" },
       r = { "<cmd>lua require\"gitsigns\".reset_hunk()<CR>", "Reset hunk" },
-      s = { "<cmd>lua require\"gitsigns\".stage_hunk()<CR>", "Reset hunk" },
-      u = { "<cmd>lua require\"gitsigns\".undo_stage_hunk()<CR>", "Reset hunk" },
+      R = { "<cmd>lua require\"gitsigns\".reset_buffer()<CR>", "Reset buffer" },
+      s = { "<cmd>lua require\"gitsigns\".stage_hunk()<CR>", "Stage hunk" },
+      u = { "<cmd>lua require\"gitsigns\".undo_stage_hunk()<CR>", "Undo stage hunk" },
     },
     l = {
       name = "LSP",

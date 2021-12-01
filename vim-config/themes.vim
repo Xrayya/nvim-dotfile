@@ -1,13 +1,14 @@
 " configure nvcode-color-schemes
 let g:nvcode_termcolors=256
+let g:onedark_style = 'darker'
 
 set termguicolors
 
 "colorscheme nvcode
-colorscheme rose-pine
+"colorscheme rose-pine
 "colorscheme PaperColor
 "colorscheme panda
-"colorscheme onedark
+colorscheme onedark
 "colorscheme onedarker
 "colorscheme tokyonight
 "colorscheme lunar

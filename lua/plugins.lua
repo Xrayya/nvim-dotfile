@@ -6,9 +6,6 @@ return require('packer').startup(function(use)
   use 'NLKNguyen/papercolor-theme'
   use {
     'navarasu/onedark.nvim',
-    config = function ()
-      vim.g.onedark_style = 'deep'
-    end
   }
   use {
     'Xrayya/nvcode-color-schemes.vim',
@@ -19,7 +16,7 @@ return require('packer').startup(function(use)
       'rose-pine/neovim',
       as = 'rose-pine',
       config = function()
-          vim.g.rose_pine_variant = 'base'
+          vim.g.rose_pine_variant = 'darker'
       end
   })
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
