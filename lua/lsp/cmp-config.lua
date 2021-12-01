@@ -36,6 +36,7 @@ cmp.setup({
         ultisnips = "[UltiSnips]",
         snippy = "[Snippy]",
         nvim_lua = "[Lua]",
+        calc = "[Calc]",
         latex_symbols = "[Latex]",
       })
     })
@@ -80,6 +81,7 @@ cmp.setup({
     { name = 'cmp_tabnine'},
   }, {
     { name = 'buffer' },
+    { name = 'calc' },
   })
 })
 

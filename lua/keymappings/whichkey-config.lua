@@ -22,17 +22,18 @@ wk.register({
       name = "Commentary",
       i = {
         name = "Increase (motion's enable)",
-        c = { "<Plug>kommentary_motion_increase<cr>", "Current line" },
+        c = { "<Plug>kommentary_motion_increase ", "Current line" },
       },
       d = {
         name = "Decrease (motion's enable)",
-        c = { "<Plug>kommentary_motion_decrease<cr>", "Current line" },
+        c = { "<Plug>kommentary_motion_decrease ", "Current line" },
       },
     },
     e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     f = {
       name = "Find",
-      b = { "<cmd>Telescope buffers<cr>", "Buffer" },
+      b = { "<cmd>Telescope file_browser<cr>", "Open file browser" },
+      B = { "<cmd>Telescope buffers<cr>", "Buffer" },
       c = { "<cmd>Telescope commands<cr>", "Commands" },
       f = { "<cmd>Telescope find_files<cr>", "File" },
       g = { "<cmd>Telescope live_grep<cr>", "Find grep" },
@@ -41,7 +42,7 @@ wk.register({
       s = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
       t = { "<cmd>Telescope help_tags<cr>", "Tags" }
     },
-    h = { "<cmd>set hlsearch!", "Hightlight text toggle" },
+    h = { "<cmd>set hlsearch!<cr>", "Hightlight text toggle" },
     i = { "<cmd>IndentBlacklineToggle<cr>", "Indentation line toggle" },
     j = {
       name = "Jump (HoP)",
@@ -86,6 +87,7 @@ wk.register({
       s = { "<cmd>PackerSync<cr>", "Update and compile" },
       S = { "<cmd>PackerStatus<cr>", "Status" },
     },
+    s = { "<cmd>SymbolsOutline<cr>", "Open Symbols Outline" },
     t = {
       name = "Terminal",
       a = { "<cmd>1ToggleTerm<CR>", "Terminal 1" },
@@ -97,7 +99,6 @@ wk.register({
       g = { toggle_lazygit, "Terminal (lazygit)" },
     },
     w = { ":w<cr>", "Write (save)" },
-    W = { ":wq<cr>", "Write (save) and quit" },
   },
   ["["] = {
     d = { "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", "Jump to previous diagnostics" },

@@ -1,6 +1,6 @@
 require("indent_blankline").setup {
   buftype_exclude = {"terminal"},
-  filetype_exclude = {"dashboard", "NvimTree", "packer"},
+  filetype_exclude = {"dashboard", "alpha", "NvimTree", "packer", "help"},
   space_char_blankline = " ",
   show_current_context = true,
   context_patterns = {

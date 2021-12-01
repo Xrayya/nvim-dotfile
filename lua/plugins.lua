@@ -19,6 +19,7 @@ return require('packer').startup(function(use)
           vim.g.rose_pine_variant = 'darker'
       end
   })
+  use 'EdenEast/nightfox.nvim'
   use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
 
   -- Nvimtree
@@ -47,7 +48,14 @@ return require('packer').startup(function(use)
   -- use 'Avimitin/nerd-galaxyline'
 
   -- Dashboard
-  use 'glepnir/dashboard-nvim'
+  use {
+      'goolord/alpha-nvim',
+      requires = { 'kyazdani42/nvim-web-devicons' },
+      config = function ()
+          -- require'alpha'.setup(require'alpha.themes.dashboard'.opts)
+          require'alpha'.setup(require'alpha.themes.startify'.opts)
+      end
+  }
 
   -- LSP
   use {
@@ -65,6 +73,7 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-buffer'
   use 'hrsh7th/cmp-path'
   use 'hrsh7th/cmp-cmdline'
+  use 'hrsh7th/cmp-calc'
   use 'onsails/lspkind-nvim'
   -- use {
   --   'tzachar/cmp-tabnine',  -- Tabnine for cmp
@@ -84,7 +93,6 @@ return require('packer').startup(function(use)
   use 'hrsh7th/vim-vsnip'
 
   -- Diagnostic list
-  -- use 'onsails/diaglist.nvim'
   use {
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
@@ -92,14 +100,29 @@ return require('packer').startup(function(use)
       require("trouble").setup {}
     end
   }
+
+  -- Symbols Outline
+  use {
+    'simrat39/symbols-outline.nvim',
+    config = function ()
+      vim.g.symbols_outline = {
+        width = 45,
+      }
+    end
+}
+
   -- Commentary
   use 'b3nj5m1n/kommentary'
 
   -- Telescope
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = {
+      {'nvim-lua/plenary.nvim'},
+      {'nvim-lua/popup.nvim'},
+    }
   }
+  use { "nvim-telescope/telescope-file-browser.nvim" }
 
   -- Whichkey
   use 'folke/which-key.nvim'
