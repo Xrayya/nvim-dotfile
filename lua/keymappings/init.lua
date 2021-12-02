@@ -3,7 +3,9 @@ local opts = { noremap = true, silent = true }
 
 require('keymappings.whichkey-config')
 
-map('n', '<Space>', '', opts)
+map('n', '<Space>', '<NOP>', opts)
+map('v', '<Space>', '<NOP>', opts)
+map('x', '<Space>', '<NOP>', opts)
 vim.g.mapleader = " "
 
 -- Use alt + hjkl to resize windows

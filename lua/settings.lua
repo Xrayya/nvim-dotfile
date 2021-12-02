@@ -41,3 +41,4 @@ set.clipboard:append {"unnamedplus"}        -- Copy paste between vim and everyt
 set.shortmess:remove {"c"}
 --set.guifont = "Hack\\ Nerd\\ Font:h10:l"    -- Font
 vim.cmd('autocmd FileType java setlocal tabstop=4 shiftwidth=4 softtabstop=4')
+vim.cmd('autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 softtabstop=4')

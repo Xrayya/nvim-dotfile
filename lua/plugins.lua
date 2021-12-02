@@ -135,8 +135,8 @@ return require('packer').startup(function(use)
     end
   }
 
-  -- Rooter
-  use 'airblade/vim-rooter'
+  -- Project Manager
+  use 'ahmedkhalf/project.nvim'
 
   -- Git
   use {
@@ -145,9 +145,6 @@ return require('packer').startup(function(use)
       'nvim-lua/plenary.nvim'
     },
     tag = 'release',
-    config = function()
-      require('gitsigns').setup()
-    end
   }
 
   -- Terminal

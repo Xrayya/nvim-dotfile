@@ -38,6 +38,7 @@ wk.register({
       f = { "<cmd>Telescope find_files<cr>", "File" },
       g = { "<cmd>Telescope live_grep<cr>", "Find grep" },
       n = { "<cmd>enew<cr>", "New File" },
+      p = { "<cmd>Telescope projects<cr>", "Open project manajer" },
       r = { "<cmd>Telescope oldfiles<cr>", "Recent file" },
       s = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
       t = { "<cmd>Telescope help_tags<cr>", "Tags" }
@@ -87,6 +88,16 @@ wk.register({
       s = { "<cmd>PackerSync<cr>", "Update and compile" },
       S = { "<cmd>PackerStatus<cr>", "Status" },
     },
+    q = {
+      name = "Quit",
+      n = { "", "Are you sure (no)" },
+      y = { "<cmd>q<cr>", "Are you sure? (yes)" },
+    },
+    Q = {
+      name = "Quit (force)",
+      n = { "", "Are you sure (no)" },
+      y = { "<cmd>q!<cr>", "Are you sure? (yes)" },
+    },
     s = { "<cmd>SymbolsOutline<cr>", "Open Symbols Outline" },
     t = {
       name = "Terminal",
@@ -99,6 +110,11 @@ wk.register({
       g = { toggle_lazygit, "Terminal (lazygit)" },
     },
     w = { ":w<cr>", "Write (save)" },
+    W = {
+      name = "Write and quit",
+      n = { "", "Are you sure (no)" },
+      y = { "<cmd>wq<cr>", "Are you sure? (yes)" },
+    },
   },
   ["["] = {
     d = { "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", "Jump to previous diagnostics" },
