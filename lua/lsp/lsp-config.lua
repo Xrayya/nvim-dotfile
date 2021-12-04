@@ -1,16 +1,3 @@
--- LSP config (the mappings used in the default file don't quite work right)
--- local map = vim.api.nvim_set_keymap
--- local opts = { noremap = true, silent = true }
-
--- map('n', 'gd',       'lua vim.lsp.buf.definition()<CR>', opts)
--- map('n', 'gD',       'lua vim.lsp.buf.declaration()<CR>', opts)
--- map('n', 'gr',       'lua vim.lsp.buf.references()<CR>', opts)
--- map('n', 'gi',       'lua vim.lsp.buf.implementation()<CR>', opts)
--- map('n', 'K',        'lua vim.lsp.buf.hover()<CR>', opts)
--- map('n', '<C-S-k>',  'lua vim.lsp.buf.signature_help()<CR>', opts)
--- map('n', '<C-n>',    'lua vim.lsp.diagnostic.goto_next()<CR>', opts)
--- map('n', '<C-p>',    'lua vim.lsp.diagnostic.goto_prev()<CR>', opts)
-
 -- Lspconfig icon sign
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 
@@ -31,35 +18,77 @@ lsp_installer.settings({
     }
 })
 
-lsp_installer.on_server_ready(function(server)
-  -- local opt = {}
-  --   if server.name == "sumneko_lua" then
-  --     opt.settings = {
-  --       function ()
-  --         local opts = {
-  --           settings = {
-  --             Lua = {
-  --               diagnostics = {
-  --                 globals = { "vim" },
-  --               },
-  --               workspace = {
-  --                 library = {
-  --                   [vim.fn.expand "$VIMRUNTIME/lua"] = true,
-  --                   [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
-  --                 },
-  --                 maxPreload = 100000,
-  --                 preloadFileSize = 10000,
-  --               },
-  --             },
-  --           },
-  --         }
-  --         return opts
-  --       end
-  --     }
-  --   end
-  -- server:setup(opt)
-  server:setup {}
-end)
+-- Default servers config
+local lsp_installer_servers = require'nvim-lsp-installer.servers'
+local servers = {
+  "vimls",
+  "clangd",
+  "jdtls",
+  "jsonls",
+  "pylsp",
+}
+for _, server in ipairs(servers) do
+  local server_available, requested_server = lsp_installer_servers.get_server(server)
+  if server_available then
+      requested_server:on_ready(function ()
+          local opts = {}
+          requested_server:setup(opts)
+      end)
+      if not requested_server:is_installed() then
+          -- Queue the server to be installed
+          requested_server:install()
+      end
+  end
+end
 
--- Rooter
-vim.g.rooter_patterns = {'.git'}
+-- -- Costume Servers Config
+
+-- Lua config
+local system_name
+if vim.fn.has("mac") == 1 then
+  system_name = "macOS"
+elseif vim.fn.has("unix") == 1 then
+  system_name = "Linux"
+elseif vim.fn.has('win32') == 1 then
+  system_name = "Windows"
+else
+  print("Unsupported system for sumneko")
+end
+
+local sumneko_root_path = vim.fn.stdpath('data')..'/lsp_servers/sumneko_lua/extension/server'
+local sumneko_binary
+if system_name == "Windows" then
+  sumneko_binary = sumneko_root_path.."/bin/Windows/lua-language-server.exe"
+else
+  sumneko_binary = sumneko_root_path.."/bin/Windows/lua-language-server"
+end
+
+local runtime_path = vim.split(package.path, ';')
+table.insert(runtime_path, "lua/?.lua")
+table.insert(runtime_path, "lua/?/init.lua")
+
+require'lspconfig'.sumneko_lua.setup {
+  cmd = {sumneko_binary, "-E", sumneko_root_path .. "/main.lua"};
+  settings = {
+    Lua = {
+      runtime = {
+        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
+        version = 'LuaJIT',
+        -- Setup your lua path
+        path = runtime_path,
+      },
+      diagnostics = {
+        -- Get the language server to recognize the `vim` global
+        globals = {'vim'},
+      },
+      workspace = {
+        -- Make the server aware of Neovim runtime files
+        library = vim.api.nvim_get_runtime_file("", true),
+      },
+      -- Do not send telemetry data containing a randomized but unique identifier
+      telemetry = {
+        enable = false,
+      },
+    },
+  },
+}
