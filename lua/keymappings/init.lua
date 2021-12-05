@@ -3,10 +3,9 @@ local opts = { noremap = true, silent = true }
 
 require('keymappings.whichkey-config')
 
-map('n', '<Space>', '<NOP>', opts)
-map('v', '<Space>', '<NOP>', opts)
-map('x', '<Space>', '<NOP>', opts)
-vim.g.mapleader = " "
+-- map('', '<Space>', '<NOP>', opts)
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
 
 -- Use alt + hjkl to resize windows
 map('n', '<M-Down>',  ':resize -1<CR>', opts)
