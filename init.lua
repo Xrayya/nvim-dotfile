@@ -10,6 +10,7 @@ require('lsp.cmp-config')
 require('lsp.commentary-config')
 require('lsp.indenting')
 require('lsp.saga')
+require('lsp.symbol-outline-config')
 
 -- Plug-config
 vim.cmd('source ~/AppData/Local/nvim/vim-config/themes.vim')
@@ -25,3 +26,4 @@ require('telescope-config')
 require('dashboard')
 require('terminal')
 require('projets-manager')
+require('season-manager')

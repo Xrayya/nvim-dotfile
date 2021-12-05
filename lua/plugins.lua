@@ -135,14 +135,7 @@ return require('packer').startup(function(use)
   }
 
   -- Symbols Outline
-  use {
-    'simrat39/symbols-outline.nvim',
-    config = function ()
-      vim.g.symbols_outline = {
-        width = 45,
-      }
-    end
-}
+  use { 'simrat39/symbols-outline.nvim', }
 
   -- Commentary
   use 'b3nj5m1n/kommentary'
@@ -157,6 +150,31 @@ return require('packer').startup(function(use)
   }
   use { "nvim-telescope/telescope-file-browser.nvim" }
 
+  -- Project Manager
+  use {
+    'ahmedkhalf/project.nvim',
+    config = function ()
+      require('telescope').load_extension('projects')
+    end
+  }
+
+  -- -- Frecency algorithm for telescope
+  -- use {
+  --   "nvim-telescope/telescope-frecency.nvim",
+  --   config = function()
+  --     require"telescope".load_extension("frecency")
+  --   end,
+  --   requires = {"tami5/sqlite.lua"}
+  -- }
+
+  -- Season manager
+    use {
+      'Shatur/neovim-session-manager',
+      config = function ()
+        require('telescope').load_extension('sessions')
+      end
+    }
+
   -- Whichkey
   use 'folke/which-key.nvim'
 
@@ -167,9 +185,6 @@ return require('packer').startup(function(use)
       require'hop'.setup()
     end
   }
-
-  -- Project Manager
-  use 'ahmedkhalf/project.nvim'
 
   -- Git
   use {

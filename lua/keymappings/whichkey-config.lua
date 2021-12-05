@@ -40,7 +40,8 @@ wk.register({
       n = { "<cmd>enew<cr>", "New File" },
       p = { "<cmd>Telescope projects<cr>", "Open project manajer" },
       r = { "<cmd>Telescope oldfiles<cr>", "Recent file" },
-      s = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+      S = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
+      s = { "<cmd>Telescope sessions<cr>", "Last Seasons" },
       t = { "<cmd>Telescope help_tags<cr>", "Tags" }
     },
     h = { "<cmd>set hlsearch!<cr>", "Hightlight text toggle" },
