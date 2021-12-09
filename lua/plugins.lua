@@ -109,8 +109,14 @@ return require('packer').startup(function(use)
   use 'hrsh7th/cmp-calc'
   use 'onsails/lspkind-nvim'
   -- use {
-  --   'tzachar/cmp-tabnine',  -- Tabnine for cmp
-  --   -- run='sh ./install.sh',
+  --   'adrianiy/cmp-tabnine',
+  --   run = 'sh ./install.sh',
+  --   require = 'hrsh7th/nvim-cmp'
+  -- }
+ 	-- use {
+  --   'Xrayya/cmp-tabnine',
+  --   branch = 'for-Windows-native',
+  --   run = 'powershell ./install.ps1',
   --   requires = 'hrsh7th/nvim-cmp'
   -- }
 
@@ -120,6 +126,9 @@ return require('packer').startup(function(use)
 
   -- Indentation
   use "lukas-reineke/indent-blankline.nvim"
+
+  -- Formatter
+  use 'lukas-reineke/format.nvim'
 
   -- Snippets
   use 'hrsh7th/cmp-vsnip'

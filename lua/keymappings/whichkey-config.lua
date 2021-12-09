@@ -65,6 +65,7 @@ wk.register({
     l = {
       name = "LSP",
       a = { "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", "Code action"},
+      A = { "<cmd>LspStop<CR><cmd>LspStart<CR>", "Activate/reactivate LSP"},
       d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" },
       D = { "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", "Preview definition" },
       f = { "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", "LSP Finder" },
@@ -84,6 +85,7 @@ wk.register({
     p = {
       name = "Plugin action",
       c = { "<cmd>PackerCompile<cr>", "Compile" },
+      C = { "<cmd>e " .. vim.fn.stdpath('config') .. "/lua/plugins.lua<cr>", "Configure plugins" },
       r = { "<cmd>PackerClean<cr>", "Remove" },
       i = { "<cmd>PackerInstall<cr>", "Install" },
       s = { "<cmd>PackerSync<cr>", "Update and compile" },
@@ -111,11 +113,7 @@ wk.register({
       g = { toggle_lazygit, "Terminal (lazygit)" },
     },
     w = { ":w<cr>", "Write (save)" },
-    W = {
-      name = "Write and quit",
-      n = { "", "Are you sure (no)" },
-      y = { "<cmd>wq<cr>", "Are you sure? (yes)" },
-    },
+    W = { ":w<cr><cmd>FormatWrite<cr>", "Write and format" },
   },
   ["["] = {
     d = { "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", "Jump to previous diagnostics" },

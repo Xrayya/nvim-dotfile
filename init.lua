@@ -11,6 +11,8 @@ require('lsp.commentary-config')
 require('lsp.indenting')
 require('lsp.saga')
 require('lsp.symbol-outline-config')
+require('lsp.formatter-config')
+-- require('lsp.tabnine-config')
 
 -- Plug-config
 vim.cmd('source ~/AppData/Local/nvim/vim-config/themes.vim')

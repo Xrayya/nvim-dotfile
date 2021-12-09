@@ -1,0 +1,6 @@
+# Prettier-java configuration
+overrides:
+  - files:
+      - "*.java"
+    options:
+      tabWidth: 4
