@@ -12,6 +12,19 @@ end
 local cmp = require'cmp'
 local lspkind = require('lspkind')
 
+-- local source_mapping = {
+--   buffer = "[Buffer]",
+--   nvim_lsp = "[LSP]",
+--   luasnip = "[LuaSnip]",
+--   vsnip = "[VSnip]",
+--   ultisnips = "[UltiSnips]",
+--   snippy = "[Snippy]",
+--   nvim_lua = "[Lua]",
+--   cmp_tabnine = "[TN]",
+--   calc = "[Calc]",
+--   latex_symbols = "[Latex]",
+-- }
+
 cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
@@ -36,10 +49,26 @@ cmp.setup({
         ultisnips = "[UltiSnips]",
         snippy = "[Snippy]",
         nvim_lua = "[Lua]",
+        cmp_tabnine = "[TN]",
         calc = "[Calc]",
         latex_symbols = "[Latex]",
       })
     })
+		-- format = function(entry, vim_item)
+  --     lspkind.cmp_format({
+  --       win_text = true,
+  --     })
+		-- 	vim_item.kind = lspkind.presets.default[vim_item.kind]
+		-- 	local menu = source_mapping[entry.source.name]
+		-- 	if entry.source.name == 'cmp_tabnine' then
+		-- 		if entry.completion_item.data ~= nil and entry.completion_item.data.detail ~= nil then
+		-- 			menu = entry.completion_item.data.detail .. ' ' .. menu
+		-- 		end
+		-- 		vim_item.kind = ''
+		-- 	end
+		-- 	vim_item.menu = menu
+		-- 	return vim_item
+		-- end
   },
 
   mapping = {
@@ -101,10 +130,6 @@ cmp.setup.cmdline(':', {
   })
 })
 
--- Autopair
-require('nvim-autopairs').setup({
-  check_ts = true,
-})
-
+-- Integration with autopairs
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
 cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))

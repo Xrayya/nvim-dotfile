@@ -53,39 +53,50 @@ return require('packer').startup(function(use)
       end
   })
   use 'EdenEast/nightfox.nvim'
-  use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    config = function ()
+      require('treesitter-config')
+    end
+  }
 
   -- Nvimtree
   use {
     'kyazdani42/nvim-tree.lua',
-      requires = 'kyazdani42/nvim-web-devicons',
+    requires = 'kyazdani42/nvim-web-devicons',
+    cmd = "NvimTreeToggle",
+    config = function ()
+      require('nvim-tree-config')
+    end
   }
 
   -- Statusline and bufferline
-  use {
-    'nvim-lualine/lualine.nvim',
-      requires = {'kyazdani42/nvim-web-devicons', opt = true},
-      config =  function () require('lualine').setup {
-        extensions = {'nvim-tree'},
-      } end
-  }
+  -- use {
+  --   'nvim-lualine/lualine.nvim',
+  --   requires = {'kyazdani42/nvim-web-devicons', opt = true},
+  --   event = "BufWinEnter",
+  --   config = function ()
+  --     require('lualine').setup {
+  --       extensions = {'nvim-tree'},
+  --     }
+  --     -- require('luastatusline.my-costume')
+  --   end
+  -- }
   use {
     'akinsho/bufferline.nvim',
-    requires = 'kyazdani42/nvim-web-devicons'
+    requires = 'kyazdani42/nvim-web-devicons',
+    event = "BufWinEnter",
+    config = function ()
+      require('bufferline-config')
+    end
   }
-  -- use {
-  --   'glepnir/galaxyline.nvim',
-  --     branch = 'main',
-  --     requires = {'kyazdani42/nvim-web-devicons', opt = true}
-  -- }
-  -- use 'Avimitin/nerd-galaxyline'
 
   -- Dashboard
   use {
       'goolord/alpha-nvim',
       requires = { 'kyazdani42/nvim-web-devicons' },
       config = function ()
-          -- require'alpha'.setup(require'alpha.themes.dashboard'.opts)
           require'alpha'.setup(require'alpha.themes.startify'.opts)
       end
   }
@@ -97,7 +108,10 @@ return require('packer').startup(function(use)
   }
 
   -- LSP Saga
-  use 'tami5/lspsaga.nvim'
+  -- use {
+  --   'tami5/lspsaga.nvim',
+  --   after = "nvim-lspconfig",
+  -- }
 
   -- Autocompletion
   use 'hrsh7th/nvim-cmp'
@@ -121,33 +135,58 @@ return require('packer').startup(function(use)
   -- }
 
   -- Autopair
-  use 'windwp/nvim-autopairs'
-  use 'p00f/nvim-ts-rainbow'  -- Rainbow
+  use {
+    'windwp/nvim-autopairs',
+    config = function ()
+      require('nvim-autopairs').setup({
+        check_ts = true,
+      })
+    end
+  }
+  use {
+    'p00f/nvim-ts-rainbow',
+  }
 
-  -- Indentation
-  use "lukas-reineke/indent-blankline.nvim"
+  -- -- Indentation
+  -- use {
+  --   "lukas-reineke/indent-blankline.nvim",
+  --   event = "BufWinEnter",
+  -- }
 
   -- Formatter
-  use 'lukas-reineke/format.nvim'
+  -- use {
+  --   'lukas-reineke/format.nvim',
+  --   after = "nvim-lspconfig",
+  -- }
 
   -- Snippets
   use 'hrsh7th/cmp-vsnip'
   use 'hrsh7th/vim-vsnip'
 
   -- Diagnostic list
-  use {
-    "folke/trouble.nvim",
-    requires = "kyazdani42/nvim-web-devicons",
-    config = function()
-      require("trouble").setup {}
-    end
-  }
+  -- use {
+  --   "folke/trouble.nvim",
+  --   requires = "kyazdani42/nvim-web-devicons",
+  --   after = "nvim-lspconfig",
+  --   config = function()
+  --     require("trouble").setup {}
+  --   end
+  -- }
 
   -- Symbols Outline
-  use { 'simrat39/symbols-outline.nvim', }
+  -- use {
+  --   'simrat39/symbols-outline.nvim',
+  --   after = "nvim-lspconfig",
+  -- }
 
   -- Commentary
-  use 'b3nj5m1n/kommentary'
+  use {
+    'b3nj5m1n/kommentary',
+    event = "BufWinEnter",
+    config = function ()
+      require('kommentary-config')
+    end
+  }
 
   -- Telescope
   use {
@@ -155,15 +194,23 @@ return require('packer').startup(function(use)
     requires = {
       {'nvim-lua/plenary.nvim'},
       {'nvim-lua/popup.nvim'},
-    }
+    },
+    cmd = "Telescope",
+    config = function ()
+      require('telescope-config')
+    end
   }
-  use { "nvim-telescope/telescope-file-browser.nvim" }
+  -- use {
+  --   "nvim-telescope/telescope-file-browser.nvim",
+  --   after = "telescope.nvim",
+  -- }
 
-  -- Project Manager
+  -- -- Project Manager
   use {
     'ahmedkhalf/project.nvim',
+    event = "BufWinEnter",
     config = function ()
-      require('telescope').load_extension('projects')
+      require('projets-config')
     end
   }
 
@@ -177,41 +224,63 @@ return require('packer').startup(function(use)
   -- }
 
   -- Season manager
-    use {
-      'Shatur/neovim-session-manager',
-      config = function ()
-        require('telescope').load_extension('sessions')
-      end
-    }
+    -- use {
+    --   'Shatur/neovim-session-manager',
+    --   after = "telescope.nvim",
+    --   config = function ()
+    --     require('telescope').load_extension('sessions')
+    --     require('season-manager')
+    --   end
+    -- }
 
   -- Whichkey
-  use 'folke/which-key.nvim'
-
-  -- HOP
   use {
-    'phaazon/hop.nvim',
-    config = function()
-      require'hop'.setup()
+    'folke/which-key.nvim',
+    event = "BufWinEnter",
+    config = function ()
+      require('whichkey-config')
     end
   }
 
+  -- HOP
+  -- use {
+  --   'phaazon/hop.nvim',
+  --   event = "BufWinEnter",
+  --   config = function()
+  --     require'hop'.setup()
+  --   end
+  -- }
+
   -- Git
-  use {
-    'lewis6991/gitsigns.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim'
-    },
-    tag = 'release',
-  }
+  -- use {
+  --   'lewis6991/gitsigns.nvim',
+  --   event = "BufWinEnter",
+  --   requires = {
+  --     'nvim-lua/plenary.nvim'
+  --   },
+  --   tag = 'release',
+  --   config = function ()
+  --     require('gitsigns-config')
+  --   end
+  -- }
 
   -- Terminal
-  use {"akinsho/toggleterm.nvim"}
+  -- use {
+  --   "akinsho/toggleterm.nvim",
+  --   event = "BufWinEnter",
+  --   config = function ()
+  --     require('terminal')
+  --   end
+  -- }
 
   -- Colorizer
-  use {
-    'norcalli/nvim-colorizer.lua',
-    config = function() require'colorizer'.setup() end,
-  }
+  -- use {
+  --   'norcalli/nvim-colorizer.lua',
+  --   after = "nvim-treesitter",
+  --   config = function()
+  --     require'colorizer'.setup()
+  --   end,
+  -- }
 
   -- Automatically set up your configuration after cloning packer.nvim
   if PACKER_BOOTSTRAP then

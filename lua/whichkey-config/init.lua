@@ -1,20 +1,20 @@
 local wk = require("which-key")
 
 -- Setup for toggleterm
-local Terminal = require('toggleterm.terminal').Terminal
-local toggle_float = function ()
-  local float = Terminal:new({direction = "float"})
-  return float:toggle()
-end
-local toggle_lazygit = function ()
-  local lazy = Terminal:new({
-    cmd = "lazygit",
-    direction = "float",
-    start_in_insert = true,
-    insert_mappings = true,
-  })
-  return lazy:toggle()
-end
+-- local Terminal = require('toggleterm.terminal').Terminal
+-- local toggle_float = function ()
+--   local float = Terminal:new({direction = "float"})
+--   return float:toggle()
+-- end
+-- local toggle_lazygit = function ()
+--   local lazy = Terminal:new({
+--     cmd = "lazygit",
+--     direction = "float",
+--     start_in_insert = true,
+--     insert_mappings = true,
+--   })
+--   return lazy:toggle()
+-- end
 
 wk.register({
   ["<leader>"] = {
