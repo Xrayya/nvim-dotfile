@@ -1,20 +1,29 @@
 local wk = require("which-key")
 
 -- Setup for toggleterm
--- local Terminal = require('toggleterm.terminal').Terminal
--- local toggle_float = function ()
---   local float = Terminal:new({direction = "float"})
---   return float:toggle()
--- end
--- local toggle_lazygit = function ()
---   local lazy = Terminal:new({
---     cmd = "lazygit",
---     direction = "float",
---     start_in_insert = true,
---     insert_mappings = true,
---   })
---   return lazy:toggle()
--- end
+local Terminal = require('toggleterm.terminal').Terminal
+local toggle_float = function ()
+  local float = Terminal:new({direction = "float"})
+  return float:toggle()
+end
+local toggle_lazygit = function ()
+  local lazy = Terminal:new({
+    cmd = "lazygit",
+    direction = "float",
+    start_in_insert = true,
+    insert_mappings = true,
+  })
+  return lazy:toggle()
+end
+local toggle_pwsh = function ()
+  local pwsh = Terminal:new({
+    cmd = "pwsh",
+    direction = "float",
+    start_in_insert = true,
+    insert_mappings = true,
+  })
+  return pwsh:toggle()
+end
 
 wk.register({
   ["<leader>"] = {
@@ -111,6 +120,7 @@ wk.register({
       e = { "<cmd>5ToggleTerm<CR>", "Terminal 5" },
       f = { toggle_float, "Terminal (floating)" },
       g = { toggle_lazygit, "Terminal (lazygit)" },
+      p = { toggle_pwsh, "Terminal (pwsh)" },
     },
     w = { ":w<cr>", "Write (save)" },
     W = { ":w<cr><cmd>FormatWrite<cr>", "Write and format" },

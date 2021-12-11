@@ -72,17 +72,17 @@ return require('packer').startup(function(use)
   }
 
   -- Statusline and bufferline
-  -- use {
-  --   'nvim-lualine/lualine.nvim',
-  --   requires = {'kyazdani42/nvim-web-devicons', opt = true},
-  --   event = "BufWinEnter",
-  --   config = function ()
-  --     require('lualine').setup {
-  --       extensions = {'nvim-tree'},
-  --     }
-  --     -- require('luastatusline.my-costume')
-  --   end
-  -- }
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = {'kyazdani42/nvim-web-devicons', opt = true},
+    event = "BufWinEnter",
+    config = function ()
+      require('lualine').setup {
+        extensions = {'nvim-tree'},
+      }
+      -- require('lualine-config.my-costume')
+    end
+  }
   use {
     'akinsho/bufferline.nvim',
     requires = 'kyazdani42/nvim-web-devicons',
@@ -96,6 +96,7 @@ return require('packer').startup(function(use)
   use {
       'goolord/alpha-nvim',
       requires = { 'kyazdani42/nvim-web-devicons' },
+      event = "BufWinEnter",
       config = function ()
           require'alpha'.setup(require'alpha.themes.startify'.opts)
       end
@@ -103,25 +104,61 @@ return require('packer').startup(function(use)
 
   -- LSP
   use {
-    'neovim/nvim-lspconfig',
     'williamboman/nvim-lsp-installer',
+  }
+  use {
+    'neovim/nvim-lspconfig',
+    after = "nvim-lsp-installer",
+    config = function ()
+      require('lsp-config')
+    end
   }
 
   -- LSP Saga
-  -- use {
-  --   'tami5/lspsaga.nvim',
-  --   after = "nvim-lspconfig",
-  -- }
+  use {
+    'tami5/lspsaga.nvim',
+    after = "nvim-lspconfig",
+    config = function ()
+      require('lspsaga')
+    end
+  }
 
   -- Autocompletion
-  use 'hrsh7th/nvim-cmp'
-  use 'hrsh7th/cmp-nvim-lsp'
-  use 'hrsh7th/cmp-nvim-lua'
-  use 'hrsh7th/cmp-buffer'
-  use 'hrsh7th/cmp-path'
-  use 'hrsh7th/cmp-cmdline'
-  use 'hrsh7th/cmp-calc'
-  use 'onsails/lspkind-nvim'
+  use {
+    'hrsh7th/nvim-cmp',
+    after = "nvim-lspconfig",
+    config = function ()
+      require('cmp-config')
+    end
+  }
+  use {
+    'hrsh7th/cmp-nvim-lsp',
+    after = "nvim-cmp",
+  }
+  use {
+    'hrsh7th/cmp-nvim-lua',
+    after = "nvim-cmp",
+  }
+  use {
+    'hrsh7th/cmp-buffer',
+    after = "nvim-cmp",
+  }
+  use {
+    'hrsh7th/cmp-path',
+    after = "nvim-cmp",
+  }
+  use {
+    'hrsh7th/cmp-cmdline',
+    after = "nvim-cmp",
+  }
+  use {
+    'hrsh7th/cmp-calc',
+    after = "nvim-cmp",
+  }
+  use {
+    'onsails/lspkind-nvim',
+    before_each = {"nvim-cmp"},
+  }
   -- use {
   --   'adrianiy/cmp-tabnine',
   --   run = 'sh ./install.sh',
@@ -148,43 +185,58 @@ return require('packer').startup(function(use)
   }
 
   -- -- Indentation
-  -- use {
-  --   "lukas-reineke/indent-blankline.nvim",
-  --   event = "BufWinEnter",
-  -- }
+  use {
+    "lukas-reineke/indent-blankline.nvim",
+    after = "nvim-treesitter",
+    config = function ()
+      require('indentation-config')
+    end
+  }
 
   -- Formatter
-  -- use {
-  --   'lukas-reineke/format.nvim',
-  --   after = "nvim-lspconfig",
-  -- }
+  use {
+    'lukas-reineke/format.nvim',
+    after = "nvim-lspconfig",
+    config = function ()
+      require('formatter-config')
+    end
+  }
 
   -- Snippets
-  use 'hrsh7th/cmp-vsnip'
-  use 'hrsh7th/vim-vsnip'
+  use {
+    'hrsh7th/cmp-vsnip',
+    after = "nvim-cmp",
+  }
+  use {
+    'hrsh7th/vim-vsnip',
+    after = "nvim-cmp",
+  }
 
   -- Diagnostic list
-  -- use {
-  --   "folke/trouble.nvim",
-  --   requires = "kyazdani42/nvim-web-devicons",
-  --   after = "nvim-lspconfig",
-  --   config = function()
-  --     require("trouble").setup {}
-  --   end
-  -- }
+  use {
+    "folke/trouble.nvim",
+    requires = "kyazdani42/nvim-web-devicons",
+    after = "nvim-lspconfig",
+    config = function()
+      require("trouble").setup {}
+    end
+  }
 
   -- Symbols Outline
-  -- use {
-  --   'simrat39/symbols-outline.nvim',
-  --   after = "nvim-lspconfig",
-  -- }
+  use {
+    'simrat39/symbols-outline.nvim',
+    after = "nvim-lspconfig",
+    config = function ()
+      require('symbols-outline-config')
+    end
+  }
 
   -- Commentary
   use {
     'b3nj5m1n/kommentary',
     event = "BufWinEnter",
     config = function ()
-      require('kommentary-config')
+      require('commentary-config')
     end
   }
 
@@ -200,17 +252,17 @@ return require('packer').startup(function(use)
       require('telescope-config')
     end
   }
-  -- use {
-  --   "nvim-telescope/telescope-file-browser.nvim",
-  --   after = "telescope.nvim",
-  -- }
+  use {
+    "nvim-telescope/telescope-file-browser.nvim",
+    after = "telescope.nvim",
+  }
 
   -- -- Project Manager
   use {
     'ahmedkhalf/project.nvim',
     event = "BufWinEnter",
     config = function ()
-      require('projets-config')
+      require('projects-config')
     end
   }
 
@@ -224,14 +276,14 @@ return require('packer').startup(function(use)
   -- }
 
   -- Season manager
-    -- use {
-    --   'Shatur/neovim-session-manager',
-    --   after = "telescope.nvim",
-    --   config = function ()
-    --     require('telescope').load_extension('sessions')
-    --     require('season-manager')
-    --   end
-    -- }
+    use {
+      'Shatur/neovim-session-manager',
+      after = "telescope.nvim",
+      config = function ()
+        require('telescope').load_extension('sessions')
+        require('session-manager-config')
+      end
+    }
 
   -- Whichkey
   use {
@@ -243,44 +295,44 @@ return require('packer').startup(function(use)
   }
 
   -- HOP
-  -- use {
-  --   'phaazon/hop.nvim',
-  --   event = "BufWinEnter",
-  --   config = function()
-  --     require'hop'.setup()
-  --   end
-  -- }
+  use {
+    'phaazon/hop.nvim',
+    event = "BufWinEnter",
+    config = function()
+      require'hop'.setup()
+    end
+  }
 
   -- Git
-  -- use {
-  --   'lewis6991/gitsigns.nvim',
-  --   event = "BufWinEnter",
-  --   requires = {
-  --     'nvim-lua/plenary.nvim'
-  --   },
-  --   tag = 'release',
-  --   config = function ()
-  --     require('gitsigns-config')
-  --   end
-  -- }
+  use {
+    'lewis6991/gitsigns.nvim',
+    event = "BufWinEnter",
+    requires = {
+      'nvim-lua/plenary.nvim'
+    },
+    tag = 'release',
+    config = function ()
+      require('gitsigns-config')
+    end
+  }
 
   -- Terminal
-  -- use {
-  --   "akinsho/toggleterm.nvim",
-  --   event = "BufWinEnter",
-  --   config = function ()
-  --     require('terminal')
-  --   end
-  -- }
+  use {
+    "akinsho/toggleterm.nvim",
+    before_each = {"which-key.nvim"},
+    config = function ()
+      require('terminal-config')
+    end
+  }
 
   -- Colorizer
-  -- use {
-  --   'norcalli/nvim-colorizer.lua',
-  --   after = "nvim-treesitter",
-  --   config = function()
-  --     require'colorizer'.setup()
-  --   end,
-  -- }
+  use {
+    'norcalli/nvim-colorizer.lua',
+    event = "BufWinEnter",
+    config = function()
+      require'colorizer'.setup()
+    end,
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   if PACKER_BOOTSTRAP then
