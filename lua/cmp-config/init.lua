@@ -12,6 +12,8 @@ end
 local cmp = require'cmp'
 local lspkind = require('lspkind')
 
+
+
 -- local source_mapping = {
 --   buffer = "[Buffer]",
 --   nvim_lsp = "[LSP]",
@@ -100,6 +102,7 @@ cmp.setup({
       end
     end, { "i", "s" }),
   },
+
   sources = cmp.config.sources({
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
@@ -111,7 +114,11 @@ cmp.setup({
   }, {
     { name = 'buffer' },
     { name = 'calc' },
-  })
+  }),
+
+  documentation = {
+      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    },
 })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).

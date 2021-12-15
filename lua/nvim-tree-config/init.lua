@@ -1,7 +1,26 @@
 vim.g.nvim_tree_width = 25
 vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_respect_buf_cwd = 1
-
+vim.g.nvim_tree_icons = {
+    default = "",
+    symlink = "",
+    git = {
+      unstaged = "",
+      staged = "S",
+      unmerged = "",
+      renamed = "➜",
+      deleted = "",
+      untracked = "U",
+      ignored = "◌",
+    },
+    folder = {
+      default = "",
+      open = "",
+      empty = "",
+      empty_open = "",
+      symlink = "",
+    },
+  }
 -- require'nvim-tree'.setup ()
 require'nvim-tree'.setup {
   update_cwd = true,
@@ -16,6 +35,10 @@ require'nvim-tree'.setup {
       info = "",
       warning = "",
       error = "",
-    }
-  },
+    },
+   git = {
+    enable = true,
+    ignore = false,
+    timeout = 500,
+  }, },
 }
