@@ -110,10 +110,10 @@ wk.register({
       s = { "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", "Signture_help"},
       t = {
         name = "+Trouble list",
-        b = { "<cmd>TroubleToggle lsp_document_diagnostics<cr>", "Current buffer diagnostics" },
-        w = { "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "Current workspace diagnostics" },
-        d = { "<cmd>TroubleToggle lsp_definitions<cr>", "Definition" },
-        t = { "<cmd>TroubleToggle lsp_type_definitions<cr>", "Type definition"},
+        b = { "<cmd>TroubleToggle document_diagnostics<cr>", "Current buffer diagnostics" },
+        w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Current workspace diagnostics" },
+        d = { "<cmd>TroubleToggle definitions<cr>", "Definition" },
+        t = { "<cmd>TroubleToggle type_definitions<cr>", "Type definition"},
       },
     },
     p = {

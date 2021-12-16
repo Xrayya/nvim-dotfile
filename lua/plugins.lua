@@ -225,7 +225,6 @@ return require('packer').startup(function(use)
   -- Symbols Outline
   use {
     'simrat39/symbols-outline.nvim',
-    after = "nvim-lspconfig",
     config = function ()
       require('symbols-outline-config')
     end

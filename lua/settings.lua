@@ -3,7 +3,7 @@ local set= vim.opt
 --syntax enable                               -- Enables syntax highlighing
 set.hidden = true                           -- Required to keep multiple buffers open multiple buffers
 set.whichwrap = 'b,s,<,>,[,],h,l'
---set.wrap = false                            -- Display long lines as just one line
+set.wrap = false                            -- Display long lines as just one line
 set.linebreak = true
 set.encoding = "utf-8"                      -- The encoding displayed
 set.pumheight = 10                          -- Makes popup menu smaller
