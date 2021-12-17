@@ -120,9 +120,9 @@ wk.register({
       name = "Plugin action",
       c = { "<cmd>PackerCompile<cr>", "Compile" },
       e = { "<cmd>e " .. vim.fn.stdpath('config') .. "/lua/plugins.lua<cr>", "Edit (configure) plugins" },
-      r = { "<cmd>PackerClean<cr>", "Remove" },
+      C = { "<cmd>PackerClean<cr>", "Clean" },
       i = { "<cmd>PackerInstall<cr>", "Install" },
-      s = { "<cmd>PackerSync<cr>", "Update and compile" },
+      s = { "<cmd>PackerSync<cr>", "Sync" },
       S = { "<cmd>PackerStatus<cr>", "Status" },
     },
     q = {
