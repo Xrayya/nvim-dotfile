@@ -98,7 +98,8 @@ return require('packer').startup(function(use)
       requires = { 'kyazdani42/nvim-web-devicons' },
       event = "BufWinEnter",
       config = function ()
-          require'alpha'.setup(require'alpha.themes.startify'.opts)
+          -- require'alpha'.setup(require'alpha.themes.startify'.opts)
+          require('alpha-config')
       end
   }
 
