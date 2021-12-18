@@ -12,20 +12,18 @@ end
 local cmp = require'cmp'
 local lspkind = require('lspkind')
 
-
-
--- local source_mapping = {
---   buffer = "[Buffer]",
---   nvim_lsp = "[LSP]",
---   luasnip = "[LuaSnip]",
---   vsnip = "[VSnip]",
---   ultisnips = "[UltiSnips]",
---   snippy = "[Snippy]",
---   nvim_lua = "[Lua]",
---   cmp_tabnine = "[TN]",
---   calc = "[Calc]",
---   latex_symbols = "[Latex]",
--- }
+local source_mapping = {
+  buffer = "[Buffer]",
+  nvim_lsp = "[LSP]",
+  luasnip = "[LuaSnip]",
+  vsnip = "[VSnip]",
+  ultisnips = "[UltiSnips]",
+  snippy = "[Snippy]",
+  nvim_lua = "[Lua]",
+  cmp_tabnine = "[TN]",
+  calc = "[Calc]",
+  latex_symbols = "[Latex]",
+}
 
 cmp.setup({
   snippet = {
@@ -43,23 +41,9 @@ cmp.setup({
     format = lspkind.cmp_format({
       with_text = true,
       --preset = 'codicons',
-      menu = ({
-        buffer = "[Buffer]",
-        nvim_lsp = "[LSP]",
-        luasnip = "[LuaSnip]",
-        vsnip = "[VSnip]",
-        ultisnips = "[UltiSnips]",
-        snippy = "[Snippy]",
-        nvim_lua = "[Lua]",
-        cmp_tabnine = "[TN]",
-        calc = "[Calc]",
-        latex_symbols = "[Latex]",
-      })
+      menu = (source_mapping),
     })
 		-- format = function(entry, vim_item)
-  --     lspkind.cmp_format({
-  --       win_text = true,
-  --     })
 		-- 	vim_item.kind = lspkind.presets.default[vim_item.kind]
 		-- 	local menu = source_mapping[entry.source.name]
 		-- 	if entry.source.name == 'cmp_tabnine' then
@@ -67,6 +51,11 @@ cmp.setup({
 		-- 			menu = entry.completion_item.data.detail .. ' ' .. menu
 		-- 		end
 		-- 		vim_item.kind = ''
+  --     else
+  --       lspkind.cmp_format({
+  --         with_text = true,
+  --         menu = (source_mapping),
+  --       })
 		-- 	end
 		-- 	vim_item.menu = menu
 		-- 	return vim_item
@@ -123,9 +112,11 @@ cmp.setup({
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {
-  sources = {
-    { name = 'buffer' }
-  }
+  sources = cmp.config.sources({
+    { name = 'nvim_lsp_document_symbol' }
+  }, {
+    { name = 'buffer'}
+  })
 })
 
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
