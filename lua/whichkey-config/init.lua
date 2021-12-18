@@ -16,31 +16,6 @@ wk.setup{
 	},
 }
 
--- Setup for toggleterm
-local Terminal = require('toggleterm.terminal').Terminal
-local toggle_float = function ()
-  local float = Terminal:new({direction = "float"})
-  return float:toggle()
-end
-local toggle_lazygit = function ()
-  local lazy = Terminal:new({
-    cmd = "lazygit",
-    direction = "float",
-    start_in_insert = true,
-    insert_mappings = true,
-  })
-  return lazy:toggle()
-end
-local toggle_pwsh = function ()
-  local pwsh = Terminal:new({
-    cmd = "pwsh",
-    direction = "float",
-    start_in_insert = true,
-    insert_mappings = true,
-  })
-  return pwsh:toggle()
-end
-
 wk.register({
   ["<leader>"] = {
     c = {
@@ -90,7 +65,7 @@ wk.register({
       r = { "<cmd>lua require\"gitsigns\".reset_hunk()<CR>", "Reset hunk" },
       R = { "<cmd>lua require\"gitsigns\".reset_buffer()<CR>", "Reset buffer" },
       s = { "<cmd>lua require\"gitsigns\".stage_hunk()<CR>", "Stage hunk" },
-      t = { toggle_lazygit, "Open terminal (lazygit)" },
+      t = { "<cmd>lua _LAZYGIT_TOGGLE()<cr>", "Open terminal (lazygit)" },
       u = { "<cmd>lua require\"gitsigns\".undo_stage_hunk()<CR>", "Undo stage hunk" },
       o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
     },
@@ -138,13 +113,14 @@ wk.register({
     s = { "<cmd>SymbolsOutline<cr>", "Open Symbols Outline" },
     t = {
       name = "Terminal",
-      a = { "<cmd>1ToggleTerm<CR>", "Terminal 1" },
-      b = { "<cmd>2ToggleTerm<CR>", "Terminal 2" },
-      c = { "<cmd>3ToggleTerm<CR>", "Terminal 3" },
-      d = { "<cmd>4ToggleTerm<CR>", "Terminal 4" },
-      e = { "<cmd>5ToggleTerm<CR>", "Terminal 5" },
-      f = { toggle_float, "Terminal (floating)" },
-      p = { toggle_pwsh, "Terminal (pwsh)" },
+      a = { "<cmd>lua _CMD1_TOGGLE()<CR>", "Terminal (cmd) 1" },
+      b = { "<cmd>lua _CMD2_TOGGLE()<CR>", "Terminal (cmd) 2" },
+      c = { "<cmd>lua _CMD3_TOGGLE()<CR>", "Terminal (cmd) 3" },
+      f = { "<cmd>lua _F_PWSH_TOGGLE()<cr>", "Terminal (pwsh floating)" },
+      n = { "<cmd>lua _NODE_TOGGLE()<cr>" , "Terminal (node)" },
+      p = { "<cmd>lua _PWSH_TOGGLE()<cr>", "Terminal (pwsh)" },
+      P = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Terminal (python)" },
+      v = { "<cmd>lua _V_PWSH_TOGGLE()<cr>", "Terminal (pwsh vertical)" },
     },
     w = { ":w<cr>", "Write (save)" },
     -- W = { ":w<cr><cmd>FormatWrite<cr>", "Write and format" },
