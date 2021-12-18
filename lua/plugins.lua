@@ -153,6 +153,10 @@ return require('packer').startup(function(use)
     after = "nvim-cmp",
   }
   use {
+    'hrsh7th/cmp-nvim-lsp-document-symbol',
+    after = "nvim-cmp",
+  }
+  use {
     'hrsh7th/cmp-calc',
     after = "nvim-cmp",
   }
@@ -161,14 +165,9 @@ return require('packer').startup(function(use)
     before_each = {"nvim-cmp"},
   }
   -- use {
-  --   'adrianiy/cmp-tabnine',
-  --   run = 'sh ./install.sh',
-  --   require = 'hrsh7th/nvim-cmp'
-  -- }
- 	-- use {
-  --   'Xrayya/cmp-tabnine',
-  --   branch = 'for-Windows-native',
+  --   'tzachar/cmp-tabnine',
   --   run = 'powershell ./install.ps1',
+  --   after = "nvim-cmp",
   --   requires = 'hrsh7th/nvim-cmp'
   -- }
 
