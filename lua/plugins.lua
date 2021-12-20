@@ -11,7 +11,7 @@ end
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile>
+    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
   augroup end
 ]])
 
@@ -25,7 +25,7 @@ end
 packer.init({
     display = {
       open_fn = function()
-        return require('packer.util').float({ border = 'single' })
+        return require('packer.util').float({ border = 'rounded' })
       end
     }
   }
@@ -127,7 +127,7 @@ return require('packer').startup(function(use)
   -- Autocompletion
   use {
     'hrsh7th/nvim-cmp',
-    after = "nvim-lspconfig",
+    after = {"nvim-lspconfig", "nvim-autopairs"},
     config = function ()
       require('cmp-config')
     end
@@ -139,6 +139,7 @@ return require('packer').startup(function(use)
   use {
     'hrsh7th/cmp-nvim-lua',
     after = "nvim-cmp",
+    ft = "lua",
   }
   use {
     'hrsh7th/cmp-buffer',
@@ -164,16 +165,18 @@ return require('packer').startup(function(use)
     'onsails/lspkind-nvim',
     before_each = {"nvim-cmp"},
   }
-  -- use {
-  --   'tzachar/cmp-tabnine',
-  --   run = 'powershell ./install.ps1',
-  --   after = "nvim-cmp",
-  --   requires = 'hrsh7th/nvim-cmp'
-  -- }
+  use {
+    'tzachar/cmp-tabnine',
+    disable = true,
+    run = 'powershell ./install.ps1',
+    after = "nvim-cmp",
+    requires = 'hrsh7th/nvim-cmp'
+  }
 
   -- Autopair
   use {
     'windwp/nvim-autopairs',
+    after = "nvim-treesitter",
     config = function ()
       require('nvim-autopairs').setup({
         check_ts = true,
@@ -182,6 +185,7 @@ return require('packer').startup(function(use)
   }
   use {
     'p00f/nvim-ts-rainbow',
+    after = "nvim-treesitter",
   }
 
   -- -- Indentation
@@ -216,7 +220,7 @@ return require('packer').startup(function(use)
   use {
     "folke/trouble.nvim",
     requires = "kyazdani42/nvim-web-devicons",
-    after = "nvim-lspconfig",
+    cmd = {"Trouble", "TroubleToggle"},
     config = function()
       require("trouble").setup {}
     end
@@ -287,7 +291,7 @@ return require('packer').startup(function(use)
   -- Whichkey
   use {
     'folke/which-key.nvim',
-    event = "BufWinEnter",
+    keys = {"<Leader>", "]", "[", "z"},
     config = function ()
       require('whichkey-config')
     end
@@ -318,7 +322,7 @@ return require('packer').startup(function(use)
   -- Terminal
   use {
     "akinsho/toggleterm.nvim",
-    before_each = {"which-key.nvim"},
+    event = "BufWinEnter",
     config = function ()
       require('terminal-config')
     end
