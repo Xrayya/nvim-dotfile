@@ -337,6 +337,14 @@ return require('packer').startup(function(use)
     end,
   }
 
+  -- Markdown previewer
+  use {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    ft = "markdown",
+    cmd = "MarkdownPreview",
+  }
+
   -- Automatically set up your configuration after cloning packer.nvim
   if PACKER_BOOTSTRAP then
     require('packer').sync()
