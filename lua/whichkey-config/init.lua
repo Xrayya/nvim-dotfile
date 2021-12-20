@@ -78,6 +78,7 @@ wk.register({
       f = { "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", "Format current buffer(native LSP)" },
       h = { "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", "Hover"},
       i = { "<cmd>LspInfo<cr>", "LSP Info" },
+      I = { "<cmd>LspInstallInfo<cr>", "LSP installer Info" },
       l = { "<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>", "Line diagnostics" },
       p = { "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", "Preview definition" },
       r = { "<cmd>lua require('lspsaga.rename').rename()<CR>", "Rename" },
@@ -132,6 +133,6 @@ wk.register({
   },
   ["]"] = {
     d = { "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", "Jump to next diagnostics" },
-    h = { "<cmd>lua require\"gitsigns.actions\".prev_next()<CR>", "Jump to next hunk" },
+    h = { "<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>", "Jump to next hunk" },
   },
 })
