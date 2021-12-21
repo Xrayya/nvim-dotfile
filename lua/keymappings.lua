@@ -34,6 +34,9 @@ map('n', 'n', 'nzzzv', opts)
 map('n', 'N', 'Nzzzv', opts)
 map('n', 'J', 'mzJ`z', opts)
 
+-- Keep the last thing yanked on the register
+map('v', 'p', '"_dP', opts)
+
 -- Better indenting
 map('v', '<', '<gv', opts)
 map('v', '>', '>gv', opts)
