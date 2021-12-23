@@ -3,8 +3,16 @@ local fn = vim.fn
 -- Automatically install packer
 local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
+  PACKER_BOOTSTRAP = fn.system {
+    'git',
+    'clone',
+    '--depth',
+    '1',
+    'https://github.com/wbthomason/packer.nvim',
+    install_path
+  }
   print("Installing packer close and reopen Neovim...")
+  vim.cmd [[packadd packer.nvim]]
 end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
@@ -18,6 +26,7 @@ vim.cmd([[
 -- Use a protected call so we don't error out on first use
 local status_ok, packer = pcall(require, "packer")
 if not status_ok then
+  print("Error occured when loading packer.nvim")
   return
 end
 
@@ -109,10 +118,13 @@ return require('packer').startup(function(use)
   }
   use {
     'neovim/nvim-lspconfig',
-    after = {"nvim-lsp-installer", "nvim-cmp"},
+    after = {"nvim-lsp-installer", "nvim-cmp", "cmp-nvim-lsp", "nlsp-settings.nvim"},
     config = function ()
       require('lsp-config')
     end
+  }
+  use {
+    'tamago324/nlsp-settings.nvim',
   }
 
   -- LSP Saga
@@ -127,7 +139,7 @@ return require('packer').startup(function(use)
   -- Autocompletion
   use {
     'hrsh7th/nvim-cmp',
-    after = {"nvim-autopairs"},
+    after = {"nvim-autopairs", "LuaSnip"},
     config = function ()
       require('cmp-config')
     end
@@ -136,11 +148,11 @@ return require('packer').startup(function(use)
     'hrsh7th/cmp-nvim-lsp',
     after = "nvim-cmp",
   }
-  use {
-    'hrsh7th/cmp-nvim-lua',
-    after = "nvim-cmp",
-    ft = "lua",
-  }
+  -- use {
+  --   'hrsh7th/cmp-nvim-lua',
+  --   after = "nvim-cmp",
+  --   ft = "lua",
+  -- }
   use {
     'hrsh7th/cmp-buffer',
     after = "nvim-cmp",
@@ -160,10 +172,6 @@ return require('packer').startup(function(use)
   use {
     'hrsh7th/cmp-calc',
     after = "nvim-cmp",
-  }
-  use {
-    'onsails/lspkind-nvim',
-    before_each = {"nvim-cmp"},
   }
   use {
     'tzachar/cmp-tabnine',
@@ -208,11 +216,15 @@ return require('packer').startup(function(use)
 
   -- Snippets
   use {
-    'hrsh7th/cmp-vsnip',
-    after = "nvim-cmp",
+    "L3MON4D3/LuaSnip",
+    event = "BufWinEnter",
   }
   use {
-    'hrsh7th/vim-vsnip',
+    "rafamadriz/friendly-snippets",
+    event = "BufWinEnter",
+  }
+  use {
+    "saadparwaiz1/cmp_luasnip",
     after = "nvim-cmp",
   }
 
