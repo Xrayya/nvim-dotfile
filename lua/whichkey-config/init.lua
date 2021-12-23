@@ -22,11 +22,11 @@ wk.register({
       name = "Commentary",
       i = {
         name = "Increase (motion's enable)",
-        c = { "<Plug>kommentary_motion_increase ", "Current line" },
+        c = { "<Plug>kommentary_motion_increase l", "Current line" },
       },
       d = {
         name = "Decrease (motion's enable)",
-        c = { "<Plug>kommentary_motion_decrease ", "Current line" },
+        c = { "<Plug>kommentary_motion_decrease l", "Current line" },
       },
     },
     e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
