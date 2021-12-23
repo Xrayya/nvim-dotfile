@@ -109,7 +109,7 @@ return require('packer').startup(function(use)
   }
   use {
     'neovim/nvim-lspconfig',
-    after = "nvim-lsp-installer",
+    after = {"nvim-lsp-installer", "nvim-cmp"},
     config = function ()
       require('lsp-config')
     end
@@ -127,7 +127,7 @@ return require('packer').startup(function(use)
   -- Autocompletion
   use {
     'hrsh7th/nvim-cmp',
-    after = {"nvim-lspconfig", "nvim-autopairs"},
+    after = {"nvim-autopairs"},
     config = function ()
       require('cmp-config')
     end
