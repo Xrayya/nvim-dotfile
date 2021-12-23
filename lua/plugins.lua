@@ -196,6 +196,15 @@ return require('packer').startup(function(use)
     after = "nvim-treesitter",
   }
 
+  -- Autotag
+  use {
+    "windwp/nvim-ts-autotag",
+    after = "nvim-treesitter",
+    config = function ()
+      require('nvim-ts-autotag').setup()
+    end
+  }
+
   -- -- Indentation
   use {
     "lukas-reineke/indent-blankline.nvim",

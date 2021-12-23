@@ -1,5 +1,17 @@
 require 'nvim-treesitter.install'.compilers = { "gcc", "clang" }
 require 'nvim-treesitter.configs'.setup {
+  enure_installed = {
+    "html",
+    "css",
+    "tsx",
+    "typescript",
+    "javascript",
+    "json",
+    "lua",
+    "markdown",
+    "yaml",
+    "python",
+  },
   highlight = {
     enable = true
   },
@@ -8,7 +20,10 @@ require 'nvim-treesitter.configs'.setup {
     extended_mode = true,
     max_file_lines = nil,
   },
+  -- autotag = {
+  --   enable = true,
+  -- },
   autopairs = {
-    enable = true
-  }
+    enable = true,
+  },
 }
