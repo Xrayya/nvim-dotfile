@@ -92,7 +92,7 @@ cmp.setup({
     end, { "i", "s" }),
   },
 
-  sources = cmp.config.sources({
+  sources = {
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
     { name = 'vsnip' }, -- For vsnip users.
@@ -100,10 +100,14 @@ cmp.setup({
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
     { name = 'cmp_tabnine'},
-  }, {
     { name = 'buffer' },
     { name = 'calc' },
-  }),
+  },
+
+  confirm_opts = {
+    behavior = cmp.ConfirmBehavior.Replace,
+    select = false,
+  },
 
   documentation = {
       border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
@@ -113,8 +117,7 @@ cmp.setup({
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline('/', {
   sources = cmp.config.sources({
-    { name = 'nvim_lsp_document_symbol' }
-  }, {
+    { name = 'nvim_lsp_document_symbol' },
     { name = 'buffer'}
   })
 })
@@ -122,12 +125,11 @@ cmp.setup.cmdline('/', {
 -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline(':', {
   sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
+    { name = 'path' },
     { name = 'cmdline' }
   })
 })
 
 -- Integration with autopairs
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
-cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({  map_char = { tex = '' } }))
+cmp.event:on( 'confirm_done', cmp_autopairs.on_confirm_done({ map_char = { tex = '' } }))
