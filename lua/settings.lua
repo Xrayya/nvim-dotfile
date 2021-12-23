@@ -33,12 +33,13 @@ set.sidescrolloff = 30
 set.showtabline = 2                         -- Always show tabs
 set.showmode = false                        -- We don't need to see things like -- INSERT -- anymore
 set.backup = false                          -- This is recommended by coc
+set.smartcase = true
 set.writebackup = false                     -- This is recommended by coc
 set.updatetime = 300                        -- Faster completion
 set.timeoutlen = 300                        -- By default timeoutlen is 1000 ms
 --set.formatoptions-=cro                      -- Stop newline continution of comments
 set.clipboard:append {"unnamedplus"}        -- Copy paste between vim and everything else
-set.shortmess:remove {"c"}
+set.shortmess:append "c"
 --set.guifont = "Hack\\ Nerd\\ Font:h10:l"    -- Font
 vim.cmd('autocmd FileType java setlocal tabstop=4 shiftwidth=4 softtabstop=4')
 vim.cmd('autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 softtabstop=4')

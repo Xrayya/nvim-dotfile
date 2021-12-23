@@ -1,7 +1,7 @@
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
--- map('', '<Space>', '<NOP>', opts)
+map('', '<Space>', '<NOP>', opts)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -42,8 +42,8 @@ map('v', '<', '<gv', opts)
 map('v', '>', '>gv', opts)
 
 -- Move selecter line /block of text in visual mode
-map('x', 'J',     ':move \'<+2<CR>gv=gv', opts)
-map('x', 'K',     ':move \'<-2<CR>gv=gv', opts)
+map('x', '<M-j>', ":move '>+1<CR>gv-gv", opts)
+map('x', '<M-k>', ":move '<-2<CR>gv-gv", opts)
 map('i', '<C-j>', '<esc>:move .+1<CR>==i', opts)
 map('i', '<C-k>', '<esc>:move .-2<CR>==i', opts)
 map('n', '<M-j>', ':move .+1<CR>==', opts)
