@@ -38,7 +38,7 @@ require("lsp-config.handlers").setup()
 --     -- end
 
 --     if server.name == "sumneko_lua" then
---       local sumneko_opts = require("lsp-config.costume-settings.sumneko_lua")
+--       local sumneko_opts = require("lsp-config.costume-lsp-settings.sumneko_lua")
 --       opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
 --     end
 --     server:setup(opts)
