@@ -21,6 +21,7 @@ vim.g.nvim_tree_icons = {
       symlink = "",
     },
   }
+
 -- require'nvim-tree'.setup ()
 require'nvim-tree'.setup {
   update_cwd = true,
@@ -36,9 +37,17 @@ require'nvim-tree'.setup {
       warning = "",
       error = "",
     },
-   git = {
+  },
+  git = {
     enable = true,
     ignore = false,
     timeout = 500,
-  }, },
+  },
+  show_icons = {
+    git = 1,
+    folders = 1,
+    files = 1,
+    -- folder_arrows = 1,
+    tree_width = 25,
+  },
 }
