@@ -5,11 +5,11 @@ vim.g.symbols_outline = {
       Module = {icon = "", hl = "TSNamespace"},
       Namespace = {icon = "", hl = "TSNamespace"},
       Package = {icon = "", hl = "TSNamespace"},
-      Class = {icon = "ﴯ", hl = "TSType"},
+      Class = {icon = "", hl = "TSType"},
       Method = {icon = "", hl = "TSMethod"},
       Property = {icon = "ﰠ", hl = "TSMethod"},
-      Field = {icon = "ﰠ", hl = "TSField"},
-      Constructor = {icon = "", hl = "TSConstructor"},
+      Field = {icon = "", hl = "TSField"},
+      Constructor = {icon = "", hl = "TSConstructor"},
       Enum = {icon = "", hl = "TSType"},
       Interface = {icon = "", hl = "TSType"},
       Function = {icon = "", hl = "TSFunction"},
@@ -26,6 +26,6 @@ vim.g.symbols_outline = {
       Struct = {icon = "𝓢", hl = "TSType"},
       Event = {icon = "", hl = "TSType"},
       Operator = {icon = "", hl = "TSOperator"},
-      TypeParameter = {icon = "𝙏", hl = "TSParameter"}
+      TypeParameter = {icon = "", hl = "TSParameter"}
     }
 }
