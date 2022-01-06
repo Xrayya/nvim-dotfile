@@ -1,18 +1,12 @@
 " configure nvcode-color-schemes
-let g:nvcode_termcolors=256
+let g:nvcode_termcolors = 256
 let g:onedark_style = 'darker'
+let g:onedark_toggle_style_keymap = '<nop>'
+let g:rose_pine_variant = 'darker'
 
 set termguicolors
 
-"colorscheme nvcode
-colorscheme rose-pine
-"colorscheme PaperColor
-"colorscheme panda
-"colorscheme onedark
-"colorscheme onedarker
-"colorscheme tokyonight
-"colorscheme lunar
-"colorscheme nord
+colorscheme onedark
 
 " checks if your terminal has 24-bit color support
 " if (has("termguicolors"))
