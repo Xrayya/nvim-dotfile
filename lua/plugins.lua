@@ -337,10 +337,6 @@ return require('packer').startup(function(use)
         require('telescope-config')
       end
     },
-    {
-      "nvim-telescope/telescope-file-browser.nvim",
-      after = "telescope.nvim",
-    },
 
     -- Project Manager
     {
