@@ -351,9 +351,7 @@ return require('packer').startup(function(use)
     {
       "nvim-telescope/telescope-frecency.nvim",
       disable = true,
-      config = function()
-        require"telescope".load_extension("frecency")
-      end,
+      after = "telescope.nvim",
       requires = {"tami5/sqlite.lua"}
     },
 
