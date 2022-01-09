@@ -1,7 +1,9 @@
 " configure nvcode-color-schemes
 let g:nvcode_termcolors = 256
-let g:onedark_style = 'darker'
-let g:onedark_toggle_style_keymap = '<nop>'
+let g:onedark_config = {
+      \ 'style' : 'darker',
+      \ 'toggle_style_key' : '<NOP>',
+      \ }
 let g:rose_pine_variant = 'darker'
 
 set termguicolors
