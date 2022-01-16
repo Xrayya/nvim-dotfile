@@ -422,6 +422,22 @@ return require('packer').startup(function(use)
   }
 
 
+  ------------------
+  -- Notification --
+  ------------------
+
+  use {
+    "rcarriga/nvim-notify",
+    event = "BufWinEnter",
+    config = function ()
+      require("notify").setup({
+        timeout = 1000,
+      })
+      vim.notify = require("notify")
+    end
+  }
+
+
   ---------------
   -- Colorizer --
   ---------------
