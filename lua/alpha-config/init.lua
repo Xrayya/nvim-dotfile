@@ -22,7 +22,7 @@ dashboard.section.buttons.val = {
 	dashboard.button("e", "  New file", "<cmd>ene <BAR> startinsert<CR>"),
 	dashboard.button("p", "  Find project", "<cmd>Telescope projects<CR>"),
 	dashboard.button("r", "  Recently used files", "<cmd>Telescope oldfiles<CR>"),
-	dashboard.button("s", "  Open session", "<cmd>Telescope sessions<CR>"),
+	dashboard.button("s", "  Open last session in this directory", "<cmd>SessionManager load_current_dir_session<CR>"),
 	dashboard.button("t", "  Find text", "<cmd>Telescope live_grep<CR>"),
 	dashboard.button("c", "  Configuration", "<cmd>e " .. vim.fn.stdpath('config') .. "/init.lua<CR>"),
 	dashboard.button("P", "  Configure Plugins", "<cmd>e " .. vim.fn.stdpath('config') .. "/lua/plugins.lua<CR>"),

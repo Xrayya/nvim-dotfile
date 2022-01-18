@@ -358,9 +358,9 @@ return require('packer').startup(function(use)
     -- Season manager
     {
       'Shatur/neovim-session-manager',
-      after = "telescope.nvim",
+      cmd = "SessionManager",
+      requires = {"plenary.nvim"},
       config = function ()
-        require('telescope').load_extension('sessions')
         require('session-manager-config')
       end
     }
