@@ -11,6 +11,9 @@ require 'nvim-treesitter.configs'.setup {
     "markdown",
     "yaml",
     "python",
+    "java",
+    "cpp",
+    "c",
   },
   highlight = {
     enable = true

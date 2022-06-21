@@ -52,7 +52,7 @@ end
 
 -- Cmd terminals
 local cmd1 = Terminal:new({
-  cmd = "cmd",
+  cmd = "pwsh",
   count = 1,
   size = 38,
   direction = "horizontal",
@@ -63,7 +63,7 @@ function _CMD1_TOGGLE()
 end
 
 local cmd2 = Terminal:new({
-  cmd = "cmd",
+  cmd = "pwsh",
   count = 2,
   size = 38,
   direction = "horizontal",
@@ -74,7 +74,7 @@ function _CMD2_TOGGLE()
 end
 
 local cmd3 = Terminal:new({
-  cmd = "cmd",
+  cmd = "pwsh",
   count = 3,
   size = 38,
   direction = "horizontal",

@@ -1,4 +1,4 @@
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 map('', '<Space>', '<NOP>', opts)
@@ -60,6 +60,7 @@ map('i', '{', '{<C-g>u', opts)
 map('i', '[', '[<C-g>u', opts)
 map('i', '/', '/<C-g>u', opts)
 map('i', ';', ';<C-g>u', opts)
+map('i', ':', ':<C-g>u', opts)
 
 -- Better window navigation
 map('n', '<C-h>', '<C-w>h', opts)

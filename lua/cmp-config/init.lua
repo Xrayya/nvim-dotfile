@@ -48,7 +48,7 @@ cmp.setup({
   snippet = {
     -- REQUIRED - you must specify a snippet engine
     expand = function(args)
-      require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
+      luasnip.lsp_expand(args.body) -- For `luasnip` users.
       -- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
       -- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
       -- require'snippy'.expand_snippet(args.body) -- For `snippy` users.
@@ -131,6 +131,7 @@ cmp.setup({
     { name = 'cmp_tabnine'},
     { name = 'buffer' },
     { name = 'calc' },
+    { name = 'path' },
   },
 
   confirm_opts = {
@@ -138,26 +139,30 @@ cmp.setup({
     select = false,
   },
 
-  documentation = {
-      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-    },
+  window = {
+    completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
+    -- documentation = {
+    --     border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    -- },
+  },
 })
 
--- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline('/', {
-  sources = cmp.config.sources({
-    { name = 'nvim_lsp_document_symbol' },
-    { name = 'buffer'}
-  })
-})
+-- -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
+-- cmp.setup.cmdline('/', {
+--   sources = cmp.config.sources({
+--     { name = 'nvim_lsp_document_symbol' },
+--     { name = 'buffer'}
+--   })
+-- })
 
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
-  sources = cmp.config.sources({
-    { name = 'path' },
-    { name = 'cmdline' }
-  })
-})
+-- -- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+-- cmp.setup.cmdline(':', {
+--   sources = cmp.config.sources({
+--     -- { name = 'path' },
+--     { name = 'cmdline' }
+--   })
+-- })
 
 -- Integration with autopairs
 local cmp_autopairs = require('nvim-autopairs.completion.cmp')
