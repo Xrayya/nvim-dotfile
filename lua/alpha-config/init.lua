@@ -27,13 +27,13 @@ dashboard.section.buttons.val = {
 	dashboard.button("c", "  Configuration", "<cmd>e " .. vim.fn.stdpath('config') .. "/init.lua<CR>"),
 	dashboard.button("P", "  Configure Plugins", "<cmd>e " .. vim.fn.stdpath('config') .. "/lua/plugins.lua<CR>"),
 	dashboard.button("S", "  Sync Plugins", "<cmd>PackerSync<CR>"),
-	dashboard.button("q", "  Quit Neovim", "<cmd>qa<CR>"),
+	dashboard.button("Q", "  Quit Neovim", "<cmd>qa<CR>"),
 }
 
 local function footer()
   local total_plugins = #vim.tbl_keys(packer_plugins)
-  local datetime = os.date("%d-%m-%Y  %H:%M:%S")
-  return total_plugins .. " plugins  " .. datetime
+  local datetime = os.date(" %d-%m-%Y  %H:%M:%S")
+  return " " .. total_plugins .. " plugins " .. datetime
 end
 
 dashboard.section.footer.val = footer()
