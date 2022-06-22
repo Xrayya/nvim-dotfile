@@ -195,6 +195,7 @@ return require('packer').startup(function(use)
     },
     {
       'tamago324/nlsp-settings.nvim',
+      disable = true,
     },
 
     -- LSP Saga
