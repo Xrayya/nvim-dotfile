@@ -1,16 +1,24 @@
-vim.g.nvim_tree_width = 25
-vim.g.nvim_tree_indent_markers = 1
-vim.g.nvim_tree_respect_buf_cwd = 1
-
--- require'nvim-tree'.setup ()
-require'nvim-tree'.setup {
+require 'nvim-tree'.setup {
+  view = {
+    width = 25,
+  },
   update_focused_file = {
     enable = true,
     update_cwd = true
   },
   renderer = {
     root_folder_modifier = ":t",
+    indent_markers = {
+      enable = true,
+      icons = {
+        corner = "└ ",
+        edge = "│ ",
+        item = "│ ",
+        none = "  ",
+      },
+    },
     icons = {
+      git_placement = "after",
       glyphs = {
         default = "",
         symlink = "",
@@ -25,13 +33,13 @@ require'nvim-tree'.setup {
           symlink_open = "",
         },
         git = {
-          unstaged = "",
-          staged = "S",
+          unstaged = "",
+          staged = "✓",
           unmerged = "",
-          renamed = "➜",
+          renamed = "",
           untracked = "U",
           deleted = "",
-          ignored = "◌",
+          ignored = "",
         },
       },
     },
