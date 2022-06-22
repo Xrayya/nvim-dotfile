@@ -6,9 +6,17 @@ let g:onedark_config = {
       \ }
 let g:rose_pine_variant = 'darker'
 
+let g:tokyonight_style = "storm"
+
+let g:tokyonight_transparent = 1
+
+let g:tokyonight_italic_keywords = 0
+let g:tokyonight_italic_functions = 0
+let g:tokyonight_italic_variables = 0
+
 set termguicolors
 
-colorscheme onedark
+colorscheme tokyonight
 
 " checks if your terminal has 24-bit color support
 " if (has("termguicolors"))
