@@ -66,6 +66,8 @@ return require('packer').startup(function(use)
     },
     { 'EdenEast/nightfox.nvim' },
     {"rebelot/kanagawa.nvim"},
+    {'shaunsingh/moonlight.nvim'},
+    {'Xrayya/tokyonight.nvim'},
   })
 
 
@@ -436,7 +438,7 @@ return require('packer').startup(function(use)
   }
 
   
----------------
+  ---------------
   -- Notification --
   ------------------
 
@@ -447,11 +449,26 @@ return require('packer').startup(function(use)
     config = function ()
       require("notify").setup({
         timeout = 1000,
+        background_colour = "#000000",
       })
       vim.notify = require("notify")
     end
   }
 
+
+  ---------------------
+  -- Session Manager --
+  ---------------------
+
+  use {
+    "Shatur/neovim-session-manager",
+    commit = "4f9129a6fd80dc0a5111349bfb447ff243c7d504",
+    requires = { 'nvim-lua/plenary.nvim' },
+    event = "BufWinEnter",
+    config = function ()
+      require('session-manager-config')
+    end
+  }
 
   ---------------
   -- Colorizer --
@@ -477,6 +494,17 @@ use({
     vim.g.mkdp_filetypes = { "markdown" } end,
   ft = { "markdown" },
 })
+
+
+  ---------------------
+  -- Discord Presece --
+  ---------------------
+
+  use {
+    "andweeb/presence.nvim",
+    commit = "ebdf23b9b180c7f162e3afb4a250c313ca2b7271",
+    event = "BufWinEnter",
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   if PACKER_BOOTSTRAP then
