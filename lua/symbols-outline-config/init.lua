@@ -1,5 +1,5 @@
 vim.g.symbols_outline = {
-  width = 45,
+  width = 35,
     symbols = {
       File = {icon = "", hl = "TSURI"},
       Module = {icon = "", hl = "TSNamespace"},
