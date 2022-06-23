@@ -109,6 +109,12 @@ return require('packer').startup(function(use)
         require('nvim-ts-autotag').setup()
       end
     },
+
+    -- Commentstring
+    {
+      'JoosepAlviste/nvim-ts-context-commentstring',
+      after = "nvim-treesitter",
+    }
   })
 
 
