@@ -1,10 +1,7 @@
 require 'nvim-tree'.setup {
-  view = {
-    width = 25,
-  },
   update_focused_file = {
     enable = true,
-    update_cwd = true
+    -- update_cwd = true
   },
   renderer = {
     root_folder_modifier = ":t",
@@ -22,8 +19,8 @@ require 'nvim-tree'.setup {
       glyphs = {
         default = "",
         symlink = "",
+        arrow_open = "",
         folder = {
-          arrow_open = "",
           arrow_closed = "",
           default = "",
           open = "",
@@ -34,7 +31,7 @@ require 'nvim-tree'.setup {
         },
         git = {
           unstaged = "",
-          staged = "✓",
+          staged = "",
           unmerged = "",
           renamed = "",
           untracked = "U",
@@ -48,9 +45,9 @@ require 'nvim-tree'.setup {
     enable = true,
     icons = {
       hint = "",
-      info = "",
-      warning = "",
-      error = "",
+      info = "",
+      warning = "",
+      error = "",
     },
   },
   git = {
