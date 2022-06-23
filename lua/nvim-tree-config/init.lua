@@ -19,8 +19,8 @@ require 'nvim-tree'.setup {
       glyphs = {
         default = "",
         symlink = "",
-        arrow_open = "",
         folder = {
+          arrow_open = "",
           arrow_closed = "",
           default = "",
           open = "",
