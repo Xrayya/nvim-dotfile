@@ -1,7 +1,7 @@
 local fn = vim.fn
 
 -- Automatically install packer
-local install_path = fn.stdpath('data')..'/site/pack/packer/start/packer.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
   PACKER_BOOTSTRAP = fn.system {
     'git',
@@ -32,12 +32,12 @@ end
 
 -- Have packer use a popup window
 packer.init({
-    display = {
-      open_fn = function()
-        return require('packer.util').float({ border = 'rounded' })
-      end
-    }
+  display = {
+    open_fn = function()
+      return require('packer.util').float({ border = 'rounded' })
+    end
   }
+}
 )
 
 return require('packer').startup(function(use)
@@ -52,7 +52,7 @@ return require('packer').startup(function(use)
   -- Themes --
   ------------
 
-  use ({
+  use({
     { 'NLKNguyen/papercolor-theme' },
     { 'navarasu/onedark.nvim' },
     {
@@ -65,9 +65,9 @@ return require('packer').startup(function(use)
       as = 'rose-pine',
     },
     { 'EdenEast/nightfox.nvim' },
-    {"rebelot/kanagawa.nvim"},
-    {'shaunsingh/moonlight.nvim'},
-    {'Xrayya/tokyonight.nvim'},
+    { "rebelot/kanagawa.nvim" },
+    { 'shaunsingh/moonlight.nvim' },
+    { 'Xrayya/tokyonight.nvim' },
   })
 
 
@@ -75,11 +75,11 @@ return require('packer').startup(function(use)
   -- Treesitter stuff --
   ----------------------
 
-  use ({
+  use({
     {
       'nvim-treesitter/nvim-treesitter',
       run = ':TSUpdate',
-      config = function ()
+      config = function()
         require('treesitter-config')
       end
     },
@@ -88,7 +88,7 @@ return require('packer').startup(function(use)
     {
       'windwp/nvim-autopairs',
       after = "nvim-treesitter",
-      config = function ()
+      config = function()
         require('nvim-autopairs').setup({
           check_ts = true,
         })
@@ -105,7 +105,7 @@ return require('packer').startup(function(use)
     {
       "windwp/nvim-ts-autotag",
       after = "nvim-treesitter",
-      config = function ()
+      config = function()
         require('nvim-ts-autotag').setup()
       end
     },
@@ -125,7 +125,7 @@ return require('packer').startup(function(use)
   use {
     "lukas-reineke/indent-blankline.nvim",
     after = "nvim-treesitter",
-    config = function ()
+    config = function()
       require('indentation-config')
     end
   }
@@ -140,7 +140,7 @@ return require('packer').startup(function(use)
     commit = "79258f1d670277016523e13c0a88daa25070879f",
     requires = 'kyazdani42/nvim-web-devicons',
     cmd = "NvimTreeToggle",
-    config = function ()
+    config = function()
       require('nvim-tree-config')
     end
   }
@@ -150,23 +150,23 @@ return require('packer').startup(function(use)
   -- Statusline and bufferline --
   -------------------------------
 
-  use ({
+  use({
     {
       'nvim-lualine/lualine.nvim',
-      requires = {'kyazdani42/nvim-web-devicons', opt = true},
+      requires = { 'kyazdani42/nvim-web-devicons', opt = true },
       event = "BufWinEnter",
-      config = function ()
+      config = function()
         require('lualine').setup {
-          extensions = {'nvim-tree', 'symbols-outline', 'toggleterm'},
+          extensions = { 'nvim-tree', 'symbols-outline', 'toggleterm' },
         }
-        -- require('lualine-config.my-costume')
+        require('lualine-config.my-lualine')
       end
     },
     {
       'akinsho/bufferline.nvim',
       requires = 'kyazdani42/nvim-web-devicons',
       event = "BufWinEnter",
-      config = function ()
+      config = function()
         require('bufferline-config')
       end
     }
@@ -176,15 +176,15 @@ return require('packer').startup(function(use)
   ---------------
   -- Dashboard --
   ---------------
-  
+
   use {
-      'goolord/alpha-nvim',
-      requires = { 'kyazdani42/nvim-web-devicons' },
-      event = "BufWinEnter",
-      config = function ()
-          -- require'alpha'.setup(require'alpha.themes.startify'.opts)
-          require('alpha-config')
-      end
+    'goolord/alpha-nvim',
+    requires = { 'kyazdani42/nvim-web-devicons' },
+    event = "BufWinEnter",
+    config = function()
+      -- require'alpha'.setup(require'alpha.themes.startify'.opts)
+      require('alpha-config')
+    end
   }
 
 
@@ -192,12 +192,12 @@ return require('packer').startup(function(use)
   -- LSP stuff --
   ---------------
 
-  use ({
+  use({
     { 'williamboman/nvim-lsp-installer' },
     {
       'neovim/nvim-lspconfig',
-      after = {"nvim-lsp-installer", "nvim-cmp", "cmp-nvim-lsp", "nlsp-settings.nvim"},
-      config = function ()
+      after = { "nvim-lsp-installer", "nvim-cmp", "cmp-nvim-lsp", "nlsp-settings.nvim" },
+      config = function()
         require('lsp-config')
       end
     },
@@ -210,26 +210,26 @@ return require('packer').startup(function(use)
     {
       'tami5/lspsaga.nvim',
       after = "nvim-lspconfig",
-      config = function ()
+      config = function()
         require('lspsaga')
       end
     },
 
     -- Java LSP
-    {'mfussenegger/nvim-jdtls'},
+    { 'mfussenegger/nvim-jdtls' },
   })
 
 
   --------------------
   -- Autocompletion --
   --------------------
-  
-  use ({
+
+  use({
     {
       'hrsh7th/nvim-cmp',
       commit = "0e65333c7fdc284d53a489ed2cef7219289ea0fe",
-      after = {"nvim-autopairs", "LuaSnip"},
-      config = function ()
+      after = { "nvim-autopairs", "LuaSnip" },
+      config = function()
         require('cmp-config')
       end
     },
@@ -275,7 +275,7 @@ return require('packer').startup(function(use)
   -- Snippets stuff --
   --------------------
 
-  use ({
+  use({
     {
       "L3MON4D3/LuaSnip",
       commit = "a12441e0598e93e67235eba67c8e6fbffc896f06",
@@ -302,7 +302,7 @@ return require('packer').startup(function(use)
     "folke/trouble.nvim",
     commit = "da61737d860ddc12f78e638152834487eabf0ee5",
     requires = "kyazdani42/nvim-web-devicons",
-    cmd = {"Trouble", "TroubleToggle"},
+    cmd = { "Trouble", "TroubleToggle" },
     config = function()
       require("trouble").setup {}
     end
@@ -316,7 +316,7 @@ return require('packer').startup(function(use)
   use {
     'simrat39/symbols-outline.nvim',
     commit = "15ae99c27360ab42e931be127d130611375307d5",
-    config = function ()
+    config = function()
       require('symbols-outline-config')
     end
   }
@@ -330,7 +330,7 @@ return require('packer').startup(function(use)
     'b3nj5m1n/kommentary',
     commit = "533d768a140b248443da8346b88e88db704212ab",
     event = "BufWinEnter",
-    config = function ()
+    config = function()
       require('commentary-config')
     end
   }
@@ -340,16 +340,16 @@ return require('packer').startup(function(use)
   -- Telescope stuff --
   ---------------------
 
-  use ({
+  use({
     {
       'nvim-telescope/telescope.nvim',
       commit = "d88b44ddf14670cffa9fdb1eaca7a0429a973653",
       requires = {
-        {'nvim-lua/plenary.nvim'},
-        {'nvim-lua/popup.nvim'},
+        { 'nvim-lua/plenary.nvim' },
+        { 'nvim-lua/popup.nvim' },
       },
       cmd = "Telescope",
-      config = function ()
+      config = function()
         require('telescope-config')
       end
     },
@@ -359,7 +359,7 @@ return require('packer').startup(function(use)
       'ahmedkhalf/project.nvim',
       commit = "541115e762764bc44d7d3bf501b6e367842d3d4f",
       event = "BufWinEnter",
-      config = function ()
+      config = function()
         require('projects-config')
       end
     },
@@ -369,7 +369,7 @@ return require('packer').startup(function(use)
       "nvim-telescope/telescope-frecency.nvim",
       disable = true,
       after = "telescope.nvim",
-      requires = {"tami5/sqlite.lua"}
+      requires = { "tami5/sqlite.lua" }
     },
   })
 
@@ -381,8 +381,8 @@ return require('packer').startup(function(use)
   use {
     'folke/which-key.nvim',
     commit = "bd4411a2ed4dd8bb69c125e339d837028a6eea71",
-    keys = {"<Leader>", "]", "[", "z"},
-    config = function ()
+    keys = { "<Leader>", "]", "[", "z" },
+    config = function()
       require('whichkey-config')
     end
   }
@@ -397,7 +397,7 @@ return require('packer').startup(function(use)
     commit = "03675eba34d416dd22ad49b2d0e52b6113b434ad",
     event = "BufWinEnter",
     config = function()
-      require'hop'.setup()
+      require 'hop'.setup()
     end
   }
 
@@ -405,7 +405,7 @@ return require('packer').startup(function(use)
   --------------
   -- Gitsigns --
   --------------
-  
+
   use {
     'lewis6991/gitsigns.nvim',
     commit = "3543443eb3856fbe4a9d70f3fe8dc73e007199a1",
@@ -413,7 +413,7 @@ return require('packer').startup(function(use)
     requires = {
       'nvim-lua/plenary.nvim'
     },
-    config = function ()
+    config = function()
       require('gitsigns-config')
     end
   }
@@ -423,14 +423,14 @@ return require('packer').startup(function(use)
   -- Terminal --
   --------------
 
-   use {
-     "akinsho/toggleterm.nvim",
-     commit = "ce755e3a07f2464287dc60ed448fdbbe6ea157f5",
-     event = "BufWinEnter",
-     config = function ()
-       require('terminal-config')
-     end
-   }
+  use {
+    "akinsho/toggleterm.nvim",
+    commit = "ce755e3a07f2464287dc60ed448fdbbe6ea157f5",
+    event = "BufWinEnter",
+    config = function()
+      require('terminal-config')
+    end
+  }
 
 
   --------------
@@ -443,7 +443,7 @@ return require('packer').startup(function(use)
     requires = { 'nvim-lua/plenary.nvim' }
   }
 
-  
+
   ---------------
   -- Notification --
   ------------------
@@ -452,7 +452,7 @@ return require('packer').startup(function(use)
     "rcarriga/nvim-notify",
     commit = "4ef4c133fb92527b928603bf1ce43e729d09db50",
     event = "BufWinEnter",
-    config = function ()
+    config = function()
       require("notify").setup({
         timeout = 1000,
         background_colour = "#000000",
@@ -471,7 +471,7 @@ return require('packer').startup(function(use)
     commit = "4f9129a6fd80dc0a5111349bfb447ff243c7d504",
     requires = { 'nvim-lua/plenary.nvim' },
     event = "BufWinEnter",
-    config = function ()
+    config = function()
       require('session-manager-config')
     end
   }
@@ -484,7 +484,7 @@ return require('packer').startup(function(use)
     'norcalli/nvim-colorizer.lua',
     event = "BufWinEnter",
     config = function()
-      require'colorizer'.setup()
+      require('colorizer-config')
     end,
   }
 
@@ -493,13 +493,14 @@ return require('packer').startup(function(use)
   -- Markdown previewer --
   ------------------------
 
-use({
-  "iamcco/markdown-preview.nvim",
-  run = "cd app && npm install",
-  setup = function()
-    vim.g.mkdp_filetypes = { "markdown" } end,
-  ft = { "markdown" },
-})
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install",
+    setup = function()
+      vim.g.mkdp_filetypes = { "markdown" }
+    end,
+    ft = { "markdown" },
+  })
 
 
   ---------------------
