@@ -114,7 +114,14 @@ return require('packer').startup(function(use)
     {
       'JoosepAlviste/nvim-ts-context-commentstring',
       after = "nvim-treesitter",
-    }
+    },
+
+    -- GPS / context
+    {
+      "SmiteshP/nvim-gps",
+      requires = "nvim-treesitter/nvim-treesitter",
+      after = "nvim-treesitter",
+    },
   })
 
 
@@ -124,6 +131,7 @@ return require('packer').startup(function(use)
 
   use {
     "lukas-reineke/indent-blankline.nvim",
+    commit = "42fe62eb8792e427b2c7b0e1fa1b0d9597baac89",
     after = "nvim-treesitter",
     config = function()
       require('indentation-config')
@@ -153,6 +161,7 @@ return require('packer').startup(function(use)
   use({
     {
       'nvim-lualine/lualine.nvim',
+      commit = "5113cdb32f9d9588a2b56de6d1df6e33b06a554a",
       requires = { 'kyazdani42/nvim-web-devicons', opt = true },
       event = "BufWinEnter",
       config = function()
@@ -164,6 +173,7 @@ return require('packer').startup(function(use)
     },
     {
       'akinsho/bufferline.nvim',
+      commit = "68839d62785edfb4ff7a7b3c1e9f4b64d55749e8",
       requires = 'kyazdani42/nvim-web-devicons',
       event = "BufWinEnter",
       config = function()
@@ -179,6 +189,7 @@ return require('packer').startup(function(use)
 
   use {
     'goolord/alpha-nvim',
+    commit = "ef27a59e5b4d7b1c2fe1950da3fe5b1c5f3b4c94",
     requires = { 'kyazdani42/nvim-web-devicons' },
     event = "BufWinEnter",
     config = function()
@@ -283,7 +294,6 @@ return require('packer').startup(function(use)
     },
     {
       "rafamadriz/friendly-snippets",
-      commit = "d27a83a363e61009278b6598703a763ce9c8e617",
       event = "BufWinEnter",
     },
     {
@@ -512,7 +522,7 @@ return require('packer').startup(function(use)
     commit = "ebdf23b9b180c7f162e3afb4a250c313ca2b7271",
     event = "BufWinEnter",
     config = {
-      function ()
+      function()
         require('discord-presence-config')
       end
     }
