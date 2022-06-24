@@ -115,6 +115,7 @@ return {
       return { bg = mode[vim.fn.mode()].b.bg }
     end,
     padding = { left = 2, right = 0 },
+    update_in_insert = true,
     always_visible = false,
   },
   treesitter = {
