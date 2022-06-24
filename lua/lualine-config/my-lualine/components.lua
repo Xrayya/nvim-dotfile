@@ -12,6 +12,17 @@ local function diff_source()
   end
 end
 
+local theme = require('lualine.themes.' .. vim.g.colors_name)
+local mode = {
+  n = theme.normal,
+  i = theme.insert,
+  c = theme.command,
+  v = theme.visual,
+  V = theme.visual,
+  [''] = theme.visual,
+  R = theme.replace,
+}
+
 return {
   mode = {
     function()
@@ -54,19 +65,31 @@ return {
   branch = {
     "b:gitsigns_head",
     icon = "",
-    padding = { left = 2, right = 1},
-    color = { gui = 'bold' },
+    padding = { left = 2, right = 2 },
+    color = function ()
+      return { bg = mode[vim.fn.mode()].b.bg, gui = 'bold' }
+    end,
     cond = conditions.hide_in_width,
   },
   filename = {
     "filename",
-    color = {},
+    color = function ()
+      return { fg = mode[vim.fn.mode()].a.bg }
+    end,
     cond = conditions.buffer_not_empty,
+    symbols = {
+      modified = " ●",
+      readonly = " ",
+      unnamed = " ",
+    },
+    padding = { left = 2, right = 1 }
   },
   filesize = {
     "filesize",
+    color = function ()
+      return { fg = mode[vim.fn.mode()].a.bg }
+    end,
     padding = { left = 1, right = 2 },
-    color = {}
   },
   diff = {
     "diff",
@@ -77,24 +100,32 @@ return {
       modified = { fg = colors.yellow },
       removed = { fg = colors.red },
     },
-    padding = { left = 1, right = 2 },
-    cond = nil,
+    padding = { left = 0, right = 2 },
+    cond = conditions.hide_in_width,
+    color = function ()
+      return { bg = mode[vim.fn.mode()].b.bg }
+    end,
   },
   diagnostics = {
     "diagnostics",
     sources = { "nvim_diagnostic" },
     symbols = { error = " ", warn = " ", info = " ", hint = " " },
-    cond = conditions.hide_in_width,
+    cond = nil,
+    color = function ()
+      return { bg = mode[vim.fn.mode()].b.bg }
+    end,
+    padding = { left = 2, right = 0 },
+    always_visible = false,
   },
   treesitter = {
     function()
       local b = vim.api.nvim_get_current_buf()
       if next(vim.treesitter.highlighter.active[b]) then
-        return "  "
+        return ""
       end
       return ""
     end,
-    padding = { left = 2, right = 0 },
+    padding = { left = 2, right = 1 },
     color = { fg = colors.green },
     cond = conditions.hide_in_width,
   },
@@ -131,9 +162,12 @@ return {
 
       return table.concat(buf_client_names, ", ")
     end,
-    icon = " ",
-    color = { gui = "bold" },
-    cond = conditions.hide_in_width,
+    icon = "",
+    color = function ()
+      return { bg = mode[vim.fn.mode()].b.bg, gui = 'bold' }
+    end,
+    cond = nil,
+    padding = { left = 2, right = 2 },
   },
   spaces = {
     function()
@@ -156,7 +190,12 @@ return {
     cond = conditions.hide_in_width,
   },
   filetype = { "filetype", cond = conditions.hide_in_width, color = {} },
-  location = { "location", cond = conditions.hide_in_width, color = {} },
+  location = {
+    "location",
+    cond = conditions.hide_in_width,
+    color = {},
+    padding = { left = 1, right = 0 },
+  },
   progress = { "progress", cond = conditions.hide_in_width, color = {} },
   scrollbar = {
     function()
@@ -167,7 +206,7 @@ return {
       local index = math.ceil(line_ratio * #chars)
       return chars[index]
     end,
-    padding = { left = 0, right = 0 },
+    padding = { left = 1, right = 0 },
     color = { fg = colors.yellow, bg = colors.bg },
     cond = nil,
   },

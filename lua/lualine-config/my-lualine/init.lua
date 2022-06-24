@@ -18,11 +18,11 @@ require('lualine').setup {
       components.filesize,
       components.branch,
       components.diff,
-      components.treesitter,
     },
     lualine_x = {
       components.diagnostics,
       components.lsp,
+      components.treesitter,
       components.filetype,
       components.spaces,
       components.encoding,
