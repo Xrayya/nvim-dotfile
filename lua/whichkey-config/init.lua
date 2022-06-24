@@ -76,7 +76,7 @@ wk.register({
       A = { "<cmd>LspStop<CR><cmd>LspStart<CR>", "Activate/reactivate LSP"},
       d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" },
       F = { "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", "LSP Finder" },
-      f = { "<cmd>lua vim.lsp.buf.formatting_sync()<CR>", "Format current buffer(native LSP)" },
+      f = { "<cmd>lua vim.lsp.buf.format()<CR>", "Format current buffer(native LSP)" },
       h = { "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", "Hover"},
       i = { "<cmd>LspInfo<cr>", "LSP Info" },
       I = { "<cmd>LspInstallInfo<cr>", "LSP installer Info" },
@@ -128,7 +128,7 @@ wk.register({
     },
     w = { ":w<cr>", "Write (save)" },
     -- W = { ":w<cr><cmd>FormatWrite<cr>", "Write and format" },
-    W = { "<cmd>lua vim.lsp.buf.formatting_sync()<CR><cmd>write<cr>", "Write and format" },
+    W = { "<cmd>lua vim.lsp.buf.format()<CR><cmd>write<cr>", "Write and format" },
   },
   ["["] = {
     d = { "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", "Jump to previous diagnostics" },
