@@ -80,6 +80,8 @@ wk.register({
       h = { "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", "Hover"},
       i = { "<cmd>LspInfo<cr>", "LSP Info" },
       I = { "<cmd>LspInstallInfo<cr>", "LSP installer Info" },
+      j = { "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", "Scroll down" },
+      k = { "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", "Scroll up" },
       l = { "<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>", "Line diagnostics" },
       p = { "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", "Preview definition" },
       r = { "<cmd>lua require('lspsaga.rename').rename()<CR>", "Rename" },

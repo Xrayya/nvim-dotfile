@@ -211,7 +211,7 @@ return require('packer').startup(function(use)
       'tami5/lspsaga.nvim',
       after = "nvim-lspconfig",
       config = function()
-        require('lspsaga')
+        require('lspsaga-config')
       end
     },
 
