@@ -17,7 +17,7 @@ require('bufferline').setup {
         --highlight = "Directory"
       }
     },
-    separator_style = "slant"
+    separator_style = "thick"
   }
 }
 
