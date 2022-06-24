@@ -511,6 +511,11 @@ return require('packer').startup(function(use)
     "andweeb/presence.nvim",
     commit = "ebdf23b9b180c7f162e3afb4a250c313ca2b7271",
     event = "BufWinEnter",
+    config = {
+      function ()
+        require('discord-presence-config')
+      end
+    }
   }
 
   -- Automatically set up your configuration after cloning packer.nvim
