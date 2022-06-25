@@ -207,7 +207,7 @@ return require('packer').startup(function(use)
     { 'williamboman/nvim-lsp-installer' },
     {
       'neovim/nvim-lspconfig',
-      after = { "nvim-lsp-installer", "nvim-cmp", "cmp-nvim-lsp", "nlsp-settings.nvim" },
+      after = { "nvim-lsp-installer", "nvim-cmp", "cmp-nvim-lsp", "nlsp-settings.nvim", "vim-illuminate" },
       config = function()
         require('lsp-config')
       end
@@ -228,6 +228,16 @@ return require('packer').startup(function(use)
 
     -- Java LSP
     { 'mfussenegger/nvim-jdtls' },
+
+    -- Illuminate
+    {
+      'RRethy/vim-illuminate',
+      commit = "c82e6d04f27a41d7fdcad9be0bce5bb59fcb78e5",
+      event = "BufWinEnter",
+      config = function ()
+        require('illuminate-config')
+      end,
+    },
   })
 
 
