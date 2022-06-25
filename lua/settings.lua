@@ -2,7 +2,7 @@ local set= vim.opt
 
 --syntax enable                               -- Enables syntax highlighing
 set.hidden = true                           -- Required to keep multiple buffers open multiple buffers
-set.whichwrap = 'b,s,<,>,[,],h,l'
+set.whichwrap:append("<,>,[,],h,l")
 set.wrap = false                            -- Display long lines as just one line
 set.linebreak = true
 set.encoding = "utf-8"                      -- The encoding displayed
@@ -12,7 +12,7 @@ set.fileencoding = "utf-8"                  -- The encoding written to file
 -- set.spelllang = { 'en_us' }
 set.ruler = true                            -- Show the cursor position all the time
 set.cmdheight = 2                           -- More space for displaying messages
---set.iskeyword+=-                            -- treat dash separated words as a word text object--
+set.iskeyword:append("-")                   -- treat dash separated words as a word text object--
 set.mouse = "a"                             -- Enable your mouse
 set.splitbelow = true                       -- Horizontal splits will automatically be below
 set.splitright = true                       -- Vertical splits will automatically be to the right
@@ -40,6 +40,7 @@ set.timeoutlen = 300                        -- By default timeoutlen is 1000 ms
 --set.formatoptions-=cro                      -- Stop newline continution of comments
 set.clipboard:append {"unnamedplus"}        -- Copy paste between vim and everything else
 set.shortmess:append "c"
---set.guifont = "Hack\\ Nerd\\ Font:h10:l"    -- Font
+vim.opt.guifont = "JetBrainsMono NF:h15"    -- the font used in graphical neovim applications
+
 vim.cmd('autocmd FileType java setlocal tabstop=4 shiftwidth=4 softtabstop=4')
 vim.cmd('autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 softtabstop=4')
