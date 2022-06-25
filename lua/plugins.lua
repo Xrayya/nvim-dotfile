@@ -182,6 +182,15 @@ return require('packer').startup(function(use)
       config = function()
         require('bufferline-config')
       end
+    },
+    {
+      'matbme/JABS.nvim',
+      commit = "b84c8e5be34d14c2708cbcb33410b543f8b161c7",
+      requires = 'kyazdani42/nvim-web-devicons',
+      event = "BufWinEnter",
+      config = function ()
+        require('jabs-config')
+      end
     }
   })
 
