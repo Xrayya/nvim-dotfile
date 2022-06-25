@@ -118,9 +118,12 @@ return require('packer').startup(function(use)
 
     -- GPS / context
     {
-      "SmiteshP/nvim-gps",
+      "Xrayya/nvim-gps",
       requires = "nvim-treesitter/nvim-treesitter",
       after = "nvim-treesitter",
+      config = function ()
+        require('gps-config')
+      end
     },
   })
 
