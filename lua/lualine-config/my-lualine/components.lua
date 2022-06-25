@@ -26,37 +26,49 @@ local mode = {
 return {
   mode = {
     function()
-      local modeIcon = {
-        n      = '',
-        i      = '',
-        c      = 'ﲵ',
-        V      = '',
-        [''] = '',
-        v      = '',
-        C      = 'ﲵ',
-        R      = '﯒',
-        t      = '',
-      }
       local alias = {
-        n      = ' N ',
-        i      = 'INS',
-        c      = 'CMD',
-        V      = 'V-L',
-        [''] = 'V-B',
-        v      = 'VIS',
-        C      = 'CMD',
-        ['r?'] = ':CONFIRM',
-        rm     = '--MORE',
-        R      = 'REP',
-        Rv     = 'R&V',
-        s      = 'SELECT',
-        S      = 'SELECT' ,
-        ['r']  = 'HIT-ENTER',
-        [''] = 'SELECT',
-        t      = 'TERMINAL',
-        ['!']  = 'SH',
+        ['n']      = '| N ',
+        ['no']     = 'O-PENDING',
+        ['nov']    = 'O-PENDING',
+        ['noV']    = 'O-PENDING',
+        ['no\22']  = 'O-PENDING',
+        ['niI']    = '| N ',
+        ['niR']    = '| N ',
+        ['niV']    = '| N ',
+        ['nt']     = '| N ',
+        ['v']      = '|VIS',
+        ['vs']     = '|VIS',
+        ['V']      = '|V-L',
+        ['Vs']     = '|V-L',
+        ['\22']    = '|V-B',
+        ['\22s']   = '|V-B',
+        ['s']      = '|SEL',
+        ['S']      = '|S-L',
+        ['\19']    = '|S-B',
+        ['i']      = '|INS',
+        ['ic']     = '|INS',
+        ['ix']     = '|INS',
+        ['R']      = '﯒|REP',
+        ['Rc']     = '﯒|REP',
+        ['Rx']     = '﯒|REP',
+        ['Rv']     = '﯒|R&V',
+        ['Rvc']    = '﯒|R&V',
+        ['Rvx']    = '﯒|R&V',
+        ['c']      = 'ﲵ|CMD',
+        ['C']      = 'ﲵ|CMD',
+        ['cv']     = 'EX',
+        ['ce']     = 'EX',
+        ['r']      = '﯒|REP',
+        ['rm']     = '--MORE',
+        ['r?']     = ':CONFIRM',
+        ['!']      = 'SHELL',
+        ['t']      = '|TERMINAL',
       }
-      return modeIcon[vim.fn.mode()] .. "|" .. alias[vim.fn.mode()]
+      local mode_code = vim.api.nvim_get_mode().mode
+      if alias[mode_code] == nil then
+        return mode_code
+      end
+      return alias[mode_code]
     end,
     padding = { left = 1, right = 1 },
     color = {},
@@ -67,6 +79,10 @@ return {
     icon = "",
     padding = { left = 2, right = 2 },
     color = function ()
+      local mode_code = vim.api.nvim_get_mode().mode
+      if mode[mode_code] == nil then
+        return{ bg = mode.n.b.bg, gui = 'bold' }
+      end
       return { bg = mode[vim.fn.mode()].b.bg, gui = 'bold' }
     end,
     cond = conditions.hide_in_width,
@@ -74,6 +90,10 @@ return {
   filename = {
     "filename",
     color = function ()
+      local mode_code = vim.api.nvim_get_mode().mode
+      if mode[mode_code] == nil then
+        return{ fg = mode.n.a.bg }
+      end
       return { fg = mode[vim.fn.mode()].a.bg }
     end,
     cond = conditions.buffer_not_empty,
@@ -87,6 +107,10 @@ return {
   filesize = {
     "filesize",
     color = function ()
+      local mode_code = vim.api.nvim_get_mode().mode
+      if mode[mode_code] == nil then
+        return{ fg = mode.n.a.bg }
+      end
       return { fg = mode[vim.fn.mode()].a.bg }
     end,
     padding = { left = 1, right = 2 },
@@ -103,6 +127,10 @@ return {
     padding = { left = 0, right = 2 },
     cond = conditions.hide_in_width,
     color = function ()
+      local mode_code = vim.api.nvim_get_mode().mode
+      if mode[mode_code] == nil then
+        return{ bg = mode.n.b.bg }
+      end
       return { bg = mode[vim.fn.mode()].b.bg }
     end,
   },
@@ -112,6 +140,10 @@ return {
     symbols = { error = " ", warn = " ", info = " ", hint = " " },
     cond = nil,
     color = function ()
+      local mode_code = vim.api.nvim_get_mode().mode
+      if mode[mode_code] == nil then
+        return{ bg = mode.n.b.bg }
+      end
       return { bg = mode[vim.fn.mode()].b.bg }
     end,
     padding = { left = 2, right = 0 },
@@ -165,6 +197,10 @@ return {
     end,
     icon = "",
     color = function ()
+      local mode_code = vim.api.nvim_get_mode().mode
+      if mode[mode_code] == nil then
+        return{ bg = mode.n.b.bg, gui = 'bold' }
+      end
       return { bg = mode[vim.fn.mode()].b.bg, gui = 'bold' }
     end,
     cond = nil,
