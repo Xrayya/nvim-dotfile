@@ -40,7 +40,7 @@ set.timeoutlen = 300                        -- By default timeoutlen is 1000 ms
 --set.formatoptions-=cro                      -- Stop newline continution of comments
 set.clipboard:append {"unnamedplus"}        -- Copy paste between vim and everything else
 set.shortmess:append "c"
-vim.opt.guifont = "JetBrainsMono NF:h15"    -- the font used in graphical neovim applications
+vim.opt.guifont = "JetBrainsMono\\ NF:h11"    -- the font used in graphical neovim applications
 
 vim.cmd('autocmd FileType java setlocal tabstop=4 shiftwidth=4 softtabstop=4')
 vim.cmd('autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 softtabstop=4')

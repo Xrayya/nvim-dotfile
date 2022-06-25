@@ -8,11 +8,15 @@ let g:rose_pine_variant = 'darker'
 
 let g:tokyonight_style = "storm"
 
-let g:tokyonight_transparent = 1
+if (!exists('neovide'))
 
-let g:tokyonight_italic_keywords = 0
-let g:tokyonight_italic_functions = 0
-let g:tokyonight_italic_variables = 0
+  let g:tokyonight_transparent = 1
+
+  let g:tokyonight_italic_keywords = 0
+  let g:tokyonight_italic_functions = 0
+  let g:tokyonight_italic_variables = 0
+
+endif
 
 set termguicolors
 

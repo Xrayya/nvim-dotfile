@@ -11,4 +11,4 @@ let g:neovide_fullscreen=v:true
 let g:neovide_cursor_vfx_mode = "railgun"
 
 " Set font
-set guifont=BitstreamVeraSansMono\ NF:h14
+set guifont=JetBrainsMono\ NF:h11

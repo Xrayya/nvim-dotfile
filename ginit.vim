@@ -3,7 +3,7 @@ GuiTabline 0
 GuiPopupmenu 0
 GuiLinespace 1
 "GuiFont! Hack\ NF:h10:l
-GuiFont! BitstreamVeraSansMono\ NF:h10:l
+GuiFont! JetBrainsMono\ NF:h11
 
 " configure nvcode-color-schemes
 let g:nvcode_termcolors=256
