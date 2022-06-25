@@ -1,7 +1,7 @@
 vim.g.symbols_outline = {
   width = 35,
     symbols = {
-      File = {icon = "", hl = "TSURI"},
+      File = {icon = "", hl = "TSURI"},
       Module = {icon = "", hl = "TSNamespace"},
       Namespace = {icon = "", hl = "TSNamespace"},
       Package = {icon = "", hl = "TSNamespace"},
@@ -16,8 +16,8 @@ vim.g.symbols_outline = {
       Variable = {icon = "", hl = "TSConstant"},
       Constant = {icon = "", hl = "TSConstant"},
       String = {icon = "𝓐", hl = "TSString"},
-      Number = {icon = "1", hl = "TSNumber"},
-      Boolean = {icon = "⊨", hl = "TSBoolean"},
+      Number = {icon = "", hl = "TSNumber"},
+      Boolean = {icon = "﨡", hl = "TSBoolean"},
       Array = {icon = "", hl = "TSConstant"},
       Object = {icon = "⦿", hl = "TSType"},
       Key = {icon = "🔐", hl = "TSType"},
