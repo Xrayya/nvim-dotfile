@@ -403,6 +403,15 @@ return require('packer').startup(function(use)
       after = "telescope.nvim",
       requires = { "tami5/sqlite.lua" }
     },
+
+    -- FZF Native
+    {
+      "nvim-telescope/telescope-fzf-native.nvim",
+      disable = true,
+      after = "telescope.nvim",
+      requires = { "nvim-telescope/telescope.nvim" },
+      run = "make",
+    }
   })
 
 
