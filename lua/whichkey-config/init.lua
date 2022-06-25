@@ -18,6 +18,7 @@ wk.setup{
 
 wk.register({
   ["<leader>"] = {
+    b = { "<cmd>JABSOpen<cr>", "Buffer Explorer"},
     c = {
       name = "Commentary",
       i = {
@@ -32,7 +33,6 @@ wk.register({
     e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     f = {
       name = "Find",
-      b = { "<cmd>lua require('telescope.builtin').buffers(require('telescope.themes').get_dropdown{previewer = false})<cr>", "Buffers" },
       B = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
       c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
       C = { "<cmd>Telescope commands<cr>", "Commands" },
