@@ -261,7 +261,7 @@ return require('packer').startup(function(use)
     {
       'hrsh7th/nvim-cmp',
       commit = "0e65333c7fdc284d53a489ed2cef7219289ea0fe",
-      after = { "nvim-autopairs", "LuaSnip" },
+      after = { "nvim-autopairs", "vim-vsnip" },
       config = function()
         require('cmp-config')
       end
@@ -310,8 +310,8 @@ return require('packer').startup(function(use)
 
   use({
     {
-      "L3MON4D3/LuaSnip",
-      commit = "a12441e0598e93e67235eba67c8e6fbffc896f06",
+      "hrsh7th/vim-vsnip",
+      commit = "8f199ef690ed26dcbb8973d9a6760d1332449ac9",
       event = "BufWinEnter",
     },
     {
@@ -319,8 +319,8 @@ return require('packer').startup(function(use)
       event = "BufWinEnter",
     },
     {
-      "saadparwaiz1/cmp_luasnip",
-      commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36",
+      "hrsh7th/cmp-vsnip",
+      commit = "0abfa1860f5e095a07c477da940cfcb0d273b700",
       after = "nvim-cmp",
     },
   })
