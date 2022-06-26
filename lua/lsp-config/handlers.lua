@@ -81,18 +81,23 @@ M.on_attach = function(client, bufnr)
   -- if client.name == "tsserver" then
   --   client.server.document_formatting = false
   -- end
-  local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-  if not status_ok then
-    print("Error occured when calling cmp_nvim_lsp")
-    return M
-  end
-
-  M.capabilities = vim.lsp.protocol.make_client_capabilities()
-  M.capabilities.textDocument.completion.completionItem.snippetSupport = true
-  M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 
   -- lsp_keymaps(bufnr)
   lsp_highlight_document(client)
 end
+
+-- if you put this 9 lines below inside on_attach, then you will lose some html lsp
+-- capabilities (and maybe other lsp too)
+--
+-- if you put it outside on_attach it will show  several two same snippets in jdtls,
+local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
+if not status_ok then
+  print("Error occured when calling cmp_nvim_lsp")
+  return M
+end
+
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities.textDocument.completion.completionItem.snippetSupport = true
+M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 
 return M
