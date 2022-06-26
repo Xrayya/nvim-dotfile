@@ -8,8 +8,8 @@ vim.g.maplocalleader = ' '
 -- Use alt + hjkl to resize windows
 map('n', '<M-Down>',  ':resize -1<CR>', opts)
 map('n', '<M-Up>',    ':resize +1<CR>', opts)
-map('n', '<M-Right>', ':vertical resize -1<CR>', opts)
-map('n', '<M-Left>',  ':vertical resize +1<CR>', opts)
+map('n', '<M-Right>', ':vertical resize +1<CR>', opts)
+map('n', '<M-Left>',  ':vertical resize -1<CR>', opts)
 
 -- Easy CAPS
 map('i', '<C-u>', '<ESC>viwUi', opts)
