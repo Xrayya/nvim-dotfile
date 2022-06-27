@@ -1,6 +1,6 @@
 require 'nvim-treesitter.install'.compilers = { "gcc", "clang" }
 require 'nvim-treesitter.configs'.setup {
-  enure_installed = {
+  ensure_installed = {
     "html",
     "css",
     "tsx",
