@@ -45,14 +45,6 @@ M.setup = function()
 
 end
 
-local function lsp_highlight_document(client)
-  local status_ok, illuminate = pcall(require, "illuminate")
-  if not status_ok then
-    return
-  end
-  illuminate.on_attach(client)
-end
-
 -- -- local function lsp_keymaps(bufnr)
 -- --   local opts = { noremap = true, silent = true }
 -- --   vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -83,7 +75,11 @@ M.on_attach = function(client, bufnr)
   -- end
 
   -- lsp_keymaps(bufnr)
-  lsp_highlight_document(client)
+  local status_ok, illuminate = pcall(require, "illuminate")
+  if not status_ok then
+    return
+  end
+  illuminate.on_attach(client)
 end
 
 -- if you put this 9 lines below inside on_attach, then you will lose some html lsp
