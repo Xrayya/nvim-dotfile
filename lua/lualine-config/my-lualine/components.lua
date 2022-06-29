@@ -27,42 +27,42 @@ return {
   mode = {
     function()
       local alias = {
-        ['n']      = '| N ',
-        ['no']     = 'O-PENDING',
-        ['nov']    = 'O-PENDING',
-        ['noV']    = 'O-PENDING',
-        ['no\22']  = 'O-PENDING',
-        ['niI']    = '| N ',
-        ['niR']    = '| N ',
-        ['niV']    = '| N ',
-        ['nt']     = '| N ',
-        ['v']      = '|VIS',
-        ['vs']     = '|VIS',
-        ['V']      = '|V-L',
-        ['Vs']     = '|V-L',
-        ['\22']    = '|V-B',
-        ['\22s']   = '|V-B',
-        ['s']      = '|SEL',
-        ['S']      = '|S-L',
-        ['\19']    = '|S-B',
-        ['i']      = '|INS',
-        ['ic']     = '|CMP',
-        ['ix']     = '|CMP',
-        ['R']      = '﯒|REP',
-        ['Rc']     = '﯒|REP',
-        ['Rx']     = '﯒|REP',
-        ['Rv']     = '﯒|R&V',
-        ['Rvc']    = '﯒|R&V',
-        ['Rvx']    = '﯒|R&V',
-        ['c']      = 'ﲵ|CMD',
-        ['C']      = 'ﲵ|CMD',
-        ['cv']     = 'EX',
-        ['ce']     = 'EX',
-        ['r']      = 'HIT-ENTER',
-        ['rm']     = '--MORE',
-        ['r?']     = ':CONFIRM',
-        ['!']      = 'SHELL',
-        ['t']      = '|TERMINAL',
+        ['n']     = '| N ',
+        ['no']    = 'O-PENDING',
+        ['nov']   = 'O-PENDING',
+        ['noV']   = 'O-PENDING',
+        ['no\22'] = 'O-PENDING',
+        ['niI']   = '| N ',
+        ['niR']   = '| N ',
+        ['niV']   = '| N ',
+        ['nt']    = '| N ',
+        ['v']     = '|VIS',
+        ['vs']    = '|VIS',
+        ['V']     = '|V-L',
+        ['Vs']    = '|V-L',
+        ['\22']   = '|V-B',
+        ['\22s']  = '|V-B',
+        ['s']     = '|SEL',
+        ['S']     = '|S-L',
+        ['\19']   = '|S-B',
+        ['i']     = '|INS',
+        ['ic']    = '|CMP',
+        ['ix']    = '|CMP',
+        ['R']     = '﯒|REP',
+        ['Rc']    = '﯒|REP',
+        ['Rx']    = '﯒|REP',
+        ['Rv']    = '﯒|R&V',
+        ['Rvc']   = '﯒|R&V',
+        ['Rvx']   = '﯒|R&V',
+        ['c']     = 'ﲵ|CMD',
+        ['C']     = 'ﲵ|CMD',
+        ['cv']    = 'EX',
+        ['ce']    = 'EX',
+        ['r']     = 'HIT-ENTER',
+        ['rm']    = '--MORE',
+        ['r?']    = ':CONFIRM',
+        ['!']     = 'SHELL',
+        ['t']     = '|TERMINAL',
       }
       local mode_code = vim.api.nvim_get_mode().mode
       if alias[mode_code] == nil then
@@ -78,10 +78,10 @@ return {
     "b:gitsigns_head",
     icon = "",
     padding = { left = 2, right = 2 },
-    color = function ()
+    color = function()
       local mode_code = vim.api.nvim_get_mode().mode
       if mode[mode_code] == nil then
-        return{ bg = mode.n.b.bg, gui = 'bold' }
+        return { bg = mode.n.b.bg, gui = 'bold' }
       end
       return { bg = mode[vim.fn.mode()].b.bg, gui = 'bold' }
     end,
@@ -89,10 +89,10 @@ return {
   },
   filename = {
     "filename",
-    color = function ()
+    color = function()
       local mode_code = vim.api.nvim_get_mode().mode
       if mode[mode_code] == nil then
-        return{ fg = mode.n.a.bg }
+        return { fg = mode.n.a.bg }
       end
       return { fg = mode[vim.fn.mode()].a.bg }
     end,
@@ -106,10 +106,10 @@ return {
   },
   filesize = {
     "filesize",
-    color = function ()
+    color = function()
       local mode_code = vim.api.nvim_get_mode().mode
       if mode[mode_code] == nil then
-        return{ fg = mode.n.a.bg }
+        return { fg = mode.n.a.bg }
       end
       return { fg = mode[vim.fn.mode()].a.bg }
     end,
@@ -126,10 +126,10 @@ return {
     },
     padding = { left = 0, right = 2 },
     cond = conditions.hide_in_width,
-    color = function ()
+    color = function()
       local mode_code = vim.api.nvim_get_mode().mode
       if mode[mode_code] == nil then
-        return{ bg = mode.n.b.bg }
+        return { bg = mode.n.b.bg }
       end
       return { bg = mode[vim.fn.mode()].b.bg }
     end,
@@ -139,10 +139,10 @@ return {
     sources = { "nvim_diagnostic" },
     symbols = { error = " ", warn = " ", info = " ", hint = " " },
     cond = nil,
-    color = function ()
+    color = function()
       local mode_code = vim.api.nvim_get_mode().mode
       if mode[mode_code] == nil then
-        return{ bg = mode.n.b.bg }
+        return { bg = mode.n.b.bg }
       end
       return { bg = mode[vim.fn.mode()].b.bg }
     end,
@@ -158,7 +158,7 @@ return {
       end
       return ""
     end,
-    padding = { left = 2, right = 1 },
+    padding = { left = 2, right = 0 },
     color = { fg = colors.green },
     cond = conditions.hide_in_width,
   },
@@ -196,10 +196,10 @@ return {
       return table.concat(buf_client_names, ", ")
     end,
     icon = "",
-    color = function ()
+    color = function()
       local mode_code = vim.api.nvim_get_mode().mode
       if mode[mode_code] == nil then
-        return{ bg = mode.n.b.bg, gui = 'bold' }
+        return { bg = mode.n.b.bg, gui = 'bold' }
       end
       return { bg = mode[vim.fn.mode()].b.bg, gui = 'bold' }
     end,
@@ -226,7 +226,12 @@ return {
     color = {},
     cond = conditions.hide_in_width,
   },
-  filetype = { "filetype", cond = conditions.hide_in_width, color = {} },
+  filetype = {
+    "filetype",
+    cond = conditions.hide_in_width,
+    color = {},
+    padding = { left = 2, right = 1 }
+  },
   location = {
     "location",
     cond = conditions.hide_in_width,
