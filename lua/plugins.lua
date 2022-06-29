@@ -121,7 +121,7 @@ return require('packer').startup(function(use)
       "Xrayya/nvim-gps",
       requires = "nvim-treesitter/nvim-treesitter",
       after = "nvim-treesitter",
-      config = function ()
+      config = function()
         require('gps-config')
       end
     },
@@ -188,7 +188,7 @@ return require('packer').startup(function(use)
       commit = "b84c8e5be34d14c2708cbcb33410b543f8b161c7",
       requires = 'kyazdani42/nvim-web-devicons',
       event = "BufWinEnter",
-      config = function ()
+      config = function()
         require('jabs-config')
       end
     }
@@ -246,7 +246,7 @@ return require('packer').startup(function(use)
       'RRethy/vim-illuminate',
       commit = "c82e6d04f27a41d7fdcad9be0bce5bb59fcb78e5",
       event = "BufWinEnter",
-      config = function ()
+      config = function()
         require('illuminate-config')
       end,
     },
@@ -518,16 +518,32 @@ return require('packer').startup(function(use)
   }
 
   ---------------
-  -- Colorizer --
+  -- Color and stuff --
   ---------------
 
-  use {
-    'norcalli/nvim-colorizer.lua',
-    event = "BufWinEnter",
-    config = function()
-      require('colorizer-config')
-    end,
-  }
+  use({
+    {
+      'norcalli/nvim-colorizer.lua',
+      event = "BufWinEnter",
+      config = function()
+        require('colorizer-config')
+      end,
+    },
+    {
+      "ziontee113/color-picker.nvim",
+      event = "BufWinEnter",
+      config = function()
+        require("color-picker-config")
+      end
+    },
+    {
+      "max397574/colortils.nvim",
+      event = "BufWinEnter",
+      config = function()
+        require("colortils-config")
+      end
+    }
+  })
 
 
   ------------------------

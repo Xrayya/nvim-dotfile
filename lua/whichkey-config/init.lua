@@ -30,6 +30,7 @@ wk.register({
         c = { "<Plug>kommentary_motion_decrease l", "Current line" },
       },
     },
+    C = { "<cmd>PickColor<cr>", "Pick Color" },
     e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
     f = {
       name = "Find",
