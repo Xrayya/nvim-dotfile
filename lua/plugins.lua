@@ -538,6 +538,7 @@ return require('packer').startup(function(use)
     },
     {
       "max397574/colortils.nvim",
+      disable = true,
       event = "BufWinEnter",
       config = function()
         require("colortils-config")
