@@ -1,24 +1,24 @@
 local wk = require("which-key")
 
-wk.setup{
-	window = {
-		border = "rounded", -- none, single, double, shadow
-		position = "bottom", -- bottom, top
-		margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
-		padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
-		winblend = 0,
-	},
-	layout = {
-		height = { min = 4, max = 25 }, -- min and max height of the columns
-		width = { min = 20, max = 50 }, -- min and max width of the columns
-		spacing = 3, -- spacing between columns
-		align = "left", -- align columns left, center or right
-	},
+wk.setup {
+  window = {
+    border = "rounded", -- none, single, double, shadow
+    position = "bottom", -- bottom, top
+    margin = { 1, 0, 1, 0 }, -- extra window margin [top, right, bottom, left]
+    padding = { 2, 2, 2, 2 }, -- extra window padding [top, right, bottom, left]
+    winblend = 0,
+  },
+  layout = {
+    height = { min = 4, max = 25 }, -- min and max height of the columns
+    width = { min = 20, max = 50 }, -- min and max width of the columns
+    spacing = 3, -- spacing between columns
+    align = "left", -- align columns left, center or right
+  },
 }
 
 wk.register({
   ["<leader>"] = {
-    b = { "<cmd>JABSOpen<cr>", "Buffer Explorer"},
+    b = { "<cmd>JABSOpen<cr>", "Buffer Explorer" },
     c = {
       name = "Commentary",
       i = {
@@ -52,7 +52,7 @@ wk.register({
       name = "Jump (HoP)",
       c = { "<cmd>HopChar1<cr>", "One char mode" },
       C = { "<cmd>HopChar2<cr>", "Two char mode" },
-      p = { "<cmd>HopPattern<cr>", "Pattern mode"},
+      p = { "<cmd>HopPattern<cr>", "Pattern mode" },
       w = { "<cmd>HopWord<cr>", "Word mode" },
     },
     g = {
@@ -73,12 +73,12 @@ wk.register({
     },
     l = {
       name = "LSP",
-      a = { "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", "Code action"},
-      A = { "<cmd>LspStop<CR><cmd>LspStart<CR>", "Activate/reactivate LSP"},
+      a = { "<cmd>lua require('lspsaga.codeaction').code_action()<CR>", "Code action" },
+      A = { "<cmd>LspStop<CR><cmd>LspStart<CR>", "Activate/reactivate LSP" },
       d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" },
       F = { "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", "LSP Finder" },
       f = { "<cmd>lua vim.lsp.buf.format()<CR>", "Format current buffer(native LSP)" },
-      h = { "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", "Hover"},
+      h = { "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", "Hover" },
       i = { "<cmd>LspInfo<cr>", "LSP Info" },
       I = { "<cmd>LspInstallInfo<cr>", "LSP installer Info" },
       j = { "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", "Scroll down" },
@@ -87,13 +87,13 @@ wk.register({
       p = { "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", "Preview definition" },
       r = { "<cmd>lua require('lspsaga.rename').rename()<CR>", "Rename" },
       R = { "<cmd>lua vim.lsp.buf.references()<CR>", "Referece" },
-      s = { "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", "Signture_help"},
+      s = { "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", "Signture_help" },
       t = {
         name = "+Trouble list",
         b = { "<cmd>TroubleToggle document_diagnostics<cr>", "Current buffer diagnostics" },
         w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Current workspace diagnostics" },
         d = { "<cmd>TroubleToggle definitions<cr>", "Definition" },
-        t = { "<cmd>TroubleToggle type_definitions<cr>", "Type definition"},
+        t = { "<cmd>TroubleToggle type_definitions<cr>", "Type definition" },
       },
     },
     p = {
@@ -122,7 +122,7 @@ wk.register({
       b = { "<cmd>lua _CMD2_TOGGLE()<CR>", "Terminal (cmd) 2" },
       c = { "<cmd>lua _CMD3_TOGGLE()<CR>", "Terminal (cmd) 3" },
       f = { "<cmd>lua _F_PWSH_TOGGLE()<cr>", "Terminal (pwsh floating)" },
-      n = { "<cmd>lua _NODE_TOGGLE()<cr>" , "Terminal (node)" },
+      n = { "<cmd>lua _NODE_TOGGLE()<cr>", "Terminal (node)" },
       p = { "<cmd>lua _PWSH_TOGGLE()<cr>", "Terminal (pwsh)" },
       P = { "<cmd>lua _PYTHON_TOGGLE()<cr>", "Terminal (python)" },
       v = { "<cmd>lua _V_PWSH_TOGGLE()<cr>", "Terminal (pwsh vertical)" },
