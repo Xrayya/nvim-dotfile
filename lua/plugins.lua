@@ -134,7 +134,7 @@ return require('packer').startup(function(use)
 
   use {
     "lukas-reineke/indent-blankline.nvim",
-    commit = "42fe62eb8792e427b2c7b0e1fa1b0d9597baac89",
+    commit = "4a58fe6e9854ccfe6c6b0f59abb7cb8301e23025",
     after = "nvim-treesitter",
     config = function()
       require('indentation-config')
@@ -185,7 +185,7 @@ return require('packer').startup(function(use)
     },
     {
       'matbme/JABS.nvim',
-      commit = "b84c8e5be34d14c2708cbcb33410b543f8b161c7",
+      commit = "3a7a14dbbbb404b66bed154a27dba4745f385e50",
       requires = 'kyazdani42/nvim-web-devicons',
       event = "BufWinEnter",
       config = function()
@@ -260,7 +260,7 @@ return require('packer').startup(function(use)
   use({
     {
       'hrsh7th/nvim-cmp',
-      commit = "0e65333c7fdc284d53a489ed2cef7219289ea0fe",
+      commit = "9897465a7663997b7b42372164ffc3635321a2fe",
       after = { "nvim-autopairs", "vim-vsnip" },
       config = function()
         require('cmp-config')
@@ -284,7 +284,7 @@ return require('packer').startup(function(use)
     },
     {
       'hrsh7th/cmp-path',
-      commit = "466b6b8270f7ba89abd59f402c73f63c7331ff6e",
+      commit = "981baf9525257ac3269e1b6701e376d6fbff6921",
       after = "nvim-cmp",
     },
     {
@@ -296,7 +296,7 @@ return require('packer').startup(function(use)
     -- Tabnine
     {
       'tzachar/cmp-tabnine',
-      commit = "e23d32a76304496aade4e4b285751a6a8b505491",
+      commit = "a5081776185e3c7f406e7fc3dd5f0a0ae0288e59",
       disable = true,
       run = 'powershell ./install.ps1',
       after = "nvim-cmp",
@@ -375,7 +375,7 @@ return require('packer').startup(function(use)
   use({
     {
       'nvim-telescope/telescope.nvim',
-      commit = "d88b44ddf14670cffa9fdb1eaca7a0429a973653",
+      commit = "b98b9a93c67cb999493ccdc602e711c8a7a98d64",
       requires = {
         { 'nvim-lua/plenary.nvim' },
         { 'nvim-lua/popup.nvim' },
@@ -449,7 +449,7 @@ return require('packer').startup(function(use)
 
   use {
     'lewis6991/gitsigns.nvim',
-    commit = "3543443eb3856fbe4a9d70f3fe8dc73e007199a1",
+    commit = "4883988cf8b623f63cc8c7d3f11b18b7e81f06ff",
     event = "BufWinEnter",
     requires = {
       'nvim-lua/plenary.nvim'
@@ -466,7 +466,7 @@ return require('packer').startup(function(use)
 
   use {
     "akinsho/toggleterm.nvim",
-    commit = "ce755e3a07f2464287dc60ed448fdbbe6ea157f5",
+    commit = "04174e19196ecef43dd159b29d4e6ddb07b80909",
     event = "BufWinEnter",
     config = function()
       require('terminal-config')
@@ -480,7 +480,7 @@ return require('packer').startup(function(use)
 
   use {
     'pianocomposer321/yabs.nvim',
-    commit = "c2a8b6e606292f77e4117d6e3560f1cf3652c51d",
+    commit = "88bdb5c557448960be3cb9d3da64e52009e7bef9",
     requires = { 'nvim-lua/plenary.nvim' }
   }
 
@@ -491,7 +491,7 @@ return require('packer').startup(function(use)
 
   use {
     "rcarriga/nvim-notify",
-    commit = "4ef4c133fb92527b928603bf1ce43e729d09db50",
+    commit = "7caeaaef257ecbe95473ec79e5a82757b544f1fd",
     event = "BufWinEnter",
     config = function()
       require("notify").setup({
@@ -509,7 +509,7 @@ return require('packer').startup(function(use)
 
   use {
     "Shatur/neovim-session-manager",
-    commit = "4f9129a6fd80dc0a5111349bfb447ff243c7d504",
+    commit = "9652b392805dfd497877342e54c5a71be7907daf",
     requires = { 'nvim-lua/plenary.nvim' },
     event = "BufWinEnter",
     config = function()
@@ -567,7 +567,7 @@ return require('packer').startup(function(use)
 
   use {
     "andweeb/presence.nvim",
-    commit = "ebdf23b9b180c7f162e3afb4a250c313ca2b7271",
+    commit = "660bd8815ef8da029fa0058f76ac7fa2ca8f9ec7",
     event = "BufWinEnter",
     config = {
       function()
