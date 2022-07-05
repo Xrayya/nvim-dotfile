@@ -215,7 +215,7 @@ return {
       if size == 0 then
         size = vim.api.nvim_buf_get_option(0, "tabstop")
       end
-      return "Spaces: " .. size .. " "
+      return "Spaces: " .. size
     end,
     cond = conditions.hide_in_width,
     color = {},
@@ -225,6 +225,11 @@ return {
     fmt = string.upper,
     color = {},
     cond = conditions.hide_in_width,
+  },
+  fileformat = {
+    "fileformat",
+    cond = conditions.hide_in_width,
+    color = {},
   },
   filetype = {
     "filetype",

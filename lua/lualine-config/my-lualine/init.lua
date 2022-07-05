@@ -25,6 +25,7 @@ require('lualine').setup {
       components.treesitter,
       components.filetype,
       components.spaces,
+      components.fileformat,
       components.encoding,
       components.location,
       components.scrollbar,
