@@ -3,39 +3,34 @@ if not status_ok then
   return
 end
 
-lsp_installer.settings({
-  ui = {
-    border = "rounded",
-  }
-})
+local installed_servers = lsp_installer.get_installed_servers()
 
--- Register a handler that will be called for all installed servers.
--- Alternatively, you may also register handlers on specific server instances instead (see example below).
-lsp_installer.on_server_ready(function(server)
-  local opts = {
+-- local servers = {
+--   "sumneko_lua",
+--   "cssls",
+--   "html",
+--   "tsserver",
+-- }
+
+lsp_installer.setup()
+
+local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
+if not lspconfig_status_ok then
+  return
+end
+
+local opts = {}
+
+for _, server in pairs(installed_servers) do
+  opts = {
     on_attach = require("lsp-config.handlers").on_attach,
     capabilities = require("lsp-config.handlers").capabilities,
   }
 
-  -- if server.name == "jsonls" then
-  -- 	local jsonls_opts = require("lsp-config.costume-lsp-settings.jsonls")
-  -- 	opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
-  -- end
-
   if server.name == "sumneko_lua" then
-    local sumneko_opts = require("lsp-config.costume-lsp-settings.sumneko_lua")
+    local sumneko_opts = require "lsp-config.costume-lsp-settings.sumneko_lua"
     opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
   end
 
-  if server.name == "jdtls" then
-    local M = require("lsp-config.costume-lsp-settings.jdtls")
-    opts = {
-      on_attach = M.on_attach,
-      capabilities = M.capabilities
-    }
-  end
-
-  -- This setup() function is exactly the same as lspconfig's setup function.
-  -- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
-  server:setup(opts)
-end)
+  lspconfig[server.name].setup(opts)
+end
