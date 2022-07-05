@@ -3,15 +3,11 @@ if not status_ok then
   return
 end
 
--- lsp_installer.settings({
---   ui = {
---     icons = {
---       server_installed = "✓",
---       server_pending = "➜",
---       server_uninstalled = "✗"
---     }
---   }
--- })
+lsp_installer.settings({
+  ui = {
+    border = "rounded",
+  }
+})
 
 -- Register a handler that will be called for all installed servers.
 -- Alternatively, you may also register handlers on specific server instances instead (see example below).
