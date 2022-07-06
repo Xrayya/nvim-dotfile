@@ -209,7 +209,7 @@ return {
   spaces = {
     function()
       if not vim.api.nvim_buf_get_option(0, "expandtab") then
-        return "Tab size: " .. vim.api.nvim_buf_get_option(0, "tabstop") .. " "
+        return "Tab size: " .. vim.api.nvim_buf_get_option(0, "tabstop")
       end
       local size = vim.api.nvim_buf_get_option(0, "shiftwidth")
       if size == 0 then
