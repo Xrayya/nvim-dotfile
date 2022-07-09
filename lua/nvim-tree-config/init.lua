@@ -1,8 +1,8 @@
 require 'nvim-tree'.setup {
-  update_cwd = true,
+  sync_root_with_cwd = true,
   update_focused_file = {
     enable = true,
-    update_cwd = true,
+    update_root = true,
   },
   renderer = {
     root_folder_modifier = ":t",
@@ -54,6 +54,7 @@ require 'nvim-tree'.setup {
   git = {
     enable = true,
     ignore = false,
+    show_on_dirs = true,
     timeout = 500,
   },
 }

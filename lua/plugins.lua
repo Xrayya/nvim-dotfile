@@ -148,7 +148,7 @@ return require('packer').startup(function(use)
 
   use {
     'kyazdani42/nvim-tree.lua',
-    commit = "79258f1d670277016523e13c0a88daa25070879f",
+    commit = "c037c7ae848873756926d0085ae3bb8df9a99e9e",
     requires = 'kyazdani42/nvim-web-devicons',
     cmd = "NvimTreeToggle",
     config = function()
