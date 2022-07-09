@@ -5,7 +5,7 @@ My simple Neovim config
   - Keep it simple!
 
 ## Plugins update notes
-- vim-tree, hop haven't been update (have some breaking change)
+- hop haven't been update (have some breaking change)
 
 ## TODO
   - [ ] Refactor which-key config
