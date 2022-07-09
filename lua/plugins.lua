@@ -292,6 +292,11 @@ return require('packer').startup(function(use)
       commit = "f7efc20768603bd9f9ae0ed073b1c129f63eb312",
       after = "nvim-cmp",
     },
+    {
+      'hrsh7th/cmp-nvim-lsp-signature-help',
+      commit = "007dd2740d9b70f2688db01a39d6d25b7169cd57",
+      after = "nvim-cmp",
+    },
 
     -- Tabnine
     {

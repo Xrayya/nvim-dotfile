@@ -110,6 +110,7 @@ cmp.setup({
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
     { name = 'nvim_lsp' },
+    { name = 'nvim_lsp_signature_help' },
     { name = 'nvim_lua' },
     { name = 'cmp_tabnine' },
     { name = 'buffer' },
