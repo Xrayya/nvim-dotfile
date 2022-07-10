@@ -183,15 +183,37 @@ return {
         end
       end
 
-      -- -- add formatter
-      -- local formatters = require "lvim.lsp.null-ls.formatters"
-      -- local supported_formatters = formatters.list_registered_providers(buf_ft)
-      -- vim.list_extend(buf_client_names, supported_formatters)
+      -- null-ls register
+      local null_ls_list_registered = function (filetype, method)
+      local null_ls_status_ok, null_ls_sources = pcall(require, "null-ls.sources")
+      if not null_ls_status_ok then
+        return
+      end
 
-      -- -- add linter
-      -- local linters = require "lvim.lsp.null-ls.linters"
-      -- local supported_linters = linters.list_registered_providers(buf_ft)
-      -- vim.list_extend(buf_client_names, supported_linters)
+        local available_sources = null_ls_sources.get_available(filetype)
+        local registered_providers = {}
+        for _, source in ipairs(available_sources) do
+          for mthd in pairs(source.methods) do
+            registered_providers[mthd] = registered_providers[mthd] or {}
+            table.insert(registered_providers[mthd], source.name)
+          end
+        end
+
+        return registered_providers[method] or {}
+      end
+
+      local null_ls_status_ok, null_ls = pcall(require, "null-ls")
+      if not null_ls_status_ok then
+        return
+      end
+
+      -- add formatter
+      local supported_formatters = null_ls_list_registered(buf_ft, null_ls.methods.FORMATTING)
+      vim.list_extend(buf_client_names, supported_formatters)
+
+      -- add linter
+      local supported_linters = null_ls_list_registered(buf_ft, null_ls.methods.DIAGNOSTICS)
+      vim.list_extend(buf_client_names, supported_linters)
 
       return table.concat(buf_client_names, ", ")
     end,
