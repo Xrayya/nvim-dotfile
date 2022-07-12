@@ -1,4 +1,4 @@
-local set= vim.opt
+local set = vim.opt
 
 --syntax enable                               -- Enables syntax highlighing
 set.hidden = true                           -- Required to keep multiple buffers open multiple buffers

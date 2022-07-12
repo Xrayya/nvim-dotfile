@@ -1,6 +1,6 @@
 local wk = require("which-key")
 
-wk.setup {
+wk.setup({
   window = {
     border = "rounded", -- none, single, double, shadow
     position = "bottom", -- bottom, top
@@ -14,7 +14,7 @@ wk.setup {
     spacing = 3, -- spacing between columns
     align = "left", -- align columns left, center or right
   },
-}
+})
 
 wk.register({
   ["<leader>"] = {
@@ -44,7 +44,7 @@ wk.register({
       r = { "<cmd>Telescope oldfiles<cr>", "Recent file" },
       s = { "<cmd>Telescope current_buffer_fuzzy_find theme=ivy<cr>", "Search in current buffer" },
       S = { "<cmd>Telescope sessions<cr>", "Last Seasons" },
-      t = { "<cmd>Telescope help_tags<cr>", "Tags" }
+      t = { "<cmd>Telescope help_tags<cr>", "Tags" },
     },
     h = { "<cmd>set hlsearch!<cr>", "Hightlight text toggle" },
     i = { "<cmd>IndentBlacklineToggle<cr>", "Indentation line toggle" },
@@ -59,16 +59,16 @@ wk.register({
       name = "Git",
       b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
       c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-      d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff", },
+      d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
       j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
       k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-      l = { "<cmd>lua require\"gitsigns\".blame_line()<CR>", "Line Blame" },
-      p = { "<cmd>lua require\"gitsigns\".preview_hunk()<CR>", "Preview hunk" },
-      r = { "<cmd>lua require\"gitsigns\".reset_hunk()<CR>", "Reset hunk" },
-      R = { "<cmd>lua require\"gitsigns\".reset_buffer()<CR>", "Reset buffer" },
-      s = { "<cmd>lua require\"gitsigns\".stage_hunk()<CR>", "Stage hunk" },
+      l = { '<cmd>lua require"gitsigns".blame_line()<CR>', "Line Blame" },
+      p = { '<cmd>lua require"gitsigns".preview_hunk()<CR>', "Preview hunk" },
+      r = { '<cmd>lua require"gitsigns".reset_hunk()<CR>', "Reset hunk" },
+      R = { '<cmd>lua require"gitsigns".reset_buffer()<CR>', "Reset buffer" },
+      s = { '<cmd>lua require"gitsigns".stage_hunk()<CR>', "Stage hunk" },
       t = { "<cmd>lua _LAZYGIT_TOGGLE()<cr>", "Open terminal (lazygit)" },
-      u = { "<cmd>lua require\"gitsigns\".undo_stage_hunk()<CR>", "Undo stage hunk" },
+      u = { '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>', "Undo stage hunk" },
       o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
     },
     l = {
@@ -99,7 +99,7 @@ wk.register({
     p = {
       name = "Plugin action",
       c = { "<cmd>PackerCompile<cr>", "Compile" },
-      e = { "<cmd>e " .. vim.fn.stdpath('config') .. "/lua/plugins.lua<cr>", "Edit (configure) plugins" },
+      e = { "<cmd>e " .. vim.fn.stdpath("config") .. "/lua/plugins.lua<cr>", "Edit (configure) plugins" },
       C = { "<cmd>PackerClean<cr>", "Clean" },
       i = { "<cmd>PackerInstall<cr>", "Install" },
       s = { "<cmd>PackerSync<cr>", "Sync" },
@@ -133,10 +133,10 @@ wk.register({
   },
   ["["] = {
     d = { "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", "Jump to previous diagnostics" },
-    h = { "<cmd>lua require\"gitsigns.actions\".prev_hunk()<CR>", "Jump to previous hunk" },
+    h = { '<cmd>lua require"gitsigns.actions".prev_hunk()<CR>', "Jump to previous hunk" },
   },
   ["]"] = {
     d = { "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", "Jump to next diagnostics" },
-    h = { "<cmd>lua require\"gitsigns.actions\".next_hunk()<CR>", "Jump to next hunk" },
+    h = { '<cmd>lua require"gitsigns.actions".next_hunk()<CR>', "Jump to next hunk" },
   },
 })

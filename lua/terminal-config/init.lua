@@ -1,4 +1,4 @@
-require("toggleterm").setup{
+require("toggleterm").setup({
   size = function(term)
     if term.direction == "horizontal" then
       return 38
@@ -9,19 +9,19 @@ require("toggleterm").setup{
   start_in_insert = true,
   insert_mappings = true,
   persist_size = false,
-  direction = 'horizontal',
+  direction = "horizontal",
   close_on_exit = true,
-	float_opts = {
-		border = "curved",
-		winblend = 0,
-		highlights = {
-			border = "Normal",
-			background = "Normal",
-		},
-	},
-}
+  float_opts = {
+    border = "curved",
+    winblend = 0,
+    highlights = {
+      border = "Normal",
+      background = "Normal",
+    },
+  },
+})
 
-vim.cmd('tnoremap <silent><esc><esc> <C-\\><c-n>')
+vim.cmd("tnoremap <silent><esc><esc> <C-\\><c-n>")
 
 -- vim.cmd([[
 --   autocmd TermEnter term://*toggleterm#*

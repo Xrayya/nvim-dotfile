@@ -1,5 +1,5 @@
-require("indent_blankline").setup {
-  buftype_exclude = {"terminal", "nofile"},
+require("indent_blankline").setup({
+  buftype_exclude = { "terminal", "nofile" },
   filetype_exclude = {
     "dashboard",
     "startify",
@@ -39,4 +39,4 @@ require("indent_blankline").setup {
     "jsx_element",
     "jsx_self_closing_element",
   },
-}
+})

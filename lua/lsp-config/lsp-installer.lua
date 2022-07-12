@@ -11,7 +11,7 @@ end
 lsp_installer.setup({
   ui = {
     border = "rounded",
-  }
+  },
 })
 
 local installed_servers = lsp_installer.get_installed_servers()
@@ -25,7 +25,7 @@ for _, server in pairs(installed_servers) do
   }
 
   if server.name == "sumneko_lua" then
-    local sumneko_opts = require "lsp-config.costume-lsp-settings.sumneko_lua"
+    local sumneko_opts = require("lsp-config.costume-lsp-settings.sumneko_lua")
     opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
   end
 
@@ -33,12 +33,12 @@ for _, server in pairs(installed_servers) do
     local jdtls_opts = require("lsp-config.costume-lsp-settings.jdtls")
     opts = {
       on_attach = jdtls_opts.on_attach,
-      capabilities = jdtls_opts.capabilities
+      capabilities = jdtls_opts.capabilities,
     }
   end
 
   if server.name == "clangd" then
-    local clangd_opts = require "lsp-config.costume-lsp-settings.clangd"
+    local clangd_opts = require("lsp-config.costume-lsp-settings.clangd")
     opts = vim.tbl_deep_extend("force", clangd_opts, opts)
   end
 

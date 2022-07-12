@@ -8,11 +8,12 @@ local formatting = null_ls.builtins.formatting
 
 local prettier_args = { "-- parser " .. vim.bo.filetype, "--single-quote", "--jsx-single-quote" }
 
-null_ls.setup {
+null_ls.setup({
   debug = false,
   sources = {
-    formatting.prettier.with {
+    formatting.prettier.with({
       extra_args = prettier_args,
-    },
+    }),
+    formatting.stylua,
   },
-}
+})

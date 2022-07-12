@@ -1,4 +1,4 @@
-require 'nvim-tree'.setup {
+require("nvim-tree").setup({
   sync_root_with_cwd = true,
   update_focused_file = {
     enable = true,
@@ -57,4 +57,4 @@ require 'nvim-tree'.setup {
     show_on_dirs = true,
     timeout = 500,
   },
-}
+})

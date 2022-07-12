@@ -3,9 +3,9 @@ if not status_ok then
   return
 end
 
-local icons = require "icons"
+local icons = require("icons")
 
-gps.setup {
+gps.setup({
 
   disable_icons = false, -- Setting it to true will disable all icons
 
@@ -85,4 +85,4 @@ gps.setup {
   -- indicator used when context is hits depth limit
   depth_limit_indicator = "..",
   text_hl = "Function",
-}
+})

@@ -1,6 +1,6 @@
 local M = {}
 
-vim.cmd [[
+vim.cmd([[
   function Test()
     %SnipRun
     call feedkeys("\<esc>`.")
@@ -10,31 +10,31 @@ vim.cmd [[
     %SnipRun
     call winrestview(b:caret)
   endfunction
-]]
+]])
 
 function M.sniprun_enable()
-  vim.cmd [[
+  vim.cmd([[
     %SnipRun
     augroup _sniprun
      autocmd!
      autocmd TextChanged * call Test()
      autocmd TextChangedI * call TestI()
     augroup end
-  ]]
-  vim.notify "Enabled SnipRun"
+  ]])
+  vim.notify("Enabled SnipRun")
 end
 
 function M.disable_sniprun()
-  M.remove_augroup "_sniprun"
-  vim.cmd [[
+  M.remove_augroup("_sniprun")
+  vim.cmd([[
     SnipClose
     SnipTerminate
-    ]]
-  vim.notify "Disabled SnipRun"
+    ]])
+  vim.notify("Disabled SnipRun")
 end
 
 function M.toggle_sniprun()
-  if vim.fn.exists "#_sniprun#TextChanged" == 0 then
+  if vim.fn.exists("#_sniprun#TextChanged") == 0 then
     M.sniprun_enable()
   else
     M.disable_sniprun()
@@ -47,11 +47,11 @@ function M.remove_augroup(name)
   end
 end
 
-vim.cmd [[ command! SnipRunToggle execute 'lua require("functions").toggle_sniprun()' ]]
+vim.cmd([[ command! SnipRunToggle execute 'lua require("functions").toggle_sniprun()' ]])
 
 -- get length of current word
 function M.get_word_length()
-  local word = vim.fn.expand "<cword>"
+  local word = vim.fn.expand("<cword>")
   return #word
 end
 
@@ -106,11 +106,11 @@ function M.smart_quit()
       prompt = "You have unsaved changes. Quit anyway? (y/n) ",
     }, function(input)
       if input == "y" then
-        vim.cmd "q!"
+        vim.cmd("q!")
       end
     end)
   else
-    vim.cmd "q!"
+    vim.cmd("q!")
   end
 end
 

@@ -16,16 +16,13 @@ M.winbar_filetype_exclude = {
 }
 
 local get_filename = function()
-  local filename = vim.fn.expand "%:t"
-  local extension = vim.fn.expand "%:e"
-  local f = require "functions"
+  local filename = vim.fn.expand("%:t")
+  local extension = vim.fn.expand("%:e")
+  local f = require("functions")
 
   if not f.isempty(filename) then
-    local file_icon, file_icon_color = require("nvim-web-devicons").get_icon_color(
-      filename,
-      extension,
-      { default = true }
-    )
+    local file_icon, file_icon_color =
+      require("nvim-web-devicons").get_icon_color(filename, extension, { default = true })
 
     local hl_group = "FileIconColor" .. extension
 
@@ -73,7 +70,7 @@ M.get_winbar = function()
   if excludes() then
     return
   end
-  local f = require "functions"
+  local f = require("functions")
   local value = get_filename()
 
   local gps_added = false
@@ -85,7 +82,7 @@ M.get_winbar = function()
     end
   end
 
-  if not f.isempty(value) and f.get_buf_option "mod" then
+  if not f.isempty(value) and f.get_buf_option("mod") then
     local mod = "%#Function#" .. require("icons").ui.Circle .. "%*"
     if gps_added then
       value = value .. " " .. mod

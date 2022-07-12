@@ -1,5 +1,5 @@
-local conditions = require "lualine-config.my-lualine.condition"
-local colors = require "lualine-config.my-lualine.colors"
+local conditions = require("lualine-config.my-lualine.condition")
+local colors = require("lualine-config.my-lualine.colors")
 
 local function diff_source()
   local gitsigns = vim.b.gitsigns_status_dict
@@ -12,20 +12,21 @@ local function diff_source()
   end
 end
 
-local theme = require('lualine.themes.' .. vim.g.colors_name)
+local theme = require("lualine.themes." .. vim.g.colors_name)
 local mode = {
   n = theme.normal,
   i = theme.insert,
   c = theme.command,
   v = theme.visual,
   V = theme.visual,
-  [''] = theme.visual,
+  [""] = theme.visual,
   R = theme.replace,
 }
 
 return {
   mode = {
     function()
+      -- stylua: ignore start
       local alias = {
         ['n']     = '| N ',
         ['no']    = 'O-PENDING',
@@ -64,6 +65,7 @@ return {
         ['!']     = 'SHELL',
         ['t']     = '|TERMINAL',
       }
+      -- stylua: ignore start
       local mode_code = vim.api.nvim_get_mode().mode
       if alias[mode_code] == nil then
         return mode_code
@@ -81,9 +83,9 @@ return {
     color = function()
       local mode_code = vim.api.nvim_get_mode().mode
       if mode[mode_code] == nil then
-        return { bg = mode.n.b.bg, gui = 'bold' }
+        return { bg = mode.n.b.bg, gui = "bold" }
       end
-      return { bg = mode[vim.fn.mode()].b.bg, gui = 'bold' }
+      return { bg = mode[vim.fn.mode()].b.bg, gui = "bold" }
     end,
     cond = conditions.hide_in_width,
   },
@@ -102,7 +104,7 @@ return {
       readonly = " ",
       unnamed = " ",
     },
-    padding = { left = 2, right = 1 }
+    padding = { left = 2, right = 1 },
   },
   filesize = {
     "filesize",
@@ -184,11 +186,11 @@ return {
       end
 
       -- null-ls register
-      local null_ls_list_registered = function (filetype, method)
-      local null_ls_status_ok, null_ls_sources = pcall(require, "null-ls.sources")
-      if not null_ls_status_ok then
-        return
-      end
+      local null_ls_list_registered = function(filetype, method)
+        local null_ls_status_ok, null_ls_sources = pcall(require, "null-ls.sources")
+        if not null_ls_status_ok then
+          return
+        end
 
         local available_sources = null_ls_sources.get_available(filetype)
         local registered_providers = {}
@@ -221,9 +223,9 @@ return {
     color = function()
       local mode_code = vim.api.nvim_get_mode().mode
       if mode[mode_code] == nil then
-        return { bg = mode.n.b.bg, gui = 'bold' }
+        return { bg = mode.n.b.bg, gui = "bold" }
       end
-      return { bg = mode[vim.fn.mode()].b.bg, gui = 'bold' }
+      return { bg = mode[vim.fn.mode()].b.bg, gui = "bold" }
     end,
     cond = nil,
     padding = { left = 2, right = 2 },
@@ -257,7 +259,7 @@ return {
     "filetype",
     cond = conditions.hide_in_width,
     color = {},
-    padding = { left = 2, right = 1 }
+    padding = { left = 2, right = 1 },
   },
   location = {
     "location",
@@ -268,8 +270,8 @@ return {
   progress = { "progress", cond = conditions.hide_in_width, color = {} },
   scrollbar = {
     function()
-      local current_line = vim.fn.line "."
-      local total_lines = vim.fn.line "$"
+      local current_line = vim.fn.line(".")
+      local total_lines = vim.fn.line("$")
       local chars = { "__", "▁▁", "▂▂", "▃▃", "▄▄", "▅▅", "▆▆", "▇▇", "██" }
       local line_ratio = current_line / total_lines
       local index = math.ceil(line_ratio * #chars)
