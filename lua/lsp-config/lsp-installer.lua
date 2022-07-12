@@ -37,5 +37,10 @@ for _, server in pairs(installed_servers) do
     }
   end
 
+  if server.name == "clangd" then
+    local clangd_opts = require "lsp-config.costume-lsp-settings.clangd"
+    opts = vim.tbl_deep_extend("force", clangd_opts, opts)
+  end
+
   lspconfig[server.name].setup(opts)
 end
