@@ -16,7 +16,7 @@ require 'nvim-tree'.setup {
       },
     },
     icons = {
-      git_placement = "after",
+      git_placement = "before",
       glyphs = {
         default = "",
         symlink = "",
