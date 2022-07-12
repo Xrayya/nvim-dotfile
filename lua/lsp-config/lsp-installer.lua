@@ -30,16 +30,21 @@ for _, server in pairs(installed_servers) do
   end
 
   if server.name == "jdtls" then
-    local M = require("lsp-config.costume-lsp-settings.jdtls")
+    local jdtls_opts = require("lsp-config.costume-lsp-settings.jdtls")
     opts = {
-      on_attach = M.on_attach,
-      capabilities = M.capabilities
+      on_attach = jdtls_opts.on_attach,
+      capabilities = jdtls_opts.capabilities
     }
   end
 
   if server.name == "clangd" then
     local clangd_opts = require "lsp-config.costume-lsp-settings.clangd"
     opts = vim.tbl_deep_extend("force", clangd_opts, opts)
+  end
+
+  if server.name == "jsonls" then
+    local jsonls_opts = require("lsp-config.costume-lsp-settings.jsonls")
+    opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
   end
 
   lspconfig[server.name].setup(opts)

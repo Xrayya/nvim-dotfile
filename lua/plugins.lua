@@ -219,7 +219,15 @@ return require('packer').startup(function(use)
     { 'williamboman/nvim-lsp-installer' },
     {
       'neovim/nvim-lspconfig',
-      after = { "nvim-lsp-installer", "nvim-cmp", "cmp-nvim-lsp", "nlsp-settings.nvim", "vim-illuminate", "null-ls.nvim" },
+      after = {
+        "nvim-lsp-installer",
+        "nvim-cmp",
+        "cmp-nvim-lsp",
+        "nlsp-settings.nvim",
+        "vim-illuminate",
+        "null-ls.nvim",
+        "SchemaStore.nvim"
+      },
       config = function()
         require('lsp-config')
       end
@@ -256,6 +264,12 @@ return require('packer').startup(function(use)
       'jose-elias-alvarez/null-ls.nvim',
       commit = "fbb1929b29beff82e0fc495670f00ef4b3bcbcd3",
       requires = { 'nvim-lua/plenary.nvim' },
+      event = "BufWinEnter",
+    },
+
+    -- Schemastore
+    {
+      'b0o/SchemaStore.nvim',
       event = "BufWinEnter",
     },
   })
