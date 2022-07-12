@@ -389,7 +389,7 @@ return require('packer').startup(function(use)
   use({
     {
       'nvim-telescope/telescope.nvim',
-      commit = "b98b9a93c67cb999493ccdc602e711c8a7a98d64",
+      commit = "10a3310546284faae4ada397a61d68e0a8d0d9f7",
       requires = {
         { 'nvim-lua/plenary.nvim' },
         { 'nvim-lua/popup.nvim' },
