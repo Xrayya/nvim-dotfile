@@ -1,0 +1,74 @@
+{
+  "tasks": [
+    {
+      "name": "Echo example",
+      "cmd": "echo 'Current file = ${file}'"
+    },
+    {
+      "name": "Compile and run cpp file",
+      "cmd": "g++ -fdiagnostics-color=always -g \"${file}\" -o \"${file:r}.exe\" && \"${file:r}.exe\"",
+      "tags": [
+        "compile",
+        "run"
+      ]
+    },
+    {
+      "name": "Reload compile_commands.json",
+      "cmd": "cmake .",
+      "cwd": "${config_dir}",
+      "tags": [
+        "build",
+        "cmake"
+      ]
+    },
+    {
+      "name": "Makefile build",
+      "cmd": "make -j",
+      "cwd": "${config_dir}",
+      "tags": [
+        "build",
+        "make"
+      ]
+    },
+    {
+      "name": "CMake setup",
+      "cmd": "mkdir -p build && cd build && cmake ..",
+      "cwd": "${config_dir}",
+      "tags": [
+        "cmake"
+      ]
+    },
+    {
+      "name": "CMake build",
+      "cmd": "cmake --build build -j",
+      "cwd": "${config_dir}",
+      "tags": [
+        "build",
+        "cmake"
+      ]
+    },
+    {
+      "name": "django runserver",
+      "cmd": "python manage.py runserver",
+      "cwd": "${config_dir}",
+      "env": {
+        "PATH": "${config_dir}/venv/bin:${PATH}"
+      },
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "name": "frontend",
+      "cmd": "npm run serve",
+      "cwd": "${config_dir}/frontend",
+      "tags": [
+        "dev"
+      ]
+    },
+    {
+      "name": "open html file locally",
+      "cmd": "start ${file}"
+    }
+  ]
+}

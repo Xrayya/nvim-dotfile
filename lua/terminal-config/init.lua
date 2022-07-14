@@ -1,7 +1,7 @@
 require("toggleterm").setup({
   size = function(term)
     if term.direction == "horizontal" then
-      return 38
+      return 20
     elseif term.direction == "vertical" then
       return vim.o.columns * 0.4
     end
@@ -42,7 +42,7 @@ local Terminal = require("toggleterm.terminal").Terminal
 -- Lazygit terminal
 local lazygit = Terminal:new({
   cmd = "lazygit",
-  count = 9,
+  count = 10,
   direction = "float",
   hidden = true,
 })
@@ -50,38 +50,38 @@ function _LAZYGIT_TOGGLE()
   lazygit:toggle()
 end
 
--- Cmd terminals
-local cmd1 = Terminal:new({
+-- Pwsh terminals
+local pwsh1 = Terminal:new({
   cmd = "pwsh",
   count = 1,
   size = 38,
   direction = "horizontal",
   hidden = true,
 })
-function _CMD1_TOGGLE()
-  cmd1:toggle()
+function _PWSH1_TOGGLE()
+  pwsh1:toggle()
 end
 
-local cmd2 = Terminal:new({
+local pwsh2 = Terminal:new({
   cmd = "pwsh",
   count = 2,
   size = 38,
   direction = "horizontal",
   hidden = true,
 })
-function _CMD2_TOGGLE()
-  cmd2:toggle()
+function _PWSH2_TOGGLE()
+  pwsh2:toggle()
 end
 
-local cmd3 = Terminal:new({
+local pwsh3 = Terminal:new({
   cmd = "pwsh",
   count = 3,
   size = 38,
   direction = "horizontal",
   hidden = true,
 })
-function _CMD3_TOGGLE()
-  cmd3:toggle()
+function _PWSH3_TOGGLE()
+  pwsh3:toggle()
 end
 
 -- Node terminal
@@ -108,37 +108,46 @@ function _PYTHON_TOGGLE()
   python:toggle()
 end
 
--- pwsh terminal
-local pwsh = Terminal:new({
+-- Vertical pwsh terminal
+local v_pwsh1 = Terminal:new({
   cmd = "pwsh",
   count = 6,
-  direction = "horizontal",
-  size = 22,
+  size = vim.o.columns * 0.4,
+  direction = "vertical",
   hidden = true,
 })
-function _PWSH_TOGGLE()
-  pwsh:toggle()
+function _V_PWSH1_TOGGLE()
+  v_pwsh1:toggle()
 end
 
--- Vertical pwsh terminal
-local v_pwsh = Terminal:new({
+local v_pwsh2 = Terminal:new({
   cmd = "pwsh",
   count = 7,
   size = vim.o.columns * 0.4,
   direction = "vertical",
   hidden = true,
 })
-function _V_PWSH_TOGGLE()
-  v_pwsh:toggle()
+function _V_PWSH2_TOGGLE()
+  v_pwsh2:toggle()
 end
 
 -- Floating pwsh terminal
-local f_pwsh = Terminal:new({
+local f_pwsh1 = Terminal:new({
   cmd = "pwsh",
   count = 8,
   direction = "float",
   hidden = true,
 })
-function _F_PWSH_TOGGLE()
-  f_pwsh:toggle()
+function _F_PWSH1_TOGGLE()
+  f_pwsh1:toggle()
+end
+
+local f_pwsh2 = Terminal:new({
+  cmd = "pwsh",
+  count = 9,
+  direction = "float",
+  hidden = true,
+})
+function _F_PWSH2_TOGGLE()
+  f_pwsh2:toggle()
 end

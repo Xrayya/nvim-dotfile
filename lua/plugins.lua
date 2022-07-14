@@ -395,7 +395,8 @@ return require("packer").startup(function(use)
         { "nvim-lua/plenary.nvim" },
         { "nvim-lua/popup.nvim" },
       },
-      cmd = "Telescope",
+      -- cmd = "Telescope",
+      after = { "toggletasks.nvim", "project.nvim" },
       config = function()
         require("telescope-config")
       end,
@@ -484,14 +485,22 @@ return require("packer").startup(function(use)
     end,
   })
 
-  --------------
-  -- Terminal --
-  --------------
+  -----------------
+  -- Taks Runner --
+  -----------------
 
   use({
-    "pianocomposer321/yabs.nvim",
-    commit = "88bdb5c557448960be3cb9d3da64e52009e7bef9",
-    requires = { "nvim-lua/plenary.nvim" },
+    "jedrzejboczar/toggletasks.nvim",
+    commit = "4329ad580799f25c0a923a2d1e71a585ae0bbc48",
+    after = { "toggleterm.nvim" },
+    requires = {
+      "nvim-lua/plenary.nvim",
+      "akinsho/toggleterm.nvim",
+      "nvim-telescope/telescope.nvim",
+    },
+    config = function()
+      require("toggletasks-config")
+    end,
   })
 
   ---------------
