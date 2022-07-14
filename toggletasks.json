@@ -6,19 +6,30 @@
     },
     {
       "name": "Compile and run cpp file",
-      "cmd": "g++ -fdiagnostics-color=always -g \"${file}\" -o \"${file:r}.exe\" && \"${file:r}.exe\"",
+      "cmd": "g++ -fdiagnostics-color=always -g \"${file}\" -o \"${file:r}.exe\" && echo Compiling done && \"${file:r}.exe\"",
       "tags": [
         "compile",
-        "run"
+        "run",
+        "cpp"
+      ]
+    },
+    {
+      "name": "Compile and run c file",
+      "cmd": "g -fdiagnostics-color=always -g \"${file}\" -o \"${file:r}.exe\" && echo Compiling done && \"${file:r}.exe\"",
+      "tags": [
+        "compile",
+        "run",
+        "c"
       ]
     },
     {
       "name": "Reload compile_commands.json",
       "cmd": "cmake .",
-      "cwd": "${config_dir}",
+      "cwd": "\"${lsp_root}\"",
       "tags": [
         "build",
-        "cmake"
+        "cmake",
+        "lsp"
       ]
     },
     {
