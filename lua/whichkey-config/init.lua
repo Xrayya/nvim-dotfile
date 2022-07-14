@@ -134,6 +134,14 @@ wk.register({
       S = { "<cmd>Telescope toggletasks select<cr>", "Select running tasks" },
       e = { "<cmd>Telescope toggletasks select<cr>", "Edit config files" },
     },
+    u = {
+      name = "Utilities",
+      t = { "<cmd>e " .. vim.fn.stdpath("config") .. "/toggletasks.json<cr>", "toggletasks.json database" },
+      C = {
+        "<cmd>e " .. vim.fn.stdpath("config") .. "/my-utils/CMakeLists-template.txt<cr>",
+        "CMakeLists.txt template",
+      },
+    },
     w = { ":w<cr>", "Write (save)" },
     -- W = { ":w<cr><cmd>FormatWrite<cr>", "Write and format" },
     W = { "<cmd>lua vim.lsp.buf.format()<CR><cmd>write<cr>", "Write and format" },
