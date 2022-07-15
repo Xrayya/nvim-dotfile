@@ -15,7 +15,7 @@ M.winbar_filetype_exclude = {
   "toggleterm",
 }
 
-local get_filename = function()
+M.get_filename = function()
   local filename = vim.fn.expand("%:t")
   local extension = vim.fn.expand("%:e")
   local f = require("functions")
@@ -32,12 +32,12 @@ local get_filename = function()
       file_icon_color = ""
     end
 
-    return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. "%#Function#" .. filename .. "%*"
+    return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. "%#NavicText#" .. filename .. "%*"
   end
 end
 
 local get_gps = function()
-  local status_gps_ok, gps = pcall(require, "nvim-gps")
+  local status_gps_ok, gps = pcall(require, "nvim-navic")
   if not status_gps_ok then
     return ""
   end
@@ -52,7 +52,7 @@ local get_gps = function()
   end
 
   if not require("functions").isempty(gps_location) then
-    return require("icons").ui.ChevronRight .. " " .. gps_location
+    return "%#NavicSeparator#" .. require("icons").ui.ChevronRight .. " " .. gps_location
   else
     return ""
   end
@@ -71,7 +71,7 @@ M.get_winbar = function()
     return
   end
   local f = require("functions")
-  local value = get_filename()
+  local value = M.get_filename()
 
   local gps_added = false
   if not f.isempty(value) then
@@ -89,6 +89,13 @@ M.get_winbar = function()
     else
       value = value .. mod
     end
+  end
+
+  local num_tabs = #vim.api.nvim_list_tabpages()
+
+  if num_tabs > 1 and not f.isempty(value) then
+    local tabpage_number = tostring(vim.api.nvim_tabpage_get_number(0))
+    value = value .. "%=" .. tabpage_number .. "/" .. tostring(num_tabs)
   end
 
   local status_ok, _ = pcall(vim.api.nvim_set_option_value, "winbar", value, { scope = "local" })
