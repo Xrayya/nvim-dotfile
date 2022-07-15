@@ -1,4 +1,10 @@
-require("nvim-tree").setup({
+local status_ok, nvim_tree = pcall(require, "nvim-tree")
+if not status_ok then
+  vim.notify('nvim-tree-config: failed to load "nvim-tree" module')
+  return
+end
+
+nvim_tree.setup({
   sync_root_with_cwd = true,
   update_focused_file = {
     enable = true,

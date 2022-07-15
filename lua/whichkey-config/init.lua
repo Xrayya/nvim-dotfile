@@ -1,4 +1,8 @@
-local wk = require("which-key")
+local status_ok, wk = pcall(require, "which-key")
+if not status_ok then
+  vim.notify('whichkey-config: failed to load "which-key" module')
+  return
+end
 
 wk.setup({
   window = {

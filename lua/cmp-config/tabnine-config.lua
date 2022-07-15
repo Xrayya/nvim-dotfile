@@ -1,4 +1,9 @@
-local tabnine = require("cmp_tabnine.config")
+local status_ok, tabnine = pcall(require, "cmp_tabnine.config")
+if not status_ok then
+  vim.notify('cmp-config.tabnine-config: failed to load "cmp_tabnine.config" module')
+  return
+end
+
 tabnine:setup({
   max_lines = 1000,
   max_num_results = 20,

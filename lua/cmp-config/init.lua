@@ -1,6 +1,10 @@
-vim.g.completeopt = "menu,menuone,noselect"
+local status_ok, cmp = pcall(require, "cmp")
+if not status_ok then
+  vim.notify('cmp-config: failed load "cmp" module')
+  return
+end
 
-local cmp = require("cmp")
+vim.g.completeopt = "menu,menuone,noselect"
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -147,5 +151,9 @@ cmp.setup({
 -- })
 
 -- Integration with autopairs
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
+local cmp_autopairs_status_ok, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
+if not cmp_autopairs_status_ok then
+  vim.notify('cmp-config: failed load "nvim-autopairs.completion.cmp" module')
+else
+  cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
+end

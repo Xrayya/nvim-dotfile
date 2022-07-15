@@ -1,7 +1,13 @@
-require("telescope").load_extension("projects")
-require("telescope").load_extension("toggletasks")
+local status_ok, telescope = pcall(require, "telescope")
+if not status_ok then
+  vim.notify('telescope-config: failed to load "telescope" module')
+  return
+end
 
-require("telescope").setup({
+telescope.load_extension("projects")
+telescope.load_extension("toggletasks")
+
+telescope.setup({
   defaults = {
     prompt_prefix = " ",
     selection_caret = " ",

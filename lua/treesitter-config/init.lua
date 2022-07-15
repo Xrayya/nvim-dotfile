@@ -1,5 +1,11 @@
+local status_ok, treesitter = pcall(require, "nvim-treesitter.configs")
+if not status_ok then
+  vim.notify('treesitter-config: failed to load "nvim-treesitter.configs" module')
+  return
+end
+
 require("nvim-treesitter.install").compilers = { "gcc", "clang" }
-require("nvim-treesitter.configs").setup({
+treesitter.setup({
   ensure_installed = {
     "html",
     "css",

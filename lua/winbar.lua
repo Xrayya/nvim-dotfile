@@ -39,6 +39,7 @@ end
 local get_gps = function()
   local status_gps_ok, gps = pcall(require, "nvim-navic")
   if not status_gps_ok then
+    vim.notify('winbar: failed to load "nvim-navic" module')
     return ""
   end
 

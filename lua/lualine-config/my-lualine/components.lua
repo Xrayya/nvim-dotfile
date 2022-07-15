@@ -189,6 +189,7 @@ return {
       local null_ls_list_registered = function(filetype, method)
         local null_ls_status_ok, null_ls_sources = pcall(require, "null-ls.sources")
         if not null_ls_status_ok then
+          vim.notify('lualine-config.components.lsp: failed to load "null-ls.sources" module')
           return
         end
 
@@ -206,6 +207,7 @@ return {
 
       local null_ls_status_ok, null_ls = pcall(require, "null-ls")
       if not null_ls_status_ok then
+        vim.notify('lualine-config.components.lsp: failed to load "null-ls" module')
         return
       end
 

@@ -1,6 +1,11 @@
+local status_ok, presence = pcall(require, "presence")
+if not status_ok then
+  vim.notify('discord-presence-config: failed to load "presence" module')
+  return
+end
 -- The setup config table shows all available config options with their default values:
 -- stylua: ignore
-require("presence"):setup({
+presence:setup({
   -- General options
   auto_update        = true, -- Update activity based on autocmd events (if `false`, map or manually execute `:lua package.loaded.presence:update()`)
   neovim_image_text  = "The Fully Customizable Personal Development Environment", -- Text displayed when hovered over the Neovim image

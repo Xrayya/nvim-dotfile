@@ -1,4 +1,10 @@
-require("gitsigns").setup({
+local status_ok, gitsigns = pcall(require, "gitsigns")
+if not status_ok then
+  vim.notify('gitsigns-config: failed to load "gitsigns" module')
+  return
+end
+
+gitsigns.setup({
   -- stylua: ignore
   signs = {
     add          = { hl = 'GitSignsAdd', text = '▎', numhl = 'GitSignsAddNr', linehl = 'GitSignsAddLn' },

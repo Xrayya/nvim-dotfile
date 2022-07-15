@@ -1,4 +1,10 @@
-require("project_nvim").setup({
+local status_ok, project = pcall(require, "project_nvim")
+if not status_ok then
+  vim.notify('projects-config: failed to load "project_nvim" module')
+  return
+end
+
+project.setup({
   -- Manual mode doesn't automatically change your root directory, so you have
   -- the option to manually do so using `:ProjectRoot` command.
   -- manual_mode = false,

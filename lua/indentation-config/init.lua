@@ -1,4 +1,10 @@
-require("indent_blankline").setup({
+local status_ok, indent_blankline = pcall(require, "indent_blankline")
+if not status_ok then
+  vim.notify('indentation-config: failed to load "indent_blankline" module')
+  return
+end
+
+indent_blankline.setup({
   buftype_exclude = { "terminal", "nofile" },
   filetype_exclude = {
     "dashboard",

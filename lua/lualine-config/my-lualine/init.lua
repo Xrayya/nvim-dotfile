@@ -1,6 +1,12 @@
+local status_ok, lualine = pcall(require, "lualine")
+if not status_ok then
+  vim.notify('lualine-config: failed to load "lualine" module')
+  return
+end
+
 local components = require("lualine-config.my-lualine.components")
 
-require("lualine").setup({
+lualine.setup({
   options = {
     icons_enabled = true,
     theme = "auto",

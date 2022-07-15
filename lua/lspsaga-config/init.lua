@@ -1,4 +1,9 @@
-local lspsaga = require("lspsaga")
+local status_ok, lspsaga = pcall(require, "lspsaga")
+if not status_ok then
+  vim.notify('lspsaga-config: failed to load "lspsaga" module')
+  return
+end
+
 lspsaga.setup({ -- defaults ...
   -- Error,Warn,Info,Hint
   diagnostic_header_icon = { " ", " ", " ", " " },
