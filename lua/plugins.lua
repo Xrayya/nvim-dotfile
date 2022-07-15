@@ -115,11 +115,12 @@ return require("packer").startup(function(use)
 
     -- GPS / context
     {
-      "Xrayya/nvim-gps",
-      requires = "nvim-treesitter/nvim-treesitter",
-      after = "nvim-treesitter",
+      "SmiteshP/nvim-navic",
+      commit = "34b652cbadfa8431a313a517bdbe95bd27e37ee9",
+      requires = "neovim/nvim-lspconfig",
+      after = "nvim-lspconfig",
       config = function()
-        require("gps-config")
+        require("navic-config")
       end,
     },
   })

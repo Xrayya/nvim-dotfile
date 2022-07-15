@@ -44,6 +44,15 @@ M.setup = function()
   })
 end
 
+local function attach_navic(client, bufnr)
+  vim.g.navic_silence = false
+  local status_ok, navic = pcall(require, "nvim-navic")
+  if not status_ok then
+    vim.notify('lsp-config.handlers (func attach_navic): failed to load "nvim-navic" module')
+    return
+  end
+  navic.attach(client, bufnr)
+end
 -- -- local function lsp_keymaps(bufnr)
 -- --   local opts = { noremap = true, silent = true }
 -- --   vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -79,6 +88,7 @@ M.on_attach = function(client, bufnr)
     return
   end
   illuminate.on_attach(client)
+  attach_navic(client, bufnr)
 end
 
 -- if you put this 9 lines below inside on_attach, then you will lose some html lsp
