@@ -17,4 +17,20 @@ M.on_attach = function(client, bufnr)
   M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 end
 
+M.opts = {
+  settings = {
+    java = {
+      signatureHelp = {
+        enable = true,
+        description = {
+          enable = true,
+        },
+      },
+      contentProvider = {
+        preferred = "fernflower",
+      },
+    },
+  },
+}
+
 return M

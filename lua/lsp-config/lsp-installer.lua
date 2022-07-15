@@ -37,6 +37,8 @@ for _, server in pairs(installed_servers) do
       on_attach = jdtls_opts.on_attach,
       capabilities = jdtls_opts.capabilities,
     }
+
+    opts = vim.tbl_deep_extend("force", jdtls_opts.opts, opts)
   end
 
   if server.name == "clangd" then
