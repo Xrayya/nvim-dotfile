@@ -1,15 +1,14 @@
+local handlers = require("lsp-config.handlers")
+
 local M = {}
 
 M.on_attach = function(client, bufnr)
-  local illuminate_status_ok, illuminate = pcall(require, "illuminate")
-  if not illuminate_status_ok then
-    return
-  end
-  illuminate.on_attach(client)
+  handlers.lsp_highlight_document(client)
+  handlers.attach_navic(client, bufnr)
 
   local cmp_status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
   if not cmp_status_ok then
-    print("Error occured when calling cmp_nvim_lsp")
+    vim.notify('lsp-config.custom-lsp-settings.jdtlse: failed to load "cmp_nvim_lsp" module')
     return M
   end
 

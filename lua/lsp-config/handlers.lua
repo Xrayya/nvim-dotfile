@@ -44,7 +44,16 @@ M.setup = function()
   })
 end
 
-local function attach_navic(client, bufnr)
+function M.lsp_highlight_document(client)
+  local status_ok, illuminate = pcall(require, "illuminate")
+  if not status_ok then
+    vim.notify('lsp-config.handlers (func lsp_highlight_document): failed to load "illuminate" module')
+    return
+  end
+  illuminate.on_attach(client)
+end
+
+function M.attach_navic(client, bufnr)
   vim.g.navic_silence = false
   local status_ok, navic = pcall(require, "nvim-navic")
   if not status_ok then
@@ -53,6 +62,7 @@ local function attach_navic(client, bufnr)
   end
   navic.attach(client, bufnr)
 end
+
 -- -- local function lsp_keymaps(bufnr)
 -- --   local opts = { noremap = true, silent = true }
 -- --   vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
@@ -78,31 +88,24 @@ end
 -- -- end
 
 M.on_attach = function(client, bufnr)
-  -- if client.name == "tsserver" then
-  --   client.server.document_formatting = false
-  -- end
-
   -- lsp_keymaps(bufnr)
-  local status_ok, illuminate = pcall(require, "illuminate")
-  if not status_ok then
-    return
-  end
-  illuminate.on_attach(client)
-  attach_navic(client, bufnr)
+  M.attach_navic(client, bufnr)
+  M.lsp_highlight_document(client)
 end
 
 -- if you put this 9 lines below inside on_attach, then you will lose some html lsp
 -- capabilities (and maybe other lsp too)
 --
 -- if you put it outside on_attach it will show  several two same snippets in jdtls,
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities.textDocument.completion.completionItem.snippetSupport = true
+
 local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
 if not status_ok then
-  print("Error occured when calling cmp_nvim_lsp")
+  vim.notify('lsp-config.handlers: failed to load "cmp_nvim_lsp" module')
   return M
 end
 
-M.capabilities = vim.lsp.protocol.make_client_capabilities()
-M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 
 return M
