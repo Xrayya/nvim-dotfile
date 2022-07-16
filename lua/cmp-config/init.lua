@@ -65,6 +65,7 @@ cmp.setup({
         nvim_lsp = "[LSP]",
         luasnip = "[LuaSnip]",
         vsnip = "[VSnip]",
+        nvim_lsp_signature_help = "[SH]",
         ultisnips = "[UltiSnips]",
         snippy = "[Snippy]",
         nvim_lua = "[Lua]",
@@ -114,8 +115,8 @@ cmp.setup({
     -- { name = 'ultisnips' }, -- For ultisnips users.
     -- { name = 'snippy' }, -- For snippy users.
     { name = "nvim_lsp" },
-    { name = "nvim_lsp_signature_help" },
     { name = "nvim_lua" },
+    { name = "nvim_lsp_signature_help" },
     { name = "cmp_tabnine" },
     { name = "buffer" },
     { name = "calc" },
