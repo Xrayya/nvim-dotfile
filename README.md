@@ -16,7 +16,7 @@ My simple Neovim config
 
 ## TODO
 
-- [ ] Refactor which-key config
+- [x] Refactor which-key config
 - [ ] Fix lsp diagnostics signs
 - [ ] Update Readme
 - [ ] Organize files
