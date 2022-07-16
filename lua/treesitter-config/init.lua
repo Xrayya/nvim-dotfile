@@ -1,6 +1,5 @@
-local status_ok, treesitter = pcall(require, "nvim-treesitter.configs")
-if not status_ok then
-  vim.notify('treesitter-config: failed to load "nvim-treesitter.configs" module')
+local treesitter = require("functions").notifreq("nvim-treesitter.configs", "treesitter-config", "error")
+if treesitter == nil then
   return
 end
 

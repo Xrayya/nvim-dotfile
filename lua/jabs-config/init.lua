@@ -1,6 +1,5 @@
-local status_ok, jabs = pcall(require, "jabs")
-if not status_ok then
-  vim.notify('jabs-config: failed to load "jabs" module')
+local jabs = require("functions").notifreq("jabs", "jabs-config", "error")
+if jabs == nil then
   return
 end
 

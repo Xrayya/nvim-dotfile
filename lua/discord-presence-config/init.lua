@@ -1,6 +1,5 @@
-local status_ok, presence = pcall(require, "presence")
-if not status_ok then
-  vim.notify('discord-presence-config: failed to load "presence" module')
+local presence = require("functions").notifreq("presence", "discord-presence-config", "error")
+if presence == nil then
   return
 end
 -- The setup config table shows all available config options with their default values:

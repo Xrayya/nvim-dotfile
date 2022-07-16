@@ -1,6 +1,5 @@
-local status_ok, telescope = pcall(require, "telescope")
-if not status_ok then
-  vim.notify('telescope-config: failed to load "telescope" module')
+local telescope = require("functions").notifreq("telescope", "telescope-config", "error")
+if telescope == nil then
   return
 end
 

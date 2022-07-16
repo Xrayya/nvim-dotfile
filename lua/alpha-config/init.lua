@@ -1,8 +1,8 @@
-local status_ok, alpha = pcall(require, "alpha")
-if not status_ok then
-  vim.notify('alpha-config: failed load "alpha" module')
+local alpha = require("functions").notifreq("alpha", "alpha-config", "error")
+if alpha == nil then
   return
 end
+
 math.randomseed(os.time())
 
 local dashboard = require("alpha.themes.dashboard")
@@ -25,8 +25,12 @@ dashboard.section.buttons.val = {
   dashboard.button("r", "  Recently used files", "<cmd>Telescope oldfiles<CR>"),
   dashboard.button("s", "  Open last session in this directory", "<cmd>SessionManager load_current_dir_session<CR>"),
   dashboard.button("t", "  Find text", "<cmd>Telescope live_grep<CR>"),
-  dashboard.button("c", "  Configuration", "<cmd>e " .. vim.fn.stdpath("config") .. "/init.lua<CR>"),
-  dashboard.button("P", "  Configure Plugins", "<cmd>e " .. vim.fn.stdpath("config") .. "/lua/plugins.lua<CR>"),
+  dashboard.button(
+    "c",
+    "  Browse nvim config file",
+    "<cmd>Telescope find_files cwd=" .. vim.fn.stdpath("config") .. "<CR>"
+  ),
+  -- dashboard.button("P", "  Configure Plugins", "<cmd>e " .. vim.fn.stdpath("config") .. "/lua/plugins.lua<CR>"),
   dashboard.button("S", "  Sync Plugins", "<cmd>PackerSync<CR>"),
   dashboard.button("Q", "  Quit Neovim", "<cmd>qa<CR>"),
 }

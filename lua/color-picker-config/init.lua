@@ -1,6 +1,5 @@
-local status_ok, color_picker = pcall(require, "color-picker")
-if not status_ok then
-  vim.notify('color-picker-config: failed to load "color-picker" module')
+local color_picker = require("functions").notifreq("color-picker", "color-picker-config", "error")
+if color_picker == nil then
   return
 end
 color_picker.setup()

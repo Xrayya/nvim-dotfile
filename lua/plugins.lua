@@ -164,7 +164,8 @@ return require("packer").startup(function(use)
       event = "BufWinEnter",
       config = function()
         require("lualine").setup({
-          extensions = { "nvim-tree", "symbols-outline", "toggleterm" },
+          extensions = { "symbols-outline", "toggleterm" },
+          disabled_filetypes = { "NvimTree", "alpha" },
         })
         require("lualine-config.my-lualine")
       end,
@@ -513,11 +514,7 @@ return require("packer").startup(function(use)
     commit = "7caeaaef257ecbe95473ec79e5a82757b544f1fd",
     event = "BufWinEnter",
     config = function()
-      require("notify").setup({
-        timeout = 1000,
-        background_colour = "#000000",
-      })
-      vim.notify = require("notify")
+      require("notification-config")
     end,
   })
 

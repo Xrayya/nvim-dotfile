@@ -1,6 +1,5 @@
-local status_ok, nvim_tree = pcall(require, "nvim-tree")
-if not status_ok then
-  vim.notify('nvim-tree-config: failed to load "nvim-tree" module')
+local nvim_tree = require("functions").notifreq("nvim-tree", "nvim-tree-config", "error")
+if nvim_tree == nil then
   return
 end
 

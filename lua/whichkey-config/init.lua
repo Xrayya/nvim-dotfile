@@ -1,6 +1,5 @@
-local status_ok, wk = pcall(require, "which-key")
-if not status_ok then
-  vim.notify('whichkey-config: failed to load "which-key" module')
+local wk = require("functions").notifreq("which-key", "whichkey-config", "error")
+if wk == nil then
   return
 end
 
@@ -13,7 +12,7 @@ wk.setup({
     winblend = 0,
   },
   layout = {
-    height = { min = 4, max = 25 }, -- min and max height of the columns
+    height = { min = 4, max = 20 }, -- min and max height of the columns
     width = { min = 20, max = 50 }, -- min and max width of the columns
     spacing = 3, -- spacing between columns
     align = "left", -- align columns left, center or right
@@ -81,17 +80,15 @@ wk.register({
       A = { "<cmd>LspStop<CR><cmd>LspStart<CR>", "Activate/reactivate LSP" },
       d = { "<cmd>lua vim.lsp.buf.definition()<CR>", "Go to definition" },
       F = { "<cmd>lua require'lspsaga.provider'.lsp_finder()<CR>", "LSP Finder" },
-      f = { "<cmd>lua vim.lsp.buf.format()<CR>", "Format current buffer(native LSP)" },
-      h = { "<cmd>lua require('lspsaga.hover').render_hover_doc()<CR>", "Hover" },
-      i = { "<cmd>LspInfo<cr>", "LSP Info" },
-      I = { "<cmd>LspInstallInfo<cr>", "LSP installer Info" },
-      j = { "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>", "Scroll down" },
-      k = { "<cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>", "Scroll up" },
-      l = { "<cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>", "Line diagnostics" },
+      f = { "<cmd>lua vim.lsp.buf.format()<CR>", "Format current buffer" },
+      h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
+      i = { "<cmd>LspInfo<cr>", "LSP info" },
+      I = { "<cmd>LspInstallInfo<cr>", "LSP installer info" },
+      l = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line diagnostics" },
       p = { "<cmd>lua require'lspsaga.provider'.preview_definition()<CR>", "Preview definition" },
       r = { "<cmd>lua require('lspsaga.rename').rename()<CR>", "Rename" },
       R = { "<cmd>lua vim.lsp.buf.references()<CR>", "Referece" },
-      s = { "<cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>", "Signture_help" },
+      s = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signture_help" },
       t = {
         name = "+Trouble list",
         b = { "<cmd>TroubleToggle document_diagnostics<cr>", "Current buffer diagnostics" },
@@ -141,6 +138,7 @@ wk.register({
     u = {
       name = "Utilities",
       t = { "<cmd>e " .. vim.fn.stdpath("config") .. "/toggletasks.json<cr>", "toggletasks.json database" },
+      c = { "<cmd>Telescope find_files cwd=" .. vim.fn.stdpath("config") .. "<CR>", "Browse nvim config files" },
       C = {
         "<cmd>e " .. vim.fn.stdpath("config") .. "/my-utils/CMakeLists-template.txt<cr>",
         "CMakeLists.txt template",
@@ -151,11 +149,11 @@ wk.register({
     W = { "<cmd>lua vim.lsp.buf.format()<CR><cmd>write<cr>", "Write and format" },
   },
   ["["] = {
-    d = { "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>", "Jump to previous diagnostics" },
+    d = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Jump to previous diagnostics" },
     h = { '<cmd>lua require"gitsigns.actions".prev_hunk()<CR>', "Jump to previous hunk" },
   },
   ["]"] = {
-    d = { "<cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>", "Jump to next diagnostics" },
+    d = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Jump to next diagnostics" },
     h = { '<cmd>lua require"gitsigns.actions".next_hunk()<CR>', "Jump to next hunk" },
   },
 })

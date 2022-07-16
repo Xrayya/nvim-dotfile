@@ -1,6 +1,5 @@
-local status_ok, colorizer = pcall(require, "colorizer")
-if not status_ok then
-  vim.notify('colorizer-config: failed to load "colorizer" module')
+local colorizer = require("functions").notifreq("colorizer", "colorizer-config", "error")
+if colorizer == nil then
   return
 end
 

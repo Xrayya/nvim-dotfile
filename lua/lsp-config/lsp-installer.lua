@@ -1,12 +1,10 @@
-local status_ok, lsp_installer = pcall(require, "nvim-lsp-installer")
-if not status_ok then
-  vim.notify('lsp-config.lsp-installer: failed to load "nvim-lsp-installer" module')
+local lsp_installer = require("functions").notifreq("nvim-lsp-installer", "lsp-config.lsp-installer", "error")
+if lsp_installer == nil then
   return
 end
 
-local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")
-if not lspconfig_status_ok then
-  vim.notify('lsp-config.lsp-installer: failed to load "lspconfig" module')
+local lspconfig = require("functions").notifreq("lspconfig", "lsp-config.lsp-installer", "error")
+if lspconfig == nil then
   return
 end
 

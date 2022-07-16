@@ -1,6 +1,5 @@
-local status_ok, cmp = pcall(require, "cmp")
-if not status_ok then
-  vim.notify('cmp-config: failed load "cmp" module')
+local cmp = require("functions").notifreq("cmp", "cmp-config", "error")
+if cmp == nil then
   return
 end
 
@@ -151,9 +150,7 @@ cmp.setup({
 -- })
 
 -- Integration with autopairs
-local cmp_autopairs_status_ok, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
-if not cmp_autopairs_status_ok then
-  vim.notify('cmp-config: failed load "nvim-autopairs.completion.cmp" module')
-else
+local cmp_autopairs = require("functions").notifreq("nvim-autopairs.completion.cmp", "cmp-config", "error")
+if cmp_autopairs ~= nil then
   cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
 end

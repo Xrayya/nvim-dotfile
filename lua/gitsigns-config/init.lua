@@ -1,6 +1,5 @@
-local status_ok, gitsigns = pcall(require, "gitsigns")
-if not status_ok then
-  vim.notify('gitsigns-config: failed to load "gitsigns" module')
+local gitsigns = require("functions").notifreq("gitsigns", "gitsigns-config", "error")
+if gitsigns == nil then
   return
 end
 
@@ -60,7 +59,7 @@ gitsigns.setup({
   max_file_length = 40000,
   preview_config = {
     -- Options passed to nvim_open_win
-    border = "single",
+    border = "rounded",
     style = "minimal",
     relative = "cursor",
     row = 0,

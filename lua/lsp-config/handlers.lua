@@ -27,6 +27,8 @@ M.setup = function()
       focusable = false,
       style = "minimal",
       border = "rounded",
+      max_width = math.floor(vim.o.columns * 0.5),
+      max_height = 5,
       source = "always",
       header = "",
       prefix = "",
@@ -37,29 +39,34 @@ M.setup = function()
 
   vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
     border = "rounded",
+    max_width = math.floor(vim.o.columns * 0.5),
+    max_height = 20,
   })
 
   vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
     border = "rounded",
+    max_width = math.floor(vim.o.columns * 0.5),
+    max_height = 20,
   })
 end
 
 function M.lsp_highlight_document(client)
-  local status_ok, illuminate = pcall(require, "illuminate")
-  if not status_ok then
-    vim.notify('lsp-config.handlers (func lsp_highlight_document): failed to load "illuminate" module')
+  local illuminate =
+    require("functions").notifreq("illuminate", "lsp-config.handlers (func lsp_highlight_document)", "error")
+  if illuminate == nil then
     return
   end
+
   illuminate.on_attach(client)
 end
 
 function M.attach_navic(client, bufnr)
   vim.g.navic_silence = false
-  local status_ok, navic = pcall(require, "nvim-navic")
-  if not status_ok then
-    vim.notify('lsp-config.handlers (func attach_navic): failed to load "nvim-navic" module')
+  local navic = require("functions").notifreq("nvim-navic", "lsp-config.handlers (func attach_navic)", "error")
+  if navic == nil then
     return
   end
+
   navic.attach(client, bufnr)
 end
 
@@ -100,12 +107,9 @@ end
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local status_ok, cmp_nvim_lsp = pcall(require, "cmp_nvim_lsp")
-if not status_ok then
-  vim.notify('lsp-config.handlers: failed to load "cmp_nvim_lsp" module')
-  return M
+local cmp_nvim_lsp = require("functions").notifreq("cmp_nvim_lsp", "lsp-config.handlers", "error")
+if cmp_nvim_lsp ~= nil then
+  M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 end
-
-M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 
 return M

@@ -1,10 +1,4 @@
-return {
-  settings = {
-    json = {
-      schemas = require("schemastore").json.schemas(),
-      validate = { enable = true },
-    },
-  },
+local opts = {
   setup = {
     commands = {
       Format = {
@@ -15,3 +9,25 @@ return {
     },
   },
 }
+
+local schemastore = require("functions").notifreq("schemastore", "lsp-config.custom-lsp-settings.jsonls", "error")
+if schemastore == nil then
+  vim.notify("jsonls LSP: using default settings", "info", {
+    title = "nvim config file: info",
+  })
+
+  return opts
+end
+
+local update_opts = {
+  settings = {
+    json = {
+      schemas = schemastore.json.schemas(),
+      validate = { enable = true },
+    },
+  },
+}
+
+opts = vim.tbl_deep_extend("force", update_opts, opts)
+
+return opts

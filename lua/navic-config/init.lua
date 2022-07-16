@@ -1,6 +1,5 @@
-local status_ok, navic = pcall(require, "nvim-navic")
-if not status_ok then
-  vim.notify('navic-config: failed to load "nvim-navic" module')
+local navic = require("functions").notifreq("nvim-navic", "navic-config", "error")
+if navic == nil then
   return
 end
 

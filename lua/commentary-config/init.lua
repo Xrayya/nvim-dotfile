@@ -1,6 +1,5 @@
-local status_ok, kommentary_config = pcall(require, "kommentary.config")
-if not status_ok then
-  vim.notify('kommentary-config: failed to load "kommentary.config" module')
+local kommentary_config = require("functions").notifreq("kommentary.config", "commentary-config", "error")
+if kommentary_config == nil then
   return
 end
 -- More advance commentary mapping

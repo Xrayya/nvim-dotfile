@@ -1,6 +1,5 @@
-local status_ok, bufferline = pcall(require, "bufferline")
-if not status_ok then
-  vim.notify('bufferline-config: failed load "bufferline" module')
+local bufferline = require("functions").notifreq("bufferline", "bufferline-config", "error")
+if bufferline == nil then
   return
 end
 

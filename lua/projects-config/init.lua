@@ -1,6 +1,5 @@
-local status_ok, project = pcall(require, "project_nvim")
-if not status_ok then
-  vim.notify('projects-config: failed to load "project_nvim" module')
+local project = require("functions").notifreq("project_nvim", "projects-config", "error")
+if project == nil then
   return
 end
 

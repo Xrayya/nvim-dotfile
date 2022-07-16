@@ -187,10 +187,10 @@ return {
 
       -- null-ls register
       local null_ls_list_registered = function(filetype, method)
-        local null_ls_status_ok, null_ls_sources = pcall(require, "null-ls.sources")
-        if not null_ls_status_ok then
-          vim.notify('lualine-config.components.lsp: failed to load "null-ls.sources" module')
-          return
+        local null_ls_sources =
+          require("functions").notifreq("null-ls.sources", "lualine-config.components.lsp", "error")
+        if null_ls_sources == nil then
+          return {}
         end
 
         local available_sources = null_ls_sources.get_available(filetype)
@@ -205,19 +205,16 @@ return {
         return registered_providers[method] or {}
       end
 
-      local null_ls_status_ok, null_ls = pcall(require, "null-ls")
-      if not null_ls_status_ok then
-        vim.notify('lualine-config.components.lsp: failed to load "null-ls" module')
-        return
+      local null_ls = require("functions").notifreq("null-ls", "lualine-config.components.lsp", "error")
+      if null_ls ~= nil then
+        -- add formatter
+        local supported_formatters = null_ls_list_registered(buf_ft, null_ls.methods.FORMATTING)
+        vim.list_extend(buf_client_names, supported_formatters)
+
+        -- add linter
+        local supported_linters = null_ls_list_registered(buf_ft, null_ls.methods.DIAGNOSTICS)
+        vim.list_extend(buf_client_names, supported_linters)
       end
-
-      -- add formatter
-      local supported_formatters = null_ls_list_registered(buf_ft, null_ls.methods.FORMATTING)
-      vim.list_extend(buf_client_names, supported_formatters)
-
-      -- add linter
-      local supported_linters = null_ls_list_registered(buf_ft, null_ls.methods.DIAGNOSTICS)
-      vim.list_extend(buf_client_names, supported_linters)
 
       return table.concat(buf_client_names, ", ")
     end,

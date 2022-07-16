@@ -1,6 +1,5 @@
-local status_ok, toggleterm = pcall(require, "toggleterm")
-if not status_ok then
-  vim.notify('terminal-config: failed to load "toggleterm" module')
+local toggleterm = require("functions").notifreq("toggleterm", "terminal-config", "error")
+if toggleterm == nil then
   return
 end
 

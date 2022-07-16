@@ -1,12 +1,10 @@
-local plenary_status_ok, path = pcall(require, "plenary.path")
-if not plenary_status_ok then
-  vim.notify('session-manager-config: failed to load "plenary.path" module')
+local path = require("functions").notifreq("plenary.path", "session-manager-config", "error")
+if path == nil then
   return
 end
 
-local session_manager_status_ok, manager = pcall(require, "session_manager")
-if not session_manager_status_ok then
-  vim.notify('session-manager-config: failed to load "session_manager" module')
+local manager = require("functions").notifreq("session_manager", "session-manager-config", "error")
+if manager == nil then
   return
 end
 

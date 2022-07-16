@@ -1,6 +1,5 @@
-local status_ok, indent_blankline = pcall(require, "indent_blankline")
-if not status_ok then
-  vim.notify('indentation-config: failed to load "indent_blankline" module')
+local indent_blankline = require("functions").notifreq("indent_blankline", "indentation-config", "error")
+if indent_blankline == nil then
   return
 end
 

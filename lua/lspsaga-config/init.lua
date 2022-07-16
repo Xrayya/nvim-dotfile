@@ -1,6 +1,5 @@
-local status_ok, lspsaga = pcall(require, "lspsaga")
-if not status_ok then
-  vim.notify('lspsaga-config: failed to load "lspsaga" module')
+local lspsaga = require("functions").notifreq("lspsaga", "lspsaga-config", "error")
+if lspsaga == nil then
   return
 end
 

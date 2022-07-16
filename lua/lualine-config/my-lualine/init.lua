@@ -1,10 +1,23 @@
-local status_ok, lualine = pcall(require, "lualine")
-if not status_ok then
-  vim.notify('lualine-config: failed to load "lualine" module')
+local lualine = require("functions").notifreq("lualine", "lualine-config.my-lualine", "error")
+if lualine == nil then
   return
 end
 
-local components = require("lualine-config.my-lualine.components")
+local status_ok, components = pcall(require, "lualine-config.my-lualine.components")
+if not status_ok then
+  vim.notify(
+    'lualine-config.my-lualine: error occured when attempt to call "lualine-config.my-lualine.components"',
+    "error",
+    {
+      title = "nvim config file: error",
+    }
+  )
+  vim.notify("using default settings", "info", {
+    title = "lualine.nvim",
+  })
+
+  return
+end
 
 lualine.setup({
   options = {
