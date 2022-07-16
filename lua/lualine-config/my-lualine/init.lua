@@ -8,9 +8,7 @@ if not status_ok then
   vim.notify(
     'lualine-config.my-lualine: error occured when attempt to call "lualine-config.my-lualine.components"',
     "error",
-    {
-      title = "nvim config file: error",
-    }
+    { title = "nvim config file: error" }
   )
   vim.notify("using default settings", "info", {
     title = "lualine.nvim",
@@ -33,6 +31,7 @@ lualine.setup({
     },
     lualine_b = {},
     lualine_c = {
+      components.filetype,
       components.filename,
       components.filesize,
       components.branch,
@@ -42,7 +41,6 @@ lualine.setup({
       components.diagnostics,
       components.lsp,
       components.treesitter,
-      components.filetype,
       components.spaces,
       components.fileformat,
       components.encoding,

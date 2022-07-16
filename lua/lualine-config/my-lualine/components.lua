@@ -87,7 +87,9 @@ return {
       end
       return { bg = mode[vim.fn.mode()].b.bg, gui = "bold" }
     end,
-    cond = conditions.hide_in_width,
+    cond = function()
+      return vim.fn.winwidth(0) > 100
+    end,
   },
   filename = {
     "filename",
@@ -104,7 +106,7 @@ return {
       readonly = " ",
       unnamed = " ",
     },
-    padding = { left = 2, right = 1 },
+    padding = { left = 0, right = 2 },
   },
   filesize = {
     "filesize",
@@ -115,7 +117,10 @@ return {
       end
       return { fg = mode[vim.fn.mode()].a.bg }
     end,
-    padding = { left = 1, right = 2 },
+    padding = { left = 0, right = 2 },
+    cond = function()
+      return vim.fn.winwidth(0) > 115
+    end,
   },
   diff = {
     "diff",
@@ -127,7 +132,6 @@ return {
       removed = { fg = colors.red },
     },
     padding = { left = 0, right = 2 },
-    cond = conditions.hide_in_width,
     color = function()
       local mode_code = vim.api.nvim_get_mode().mode
       if mode[mode_code] == nil then
@@ -135,12 +139,14 @@ return {
       end
       return { bg = mode[vim.fn.mode()].b.bg }
     end,
+    cond = function()
+      return vim.fn.winwidth(0) > 100
+    end,
   },
   diagnostics = {
     "diagnostics",
     sources = { "nvim_diagnostic" },
     symbols = { error = " ", warn = " ", info = " ", hint = " " },
-    cond = nil,
     color = function()
       local mode_code = vim.api.nvim_get_mode().mode
       if mode[mode_code] == nil then
@@ -151,6 +157,7 @@ return {
     padding = { left = 2, right = 0 },
     update_in_insert = true,
     always_visible = false,
+    cond = nil,
   },
   treesitter = {
     function()
@@ -160,9 +167,11 @@ return {
       end
       return ""
     end,
-    padding = { left = 2, right = 0 },
+    padding = { left = 2, right = 1 },
     color = { fg = colors.green },
-    cond = conditions.hide_in_width,
+    cond = function()
+      return vim.fn.winwidth(0) > 120
+    end,
   },
   lsp = {
     function(msg)
@@ -226,8 +235,8 @@ return {
       end
       return { bg = mode[vim.fn.mode()].b.bg, gui = "bold" }
     end,
-    cond = nil,
     padding = { left = 2, right = 2 },
+    cond = nil,
   },
   spaces = {
     function()
@@ -240,33 +249,48 @@ return {
       end
       return "Spaces: " .. size
     end,
-    cond = conditions.hide_in_width,
     color = {},
+    cond = function()
+      return vim.fn.winwidth(0) > 125
+    end,
   },
   encoding = {
     "o:encoding",
     fmt = string.upper,
     color = {},
-    cond = conditions.hide_in_width,
+    cond = function()
+      return vim.fn.winwidth(0) > 140
+    end,
   },
   fileformat = {
     "fileformat",
-    cond = conditions.hide_in_width,
     color = {},
+    cond = function()
+      return vim.fn.winwidth(0) > 135
+    end,
   },
   filetype = {
     "filetype",
-    cond = conditions.hide_in_width,
+    icon_only = true,
     color = {},
     padding = { left = 2, right = 1 },
+    cond = nil,
   },
   location = {
     "location",
-    cond = conditions.hide_in_width,
     color = {},
     padding = { left = 1, right = 0 },
+    cond = function ()
+      return vim.fn.winwidth(0) > 75
+    end,
   },
-  progress = { "progress", cond = conditions.hide_in_width, color = {} },
+  progress = {
+    "progress",
+    color = {},
+    cond = function ()
+      return vim.fn.winwidth(0) > 70
+    end,
+  },
   scrollbar = {
     function()
       local current_line = vim.fn.line(".")
@@ -278,6 +302,8 @@ return {
     end,
     padding = { left = 1, right = 0 },
     color = { fg = colors.yellow, bg = colors.bg },
-    cond = nil,
+    cond = function ()
+      return vim.fn.winwidth(0) > 70
+    end,
   },
 }
