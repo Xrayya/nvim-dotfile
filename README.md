@@ -18,10 +18,9 @@ My simple Neovim config
 
 - [x] Refactor which-key config
 - [ ] Fix lsp diagnostics signs
-- [ ] Update Readme
 - [ ] Organize files
 - [ ] Organize icons, functions, autocommands, etc (maybe group to util folder)
-- [ ] Add function for lualine width limit
+- [x] Add function for lualine width limit
 - [ ] organize symbols and highlight for cmp, winbar, and symbols outline
 
 - [ ] `[Advanced feature]` make my own lsp rename, code action, and preview config using native lsp and lua function
