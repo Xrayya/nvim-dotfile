@@ -123,6 +123,14 @@ return require("packer").startup(function(use)
         require("navic-config")
       end,
     },
+    {
+      "Xrayya/nvim-gps",
+      requires = "nvim-treesitter/nvim-treesitter",
+      after = "nvim-treesitter",
+      config = function()
+        require("gps-config")
+      end,
+    },
   })
 
   -----------------
@@ -270,10 +278,10 @@ return require("packer").startup(function(use)
       "j-hui/fidget.nvim",
       commit = "46d1110435f1f023c22fa95bb10b3906aecd7bde",
       event = "BufWinEnter",
-      config = function ()
+      config = function()
         require("fidget-config")
-      end
-    }
+      end,
+    },
   })
 
   --------------------

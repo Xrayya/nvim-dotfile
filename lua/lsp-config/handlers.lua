@@ -75,7 +75,7 @@ function M.lsp_highlight_document(client)
 end
 
 function M.attach_navic(client, bufnr)
-  vim.g.navic_silence = false
+  vim.g.navic_silence = true
   local navic = require("functions").notifreq("nvim-navic", "lsp-config.handlers (func attach_navic)", "error")
   if navic == nil then
     return

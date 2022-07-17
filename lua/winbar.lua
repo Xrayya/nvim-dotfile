@@ -15,6 +15,21 @@ M.winbar_filetype_exclude = {
   "toggleterm",
 }
 
+-- M.navic_lsp_exclude = {
+--   "html",
+--   "cssls",
+--   "emmet_ls",
+--   "pylsp",
+-- }
+
+M.navic_filetype_exclude = {
+  "html",
+  "css",
+  "scss",
+  "less",
+  "py",
+}
+
 M.get_filename = function()
   local filename = vim.fn.expand("%:t")
   local extension = vim.fn.expand("%:e")
@@ -36,11 +51,34 @@ M.get_filename = function()
   end
 end
 
+-- local excludes_navic = function()
+--   local buf_clients = vim.lsp.buf_get_clients()
+--   for _, client in ipairs(buf_clients) do
+--     if vim.tbl_contains(M.navic_lsp_exclude, client.name) then
+--       return true
+--     end
+--   end
+--   return false
+-- end
+
+local excludes_navic = function()
+  if vim.tbl_contains(M.navic_filetype_exclude, vim.bo.filetype) then
+    return true
+  end
+  return false
+end
+
 local get_gps = function()
-  local status_gps_ok, gps = pcall(require, "nvim-navic")
-  if not status_gps_ok then
-    require("notification-config.utils").notify_config('winbar: failed to load "nvim-navic" module', "error")
+  local gps = require("functions").notifreq("nvim-navic", "winbar", "error")
+  if gps == nil then
     return ""
+  end
+
+  if excludes_navic() then
+    gps = require("functions").notifreq("nvim-gps", "winbar", "error")
+    if gps == nil then
+      return ""
+    end
   end
 
   local status_ok, gps_location = pcall(gps.get_location, {})
@@ -59,7 +97,7 @@ local get_gps = function()
   end
 end
 
-local excludes = function()
+local excludes_winbar = function()
   if vim.tbl_contains(M.winbar_filetype_exclude, vim.bo.filetype) then
     vim.opt_local.winbar = nil
     return true
@@ -68,7 +106,7 @@ local excludes = function()
 end
 
 M.get_winbar = function()
-  if excludes() then
+  if excludes_winbar() then
     return
   end
   local f = require("functions")
