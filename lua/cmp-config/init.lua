@@ -14,34 +14,7 @@ local feedkey = function(key, mode)
   vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
 
--- stylua: ignore
-local kind_icons = {
-  Text          = "",
-  Method        = "",
-  Function      = "",
-  Constructor   = "",
-  Field         = "",
-  Variable      = "",
-  Class         = "",
-  Interface     = "",
-  Module        = "",
-  Property      = "ﰠ",
-  Unit          = "塞",
-  Value         = "",
-  Enum          = "",
-  Keyword       = "",
-  Snippet       = "",
-  Color         = "",
-  File          = "",
-  Reference     = "",
-  Folder        = "",
-  EnumMember    = "",
-  Constant      = "",
-  Struct        = "פּ",
-  Event         = "",
-  Operator      = "",
-  TypeParameter = "",
-}
+local kind_icons = require("icons").kind
 
 cmp.setup({
   snippet = {

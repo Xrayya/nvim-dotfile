@@ -3,21 +3,22 @@ if lspsaga == nil then
   return
 end
 
+local diagnostic_signs = require("icons").diagnostics
+
 lspsaga.setup({ -- defaults ...
   -- Error,Warn,Info,Hint
-  diagnostic_header_icon = { " ", " ", " ", " " },
-  -- use emoji lightbulb in default
-  code_action_icon = "",
-  code_action_keys = {
-    quit = "<esc>",
-    exec = "<CR>",
+  diagnostic_header_icon = {
+    diagnostic_signs.Error .. " ",
+    diagnostic_signs.Warning .. " ",
+    diagnostic_signs.Hint .. " ",
+    diagnostic_signs.Information .. " ",
   },
   rename_action_keys = {
     quit = "<esc>",
     exec = "<CR>",
   },
   border_style = "single",
-  rename_prompt_prefix = "﬌",
+  rename_prompt_prefix = require("icons").ui.Enter,
 })
 
 local map = vim.keymap.set
