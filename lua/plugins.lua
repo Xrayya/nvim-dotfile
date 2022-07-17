@@ -270,6 +270,9 @@ return require("packer").startup(function(use)
       "j-hui/fidget.nvim",
       commit = "46d1110435f1f023c22fa95bb10b3906aecd7bde",
       event = "BufWinEnter",
+      config = function ()
+        require("fidget-config")
+      end
     }
   })
 
