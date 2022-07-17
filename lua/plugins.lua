@@ -266,6 +266,11 @@ return require("packer").startup(function(use)
       "b0o/SchemaStore.nvim",
       event = "BufWinEnter",
     },
+    {
+      "j-hui/fidget.nvim",
+      commit = "46d1110435f1f023c22fa95bb10b3906aecd7bde",
+      event = "BufWinEnter",
+    }
   })
 
   --------------------
@@ -425,6 +430,7 @@ return require("packer").startup(function(use)
       "nvim-telescope/telescope-fzf-native.nvim",
       commit = "6a33ecefa9b3d9ade654f9a7a6396a00c3758ca6",
       run = "make",
+      event = "BufWinEnter",
     },
   })
 
