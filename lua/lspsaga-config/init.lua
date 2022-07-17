@@ -13,6 +13,11 @@ lspsaga.setup({ -- defaults ...
     diagnostic_signs.Hint .. " ",
     diagnostic_signs.Information .. " ",
   },
+  code_action_icon = "",
+  code_action_keys = {
+    quit = "<esc>",
+    exec = "<CR>",
+  },
   rename_action_keys = {
     quit = "<esc>",
     exec = "<CR>",

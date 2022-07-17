@@ -2,6 +2,18 @@ local M = {}
 
 local diagnostic_signs = require("icons").diagnostics
 
+-- if you put this 9 lines below inside on_attach, then you will lose some html lsp
+-- capabilities (and maybe other lsp too)
+--
+-- if you put it outside on_attach it will show  several two same snippets in jdtls,
+M.capabilities = vim.lsp.protocol.make_client_capabilities()
+M.capabilities.textDocument.completion.completionItem.snippetSupport = true
+
+local cmp_nvim_lsp = require("functions").notifreq("cmp_nvim_lsp", "lsp-config.handlers", "error")
+if cmp_nvim_lsp ~= nil then
+  M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
+end
+
 -- TODO: backfill this to template
 M.setup = function()
   local signs = {
@@ -100,18 +112,6 @@ M.on_attach = function(client, bufnr)
   -- lsp_keymaps(bufnr)
   M.attach_navic(client, bufnr)
   M.lsp_highlight_document(client)
-end
-
--- if you put this 9 lines below inside on_attach, then you will lose some html lsp
--- capabilities (and maybe other lsp too)
---
--- if you put it outside on_attach it will show  several two same snippets in jdtls,
-M.capabilities = vim.lsp.protocol.make_client_capabilities()
-M.capabilities.textDocument.completion.completionItem.snippetSupport = true
-
-local cmp_nvim_lsp = require("functions").notifreq("cmp_nvim_lsp", "lsp-config.handlers", "error")
-if cmp_nvim_lsp ~= nil then
-  M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 end
 
 return M

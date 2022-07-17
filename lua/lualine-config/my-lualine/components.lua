@@ -167,7 +167,7 @@ return {
       end
       return ""
     end,
-    padding = { left = 2, right = 1 },
+    padding = { left = 2, right = 0 },
     color = { fg = colors.green },
     cond = function()
       return vim.fn.winwidth(0) > 120
@@ -253,6 +253,7 @@ return {
     cond = function()
       return vim.fn.winwidth(0) > 125
     end,
+    padding = { left = 2, right = 1 },
   },
   encoding = {
     "o:encoding",
