@@ -397,7 +397,7 @@ return require("packer").startup(function(use)
         { "nvim-lua/popup.nvim" },
       },
       -- cmd = "Telescope",
-      after = { "toggletasks.nvim", "project.nvim" },
+      after = { "toggletasks.nvim", "project.nvim", "telescope-fzf-native.nvim" },
       config = function()
         require("telescope-config")
       end,
@@ -417,16 +417,13 @@ return require("packer").startup(function(use)
     {
       "nvim-telescope/telescope-frecency.nvim",
       disable = true,
-      after = "telescope.nvim",
       requires = { "tami5/sqlite.lua" },
     },
 
     -- FZF Native
     {
       "nvim-telescope/telescope-fzf-native.nvim",
-      disable = true,
-      after = "telescope.nvim",
-      requires = { "nvim-telescope/telescope.nvim" },
+      commit = "6a33ecefa9b3d9ade654f9a7a6396a00c3758ca6",
       run = "make",
     },
   })
