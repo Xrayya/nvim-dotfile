@@ -1,5 +1,5 @@
 return {
-  -- cmd = {'' .. vim.fn.stdpath('data') .. '/lsp_servers/sumneko_lua/extension/server/bin/Windows/lua-language-server'};
+  -- cmd = {'' .. vim.fn.stdpath('data') .. '/lsp_servers/sumneko_lua/extension/server/bin/lua-language-server.exe'};
   settings = {
     Lua = {
       diagnostics = {
