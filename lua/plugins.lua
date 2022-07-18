@@ -282,6 +282,17 @@ return require("packer").startup(function(use)
         require("fidget-config")
       end,
     },
+
+    -- Renamer
+    {
+      "filipdutescu/renamer.nvim",
+      branch = "master",
+      commit = "4a4707992a79f481f4882bab9b3823ac6455c942",
+      requires = { { "nvim-lua/plenary.nvim" } },
+      config = {
+        require("renamer-config"),
+      },
+    },
   })
 
   --------------------
