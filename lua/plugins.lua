@@ -239,12 +239,27 @@ return require("packer").startup(function(use)
       disable = true,
     },
 
-    -- LSP Saga
+    -- Renamer
     {
-      "tami5/lspsaga.nvim",
+      "filipdutescu/renamer.nvim",
+      branch = "master",
+      commit = "4a4707992a79f481f4882bab9b3823ac6455c942",
+      requires = { { "nvim-lua/plenary.nvim" } },
       after = "nvim-lspconfig",
       config = function()
-        require("lspsaga-config")
+        require("renamer-config")
+      end,
+    },
+
+    {
+      -- "rmagatti/goto-preview",
+      "Xrayya/goto-preview",
+      branch = "add-type-definiton-preview",
+      -- commit = "5109ca495cb2cc05edd0d5cb3bb5af1bb5fbd263",
+      after = {"nvim-lspconfig", "telescope.nvim"},
+      requires = { "nvim-telescope/telescope.nvim" },
+      config = function()
+        require("goto-preview-config")
       end,
     },
 
@@ -281,17 +296,6 @@ return require("packer").startup(function(use)
       config = function()
         require("fidget-config")
       end,
-    },
-
-    -- Renamer
-    {
-      "filipdutescu/renamer.nvim",
-      branch = "master",
-      commit = "4a4707992a79f481f4882bab9b3823ac6455c942",
-      requires = { { "nvim-lua/plenary.nvim" } },
-      config = {
-        require("renamer-config"),
-      },
     },
   })
 
