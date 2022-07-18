@@ -256,7 +256,7 @@ return require("packer").startup(function(use)
       "Xrayya/goto-preview",
       branch = "add-type-definiton-preview",
       -- commit = "5109ca495cb2cc05edd0d5cb3bb5af1bb5fbd263",
-      after = {"nvim-lspconfig", "telescope.nvim"},
+      after = { "nvim-lspconfig", "telescope.nvim" },
       requires = { "nvim-telescope/telescope.nvim" },
       config = function()
         require("goto-preview-config")
@@ -428,7 +428,7 @@ return require("packer").startup(function(use)
         { "nvim-lua/popup.nvim" },
       },
       -- cmd = "Telescope",
-      after = { "toggletasks.nvim", "project.nvim", "telescope-fzf-native.nvim" },
+      after = { "toggletasks.nvim", "project.nvim", "telescope-fzf-native.nvim", "telescope-ui-select.nvim" },
       config = function()
         require("telescope-config")
       end,
@@ -456,6 +456,13 @@ return require("packer").startup(function(use)
       "nvim-telescope/telescope-fzf-native.nvim",
       commit = "6a33ecefa9b3d9ade654f9a7a6396a00c3758ca6",
       run = "make",
+      event = "BufWinEnter",
+    },
+
+    -- UI select handler
+    {
+      "nvim-telescope/telescope-ui-select.nvim",
+      commit = "62ea5e58c7bbe191297b983a9e7e89420f581369",
       event = "BufWinEnter",
     },
   })
