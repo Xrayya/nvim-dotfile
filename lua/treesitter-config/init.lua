@@ -4,6 +4,7 @@ if treesitter == nil then
 end
 
 require("nvim-treesitter.install").compilers = { "gcc", "clang" }
+
 treesitter.setup({
   ensure_installed = {
     "html",
@@ -38,3 +39,5 @@ treesitter.setup({
     enable = true,
   },
 })
+
+-- require("treesitter-config.custom-highlight")
