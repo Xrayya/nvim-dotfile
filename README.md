@@ -15,5 +15,3 @@ My simple Neovim config
 - see `:h nvim_open_win()` for floating window
 
 ## TODO
-
-- [ ] `[Advanced feature]` make my own lsp rename, code action, and preview config using native lsp, telescope, and lua function
