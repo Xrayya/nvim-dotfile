@@ -161,7 +161,7 @@ return require("packer").startup(function(use)
   })
 
   -------------------------------
-  -- Statusline and bufferline --
+  -- Statusline and buffer manager --
   -------------------------------
 
   use({
@@ -180,6 +180,7 @@ return require("packer").startup(function(use)
     },
     {
       "akinsho/bufferline.nvim",
+      disable = true,
       commit = "68839d62785edfb4ff7a7b3c1e9f4b64d55749e8",
       requires = "kyazdani42/nvim-web-devicons",
       event = "BufWinEnter",
@@ -194,6 +195,15 @@ return require("packer").startup(function(use)
       event = "BufWinEnter",
       config = function()
         require("jabs-config")
+      end,
+    },
+    {
+      "ghillb/cybu.nvim",
+      branch = "main",
+      requires = { "kyazdani42/nvim-web-devicons" },
+      event = "BufWinEnter",
+      config = function()
+        require("cybu-config")
       end,
     },
   })
@@ -540,7 +550,7 @@ return require("packer").startup(function(use)
     end,
   })
 
-  ---------------
+  ------------------
   -- Notification --
   ------------------
 
@@ -567,9 +577,9 @@ return require("packer").startup(function(use)
     end,
   })
 
-  ---------------
+  ---------------------
   -- Color and stuff --
-  ---------------
+  ---------------------
 
   use({
     {

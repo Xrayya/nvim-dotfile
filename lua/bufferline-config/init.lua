@@ -32,8 +32,8 @@ bufferline.setup({
 local map = vim.api.nvim_set_keymap
 local opts = { noremap = true, silent = true }
 
-map("n", "<M-l>", ":BufferLineCycleNext<CR>", opts)
-map("n", "<M-h>", ":BufferLineCyclePrev<CR>", opts)
+-- map("n", "<M-l>", ":BufferLineCycleNext<CR>", opts)
+-- map("n", "<M-h>", ":BufferLineCyclePrev<CR>", opts)
 map("n", "<M-x>", ":bdelete<CR>", opts)
 
 map("n", "<M->>", ":BufferLineMoveNext<CR>", opts)

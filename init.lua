@@ -1,7 +1,7 @@
 -- Setup settings
+require("keymappings")
 require("plugins")
 require("settings")
-require("keymappings")
 require("autocommands")
 
 vim.cmd("source ~/AppData/Local/nvim/vim-config/themes.vim")
