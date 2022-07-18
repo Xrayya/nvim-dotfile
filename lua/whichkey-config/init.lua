@@ -53,7 +53,7 @@ wk.setup({
     height = { min = 4, max = 20 }, -- min and max height of the columns
     width = { min = 20, max = 50 }, -- min and max width of the columns
     spacing = 3, -- spacing between columns
-    align = "left", -- align columns left, center or right
+    align = "center", -- align columns left, center or right
   },
   ignore_missing = false, -- enable this to hide mappings for which you didn't specify a label
   hidden = { "<silent>", "<cmd>", "<Cmd>", "<Plug>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
@@ -113,6 +113,7 @@ local n_mappings = {
   e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   f = {
     name = "Find",
+    b = { "<cmd>Telescope buffers<cr>", "Opened buffer" },
     B = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     c = { "<cmd>lua require('telescope.builtin').colorscheme({enable_preview = true})<cr>", "Colorscheme" },
     C = { "<cmd>Telescope commands<cr>", "Commands" },
@@ -177,7 +178,7 @@ local n_mappings = {
   p = {
     name = "Plugin action",
     c = { "<cmd>PackerCompile<cr>", "Compile" },
-    e = { "<cmd>e " .. vim.fn.stdpath("config") .. "/lua/plugins.lua<cr>", "Edit (configure) plugins" },
+    e = { "<cmd>e " .. vim.fn.stdpath("config") .. "/lua/plugins.lua<cr>", "Edit plugins" },
     C = { "<cmd>PackerClean<cr>", "Clean" },
     i = { "<cmd>PackerInstall<cr>", "Install" },
     s = { "<cmd>PackerSync<cr>", "Sync" },
