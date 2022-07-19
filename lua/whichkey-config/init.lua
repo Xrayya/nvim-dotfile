@@ -119,6 +119,7 @@ local n_mappings = {
     C = { "<cmd>Telescope commands<cr>", "Commands" },
     f = { "<cmd>Telescope find_files<cr>", "File" },
     g = { "<cmd>Telescope live_grep<cr>", "Live grep" },
+    h = { "<cmd>Telescope help_tags<cr>", "Browse :help" },
     n = { "<cmd>enew<cr>", "New File" },
     p = { "<cmd>Telescope projects<cr>", "Open project manajer" },
     r = { "<cmd>Telescope oldfiles<cr>", "Recent file" },
