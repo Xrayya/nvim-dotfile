@@ -1,29 +1,39 @@
-local lualine = require("functions").notifreq("lualine", "lualine-config.my-lualine", "error")
+local lualine = require("functions").notifreq("lualine", "lualine-config.custom-lualine.my-lualine", "error")
 if lualine == nil then
   return
 end
 
-local status_ok, components = pcall(require, "lualine-config.my-lualine.components")
+local status_ok, components = pcall(require, "lualine-config.custom-lualine.my-lualine.components")
 if not status_ok then
   vim.notify(
-    'lualine-config.my-lualine: error occured when attempt to call "lualine-config.my-lualine.components"',
+    'lualine-config.custom-lualine.my-lualine: error occured when attempt to call "lualine-config.my-lualine.components"',
     "error",
     { title = "nvim config file: error" }
   )
-  vim.notify("using default settings", "info", {
-    title = "lualine.nvim",
+  vim.notify("lualine-cofig: use default lualine style", "info", {
+    title = "nvim config file: info",
   })
 
   return
 end
 
-lualine.setup({
+return {
   options = {
     icons_enabled = true,
     theme = "auto",
     component_separators = { left = "", right = "" },
     section_separators = { left = "", right = "" },
-    disabled_filetypes = { "NvimTree", "alpha" },
+    disabled_filetypes = {
+      "NvimTree",
+      "alpha",
+      "TelescopePrompt",
+      "JABSwindow",
+      "lspinfo",
+      "lsp-installer",
+      "null-ls-info",
+      "packer",
+      "Trouble",
+    },
   },
   sections = {
     lualine_a = {
@@ -50,4 +60,4 @@ lualine.setup({
     lualine_y = {},
     lualine_z = {},
   },
-})
+}

@@ -171,11 +171,7 @@ return require("packer").startup(function(use)
       requires = { "kyazdani42/nvim-web-devicons", opt = true },
       event = "BufWinEnter",
       config = function()
-        require("lualine").setup({
-          extensions = { "symbols-outline", "toggleterm" },
-          disabled_filetypes = { "NvimTree", "alpha" },
-        })
-        require("lualine-config.my-lualine")
+        require("lualine-config")
       end,
     },
     {

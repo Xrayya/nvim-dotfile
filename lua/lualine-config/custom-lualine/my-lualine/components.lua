@@ -1,5 +1,5 @@
-local conditions = require("lualine-config.my-lualine.condition")
-local colors = require("lualine-config.my-lualine.colors")
+local conditions = require("lualine-config.custom-lualine.my-lualine.condition")
+local colors = require("lualine-config.custom-lualine.my-lualine.colors")
 
 local function diff_source()
   local gitsigns = vim.b.gitsigns_status_dict
@@ -88,7 +88,7 @@ return {
       return { bg = mode[vim.fn.mode()].b.bg, gui = "bold" }
     end,
     cond = function()
-      return vim.fn.winwidth(0) > 100
+      return vim.opt.columns._value > 100
     end,
   },
   filename = {
@@ -119,7 +119,7 @@ return {
     end,
     padding = { left = 0, right = 2 },
     cond = function()
-      return vim.fn.winwidth(0) > 115
+      return vim.opt.columns._value > 115
     end,
   },
   diff = {
@@ -140,7 +140,7 @@ return {
       return { bg = mode[vim.fn.mode()].b.bg }
     end,
     cond = function()
-      return vim.fn.winwidth(0) > 100
+      return vim.opt.columns._value > 100
     end,
   },
   diagnostics = {
@@ -167,10 +167,10 @@ return {
       end
       return ""
     end,
-    padding = { left = 2, right = 0 },
+    padding = { left = 2, right = 1 },
     color = { fg = colors.green },
     cond = function()
-      return vim.fn.winwidth(0) > 120
+      return vim.opt.columns._value > 120
     end,
   },
   lsp = {
@@ -251,23 +251,23 @@ return {
     end,
     color = {},
     cond = function()
-      return vim.fn.winwidth(0) > 125
+      return vim.opt.columns._value > 125
     end,
-    padding = { left = 2, right = 1 },
+    padding = { left = 1, right = 1 },
   },
   encoding = {
     "o:encoding",
     fmt = string.upper,
     color = {},
     cond = function()
-      return vim.fn.winwidth(0) > 140
+      return vim.opt.columns._value > 140
     end,
   },
   fileformat = {
     "fileformat",
     color = {},
     cond = function()
-      return vim.fn.winwidth(0) > 135
+      return vim.opt.columns._value > 135
     end,
   },
   filetype = {
@@ -282,14 +282,14 @@ return {
     color = {},
     padding = { left = 1, right = 0 },
     cond = function ()
-      return vim.fn.winwidth(0) > 75
+      return vim.opt.columns._value > 75
     end,
   },
   progress = {
     "progress",
     color = {},
-    cond = function ()
-      return vim.fn.winwidth(0) > 70
+    cond = function()
+      return vim.opt.columns._value > 70
     end,
   },
   scrollbar = {
@@ -303,8 +303,8 @@ return {
     end,
     padding = { left = 1, right = 0 },
     color = { fg = colors.yellow, bg = colors.bg },
-    cond = function ()
-      return vim.fn.winwidth(0) > 70
+    cond = function()
+      return vim.opt.columns._value > 70
     end,
   },
 }
