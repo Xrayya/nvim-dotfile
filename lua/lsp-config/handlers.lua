@@ -112,6 +112,7 @@ M.on_attach = function(client, bufnr)
   -- lsp_keymaps(bufnr)
   M.attach_navic(client, bufnr)
   M.lsp_highlight_document(client)
+  vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format()' ]])
 end
 
 return M
