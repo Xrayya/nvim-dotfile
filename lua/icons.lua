@@ -114,9 +114,9 @@ return {
   diagnostics = {
     Error       = "",
     Warning     = "",
-    Information = "",
+    Information = "",
     Question    = "",
-    Hint        = "",
+    Hint        = "",
   },
   -- stylua: ignore
   misc = {
