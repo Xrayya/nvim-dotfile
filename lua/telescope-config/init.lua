@@ -3,9 +3,37 @@ if telescope == nil then
   return
 end
 
+local themes = require("telescope.themes")
+
 local ui = require("icons").ui
 
 telescope.setup({
+  pickers = {
+    lsp_document_symbols = {
+      theme = "ivy",
+      layout_config = {
+        height = 0.4
+      },
+    },
+    lsp_workspace_symbols = {
+      theme = "ivy",
+      layout_config = {
+        height = 0.4
+      },
+    },
+    lsp_definitions = {
+      theme = "ivy",
+      layout_config = {
+        height = 0.4
+      },
+    },
+    lsp_type_definitions = {
+      theme = "ivy",
+      layout_config = {
+        height = 0.4
+      },
+    },
+  },
   defaults = {
     prompt_prefix = ui.Telescope .. " ",
     selection_caret = ui.GoTo .. " ",
@@ -21,7 +49,7 @@ telescope.setup({
       -- the default case_mode is "smart_case"
     },
     ["ui-select"] = {
-      require("telescope.themes").get_dropdown({
+      themes.get_dropdown({
         -- even more opts
       }),
     },
