@@ -132,4 +132,19 @@ function M.notifreq(module, filename, level)
   return m
 end
 
+-- Global function
+
+function P(item)
+  print(vim.inspect(item))
+end
+
+RELOAD = function (...)
+  return require("plenary.reload").reload_module(...)
+end
+
+function R(item)
+  RELOAD(item)
+  return require(item)
+end
+
 return M
