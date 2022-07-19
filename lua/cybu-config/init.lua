@@ -55,5 +55,5 @@ cybu.setup({
   --                                   -- used in excluded filetypes
 })
 
-vim.keymap.set("n", "<M-k>", "<Plug>(CybuPrev)")
-vim.keymap.set("n", "<M-j>", "<Plug>(CybuNext)")
+vim.keymap.set("n", "<M-S-k>", "<Plug>(CybuPrev)")
+vim.keymap.set("n", "<M-S-j>", "<Plug>(CybuNext)")

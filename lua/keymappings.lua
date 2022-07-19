@@ -49,12 +49,12 @@ map("v", "<", "<gv", opts)
 map("v", ">", ">gv", opts)
 
 -- Move selecter line /block of text in visual mode
-map("x", "<S-j>", ":move '>+1<CR>gv-gv", opts)
-map("x", "<S-k>", ":move '<-2<CR>gv-gv", opts)
+map("x", "<M-j>", ":move '>+1<CR>gv-gv", opts)
+map("x", "<M-k>", ":move '<-2<CR>gv-gv", opts)
 map("i", "<C-j>", "<esc>:move .+1<CR>==i", opts)
 map("i", "<C-k>", "<esc>:move .-2<CR>==i", opts)
-map("n", "<S-j>", ":move .+1<CR>==", opts)
-map("n", "<S-k>", ":move .-2<CR>==", opts)
+map("n", "<M-j>", ":move .+1<CR>==", opts)
+map("n", "<M-k>", ":move .-2<CR>==", opts)
 
 -- Undo break point
 map("i", ".", ".<C-g>u", opts)
