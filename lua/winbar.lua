@@ -128,6 +128,8 @@ M.get_winbar = function()
     else
       value = value .. mod
     end
+
+    -- value = " " .. mod .. " |" .. value
   end
 
   local num_tabs = #vim.api.nvim_list_tabpages()
