@@ -278,9 +278,6 @@ return require("packer").startup(function(use)
       "mfussenegger/nvim-jdtls",
       commit = "703268d5b8479de4e0c27af93b203d56c1b53d2b",
       ft = "java",
-      config = function ()
-        require("jdtls-config")
-      end
     },
 
     -- Illuminate
