@@ -15,3 +15,9 @@ My simple Neovim config
 - see `:h nvim_open_win()` for floating window
 
 ## TODO
+
+- [ ] try dap.nvim
+- [ ] try harpoon
+- [ ] try vim-bookmark
+- [ ] add keybinding for hop to work with `d`, `v`, `c`, `y`
+
