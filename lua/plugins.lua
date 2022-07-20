@@ -11,7 +11,7 @@ if fn.empty(fn.glob(install_path)) > 0 then
     "https://github.com/wbthomason/packer.nvim",
     install_path,
   })
-  print("Installing packer close and reopen Neovim...")
+  print("Installing packer. After plugins installed, close and reopen Neovim...")
   vim.cmd([[packadd packer.nvim]])
 end
 
@@ -274,7 +274,14 @@ return require("packer").startup(function(use)
     },
 
     -- Java LSP
-    { "mfussenegger/nvim-jdtls" },
+    {
+      "mfussenegger/nvim-jdtls",
+      commit = "703268d5b8479de4e0c27af93b203d56c1b53d2b",
+      ft = "java",
+      config = function ()
+        require("jdtls-config")
+      end
+    },
 
     -- Illuminate
     {
