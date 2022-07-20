@@ -4,6 +4,9 @@ require("notification-config")
 vim.cmd([[packadd nvim-navic]])
 require("navic-config")
 
+-- vim.cmd([[packadd fidget.nvim]])
+-- require("fidget-config")
+
 vim.cmd([[packadd cmp-nvim-lsp]])
 
 vim.cmd([[packadd nvim-jdtls]])
@@ -89,6 +92,43 @@ if JAVA_DAP_ACTIVE then
   -- )
   -- vim.list_extend(bundles, vim.split(vim.fn.glob(home .. "/.config/nvim/vscode-java-test/server/*.jar"), "\n"))
 end
+
+-- for fidget.nvim
+-- local function progress_report(_, result, ctx)
+--   local lsp = vim.lsp
+--   local info = {
+--     client_id = ctx.client_id,
+--   }
+
+--   local kind = "report"
+--   if result.complete then
+--     kind = "end"
+--   elseif result.workDone == 0 then
+--     kind = "begin"
+--   elseif result.workDone > 0 and result.workDone < result.totalWork then
+--     kind = "report"
+--   else
+--     kind = "end"
+--   end
+
+--   local percentage = 0
+--   if result.totalWork > 0 and result.workDone >= 0 then
+--     percentage = result.workDone / result.totalWork * 100
+--   end
+
+--   local msg = {
+--     token = result.id,
+--     value = {
+--       kind = kind,
+--       percentage = percentage,
+--       title = result.subTask,
+--       message = result.subTask,
+--     },
+--   }
+--   -- print(vim.inspect(result))
+
+--   lsp.handlers["$/progress"](nil, msg, info)
+-- end
 
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
@@ -237,6 +277,9 @@ local config = {
     -- bundles = {},
     bundles = bundles,
   },
+  -- handlers = {
+  --   ["language/progressReport"] = progress_report,
+  -- },
 }
 
 -- NOTE: issue with cmd height
