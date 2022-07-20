@@ -20,6 +20,7 @@ treesitter.setup({
     "java",
     "cpp",
     "c",
+    "comment", -- for comment highlighting like @params, @return, etc
   },
   highlight = {
     enable = true,
@@ -39,5 +40,3 @@ treesitter.setup({
     enable = true,
   },
 })
-
--- require("treesitter-config.custom-highlight")
