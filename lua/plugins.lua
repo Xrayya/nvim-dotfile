@@ -66,6 +66,10 @@ return require("packer").startup(function(use)
     { "rebelot/kanagawa.nvim" },
     { "shaunsingh/moonlight.nvim" },
     { "Xrayya/tokyonight.nvim" },
+    {
+      "LunarVim/Colorschemes",
+      as = "lvim-colorschemes"
+    },
   })
 
   ----------------------
@@ -258,10 +262,10 @@ return require("packer").startup(function(use)
     },
 
     {
-      -- "rmagatti/goto-preview",
-      "Xrayya/goto-preview",
-      branch = "add-type-definiton-preview",
-      -- commit = "5109ca495cb2cc05edd0d5cb3bb5af1bb5fbd263",
+      "rmagatti/goto-preview",
+      -- "Xrayya/goto-preview",
+      -- branch = "add-type-definiton-preview",
+      commit = "a5af27cff485b325f0ef2dcdf55ae51faed05cba",
       after = { "nvim-lspconfig", "telescope.nvim" },
       requires = { "nvim-telescope/telescope.nvim" },
       config = function()
