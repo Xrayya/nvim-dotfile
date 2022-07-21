@@ -34,7 +34,7 @@ M.on_attach = function(client, bufnr)
   end
 
 if client.name == "jdt.ls" then
-    vim.lsp.codelens.refresh()
+    -- vim.lsp.codelens.refresh()
     if JAVA_DAP_ACTIVE then
       require("jdtls").setup_dap { hotcodereplace = "auto" }
       -- require("jdtls.dap").setup_dap_main_class_configs()
