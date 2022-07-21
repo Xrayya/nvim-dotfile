@@ -110,6 +110,20 @@ local n_mappings = {
     },
   },
   C = { "<cmd>PickColor<cr>", "Pick Color" },
+  d = {
+    name = "Debug",
+    b = { "<cmd>DapToggleBreakpoint<cr>", "Toggle breakpoint" },
+    c = { "<cmd>DapContinue<cr>", "Run/Continue debug session" },
+    e = { '<cmd>lua require("dapui").eval()<cr>', "Evaluate expression" },
+    f = { '<cmd>lua require("dapui").float_element()<cr>', "Open floating window" },
+    i = { "<cmd>DapStepInto<cr>", "Step into" },
+    l = { "<cmd>DapShowLog<cr>", "Show log" },
+    o = { "<cmd>DapStepOver<cr>", "Step over" },
+    O = { "<cmd>DapStepOut<cr>", "Step out" },
+    r = { "<cmd>DapToggleRepl<cr>", "Toggle repl" },
+    t = { "<cmd>DapTerminate<cr>", "Terminate" },
+    u = { '<cmd>lua require("dapui").toggle()<cr>', "UI open/close toggele" },
+  },
   e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   f = {
     name = "Find",
@@ -191,16 +205,6 @@ local n_mappings = {
     s = { "<cmd>PackerSync<cr>", "Sync" },
     S = { "<cmd>PackerStatus<cr>", "Status" },
   },
-  q = {
-    name = "Quit",
-    n = { "", "Are you sure (no)" },
-    y = { "<cmd>q<cr>", "Are you sure? (yes)" },
-  },
-  Q = {
-    name = "Quit (force)",
-    n = { "", "Are you sure (no)" },
-    y = { "<cmd>q!<cr>", "Are you sure? (yes)" },
-  },
   s = { "<cmd>SymbolsOutline<cr>", "Open Symbols Outline" },
   t = {
     name = "Terminal",
@@ -230,7 +234,6 @@ local n_mappings = {
     },
   },
   w = { ":w<cr>", "Write (save)" },
-  -- W = { ":w<cr><cmd>FormatWrite<cr>", "Write and format" },
   W = { "<cmd>lua vim.lsp.buf.format()<CR><cmd>write<cr>", "Write and format" },
 }
 

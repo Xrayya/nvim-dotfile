@@ -513,7 +513,7 @@ return require("packer").startup(function(use)
   use({
     "folke/which-key.nvim",
     commit = "bd4411a2ed4dd8bb69c125e339d837028a6eea71",
-    keys = { "<Leader>", "]", "[", "z" },
+    event = "BufWinEnter",
     config = function()
       require("whichkey-config")
     end,
