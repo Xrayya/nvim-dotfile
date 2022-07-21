@@ -16,7 +16,7 @@ My simple Neovim config
 
 ## TODO
 
-- [ ] try dap.nvim
+- [x] try dap.nvim
 - [ ] try harpoon
 - [ ] try vim-bookmark
 - [ ] add keybinding for hop to work with `d`, `v`, `c`, `y`
