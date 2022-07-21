@@ -13,14 +13,21 @@ local function diff_source()
 end
 
 local theme = require("lualine.themes." .. vim.g.colors_name)
+-- stylua: ignore start
 local mode = {
-  n = theme.normal,
-  i = theme.insert,
-  c = theme.command,
-  v = theme.visual,
-  V = theme.visual,
-  [""] = theme.visual,
-  R = theme.replace,
+  n       = theme.normal,
+  i       = theme.insert,
+  c       = theme.command,
+  v       = theme.visual,
+  V       = theme.visual,
+  [""]   = theme.visual,
+  ["s"]   = theme.visual,
+  ["S"]   = theme.visual,
+  ["\19"] = theme.visual,
+  R       = theme.replace,
+  ["Rv"]  = theme.replace,
+  ["Rvc"] = theme.replace,
+  ["Rvx"] = theme.replace,
 }
 
 return {
@@ -52,9 +59,9 @@ return {
         ['R']     = '﯒|REP',
         ['Rc']    = '﯒|REP',
         ['Rx']    = '﯒|REP',
-        ['Rv']    = '﯒|R&V',
-        ['Rvc']   = '﯒|R&V',
-        ['Rvx']   = '﯒|R&V',
+        ['Rv']    = '﯒|V-R',
+        ['Rvc']   = '﯒|V-R',
+        ['Rvx']   = '﯒|V-R',
         ['c']     = 'ﲵ|CMD',
         ['C']     = 'ﲵ|CMD',
         ['cv']    = 'EX',
@@ -65,7 +72,7 @@ return {
         ['!']     = 'SHELL',
         ['t']     = '|TERMINAL',
       }
-      -- stylua: ignore start
+      -- stylua: ignore end
       local mode_code = vim.api.nvim_get_mode().mode
       if alias[mode_code] == nil then
         return mode_code
@@ -197,7 +204,7 @@ return {
       -- null-ls register
       local null_ls_list_registered = function(filetype, method)
         local null_ls_sources =
-          require("functions").notifreq("null-ls.sources", "lualine-config.components.lsp", "error")
+        require("functions").notifreq("null-ls.sources", "lualine-config.components.lsp", "error")
         if null_ls_sources == nil then
           return {}
         end
@@ -281,7 +288,7 @@ return {
     "location",
     color = {},
     padding = { left = 1, right = 0 },
-    cond = function ()
+    cond = function()
       return vim.opt.columns._value > 75
     end,
   },
