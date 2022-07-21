@@ -491,17 +491,31 @@ return require("packer").startup(function(use)
   -- Debug Adapter Protocol client and stuff --
   ---------------------------------------------
   use({
+
+    -- DAP client
     {
       "mfussenegger/nvim-dap",
       commit = "f9cac91213930a5e8e32e1cca063d973b9df25e5",
       event = "BufWinEnter",
     },
+
+    -- UI views vscode-like for nvim-dap
     {
       "rcarriga/nvim-dap-ui",
       tag = "v1.1.0",
       after = "nvim-dap",
       config = function()
         require("dap-config")
+      end,
+    },
+
+    -- Show virtual text for nvim-dap
+    {
+      "theHamsta/nvim-dap-virtual-text",
+      commit = "a36982259216afd710f55bcdc220477c74b5bc35",
+      after = "nvim-dap",
+      config = function()
+        require("dap-virtual-text-config")
       end,
     },
   })
