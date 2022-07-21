@@ -68,7 +68,7 @@ return require("packer").startup(function(use)
     { "Xrayya/tokyonight.nvim" },
     {
       "LunarVim/Colorschemes",
-      as = "lvim-colorschemes"
+      as = "lvim-colorschemes",
     },
   })
 
@@ -478,6 +478,25 @@ return require("packer").startup(function(use)
       "nvim-telescope/telescope-ui-select.nvim",
       commit = "62ea5e58c7bbe191297b983a9e7e89420f581369",
       event = "BufWinEnter",
+    },
+  })
+
+  ---------------------------------------------
+  -- Debug Adapter Protocol client and stuff --
+  ---------------------------------------------
+  use({
+    {
+      "mfussenegger/nvim-dap",
+      commit = "f9cac91213930a5e8e32e1cca063d973b9df25e5",
+      event = "BufWinEnter",
+    },
+    {
+      "rcarriga/nvim-dap-ui",
+      tag = "v1.1.0",
+      after = "nvim-dap",
+      config = function()
+        require("dap-config")
+      end,
     },
   })
 
