@@ -359,7 +359,7 @@ return require("packer").startup(function(use)
     },
     {
       "rcarriga/cmp-dap",
-      disable = true,
+      disable = false,
       commit = "e21f0e5d188ee428f8acab1af21839af391607a4",
       after = "nvim-cmp",
     },
