@@ -42,7 +42,7 @@ dapui.setup({
     },
     {
       elements = {
-        "repl",
+        -- "repl",
         "console",
       },
       size = 0.25, -- 25% of total lines
@@ -68,12 +68,12 @@ vim.fn.sign_define("DapBreakpoint", { text = icons.ui.Bug, texthl = "DiagnosticS
 if dap ~= nil then
   -- set external terminal
   -- dap.defaults.fallback.external_terminal = {
-  --   command = "wt",
-  --   args = { "-e" },
+  --   command = "cmd.exe",
+  --   args = { '' },
   -- }
 
   -- option to force debugger to use external terminal
-  -- dap.defaults.fallback.force_external_terminal = false
+  -- dap.defaults.fallback.force_external_terminal = true
 
   -- launch or close dapui when dap is invoked
   dap.listeners.after.event_initialized["dapui_config"] = function()
