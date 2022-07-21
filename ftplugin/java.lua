@@ -44,7 +44,7 @@ local workspace_dir = WORKSPACE_PATH .. project_name
 
 -- TODO: Testing
 
-JAVA_DAP_ACTIVE = false
+JAVA_DAP_ACTIVE = true
 
 local bundles = {}
 
@@ -289,7 +289,7 @@ local config = {
 -- or attaches to an existing client & server depending on the `root_dir`.
 require("jdtls").start_or_attach(config)
 
--- require('jdtls').setup_dap()
+require('jdtls').setup_dap()
 
 vim.cmd(
   "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)"

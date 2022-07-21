@@ -32,6 +32,14 @@ M.on_attach = function(client, bufnr)
   if cmp_nvim_lsp ~= nil then
     M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
   end
+
+if client.name == "jdt.ls" then
+    vim.lsp.codelens.refresh()
+    if JAVA_DAP_ACTIVE then
+      require("jdtls").setup_dap { hotcodereplace = "auto" }
+      -- require("jdtls.dap").setup_dap_main_class_configs()
+    end
+  end
 end
 
 return M
