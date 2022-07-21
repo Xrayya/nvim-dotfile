@@ -107,6 +107,13 @@ cmp.setup({
   },
 })
 
+-- completion for dap-repl and dapui watches
+-- cmp.setup.filetype({ "dap-repl", "dapui_watches" }, {
+--   sources = {
+--     { name = "dap" },
+--   },
+-- })
+
 -- -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 -- cmp.setup.cmdline('/', {
 --   sources = cmp.config.sources({
