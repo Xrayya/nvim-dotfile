@@ -10,7 +10,7 @@ require("navic-config")
 vim.cmd([[packadd cmp-nvim-lsp]])
 
 vim.cmd([[packadd nvim-jdtls]])
-local nvim_jdtls = require("functions").notifreq("jdtls", "jdtls-config", "error")
+local nvim_jdtls = require("functions").notifreq("jdtls", "ftplugin/java", "error")
 if nvim_jdtls == nil then
   return
 end
@@ -52,7 +52,7 @@ if JAVA_DAP_ACTIVE then
   -- bootstraping java-debug
   -- local install_path = vim.fn.stdpath("data") .. "/dapinstall/java/java-debug"
   -- if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  --   vim.notify("jdtls-config: installing java-debug, please wait...", "info", {title= "nvim config file: info"})
+  --   vim.notify("ftplugin/java: installing java-debug, please wait...", "info", {title= "nvim config file: info"})
 
   --   local install_commad = "./mvnw clean install"
   --   if CONFIG == "windows" then
@@ -187,39 +187,65 @@ local config = {
   -- for a list of options
   settings = {
     java = {
-      jdt = {
-        ls = {
-          vmargs = "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m",
+      codeGeneration = {
+        toString = {
+          template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
         },
+        useBlocks = false,
       },
-      eclipse = {
-        downloadSources = true,
+      completion = {
+        favoriteStaticMembers = {
+          "org.junit.Assert.*",
+          "org.junit.Assume.*",
+          "org.junit.jupiter.api.Assertions.*",
+          "org.junit.jupiter.api.Assumptions.*",
+          "org.junit.jupiter.api.DynamicContainer.*",
+          "org.junit.jupiter.api.DynamicTest.*",
+          "org.mockito.Mockito.*",
+          "org.mockito.ArgumentMatchers.*",
+          "org.mockito.Answers.*",
+          "org.hamcrest.MatcherAssert.assertThat",
+          "org.hamcrest.Matchers.*",
+          "org.hamcrest.CoreMatchers.*",
+          "java.util.Objects.requireNonNull",
+          "java.util.Objects.requireNonNullElse",
+        },
       },
       configuration = {
         updateBuildConfiguration = "interactive",
       },
-      maven = {
+      contentProvider = { preferred = "fernflower" },
+      eclipse = {
         downloadSources = true,
+      },
+      extendedClientCapabilities = extendedClientCapabilities,
+      format = {
+        enabled = true,
+        -- settings = {
+        --   profile = "asdf"
+        -- }
       },
       implementationsCodeLens = {
         enabled = true,
-      },
-      referencesCodeLens = {
-        enabled = true,
-      },
-      references = {
-        includeDecompiledSources = true,
       },
       inlayHints = {
         parameterNames = {
           enabled = "all", -- literals, all, none
         },
       },
-      format = {
+      jdt = {
+        ls = {
+          vmargs = "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m",
+        },
+      },
+      maven = {
+        downloadSources = true,
+      },
+      referencesCodeLens = {
         enabled = true,
-        -- settings = {
-        --   profile = "asdf"
-        -- }
+      },
+      references = {
+        includeDecompiledSources = true,
       },
     },
     signatureHelp = {
@@ -228,37 +254,11 @@ local config = {
         enable = true,
       },
     },
-    completion = {
-      favoriteStaticMembers = {
-        "org.junit.Assert.*",
-        "org.junit.Assume.*",
-        "org.junit.jupiter.api.Assertions.*",
-        "org.junit.jupiter.api.Assumptions.*",
-        "org.junit.jupiter.api.DynamicContainer.*",
-        "org.junit.jupiter.api.DynamicTest.*",
-        "org.mockito.Mockito.*",
-        "org.mockito.ArgumentMatchers.*",
-        "org.mockito.Answers.*",
-        "org.hamcrest.MatcherAssert.assertThat",
-        "org.hamcrest.Matchers.*",
-        "org.hamcrest.CoreMatchers.*",
-        "java.util.Objects.requireNonNull",
-        "java.util.Objects.requireNonNullElse",
-      },
-    },
-    contentProvider = { preferred = "fernflower" },
-    extendedClientCapabilities = extendedClientCapabilities,
     sources = {
       organizeImports = {
         starThreshold = 9999,
         staticStarThreshold = 9999,
       },
-    },
-    codeGeneration = {
-      toString = {
-        template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
-      },
-      useBlocks = false,
     },
   },
 
@@ -289,7 +289,7 @@ local config = {
 -- or attaches to an existing client & server depending on the `root_dir`.
 require("jdtls").start_or_attach(config)
 
-require('jdtls').setup_dap()
+require("jdtls").setup_dap()
 
 vim.cmd(
   "command! -buffer -nargs=? -complete=custom,v:lua.require'jdtls'._complete_compile JdtCompile lua require('jdtls').compile(<f-args>)"
@@ -302,56 +302,59 @@ vim.cmd("command! -buffer JdtUpdateConfig lua require('jdtls').update_project_co
 vim.cmd("command! -buffer JdtBytecode lua require('jdtls').javap()")
 -- vim.cmd "command! -buffer JdtJshell lua require('jdtls').jshell()"
 
--- install vscode-java-test to use this section
+vim.cmd([[packadd which-key.nvim]])
+require("whichkey-config")
 
--- vim.cmd([[packadd which-key.nvim]])
+local which_key = require("functions").notifreq("which-key", "ftplugin/java", "error")
+if which_key == nil then
+  return
+end
 
--- local which_key = require("functions").notifreq("which-key", "jdtls-config", "error")
--- if which_key == nil then
---   return
--- end
+local opts = {
+  mode = "n", -- NORMAL mode
+  prefix = "<leader>",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
 
--- local opts = {
---   mode = "n", -- NORMAL mode
---   prefix = "<leader>",
---   buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
---   silent = true, -- use `silent` when creating keymaps
---   noremap = true, -- use `noremap` when creating keymaps
---   nowait = true, -- use `nowait` when creating keymaps
--- }
+local vopts = {
+  mode = "v", -- VISUAL mode
+  prefix = "<leader>",
+  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  silent = true, -- use `silent` when creating keymaps
+  noremap = true, -- use `noremap` when creating keymaps
+  nowait = true, -- use `nowait` when creating keymaps
+}
 
--- local vopts = {
---   mode = "v", -- VISUAL mode
---   prefix = "<leader>",
---   buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
---   silent = true, -- use `silent` when creating keymaps
---   noremap = true, -- use `noremap` when creating keymaps
---   nowait = true, -- use `nowait` when creating keymaps
--- }
+local mappings = {
+  J = {
+    name = "Java",
+    o = { "<Cmd>lua require'jdtls'.organize_imports()<CR>", "Organize Imports" },
+    v = { "<Cmd>lua require('jdtls').extract_variable()<CR>", "Extract Variable" },
+    c = { "<Cmd>lua require('jdtls').extract_constant()<CR>", "Extract Constant" },
+    C = { "<Cmd>JdtCompile<CR>", "Compile/build java workspace" },
+    u = { "<Cmd>JdtUpdateConfig<CR>", "Update Config" },
+    s = { "<Cmd>lua require('jdtls.dap').setup_dap_main_class_configs()<CR>", "Setup main class for debugging" },
 
--- local mappings = {
---   L = {
---     name = "Java",
---     o = { "<Cmd>lua require'jdtls'.organize_imports()<CR>", "Organize Imports" },
---     v = { "<Cmd>lua require('jdtls').extract_variable()<CR>", "Extract Variable" },
---     c = { "<Cmd>lua require('jdtls').extract_constant()<CR>", "Extract Constant" },
---     t = { "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method" },
---     T = { "<Cmd>lua require'jdtls'.test_class()<CR>", "Test Class" },
---     u = { "<Cmd>JdtUpdateConfig<CR>", "Update Config" },
---   },
--- }
+    -- insatall vscode-java-test to enable these two
+    -- t = { "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method" },
+    -- T = { "<Cmd>lua require'jdtls'.test_class()<CR>", "Test Class" },
+  },
+}
 
--- local vmappings = {
---   L = {
---     name = "Java",
---     v = { "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", "Extract Variable" },
---     c = { "<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>", "Extract Constant" },
---     m = { "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", "Extract Method" },
---   },
--- }
+local vmappings = {
+  J = {
+    name = "Java",
+    v = { "<Esc><Cmd>lua require('jdtls').extract_variable(true)<CR>", "Extract Variable" },
+    c = { "<Esc><Cmd>lua require('jdtls').extract_constant(true)<CR>", "Extract Constant" },
+    m = { "<Esc><Cmd>lua require('jdtls').extract_method(true)<CR>", "Extract Method" },
+  },
+}
 
--- which_key.register(mappings, opts)
--- which_key.register(vmappings, vopts)
+which_key.register(mappings, opts)
+which_key.register(vmappings, vopts)
 
 -- debugging
 -- git clone git@github.com:microsoft/java-debug.git
