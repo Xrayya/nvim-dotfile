@@ -1,1 +1,1 @@
-require("dap-config.debuggers.lldb-vscode")
+require("dap-config.debuggers.codelldb")
