@@ -1,6 +1,7 @@
 return {
   cmd = {
-    vim.fn.stdpath("data") .. "\\lsp_servers\\clangd\\clangd\\bin\\clangd.exe",
+    -- vim.fn.stdpath("data") .. "\\lsp_servers\\clangd\\clangd\\bin\\clangd.exe",
+    "clangd",
     "--background-index",
     "--pch-storage=memory",
     "--clang-tidy",

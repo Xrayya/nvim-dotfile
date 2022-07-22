@@ -53,3 +53,15 @@ for _, server in pairs(installed_servers) do
   lspconfig[server.name].setup(opts)
   ::continue::
 end
+
+-- setup clangd manually cuz I install llvm
+
+opts = {
+  on_attach = require("lsp-config.handlers").on_attach,
+  capabilities = require("lsp-config.handlers").capabilities,
+}
+
+local clangd_opts = require("lsp-config.custom-lsp-settings.clangd")
+opts = vim.tbl_deep_extend("force", clangd_opts, opts)
+
+lspconfig.clangd.setup(opts)
