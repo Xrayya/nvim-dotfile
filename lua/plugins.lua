@@ -495,7 +495,7 @@ return require("packer").startup(function(use)
     -- DAP client
     {
       "mfussenegger/nvim-dap",
-      commit = "f9cac91213930a5e8e32e1cca063d973b9df25e5",
+      commit = "69efa4d40ecab580783a2fc848767d7c2b6288e2",
       event = "BufWinEnter",
     },
 
