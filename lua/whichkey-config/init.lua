@@ -143,7 +143,8 @@ local n_mappings = {
     t = { "<cmd>Telescope help_tags<cr>", "Tags" },
   },
   h = { "<cmd>set hlsearch!<cr>", "Hightlight text toggle" },
-  i = { "<cmd>IndentBlacklineToggle<cr>", "Indentation line toggle" },
+  i = { "<cmd>lua require('lsp-inlayhints').toggle()<cr>", "Inlayhints toggle" },
+  I = { "<cmd>IndentBlacklineToggle<cr>", "Indentation line toggle" },
   j = {
     name = "Jump (HoP)",
     c = { "<cmd>HopChar1<cr>", "One char mode" },

@@ -290,6 +290,16 @@ return require("packer").startup(function(use)
       end,
     },
 
+    -- Inlay hints
+    {
+      "lvimuser/lsp-inlayhints.nvim",
+      branch = "readme",
+      event = "BufWinEnter",
+      config = function ()
+        require("lsp-inlayhints-config")
+      end
+    },
+
     -- null-ls
     {
       "jose-elias-alvarez/null-ls.nvim",
