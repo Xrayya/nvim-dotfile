@@ -294,11 +294,17 @@ return require("packer").startup(function(use)
     {
       "lvimuser/lsp-inlayhints.nvim",
       branch = "readme",
-      event = "BufWinEnter",
-      config = function ()
+      after = "nvim-lspconfig",
+      config = function()
         require("lsp-inlayhints-config")
-      end
+      end,
     },
+
+    -- LSP lines
+    -- {
+    --   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    --   after = "nvim-lspconfig",
+    -- },
 
     -- null-ls
     {
