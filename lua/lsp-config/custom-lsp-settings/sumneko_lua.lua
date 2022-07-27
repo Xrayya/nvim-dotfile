@@ -14,6 +14,9 @@ return {
         semicolon = "SameLine", -- "All", "SameLine", "Disable"
         setType = true,
       },
+      runtime = {
+        version = "LuaJIT",
+      },
       workspace = {
         library = {
           [vim.fn.expand("$VIMRUNTIME/lua")] = true,
