@@ -45,7 +45,7 @@ hints.setup({
     -- padding from the right if right_align is true
     right_align_padding = 7,
     -- highlight group
-    highlight = "Comment",
+    highlight = "NavicText",
   },
   debug_mode = false,
 })

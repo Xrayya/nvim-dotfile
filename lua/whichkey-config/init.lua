@@ -198,6 +198,7 @@ local n_mappings = {
       t = { "<cmd>TroubleToggle type_definitions<cr>", "Type definition" },
     },
   },
+  L = { '<cmd>lua require("lsp-lines").toggle()<cr>', "Toggle lsp-line" },
   p = {
     name = "Plugin action",
     c = { "<cmd>PackerCompile<cr>", "Compile" },
