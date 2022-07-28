@@ -8,7 +8,20 @@ if lspconfig == nil then
   return
 end
 
-mason_lspconfig.setup()
+mason_lspconfig.setup({
+  ensure_installed = {
+    "sumneko_lua",
+    "jdtls",
+    -- "clangd",
+    "tsserver",
+    "html",
+    "cssls",
+    "emmet_ls",
+    "marksman",
+    "jsonls",
+    "vimls",
+  },
+})
 
 local installed_servers = mason_lspconfig.get_installed_servers()
 
