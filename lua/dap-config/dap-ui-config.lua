@@ -77,7 +77,7 @@ if dap ~= nil then
 
   -- launch or close dapui when dap is invoked
   dap.listeners.after.event_initialized["dapui_config"] = function()
-    -- dapui.open()
+    dapui.open()
   end
   -- dap.listeners.after.event_initialized["testing"] = function()
   --   vim.notify("Entering testing key")

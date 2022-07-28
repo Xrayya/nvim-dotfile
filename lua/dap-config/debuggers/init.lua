@@ -1,1 +1,1 @@
-require("dap-config.debuggers.codelldb")
+require("dap-config.debuggers.cpptools")
