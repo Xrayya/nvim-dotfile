@@ -20,5 +20,4 @@ My simple Neovim config
 - [ ] try harpoon
 - [ ] try vim-bookmark
 - [ ] add keybinding for hop to work with `d`, `v`, `c`, `y`
-- [ ] try mason.nvim and mason-lspconfig.nvim
-
+- [x] try mason.nvim and mason-lspconfig.nvim
