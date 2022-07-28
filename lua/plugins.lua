@@ -223,16 +223,32 @@ return require("packer").startup(function(use)
     end,
   })
 
+  ---------------------
+  -- Package manager --
+  ---------------------
+
+  use({
+    "williamboman/mason.nvim",
+    config = function()
+      require("mason-config")
+    end,
+  })
+
   ---------------
   -- LSP stuff --
   ---------------
 
   use({
-    { "williamboman/nvim-lsp-installer" },
+    {
+      "williamboman/mason-lspconfig.nvim",
+      after = {
+        "mason.nvim",
+      },
+    },
     {
       "neovim/nvim-lspconfig",
       after = {
-        "nvim-lsp-installer",
+        "mason-lspconfig.nvim",
         "nvim-cmp",
         "cmp-nvim-lsp",
         "nlsp-settings.nvim",

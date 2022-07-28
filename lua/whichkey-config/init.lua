@@ -180,7 +180,6 @@ local n_mappings = {
     h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
     H = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signture help" },
     i = { "<cmd>LspInfo<cr>", "LSP info" },
-    I = { "<cmd>LspInstallInfo<cr>", "LSP installer info" },
     l = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line diagnostics" },
     p = { "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", "Preview definition" },
     P = { "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>", "Preview type definition" },
@@ -199,6 +198,7 @@ local n_mappings = {
     },
   },
   L = { '<cmd>lua require("lsp-lines").toggle()<cr>', "Toggle lsp-line" },
+  m = { '<cmd>Mason<cr>', "Open Mason" },
   p = {
     name = "Plugin action",
     c = { "<cmd>PackerCompile<cr>", "Compile" },
