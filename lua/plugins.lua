@@ -574,7 +574,7 @@ return require("packer").startup(function(use)
     commit = "03675eba34d416dd22ad49b2d0e52b6113b434ad",
     event = "BufWinEnter",
     config = function()
-      require("hop").setup()
+      require("hop-config")
     end,
   })
 
