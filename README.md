@@ -21,3 +21,4 @@ My simple Neovim config
 - [ ] try vim-bookmark
 - [x] add keybinding for hop to work with `d`, `v`, `c`, `y`
 - [x] try mason.nvim and mason-lspconfig.nvim
+- [x] add shortcut for dap (F5, etc)

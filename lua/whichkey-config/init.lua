@@ -113,6 +113,10 @@ local n_mappings = {
   d = {
     name = "Debug",
     b = { "<cmd>DapToggleBreakpoint<cr>", "Toggle breakpoint" },
+    B = {
+      '<cmd>lua require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))<cr>',
+      "Set conditional breakpoint",
+    },
     c = { "<cmd>DapContinue<cr>", "Run/Continue debug session" },
     e = { '<cmd>lua require("dapui").eval()<cr>', "Evaluate expression" },
     f = { '<cmd>lua require("dapui").float_element()<cr>', "Open floating window" },
@@ -198,7 +202,7 @@ local n_mappings = {
     },
   },
   L = { '<cmd>lua require("lsp-lines").toggle()<cr>', "Toggle lsp-line" },
-  m = { '<cmd>Mason<cr>', "Open Mason" },
+  m = { "<cmd>Mason<cr>", "Open Mason" },
   p = {
     name = "Plugin action",
     c = { "<cmd>PackerCompile<cr>", "Compile" },
