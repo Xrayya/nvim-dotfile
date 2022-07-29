@@ -20,6 +20,7 @@ treesitter.setup({
     "java",
     "cpp",
     "c",
+    "vim",
     "comment", -- for comment highlighting like @params, @return, etc
   },
   highlight = {
