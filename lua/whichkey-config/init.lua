@@ -143,7 +143,8 @@ local n_mappings = {
     t = { "<cmd>Telescope help_tags<cr>", "Tags" },
   },
   h = { "<cmd>set hlsearch!<cr>", "Hightlight text toggle" },
-  i = { "<cmd>IndentBlacklineToggle<cr>", "Indentation line toggle" },
+  i = { "<cmd>lua require('lsp-inlayhints').toggle()<cr>", "Inlayhints toggle" },
+  I = { "<cmd>IndentBlacklineToggle<cr>", "Indentation line toggle" },
   j = {
     name = "Jump (HoP)",
     c = { "<cmd>HopChar1<cr>", "One char mode" },
@@ -179,7 +180,6 @@ local n_mappings = {
     h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
     H = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signture help" },
     i = { "<cmd>LspInfo<cr>", "LSP info" },
-    I = { "<cmd>LspInstallInfo<cr>", "LSP installer info" },
     l = { "<cmd>lua vim.diagnostic.open_float()<CR>", "Line diagnostics" },
     p = { "<cmd>lua require('goto-preview').goto_preview_definition()<CR>", "Preview definition" },
     P = { "<cmd>lua require('goto-preview').goto_preview_type_definition()<CR>", "Preview type definition" },
@@ -197,6 +197,8 @@ local n_mappings = {
       t = { "<cmd>TroubleToggle type_definitions<cr>", "Type definition" },
     },
   },
+  L = { '<cmd>lua require("lsp-lines").toggle()<cr>', "Toggle lsp-line" },
+  m = { '<cmd>Mason<cr>', "Open Mason" },
   p = {
     name = "Plugin action",
     c = { "<cmd>PackerCompile<cr>", "Compile" },

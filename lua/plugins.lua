@@ -223,16 +223,32 @@ return require("packer").startup(function(use)
     end,
   })
 
+  ---------------------
+  -- Package manager --
+  ---------------------
+
+  use({
+    "williamboman/mason.nvim",
+    config = function()
+      require("mason-config")
+    end,
+  })
+
   ---------------
   -- LSP stuff --
   ---------------
 
   use({
-    { "williamboman/nvim-lsp-installer" },
+    {
+      "williamboman/mason-lspconfig.nvim",
+      after = {
+        "mason.nvim",
+      },
+    },
     {
       "neovim/nvim-lspconfig",
       after = {
-        "nvim-lsp-installer",
+        "mason-lspconfig.nvim",
         "nvim-cmp",
         "cmp-nvim-lsp",
         "nlsp-settings.nvim",
@@ -289,6 +305,22 @@ return require("packer").startup(function(use)
         require("illuminate-config")
       end,
     },
+
+    -- Inlay hints
+    {
+      "lvimuser/lsp-inlayhints.nvim",
+      branch = "readme",
+      after = "nvim-lspconfig",
+      config = function()
+        require("lsp-inlayhints-config")
+      end,
+    },
+
+    -- LSP lines
+    -- {
+    --   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    --   after = "nvim-lspconfig",
+    -- },
 
     -- null-ls
     {
@@ -361,7 +393,7 @@ return require("packer").startup(function(use)
       "rcarriga/cmp-dap",
       disable = false,
       commit = "e21f0e5d188ee428f8acab1af21839af391607a4",
-      after = "nvim-cmp",
+      after = { "nvim-cmp", "nvim-dap" },
     },
 
     -- Tabnine
@@ -542,7 +574,7 @@ return require("packer").startup(function(use)
     commit = "03675eba34d416dd22ad49b2d0e52b6113b434ad",
     event = "BufWinEnter",
     config = function()
-      require("hop").setup()
+      require("hop-config")
     end,
   })
 

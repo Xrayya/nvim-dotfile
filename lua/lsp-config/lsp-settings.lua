@@ -1,5 +1,5 @@
-local lsp_installer = require("functions").notifreq("nvim-lsp-installer", "lsp-config.lsp-installer", "error")
-if lsp_installer == nil then
+local mason_lspconfig = require("functions").notifreq("mason-lspconfig", "mason-config", "error")
+if mason_lspconfig == nil then
   return
 end
 
@@ -8,13 +8,22 @@ if lspconfig == nil then
   return
 end
 
-lsp_installer.setup({
-  ui = {
-    border = "rounded",
+mason_lspconfig.setup({
+  ensure_installed = {
+    "sumneko_lua",
+    "jdtls",
+    -- "clangd",
+    "tsserver",
+    "html",
+    "cssls",
+    "emmet_ls",
+    "marksman",
+    "jsonls",
+    "vimls",
   },
 })
 
-local installed_servers = lsp_installer.get_installed_servers()
+local installed_servers = mason_lspconfig.get_installed_servers()
 
 local opts = {}
 
@@ -24,12 +33,12 @@ for _, server in pairs(installed_servers) do
     capabilities = require("lsp-config.handlers").capabilities,
   }
 
-  if server.name == "sumneko_lua" then
+  if server == "sumneko_lua" then
     local sumneko_opts = require("lsp-config.custom-lsp-settings.sumneko_lua")
     opts = vim.tbl_deep_extend("force", sumneko_opts, opts)
   end
 
-  if server.name == "jdtls" then
+  if server == "jdtls" then
     -- local jdtls_opts = require("lsp-config.custom-lsp-settings.jdtls_lspconfig")
     -- opts = {
     --   on_attach = jdtls_opts.on_attach,
@@ -40,17 +49,17 @@ for _, server in pairs(installed_servers) do
     goto continue
   end
 
-  if server.name == "clangd" then
+  if server == "clangd" then
     local clangd_opts = require("lsp-config.custom-lsp-settings.clangd")
     opts = vim.tbl_deep_extend("force", clangd_opts, opts)
   end
 
-  if server.name == "jsonls" then
+  if server == "jsonls" then
     local jsonls_opts = require("lsp-config.custom-lsp-settings.jsonls")
     opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
   end
 
-  lspconfig[server.name].setup(opts)
+  lspconfig[server].setup(opts)
   ::continue::
 end
 
