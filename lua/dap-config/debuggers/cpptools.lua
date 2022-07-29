@@ -1,4 +1,7 @@
 local dap = require("functions").notifreq("dap", "dap-config.debuggers.cpptools", "error")
+if dap == nil then
+  return
+end
 
 dap.adapters.cppdbg = {
   id = "cppdbg",
