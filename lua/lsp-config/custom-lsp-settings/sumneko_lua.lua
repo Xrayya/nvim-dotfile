@@ -9,7 +9,7 @@ return {
         enable = true,
         arrayIndex = "Auto", -- "Enable", "Auto", "Disable"
         await = true,
-        paramName = "Disable", -- "All", "Literal", "Disable"
+        paramName = "All", -- "All", "Literal", "Disable"
         paramType = true,
         semicolon = "SameLine", -- "All", "SameLine", "Disable"
         setType = true,
