@@ -1,5 +1,5 @@
 " Set neovide to fullscreen
-let g:neovide_fullscreen=v:true
+let g:neovide_fullscreen=v:false
 
 " No idle
 " let g:neovide_no_idle=v:true

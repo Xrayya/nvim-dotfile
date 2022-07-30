@@ -120,7 +120,7 @@ return require("packer").startup(function(use)
     -- GPS / context
     {
       "SmiteshP/nvim-navic",
-      commit = "34b652cbadfa8431a313a517bdbe95bd27e37ee9",
+      commit = "94bf6fcb1dc27bdad230d9385da085e72c390019",
       requires = "neovim/nvim-lspconfig",
       after = "nvim-lspconfig",
       config = function()
@@ -143,7 +143,7 @@ return require("packer").startup(function(use)
 
   use({
     "lukas-reineke/indent-blankline.nvim",
-    commit = "4a58fe6e9854ccfe6c6b0f59abb7cb8301e23025",
+    tag = "v2.20.0",
     after = "nvim-treesitter",
     config = function()
       require("indentation-config")
@@ -190,7 +190,7 @@ return require("packer").startup(function(use)
     },
     {
       "matbme/JABS.nvim",
-      commit = "3a7a14dbbbb404b66bed154a27dba4745f385e50",
+      commit = "840dcf3a1b2a028d27367132d51634f82e57a855",
       requires = "kyazdani42/nvim-web-devicons",
       event = "BufWinEnter",
       config = function()
@@ -214,7 +214,7 @@ return require("packer").startup(function(use)
 
   use({
     "goolord/alpha-nvim",
-    commit = "ef27a59e5b4d7b1c2fe1950da3fe5b1c5f3b4c94",
+    commit = "d688f46090a582be8f9d7b70b4cf999b780e993d",
     requires = { "kyazdani42/nvim-web-devicons" },
     event = "BufWinEnter",
     config = function()
@@ -292,14 +292,14 @@ return require("packer").startup(function(use)
     -- Java LSP
     {
       "mfussenegger/nvim-jdtls",
-      commit = "703268d5b8479de4e0c27af93b203d56c1b53d2b",
+      commit = "8a97801fa1cab6ef3d98dd2429dce97bb1d9226c",
       ft = "java",
     },
 
     -- Illuminate
     {
       "RRethy/vim-illuminate",
-      commit = "c82e6d04f27a41d7fdcad9be0bce5bb59fcb78e5",
+      commit = "6bfa5dc069bd4aa8513a3640d0b73392094749be",
       event = "BufWinEnter",
       config = function()
         require("illuminate-config")
@@ -325,7 +325,7 @@ return require("packer").startup(function(use)
     -- null-ls
     {
       "jose-elias-alvarez/null-ls.nvim",
-      commit = "fbb1929b29beff82e0fc495670f00ef4b3bcbcd3",
+      commit = "47c04991af80b6acdf08a5db057908b52f4d0699",
       requires = { "nvim-lua/plenary.nvim" },
       event = "BufWinEnter",
     },
@@ -337,7 +337,7 @@ return require("packer").startup(function(use)
     },
     {
       "j-hui/fidget.nvim",
-      commit = "46d1110435f1f023c22fa95bb10b3906aecd7bde",
+      commit = "492492e7d50452a9ace8346d31f6d6da40439f0e",
       event = "BufWinEnter",
       config = function()
         require("fidget-config")
@@ -474,7 +474,7 @@ return require("packer").startup(function(use)
   use({
     {
       "nvim-telescope/telescope.nvim",
-      commit = "10a3310546284faae4ada397a61d68e0a8d0d9f7",
+      commit = "b5833a682c511885887373aad76272ad70f7b3c2",
       requires = {
         { "nvim-lua/plenary.nvim" },
         { "nvim-lua/popup.nvim" },
@@ -489,7 +489,7 @@ return require("packer").startup(function(use)
     -- Project Manager
     {
       "ahmedkhalf/project.nvim",
-      commit = "541115e762764bc44d7d3bf501b6e367842d3d4f",
+      commit = "e449497c0bceb6e50947b840ec3658bf1108bf0b",
       event = "BufWinEnter",
       config = function()
         require("projects-config")
@@ -527,7 +527,7 @@ return require("packer").startup(function(use)
     -- DAP client
     {
       "mfussenegger/nvim-dap",
-      commit = "69efa4d40ecab580783a2fc848767d7c2b6288e2",
+      commit = "a13d6cb9ea8f7bbf8dd9c5de9ca2cbee64d2e258",
       event = "BufWinEnter",
     },
 
@@ -544,7 +544,7 @@ return require("packer").startup(function(use)
     -- Show virtual text for nvim-dap
     {
       "theHamsta/nvim-dap-virtual-text",
-      commit = "a36982259216afd710f55bcdc220477c74b5bc35",
+      commit = "e9bc54fd7f559dfa1a47e7c91c8af3aa0dff7706",
       after = "nvim-dap",
       config = function()
         require("dap-virtual-text-config")
@@ -631,7 +631,7 @@ return require("packer").startup(function(use)
 
   use({
     "rcarriga/nvim-notify",
-    commit = "7caeaaef257ecbe95473ec79e5a82757b544f1fd",
+    commit = "cd2a59f16d3dc8c54dabc58c31c9c539fcef3c2b",
     event = "BufWinEnter",
     config = function()
       require("notification-config")
