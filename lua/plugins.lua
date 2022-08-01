@@ -311,7 +311,7 @@ return require("packer").startup(function(use)
     -- Inlay hints
     {
       "lvimuser/lsp-inlayhints.nvim",
-      branch = "readme",
+      commit = "aeba98288e4634d4112028187d51bda7fb9684fa",
       after = "nvim-lspconfig",
       config = function()
         require("lsp-inlayhints-config")
