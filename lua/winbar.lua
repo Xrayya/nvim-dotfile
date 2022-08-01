@@ -61,12 +61,9 @@ end
 --   return false
 -- end
 
-local excludes_navic = function()
-  if vim.tbl_contains(M.navic_filetype_exclude, vim.bo.filetype) then
-    return true
-  end
-  return false
-end
+-- local excludes_navic = function()
+--   return vim.tbl_contains(M.navic_filetype_exclude, vim.bo.filetype)
+-- end
 
 local get_gps = function()
   local gps = require("functions").notifreq("nvim-navic", "winbar", "error")
@@ -74,12 +71,12 @@ local get_gps = function()
     return ""
   end
 
-  if excludes_navic() then
-    gps = require("functions").notifreq("nvim-gps", "winbar", "error")
-    if gps == nil then
-      return ""
-    end
-  end
+  -- if excludes_navic() then
+  --   gps = require("functions").notifreq("nvim-gps", "winbar", "error")
+  --   if gps == nil then
+  --     return ""
+  --   end
+  -- end
 
   local status_ok, gps_location = pcall(gps.get_location, {})
   if not status_ok then

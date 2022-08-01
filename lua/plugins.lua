@@ -119,8 +119,10 @@ return require("packer").startup(function(use)
 
     -- GPS / context
     {
-      "SmiteshP/nvim-navic",
-      commit = "94bf6fcb1dc27bdad230d9385da085e72c390019",
+      -- "SmiteshP/nvim-navic",
+      "jason0x43/nvim-navic",
+      -- commit = "94bf6fcb1dc27bdad230d9385da085e72c390019",
+      branch = "symbolinformation-support",
       requires = "neovim/nvim-lspconfig",
       after = "nvim-lspconfig",
       config = function()
