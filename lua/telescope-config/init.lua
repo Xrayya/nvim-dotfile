@@ -12,25 +12,25 @@ telescope.setup({
     lsp_document_symbols = {
       theme = "ivy",
       layout_config = {
-        height = 0.4
+        height = 0.4,
       },
     },
     lsp_workspace_symbols = {
       theme = "ivy",
       layout_config = {
-        height = 0.4
+        height = 0.4,
       },
     },
     lsp_definitions = {
       theme = "ivy",
       layout_config = {
-        height = 0.4
+        height = 0.4,
       },
     },
     lsp_type_definitions = {
       theme = "ivy",
       layout_config = {
-        height = 0.4
+        height = 0.4,
       },
     },
   },
@@ -39,6 +39,10 @@ telescope.setup({
     selection_caret = ui.GoTo .. " ",
     path_display = { "smart" },
     file_ignore_patterns = { ".git/", "node_modules" },
+    sorting_strategy = "ascending",
+    layout_config = {
+      prompt_position = "top",
+    },
   },
   extensions = {
     fzf = {
