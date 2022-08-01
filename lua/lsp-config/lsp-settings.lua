@@ -49,6 +49,11 @@ for _, server in pairs(installed_servers) do
     goto continue
   end
 
+  if server == "tsserver" then
+    local tsserver_opts = require("lsp-config.custom-lsp-settings.tsserver")
+    opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
+  end
+
   if server == "clangd" then
     local clangd_opts = require("lsp-config.custom-lsp-settings.clangd")
     opts = vim.tbl_deep_extend("force", clangd_opts, opts)
