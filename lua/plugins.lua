@@ -469,6 +469,21 @@ return require("packer").startup(function(use)
     end,
   })
 
+  ------------
+  -- Tabout --
+  ------------
+
+  -- doesn't seem to work for now, for my config
+  use({
+    "abecodes/tabout.nvim",
+    commit = "be655cc7ce0f5d6d24eeaf8b36e82693fd2facca",
+    requires = { "nvim-treesitter" },
+    after = {"nvim-cmp", "nvim-treesitter"},
+    config = function()
+      require("tabout-config")
+    end,
+  })
+
   ---------------------
   -- Telescope stuff --
   ---------------------
