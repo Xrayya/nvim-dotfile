@@ -175,7 +175,7 @@ return require("packer").startup(function(use)
       "nvim-lualine/lualine.nvim",
       commit = "5113cdb32f9d9588a2b56de6d1df6e33b06a554a",
       requires = { "kyazdani42/nvim-web-devicons", opt = true },
-      event = "BufWinEnter",
+      after = "nvim-lspconfig",
       config = function()
         require("lualine-config")
       end,
