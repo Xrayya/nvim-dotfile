@@ -476,6 +476,7 @@ return require("packer").startup(function(use)
   -- doesn't seem to work for now, for my config
   use({
     "abecodes/tabout.nvim",
+    disable = true,
     commit = "be655cc7ce0f5d6d24eeaf8b36e82693fd2facca",
     requires = { "nvim-treesitter" },
     after = {"nvim-cmp", "nvim-treesitter"},
