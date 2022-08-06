@@ -6,16 +6,16 @@ end
 local formatting = null_ls.builtins.formatting
 -- local diagnostics = null_ls.builtins.diagnostics
 
-local prettier_args = { "-- parser " .. vim.bo.filetype, "--single-quote", "--jsx-single-quote" }
-if vim.bo.filetype == "javascript" then
-  prettier_args = { "--single-quote", "--jsx-single-quote" }
-end
+-- local prettier_args = { "--single-quote", "--jsx-single-quote" }
+-- if vim.bo.filetype == "javascript" then
+--   prettier_args = { "--single-quote", "--jsx-single-quote" }
+-- end
 
 null_ls.setup({
   debug = false,
   sources = {
     formatting.prettier.with({
-      extra_args = prettier_args,
+      extra_args = { "--single-quote", "--jsx-single-quote" },
     }),
     formatting.stylua,
   },
