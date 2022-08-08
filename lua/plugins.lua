@@ -355,7 +355,7 @@ return require("packer").startup(function(use)
     {
       "hrsh7th/nvim-cmp",
       commit = "9897465a7663997b7b42372164ffc3635321a2fe",
-      after = { "nvim-autopairs", "vim-vsnip" },
+      after = { "nvim-autopairs", "LuaSnip", "friendly-snippets" },
       config = function()
         require("cmp-config")
       end,
@@ -397,6 +397,11 @@ return require("packer").startup(function(use)
       commit = "e21f0e5d188ee428f8acab1af21839af391607a4",
       after = { "nvim-cmp", "nvim-dap" },
     },
+    {
+      "hrsh7th/cmp-cmdline",
+      commit = "9c0e331fe78cab7ede1c051c065ee2fc3cf9432e",
+      after = {"nvim-cmp", "cmp-buffer", "cmp-path"},
+    },
 
     -- Tabnine
     {
@@ -414,19 +419,36 @@ return require("packer").startup(function(use)
   --------------------
 
   use({
+    -- vsnip
     {
       "hrsh7th/vim-vsnip",
+      disable = true,
       commit = "8f199ef690ed26dcbb8973d9a6760d1332449ac9",
       event = "BufWinEnter",
     },
     {
-      "rafamadriz/friendly-snippets",
+      "hrsh7th/cmp-vsnip",
+      disable = true,
+      commit = "0abfa1860f5e095a07c477da940cfcb0d273b700",
+      after = "nvim-cmp",
+    },
+
+    -- luasnip
+    {
+      "L3MON4D3/LuaSnip",
+      commit = "c599c560ed26f04f5bdb7e4498b632dc16fb9209",
       event = "BufWinEnter",
     },
     {
-      "hrsh7th/cmp-vsnip",
-      commit = "0abfa1860f5e095a07c477da940cfcb0d273b700",
+      "saadparwaiz1/cmp_luasnip",
+      commit = "a9de941bcbda508d0a45d28ae366bb3f08db2e36",
       after = "nvim-cmp",
+    },
+
+    -- snippets library
+    {
+      "rafamadriz/friendly-snippets",
+      event = "BufWinEnter",
     },
   })
 
@@ -473,10 +495,10 @@ return require("packer").startup(function(use)
   -- Tabout --
   ------------
 
-  -- doesn't seem to work for now, for my config
+  -- doesn't seem to work if you also use vim-vsnip
   use({
     "abecodes/tabout.nvim",
-    disable = true,
+    disable = false,
     commit = "be655cc7ce0f5d6d24eeaf8b36e82693fd2facca",
     requires = { "nvim-treesitter" },
     after = {"nvim-cmp", "nvim-treesitter"},
