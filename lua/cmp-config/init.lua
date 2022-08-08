@@ -3,12 +3,12 @@ if cmp == nil then
   return
 end
 
-vim.g.completeopt = "menu,menuone,noselect"
-
 local luasnip = require("functions").notifreq("luasnip", "cmp-config", "error")
 if luasnip == nil then
   return
 end
+
+vim.g.completeopt = "menu,menuone,noselect"
 
 require("luasnip.loaders.from_vscode").lazy_load()
 
