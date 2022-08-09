@@ -1,4 +1,4 @@
-local presence = require("functions").notifreq("presence", "discord-presence-config", "error")
+local presence = NOTIF_REQ("presence", "discord-presence-config", "error")
 if presence == nil then
   return
 end

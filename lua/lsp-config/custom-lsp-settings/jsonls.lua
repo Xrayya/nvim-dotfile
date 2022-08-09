@@ -10,7 +10,7 @@ local opts = {
   },
 }
 
-local schemastore = require("functions").notifreq("schemastore", "lsp-config.custom-lsp-settings.jsonls", "error")
+local schemastore = NOTIF_REQ("schemastore", "lsp-config.custom-lsp-settings.jsonls", "error")
 if schemastore == nil then
   vim.notify("jsonls LSP: using default settings", "info", {
     title = "nvim config file: info",

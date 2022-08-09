@@ -1,4 +1,4 @@
-local null_ls = require("functions").notifreq("null-ls", "lsp-config.null-ls", "error")
+local null_ls = NOTIF_REQ("null-ls", "lsp-config.null-ls", "error")
 if null_ls == nil then
   return
 end

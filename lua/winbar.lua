@@ -33,7 +33,7 @@ M.navic_filetype_exclude = {
 M.get_filename = function()
   local filename = vim.fn.expand("%:t")
   local extension = vim.fn.expand("%:e")
-  local f = require("functions")
+  local f = require("user-functions")
 
   if not f.isempty(filename) then
     local file_icon, file_icon_color =
@@ -66,13 +66,13 @@ end
 -- end
 
 local get_gps = function()
-  local gps = require("functions").notifreq("nvim-navic", "winbar", "error")
+  local gps = NOTIF_REQ("nvim-navic", "winbar", "error")
   if gps == nil then
     return ""
   end
 
   -- if excludes_navic() then
-  --   gps = require("functions").notifreq("nvim-gps", "winbar", "error")
+  --   gps = require("user-functions").notifreq("nvim-gps", "winbar", "error")
   --   if gps == nil then
   --     return ""
   --   end
@@ -87,7 +87,7 @@ local get_gps = function()
     return ""
   end
 
-  if not require("functions").isempty(gps_location) then
+  if not require("user-functions").isempty(gps_location) then
     return "%#NavicSeparator#" .. require("icons").ui.ChevronRight .. " " .. gps_location
   else
     return ""
@@ -106,7 +106,7 @@ M.get_winbar = function()
   if excludes_winbar() then
     return
   end
-  local f = require("functions")
+  local f = require("user-functions")
   local value = M.get_filename()
 
   local gps_added = false

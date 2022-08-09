@@ -1,4 +1,4 @@
-local renamer = require("functions").notifreq("renamer", "renamer-config", "error")
+local renamer = NOTIF_REQ("renamer", "renamer-config", "error")
 if renamer == nil then
   return
 end

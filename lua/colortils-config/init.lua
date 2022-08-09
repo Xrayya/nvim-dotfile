@@ -1,4 +1,4 @@
-local colortils = require("functions").notifreq("colortils", "colortils-config", "error")
+local colortils = NOTIF_REQ("colortils", "colortils-config", "error")
 if colortils == nil then
   return
 end

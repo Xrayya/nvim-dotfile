@@ -1,4 +1,4 @@
-local mason = require("functions").notifreq("mason", "mason-config", "error")
+local mason = NOTIF_REQ("mason", "mason-config", "error")
 if mason == nil then
   return
 end

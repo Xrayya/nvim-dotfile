@@ -34,7 +34,7 @@ M.on_attach = function(client, bufnr)
   M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 
   local cmp_nvim_lsp =
-    require("functions").notifreq("cmp_nvim_lsp", "lsp-config.custom-lsp-settings.jdtls_lspconfig", "error")
+    NOTIF_REQ("cmp_nvim_lsp", "lsp-config.custom-lsp-settings.jdtls_lspconfig", "error")
   if cmp_nvim_lsp ~= nil then
     M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
   end

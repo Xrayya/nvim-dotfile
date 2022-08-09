@@ -1,9 +1,9 @@
-local path = require("functions").notifreq("plenary.path", "session-manager-config", "error")
+local path = NOTIF_REQ("plenary.path", "session-manager-config", "error")
 if path == nil then
   return
 end
 
-local manager = require("functions").notifreq("session_manager", "session-manager-config", "error")
+local manager = NOTIF_REQ("session_manager", "session-manager-config", "error")
 if manager == nil then
   return
 end

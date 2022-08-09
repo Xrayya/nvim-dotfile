@@ -1,4 +1,4 @@
-local telescope = require("functions").notifreq("telescope", "telescope-config", "error")
+local telescope = NOTIF_REQ("telescope", "telescope-config", "error")
 if telescope == nil then
   return
 end

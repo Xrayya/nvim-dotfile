@@ -1,4 +1,4 @@
-local gps = require("functions").notifreq("nvim-gps", "gps-config", "error")
+local gps = NOTIF_REQ("nvim-gps", "gps-config", "error")
 if gps == nil then
   return
 end

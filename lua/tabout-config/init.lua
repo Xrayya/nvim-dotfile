@@ -1,4 +1,4 @@
-local tabout = require("functions").notifreq("tabout", "tabout-config", "error")
+local tabout = NOTIF_REQ("tabout", "tabout-config", "error")
 if tabout == nil then
   return
 end

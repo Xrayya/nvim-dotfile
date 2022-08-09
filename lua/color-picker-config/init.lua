@@ -1,4 +1,4 @@
-local color_picker = require("functions").notifreq("color-picker", "color-picker-config", "error")
+local color_picker = NOTIF_REQ("color-picker", "color-picker-config", "error")
 if color_picker == nil then
   return
 end

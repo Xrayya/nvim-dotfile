@@ -1,4 +1,4 @@
-local kommentary_config = require("functions").notifreq("kommentary.config", "commentary-config", "error")
+local kommentary_config = NOTIF_REQ("kommentary.config", "commentary-config", "error")
 if kommentary_config == nil then
   return
 end

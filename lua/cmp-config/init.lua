@@ -1,9 +1,9 @@
-local cmp = require("functions").notifreq("cmp", "cmp-config", "error")
+local cmp = NOTIF_REQ("cmp", "cmp-config", "error")
 if cmp == nil then
   return
 end
 
-local luasnip = require("functions").notifreq("luasnip", "cmp-config", "error")
+local luasnip = NOTIF_REQ("luasnip", "cmp-config", "error")
 if luasnip == nil then
   return
 end
@@ -173,7 +173,7 @@ cmp.setup.cmdline(":", {
 })
 
 -- Integration with autopairs
-local cmp_autopairs = require("functions").notifreq("nvim-autopairs.completion.cmp", "cmp-config", "error")
+local cmp_autopairs = NOTIF_REQ("nvim-autopairs.completion.cmp", "cmp-config", "error")
 if cmp_autopairs ~= nil then
   cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
 end

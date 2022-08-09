@@ -1,4 +1,4 @@
-local colorizer = require("functions").notifreq("colorizer", "colorizer-config", "error")
+local colorizer = NOTIF_REQ("colorizer", "colorizer-config", "error")
 if colorizer == nil then
   return
 end

@@ -1,4 +1,4 @@
-local lspsaga = require("functions").notifreq("lspsaga", "lspsaga-config", "error")
+local lspsaga = NOTIF_REQ("lspsaga", "lspsaga-config", "error")
 if lspsaga == nil then
   return
 end

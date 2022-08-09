@@ -1,4 +1,4 @@
-local navic = require("functions").notifreq("nvim-navic", "navic-config", "error")
+local navic = NOTIF_REQ("nvim-navic", "navic-config", "error")
 if navic == nil then
   return
 end

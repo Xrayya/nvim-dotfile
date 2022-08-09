@@ -1,4 +1,4 @@
-local gitsigns = require("functions").notifreq("gitsigns", "gitsigns-config", "error")
+local gitsigns = NOTIF_REQ("gitsigns", "gitsigns-config", "error")
 if gitsigns == nil then
   return
 end

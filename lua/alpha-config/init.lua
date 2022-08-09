@@ -1,4 +1,4 @@
-local alpha = require("functions").notifreq("alpha", "alpha-config", "error")
+local alpha = NOTIF_REQ("alpha", "alpha-config", "error")
 if alpha == nil then
   return
 end

@@ -9,7 +9,7 @@ local diagnostic_signs = require("icons").diagnostics
 M.capabilities = vim.lsp.protocol.make_client_capabilities()
 M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 
-local cmp_nvim_lsp = require("functions").notifreq("cmp_nvim_lsp", "lsp-config.handlers", "error")
+local cmp_nvim_lsp = NOTIF_REQ("cmp_nvim_lsp", "lsp-config.handlers", "error")
 if cmp_nvim_lsp ~= nil then
   M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 end
@@ -66,7 +66,7 @@ end
 
 function M.lsp_highlight_document(client)
   local illuminate =
-    require("functions").notifreq("illuminate", "lsp-config.handlers (func lsp_highlight_document)", "error")
+    NOTIF_REQ("illuminate", "lsp-config.handlers (func lsp_highlight_document)", "error")
   if illuminate == nil then
     return
   end
@@ -76,7 +76,7 @@ end
 
 function M.attach_navic(client, bufnr)
   vim.g.navic_silence = true
-  local navic = require("functions").notifreq("nvim-navic", "lsp-config.handlers (func attach_navic)", "error")
+  local navic = NOTIF_REQ("nvim-navic", "lsp-config.handlers (func attach_navic)", "error")
   if navic == nil then
     return
   end

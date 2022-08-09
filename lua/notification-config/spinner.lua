@@ -1,4 +1,4 @@
-local notify = require("functions").notifreq("notify", "notification-config.spinner", "error")
+local notify = NOTIF_REQ("notify", "notification-config.spinner", "error")
 if notify == nil then
   return
 end

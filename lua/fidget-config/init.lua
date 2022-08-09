@@ -1,4 +1,4 @@
-local fidget = require("functions").notifreq("fidget", "fidget-config", "error")
+local fidget = NOTIF_REQ("fidget", "fidget-config", "error")
 if fidget == nil then
   return
 end

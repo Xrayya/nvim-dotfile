@@ -1,4 +1,4 @@
-local jabs = require("functions").notifreq("jabs", "jabs-config", "error")
+local jabs = NOTIF_REQ("jabs", "jabs-config", "error")
 if jabs == nil then
   return
 end

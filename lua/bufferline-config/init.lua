@@ -1,4 +1,4 @@
-local bufferline = require("functions").notifreq("bufferline", "bufferline-config", "error")
+local bufferline = NOTIF_REQ("bufferline", "bufferline-config", "error")
 if bufferline == nil then
   return
 end

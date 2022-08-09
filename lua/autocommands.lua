@@ -3,7 +3,7 @@ if vim.fn.has("nvim-0.8") == 1 then
     { "CursorMoved", "CursorHold", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost", "TabClosed" },
     {
       callback = function()
-        local winbar = require("functions").notifreq("winbar", "autocommands", "error")
+        local winbar = NOTIF_REQ("winbar", "autocommands", "error")
         if winbar ~= nil then
           winbar.get_winbar()
         end
@@ -15,7 +15,7 @@ end
 -- vim.api.nvim_create_autocmd({ "UIEnter" }, {
 --   once = true,
 --   callback = function()
---     local spinner = require("functions").notifreq("notification-config.spinner", "autocommands", "error")
+--     local spinner = NOTIF_REQ("notification-config.spinner", "autocommands", "error")
 --     if spinner == nil then
 --       return
 --     end

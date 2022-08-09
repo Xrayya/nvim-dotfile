@@ -1,4 +1,4 @@
-local cybu = require("functions").notifreq("cybu", "cybu-config", "error")
+local cybu = NOTIF_REQ("cybu", "cybu-config", "error")
 if cybu == nil then
   return
 end

@@ -10,7 +10,7 @@ require("navic-config")
 vim.cmd([[packadd cmp-nvim-lsp]])
 
 vim.cmd([[packadd nvim-jdtls]])
-local nvim_jdtls = require("functions").notifreq("jdtls", "ftplugin/java", "error")
+local nvim_jdtls = NOTIF_REQ("jdtls", "ftplugin/java", "error")
 if nvim_jdtls == nil then
   return
 end
@@ -305,7 +305,7 @@ vim.cmd("command! -buffer JdtBytecode lua require('jdtls').javap()")
 vim.cmd([[packadd which-key.nvim]])
 require("whichkey-config")
 
-local which_key = require("functions").notifreq("which-key", "ftplugin/java", "error")
+local which_key = NOTIF_REQ("which-key", "ftplugin/java", "error")
 if which_key == nil then
   return
 end

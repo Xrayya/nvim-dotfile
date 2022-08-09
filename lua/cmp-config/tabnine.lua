@@ -1,4 +1,4 @@
-local tabnine = require("functions").notifreq("cmp_tabnine.config", "cmp-config.tabnine", "error")
+local tabnine = NOTIF_REQ("cmp_tabnine.config", "cmp-config.tabnine", "error")
 if tabnine == nil then
   return
 end

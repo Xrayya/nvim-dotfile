@@ -204,7 +204,7 @@ return {
       -- null-ls register
       local null_ls_list_registered = function(filetype, method)
         local null_ls_sources =
-        require("functions").notifreq("null-ls.sources", "lualine-config.components.lsp", "error")
+        NOTIF_REQ("null-ls.sources", "lualine-config.components.lsp", "error")
         if null_ls_sources == nil then
           return {}
         end
@@ -221,7 +221,7 @@ return {
         return registered_providers[method] or {}
       end
 
-      local null_ls = require("functions").notifreq("null-ls", "lualine-config.components.lsp", "error")
+      local null_ls = NOTIF_REQ("null-ls", "lualine-config.components.lsp", "error")
       if null_ls ~= nil then
         -- add formatter
         local supported_formatters = null_ls_list_registered(buf_ft, null_ls.methods.FORMATTING)

@@ -1,4 +1,4 @@
-local lualine = require("functions").notifreq("lualine", "lualine-config.custom-lualine.my-lualine", "error")
+local lualine = NOTIF_REQ("lualine", "lualine-config.custom-lualine.my-lualine", "error")
 if lualine == nil then
   return
 end

@@ -1,4 +1,5 @@
 -- Setup settings
+require("user-functions")
 require("keymappings")
 require("plugins")
 require("settings")

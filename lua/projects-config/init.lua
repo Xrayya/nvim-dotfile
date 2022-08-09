@@ -1,4 +1,4 @@
-local project = require("functions").notifreq("project_nvim", "projects-config", "error")
+local project = NOTIF_REQ("project_nvim", "projects-config", "error")
 if project == nil then
   return
 end

@@ -1,4 +1,4 @@
-local treesitter = require("functions").notifreq("nvim-treesitter.configs", "treesitter-config", "error")
+local treesitter = NOTIF_REQ("nvim-treesitter.configs", "treesitter-config", "error")
 if treesitter == nil then
   return
 end

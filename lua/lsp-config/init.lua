@@ -1,4 +1,4 @@
-local lspconfig = require("functions").notifreq("lspconfig", "lsp-config", "error")
+local lspconfig = NOTIF_REQ("lspconfig", "lsp-config", "error")
 if lspconfig == nil then
   return
 end

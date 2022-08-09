@@ -1,4 +1,4 @@
-local preview = require("functions").notifreq("goto-preview", "goto-preview-config", "error")
+local preview = NOTIF_REQ("goto-preview", "goto-preview-config", "error")
 if preview == nil then
   return
 end

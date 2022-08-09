@@ -1,4 +1,4 @@
-local toggleterm = require("functions").notifreq("toggleterm", "terminal-config", "error")
+local toggleterm = NOTIF_REQ("toggleterm", "terminal-config", "error")
 if toggleterm == nil then
   return
 end

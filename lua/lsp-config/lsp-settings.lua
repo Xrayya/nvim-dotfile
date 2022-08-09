@@ -1,9 +1,9 @@
-local mason_lspconfig = require("functions").notifreq("mason-lspconfig", "mason-config", "error")
+local mason_lspconfig = NOTIF_REQ("mason-lspconfig", "mason-config", "error")
 if mason_lspconfig == nil then
   return
 end
 
-local lspconfig = require("functions").notifreq("lspconfig", "lsp-config.lsp-installer", "error")
+local lspconfig = NOTIF_REQ("lspconfig", "lsp-config.lsp-installer", "error")
 if lspconfig == nil then
   return
 end

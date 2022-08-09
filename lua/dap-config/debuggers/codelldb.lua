@@ -1,4 +1,4 @@
-local dap = require("functions").notifreq("dap", "dap-config.debuggers.lldb-vscode", "error")
+local dap = NOTIF_REQ("dap", "dap-config.debuggers.lldb-vscode", "error")
 
 -- local lldb_host = "127.0.0.1"
 -- local lldb_port = "34567"

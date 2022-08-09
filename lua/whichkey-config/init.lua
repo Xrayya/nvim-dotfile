@@ -1,4 +1,4 @@
-local wk = require("functions").notifreq("which-key", "whichkey-config", "error")
+local wk = NOTIF_REQ("which-key", "whichkey-config", "error")
 if wk == nil then
   return
 end

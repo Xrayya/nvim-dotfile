@@ -1,4 +1,4 @@
-local nvim_tree = require("functions").notifreq("nvim-tree", "nvim-tree-config", "error")
+local nvim_tree = NOTIF_REQ("nvim-tree", "nvim-tree-config", "error")
 if nvim_tree == nil then
   return
 end

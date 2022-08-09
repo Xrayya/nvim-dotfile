@@ -1,4 +1,4 @@
-local hints = require("functions").notifreq("lsp-inlayhints", "lsp-inlayhints-config", "error")
+local hints = NOTIF_REQ("lsp-inlayhints", "lsp-inlayhints-config", "error")
 if hints == nil then
   return
 end

@@ -1,4 +1,4 @@
-local indent_blankline = require("functions").notifreq("indent_blankline", "indentation-config", "error")
+local indent_blankline = NOTIF_REQ("indent_blankline", "indentation-config", "error")
 if indent_blankline == nil then
   return
 end

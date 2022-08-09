@@ -47,7 +47,7 @@ function M.remove_augroup(name)
   end
 end
 
-vim.cmd([[ command! SnipRunToggle execute 'lua require("functions").toggle_sniprun()' ]])
+vim.cmd([[ command! SnipRunToggle execute 'lua require("user-functions").toggle_sniprun()' ]])
 
 -- get length of current word
 function M.get_word_length()
@@ -114,7 +114,7 @@ function M.smart_quit()
   end
 end
 
-function M.notifreq(module, filename, level)
+function NOTIF_REQ(module, filename, level)
   if level == nil then
     level = "error"
   end

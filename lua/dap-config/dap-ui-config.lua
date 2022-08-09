@@ -1,9 +1,9 @@
-local dapui = require("functions").notifreq("dapui", "dap-config.dap-ui-config", "error")
+local dapui = NOTIF_REQ("dapui", "dap-config.dap-ui-config", "error")
 if dapui == nil then
   return
 end
 
-local dap = require("functions").notifreq("dap", "dap-config.dap-ui-config", "error")
+local dap = NOTIF_REQ("dap", "dap-config.dap-ui-config", "error")
 
 local icons = require("icons")
 
