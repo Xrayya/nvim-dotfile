@@ -472,7 +472,7 @@ return require("packer").startup(function(use)
 
   use({
     "simrat39/symbols-outline.nvim",
-    commit = "15ae99c27360ab42e931be127d130611375307d5",
+    commit = "13e89b6349f51bd305a2af9db84c8490aee94c82",
     config = function()
       require("symbols-outline-config")
     end,
