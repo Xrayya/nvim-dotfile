@@ -546,7 +546,7 @@ return require("packer").startup(function(use)
     -- FZF Native
     {
       "nvim-telescope/telescope-fzf-native.nvim",
-      commit = "6a33ecefa9b3d9ade654f9a7a6396a00c3758ca6",
+      commit = "6791f74e9f08a9412c43dcba805ecf2f8888bdde",
       run = "make",
       event = "BufWinEnter",
     },
