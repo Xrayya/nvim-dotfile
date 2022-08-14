@@ -59,6 +59,11 @@ for _, server in pairs(installed_servers) do
     opts = vim.tbl_deep_extend("force", clangd_opts, opts)
   end
 
+  if server == "marksman" then
+    local marksman_opts = require("lsp-config.custom-lsp-settings.marksman")
+    opts = vim.tbl_deep_extend("force", marksman_opts, opts)
+  end
+
   if server == "jsonls" then
     local jsonls_opts = require("lsp-config.custom-lsp-settings.jsonls")
     opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
