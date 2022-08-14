@@ -721,6 +721,18 @@ return require("packer").startup(function(use)
     },
   })
 
+  ----------
+  -- Numb --
+  ----------
+
+  use({
+    "nacro90/numb.nvim",
+    event = "BufWinEnter",
+    config = function ()
+      require("numb-config")
+    end
+  })
+
   ------------------------
   -- Markdown previewer --
   ------------------------
