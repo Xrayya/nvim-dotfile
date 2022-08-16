@@ -29,7 +29,7 @@ elseif vim.fn.has("win32") == 1 then
 end
 
 -- Find root of project
-local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle" }
+local root_markers = { ".git", "mvnw", "gradlew", "pom.xml", "build.gradle", ".vscode" }
 local root_dir = require("jdtls.setup").find_root(root_markers)
 if root_dir == "" then
   return
@@ -281,6 +281,21 @@ local config = {
   --   ["language/progressReport"] = progress_report,
   -- },
 }
+
+-- local vscode_project = {
+--   java = {
+--     project = {
+--       sourcePaths = { "src" },
+--       outputPath = "bin",
+--       referencedLibraries = { "lib/**/*.jar" },
+--     },
+--   },
+-- }
+
+-- local vscode_settings = vim.fn.getcwd() .. "/.vscode/settings.json"
+-- if vim.fn.empty(vim.fn.glob(vscode_settings)) == 0 then
+--   vim.notify("vscode settings file exist")
+-- end
 
 -- NOTE: issue with cmd height
 -- config.handers["language/status"] = function() end
