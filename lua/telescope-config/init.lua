@@ -33,6 +33,11 @@ telescope.setup({
         height = 0.4,
       },
     },
+    help_tags = {
+      layout_config = {
+        preview_width = 0.6,
+      }
+    }
   },
   defaults = {
     prompt_prefix = ui.Telescope .. " ",
