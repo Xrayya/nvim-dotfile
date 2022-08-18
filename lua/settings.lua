@@ -41,6 +41,7 @@ set.updatetime = 300                        -- Faster completion
 set.timeoutlen = 300                        -- By default timeoutlen is 1000 ms
 --set.formatoptions-=cro                      -- Stop newline continution of comments
 set.clipboard:append {"unnamedplus"}        -- Copy paste between vim and everything else
+-- set.termpastefilter = ""
 set.shortmess:append "c"
 vim.opt.guifont = "JetBrainsMono\\ NF:h11"    -- the font used in graphical neovim applications
 
