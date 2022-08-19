@@ -100,6 +100,8 @@ return {
     SignIn            = "",
     SignOut           = "",
     Check             = "",
+    Label             = "",
+    LabelOutline      = "",
     Fire              = "",
     Note              = "",
     BookMark          = "",
