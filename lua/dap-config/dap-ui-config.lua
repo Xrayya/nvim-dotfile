@@ -116,6 +116,10 @@ M.setup_running = function()
 end
 
 vim.fn.sign_define("DapBreakpoint", { text = icons.ui.Bug, texthl = "DiagnosticSignError", linehl = "", numhl = "" })
+-- vim.fn.sign_define("DapBreakpointCondition", { text = icons.ui.Bug, texthl = "DiagnosticSignError", linehl = "", numhl = "" })
+-- vim.fn.sign_define("DapLogPoint", { text = icons.ui.Bug, texthl = "DiagnosticSignError", linehl = "", numhl = "" })
+-- vim.fn.sign_define("DapBreakpointRejected", { text = icons.ui.Bug, texthl = "DiagnosticSignError", linehl = "", numhl = "" })
+vim.fn.sign_define("DapStopped", { text = icons.ui.Label, texthl = "DiagnosticSignWarn", linehl = "", numhl = "" })
 
 if dap ~= nil then
   -- set external terminal
