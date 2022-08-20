@@ -97,7 +97,8 @@ local bl_opts = {
 }
 
 local n_mappings = {
-  b = { "<cmd>JABSOpen<cr>", "Buffer Explorer" },
+  b = { "<cmd>JABSOpen<cr>", "Buffer explorer" },
+  c = {"<cmd>ColorizerToggle<cr>", "Colorizer toggle"},
   C = { "<cmd>PickColor<cr>", "Pick Color" },
   d = {
     name = "Debug",
