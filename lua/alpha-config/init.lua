@@ -40,12 +40,10 @@ dashboard.section.buttons.val = {
 local function footer()
   local total_plugins = #vim.tbl_keys(packer_plugins)
   local datetime = os.date(ui.Calendar .. " %d-%m-%Y " .. ui.Clock3 .. " %H:%M:%S")
-  return " \n" .. ui.Socket .. " " .. total_plugins .. " plugins " .. datetime
+  return ui.Socket .. " " .. total_plugins .. " plugins " .. datetime
 end
 
 dashboard.section.footer.val = footer()
--- dashboard.section.footer.opts.hl = "Constant"
-dashboard.section.footer.opts.hl = "Type"
 dashboard.section.header.opts.hl = "Include"
 dashboard.section.buttons.opts.hl = "Keyword"
 
