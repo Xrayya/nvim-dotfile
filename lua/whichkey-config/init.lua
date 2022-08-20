@@ -98,17 +98,6 @@ local bl_opts = {
 
 local n_mappings = {
   b = { "<cmd>JABSOpen<cr>", "Buffer Explorer" },
-  c = {
-    name = "Commentary",
-    i = {
-      name = "Increase (motion's enable)",
-      c = { "<Plug>kommentary_motion_increase l", "Current line" },
-    },
-    d = {
-      name = "Decrease (motion's enable)",
-      c = { "<Plug>kommentary_motion_decrease l", "Current line" },
-    },
-  },
   C = { "<cmd>PickColor<cr>", "Pick Color" },
   d = {
     name = "Debug",

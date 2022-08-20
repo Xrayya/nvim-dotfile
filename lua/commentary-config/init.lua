@@ -3,7 +3,7 @@ if kommentary_config == nil then
   return
 end
 -- More advance commentary mapping
-kommentary_config.use_extended_mappings()
+-- kommentary_config.use_extended_mappings()
 
 -- Prefer single-line comments
 kommentary_config.configure_language("default", {
