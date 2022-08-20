@@ -514,7 +514,7 @@ return require("packer").startup(function(use)
   use({
     {
       "nvim-telescope/telescope.nvim",
-      commit = "b5833a682c511885887373aad76272ad70f7b3c2",
+      commit = "28dc08f614f45d37ad90f170935f1f4e12559aeb",
       requires = {
         { "nvim-lua/plenary.nvim" },
         { "nvim-lua/popup.nvim" },
