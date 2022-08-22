@@ -2,6 +2,9 @@
 
 My simple Neovim config
 
+## Screenshot
+![alpha in neovide](./screenshot/img (1).png) 
+
 ## Line that MUST NOT be crossed
 
 - Keep it simple!
