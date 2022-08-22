@@ -285,6 +285,7 @@ return require("packer").startup(function(use)
       -- branch = "add-type-definiton-preview",
       commit = "a5af27cff485b325f0ef2dcdf55ae51faed05cba",
       after = { "nvim-lspconfig", "telescope.nvim" },
+      event = "BufWinEnter",
       requires = { "nvim-telescope/telescope.nvim" },
       config = function()
         require("goto-preview-config")
@@ -483,8 +484,8 @@ return require("packer").startup(function(use)
   ----------------
 
   use({
-    "b3nj5m1n/kommentary",
-    commit = "533d768a140b248443da8346b88e88db704212ab",
+    "numToStr/Comment.nvim",
+    commit = "ba5903b88c0a43fdc94abe79ade2b8291ff661ed",
     event = "BufWinEnter",
     config = function()
       require("commentary-config")

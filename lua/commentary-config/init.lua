@@ -1,13 +1,29 @@
-local kommentary_config = NOTIF_REQ("kommentary.config", "commentary-config", "error")
-if kommentary_config == nil then
+local Comment = NOTIF_REQ("Comment", "commentary-config", "error")
+if Comment == nil then
   return
 end
--- More advance commentary mapping
--- kommentary_config.use_extended_mappings()
 
--- Prefer single-line comments
-kommentary_config.configure_language("default", {
-  prefer_single_line_comments = true,
-  use_consistent_indentation = true,
-  ignore_whitespace = true,
+Comment.setup({
+  pre_hook = function(ctx)
+    -- Only calculate commentstring for tsx filetypes
+    if vim.bo.filetype == "typescriptreact" then
+      local U = require("Comment.utils")
+
+      -- Determine whether to use linewise or blockwise commentstring
+      local type = ctx.ctype == U.ctype.linewise and "__default" or "__multiline"
+
+      -- Determine the location where to calculate commentstring from
+      local location = nil
+      if ctx.ctype == U.ctype.blockwise then
+        location = require("ts_context_commentstring.utils").get_cursor_location()
+      elseif ctx.cmotion == U.cmotion.v or ctx.cmotion == U.cmotion.V then
+        location = require("ts_context_commentstring.utils").get_visual_start_location()
+      end
+
+      return require("ts_context_commentstring.internal").calculate_commentstring({
+        key = type,
+        location = location,
+      })
+    end
+  end,
 })
