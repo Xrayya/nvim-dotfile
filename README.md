@@ -13,6 +13,7 @@ My simple Neovim config
 ## Notes for future update
 
 - see `:h nvim_open_win()` for floating window
+- last updated plugins: `nvim-jdtls`
 
 ## TODO
 

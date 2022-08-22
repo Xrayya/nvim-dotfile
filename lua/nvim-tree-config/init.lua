@@ -11,17 +11,13 @@ nvim_tree.setup({
     enable = true,
     update_root = true,
   },
+  view = {
+     width = 35,
+  },
   renderer = {
     root_folder_modifier = ":t",
     indent_markers = {
       enable = true,
-      icons = {
-        -- stylua : ignore
-        corner = "└ ",
-        edge   = "│ ",
-        item   = "│ ",
-        none   = "  ",
-      },
     },
     icons = {
       git_placement = "before",

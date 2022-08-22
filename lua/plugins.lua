@@ -158,7 +158,7 @@ return require("packer").startup(function(use)
 
   use({
     "kyazdani42/nvim-tree.lua",
-    commit = "c037c7ae848873756926d0085ae3bb8df9a99e9e",
+    commit = "81eb718394e489d2aebbffa730d2517d72ec7f9c",
     requires = "kyazdani42/nvim-web-devicons",
     cmd = "NvimTreeToggle",
     config = function()
@@ -173,7 +173,7 @@ return require("packer").startup(function(use)
   use({
     {
       "nvim-lualine/lualine.nvim",
-      commit = "5113cdb32f9d9588a2b56de6d1df6e33b06a554a",
+      commit = "9076378ac1c53684c4fbfcf34b1277018c15c233",
       requires = { "kyazdani42/nvim-web-devicons", opt = true },
       after = "nvim-lspconfig",
       config = function()
@@ -294,7 +294,7 @@ return require("packer").startup(function(use)
     -- Java LSP
     {
       "mfussenegger/nvim-jdtls",
-      commit = "8a97801fa1cab6ef3d98dd2429dce97bb1d9226c",
+      commit = "782867324475c451427b7d972f886620da9c5167",
       ft = "java",
     },
 
