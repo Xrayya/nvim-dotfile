@@ -20,7 +20,7 @@ let g:tokyonight_style = "storm"
 
 set termguicolors
 
-colorscheme kanagawa
+colorscheme tokyonight
 
 " checks if your terminal has 24-bit color support
 " if (has("termguicolors"))
