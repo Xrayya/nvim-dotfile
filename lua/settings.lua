@@ -11,7 +11,7 @@ set.fileencoding = "utf-8"                  -- The encoding written to file
 -- set.spell = true
 -- set.spelllang = { 'en_us' }
 set.ruler = true                            -- Show the cursor position all the time
-set.cmdheight = 2                           -- More space for displaying messages
+set.cmdheight = 1                           -- More space for displaying messages
 -- set.shell = "pwsh"
 set.iskeyword:append("-")                   -- treat dash separated words as a word text object--
 set.mouse = "a"                             -- Enable your mouse

@@ -232,6 +232,7 @@ local n_mappings = {
   },
   w = { ":w<cr>", "Write (save)" },
   W = { "<cmd>lua vim.lsp.buf.format()<CR><cmd>write<cr>", "Write and format" },
+  [","] = {"<cmd>set wrap<cr>", "Set wrap"},
 }
 
 local br_mappings = {
