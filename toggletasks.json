@@ -7,72 +7,52 @@
     {
       "name": "Compile and run cpp file",
       "cmd": "g++ -fdiagnostics-color=always -g \"${file}\" -o \"${file:r}.exe\" && echo Compiling done && \"${file:r}.exe\"",
-      "tags": [
-        "compile",
-        "run",
-        "cpp"
-      ]
+      "tags": ["compile", "run", "cpp"]
     },
     {
       "name": "Compile and run c file",
       "cmd": "gcc -fdiagnostics-color=always -g \"${file}\" -o \"${file:r}.exe\" && echo Compiling done && \"${file:r}.exe\"",
-      "tags": [
-        "compile",
-        "run",
-        "c"
-      ]
+      "tags": ["compile", "run", "c"]
     },
     {
       "name": "Compile only cpp file",
       "cmd": "g++ -fdiagnostics-color=always -g \"${file}\" -o \"${file:r}.exe\" && echo Compiling done",
-      "tags": [
-        "compile",
-        "cpp"
-      ]
+      "tags": ["compile", "cpp"]
     },
     {
       "name": "Compile only c file",
       "cmd": "gcc -fdiagnostics-color=always -g \"${file}\" -o \"${file:r}.exe\" && echo Compiling done",
-      "tags": [
-        "compile",
-        "c"
-      ]
+      "tags": ["compile", "c"]
     },
     {
       "name": "Reload compile_commands.json",
       "cmd": "cmake .",
       "cwd": "\"${lsp_root}\"",
-      "tags": [
-        "build",
-        "cmake",
-        "lsp"
-      ]
+      "tags": ["build", "cmake", "lsp"]
     },
     {
       "name": "Makefile build",
       "cmd": "make -j",
       "cwd": "${config_dir}",
-      "tags": [
-        "build",
-        "make"
-      ]
+      "tags": ["build", "make"]
     },
     {
       "name": "CMake setup",
       "cmd": "mkdir -p build && cd build && cmake ..",
       "cwd": "${config_dir}",
-      "tags": [
-        "cmake"
-      ]
+      "tags": ["cmake"]
     },
     {
       "name": "CMake build",
       "cmd": "cmake --build build -j",
       "cwd": "${config_dir}",
-      "tags": [
-        "build",
-        "cmake"
-      ]
+      "tags": ["build", "cmake"]
+    },
+    {
+      "name": "Create VS Code Java workspace",
+      "cmd": "md \".vscode\" && md \"src\" && md \"lib\" && (echo { & echo \"java.project.sourcePaths\": [\"src\"], & echo \"java.project.outputPath\": \"bin\", & echo \"java.project.referencedLibraries\": [ & echo \"lib/**/*.jar\" & echo ] & echo }) > .\\.vscode\\settings.json",
+      "cwd": "${config_dir}",
+      "tags": ["java", "setup"]
     },
     {
       "name": "django runserver",
@@ -81,17 +61,13 @@
       "env": {
         "PATH": "${config_dir}/venv/bin:${PATH}"
       },
-      "tags": [
-        "dev"
-      ]
+      "tags": ["dev"]
     },
     {
       "name": "frontend",
       "cmd": "npm run serve",
       "cwd": "${config_dir}/frontend",
-      "tags": [
-        "dev"
-      ]
+      "tags": ["dev"]
     },
     {
       "name": "open html file locally",
