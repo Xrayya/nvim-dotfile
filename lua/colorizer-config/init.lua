@@ -4,8 +4,10 @@ if colorizer == nil then
 end
 
 colorizer.setup({
-  "*",
-  css = { RRGGBBAA = true, css = true },
-  html = { RRGGBBAA = true, css = true },
-  javascript = { RRGGBBAA = true, css = true },
+  filetypes = {
+    "*",
+    css = { RRGGBBAA = true, css = true },
+    html = { RRGGBBAA = true, css = true },
+    javascript = { RRGGBBAA = true, css = true },
+  }
 })
