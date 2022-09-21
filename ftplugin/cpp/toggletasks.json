@@ -1,0 +1,21 @@
+{
+  "tasks": [
+    {
+      "name": "Compile and run cpp file",
+      "cmd": "g++ -fdiagnostics-color=always -g \"${file}\" -o \"${file:r}.exe\" && echo Compiling done && \"${file:r}.exe\"",
+      "tags": ["compile", "run", "cpp"]
+    },
+
+    {
+      "name": "Compile only cpp file",
+      "cmd": "g++ -fdiagnostics-color=always -g \"${file}\" -o \"${file:r}.exe\" && echo Compiling done",
+      "tags": ["compile", "cpp"]
+    },
+    {
+      "name": "Reload compile_commands.json",
+      "cmd": "cmake .",
+      "cwd": "\"${lsp_root}\"",
+      "tags": ["build", "cmake", "lsp"]
+    }
+  ]
+}

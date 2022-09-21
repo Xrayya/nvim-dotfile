@@ -1,0 +1,15 @@
+{
+  "tasks": [
+    {
+      "name": "open html file locally",
+      "cmd": "start ${file}",
+      "tags": ["html"]
+    },
+    {
+      "name": "start live-server in the current directory",
+      "cmd": "live-server .",
+      "cwd": "${lsp_root}",
+      "tags": ["html", "live-server"]
+    }
+  ]
+}
