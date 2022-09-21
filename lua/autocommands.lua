@@ -1,7 +1,9 @@
 if vim.fn.has("nvim-0.8") == 1 then
+  vim.api.nvim_create_augroup("_winbar", {})
   vim.api.nvim_create_autocmd(
     { "CursorMoved", "CursorHold", "BufWinEnter", "BufFilePost", "InsertEnter", "BufWritePost", "TabClosed" },
     {
+      group = "_winbar",
       callback = function()
         local winbar = NOTIF_REQ("winbar", "autocommands", "error")
         if winbar ~= nil then
