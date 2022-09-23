@@ -15,6 +15,9 @@ return {
         setType = true,
       },
       runtime = {
+        special = {
+          reload = "require",
+        },
         version = "LuaJIT",
       },
       workspace = {
