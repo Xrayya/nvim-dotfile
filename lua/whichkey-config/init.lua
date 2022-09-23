@@ -3,6 +3,7 @@ if wk == nil then
   return
 end
 
+
 wk.setup({
   plugins = {
     marks = true, -- shows a list of your marks on ' and `

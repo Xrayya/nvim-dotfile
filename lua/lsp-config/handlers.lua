@@ -10,6 +10,7 @@ if cmp_nvim_lsp ~= nil then
   M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 end
 
+
 M.setup = function()
   local signs = {
     { name = "DiagnosticSignError", text = diagnostic_signs.Error },
