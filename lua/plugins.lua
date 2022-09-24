@@ -275,7 +275,8 @@ return require("packer").startup(function(use)
     },
 
     -- Illuminate
-    -- NOTE: keep this one outdated, hard to configure the highlight
+    -- NOTE: keep this one outdated for now, hard to configure the highlight
+    -- FIXME: need help
     {
       "RRethy/vim-illuminate",
       commit = "6bfa5dc069bd4aa8513a3640d0b73392094749be",
@@ -376,7 +377,7 @@ return require("packer").startup(function(use)
     {
       "hrsh7th/cmp-cmdline",
       commit = "c66c379915d68fb52ad5ad1195cdd4265a95ef1e",
-      after = {"nvim-cmp", "cmp-buffer", "cmp-path"},
+      after = { "nvim-cmp", "cmp-buffer", "cmp-path" },
     },
 
     -- Tabnine
@@ -442,6 +443,19 @@ return require("packer").startup(function(use)
     end,
   })
 
+  ------------------
+  -- Todo-Comments --
+  ------------------
+  use({
+    "folke/todo-comments.nvim",
+    commit = "02eb3019786d9083b93ab9457761899680c6f3ec",
+    requires = "nvim-lua/plenary.nvim",
+    event = "BufWinEnter",
+    config = function()
+      require("todo-comments-config")
+    end,
+  })
+
   ---------------------
   -- Symbols outline --
   ---------------------
@@ -477,7 +491,7 @@ return require("packer").startup(function(use)
     disable = false,
     commit = "be655cc7ce0f5d6d24eeaf8b36e82693fd2facca",
     requires = { "nvim-treesitter" },
-    after = {"nvim-cmp", "nvim-treesitter"},
+    after = { "nvim-cmp", "nvim-treesitter" },
     config = function()
       require("tabout-config")
     end,
@@ -704,9 +718,9 @@ return require("packer").startup(function(use)
   use({
     "nacro90/numb.nvim",
     event = "BufWinEnter",
-    config = function ()
+    config = function()
       require("numb-config")
-    end
+    end,
   })
 
   ------------------------

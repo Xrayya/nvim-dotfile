@@ -134,6 +134,7 @@ local n_mappings = {
     s = { "<cmd>Telescope current_buffer_fuzzy_find theme=ivy<cr>", "Search in current buffer" },
     S = { "<cmd>Telescope sessions<cr>", "Last Seasons" },
     t = { "<cmd>Telescope help_tags<cr>", "Tags" },
+    T = { "<cmd>TodoTelescope<cr>", "All todo comments"},
   },
   h = { "<cmd>set hlsearch!<cr>", "Hightlight text toggle" },
   i = { "<cmd>lua require('lsp-inlayhints').toggle()<cr>", "Inlayhints toggle" },
@@ -188,6 +189,7 @@ local n_mappings = {
       w = { "<cmd>TroubleToggle workspace_diagnostics<cr>", "Current workspace diagnostics" },
       d = { "<cmd>TroubleToggle definitions<cr>", "Definition" },
       t = { "<cmd>TroubleToggle type_definitions<cr>", "Type definition" },
+      T = { "<cmd>TodoTrouble<cr>", "Todo comments"},
     },
   },
   L = { '<cmd>lua require("lsp-lines").toggle()<cr>', "Toggle lsp-line" },
@@ -237,11 +239,13 @@ local n_mappings = {
 local bl_mappings = {
   d = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Jump to previous diagnostics" },
   h = { '<cmd>lua require"gitsigns.actions".prev_hunk()<CR>', "Jump to previous hunk" },
+  t = { 'require("todo-comments").jump_prev()', "Jump to previous todo comment"}
 }
 
 local br_mappings = {
   d = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Jump to next diagnostics" },
   h = { '<cmd>lua require"gitsigns.actions".next_hunk()<CR>', "Jump to next hunk" },
+  t = { 'require("todo-comments").jump_next()', "Jump to next todo comment"}
 }
 
 wk.register(n_mappings, n_opts)

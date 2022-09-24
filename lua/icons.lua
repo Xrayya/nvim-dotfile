@@ -103,7 +103,7 @@ return {
     Label             = "",
     LabelOutline      = "",
     Fire              = "",
-    Note              = "",
+    Note              = "",
     BookMark          = "",
     Pencil1           = "",
     Pencil2           = "✎",
