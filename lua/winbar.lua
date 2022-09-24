@@ -1,5 +1,7 @@
 local M = {}
 
+local icons = require("icons")
+
 M.winbar_filetype_exclude = {
   "help",
   "startify",
@@ -29,6 +31,21 @@ M.navic_filetype_exclude = {
   "less",
   "py",
 }
+
+-- M.get_file_tree = function ()
+--   if vim.bo.filetype == "alpha" then
+--     return " "
+--   end
+--   local tree = vim.fn.split(vim.fn.expand("%:h"), "\\")
+--   local full_tree = " "
+--   if tree == "" then
+--     return full_tree
+--   end
+--   for _, folder_name in pairs(tree) do
+--     full_tree = full_tree .. "%#NavicText#" .. folder_name .. "%*" .. " " .. "%#NavicSeparator#" .. icons.ui.ChevronRight .. "%*" .. " "
+--   end
+--   return full_tree
+-- end
 
 M.get_filename = function()
   local filename = vim.fn.expand("%:t")
@@ -88,7 +105,7 @@ local get_gps = function()
   end
 
   if not require("user-functions").isempty(gps_location) then
-    return "%#NavicSeparator#" .. require("icons").ui.ChevronRight .. " " .. gps_location
+    return "%#NavicSeparator#" .. icons.ui.ChevronRight .. "%*" .. " " .. gps_location
   else
     return ""
   end
