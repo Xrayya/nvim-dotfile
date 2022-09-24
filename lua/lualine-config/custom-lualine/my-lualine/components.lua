@@ -84,8 +84,8 @@ return {
     cond = nil,
   },
   branch = {
-    "b:gitsigns_head",
     icon = "",
+    "b:gitsigns_head",
     padding = { left = 2, right = 2 },
     color = function()
       local mode_code = vim.api.nvim_get_mode().mode
@@ -94,6 +94,7 @@ return {
       end
       return { bg = mode[vim.fn.mode()].b.bg, gui = "bold" }
     end,
+    -- color = {},
     cond = function()
       return vim.opt.columns._value > 100
     end,
@@ -113,7 +114,7 @@ return {
       readonly = " ",
       unnamed = " ",
     },
-    padding = { left = 0, right = 2 },
+    padding = { left = 1, right = 1 },
   },
   filesize = {
     "filesize",
@@ -124,7 +125,7 @@ return {
       end
       return { fg = mode[vim.fn.mode()].a.bg }
     end,
-    padding = { left = 0, right = 2 },
+    padding = { left = 1, right = 1 },
     cond = function()
       return vim.opt.columns._value > 115
     end,
@@ -138,14 +139,15 @@ return {
       modified = { fg = colors.yellow },
       removed = { fg = colors.red },
     },
-    padding = { left = 0, right = 2 },
-    color = function()
-      local mode_code = vim.api.nvim_get_mode().mode
-      if mode[mode_code] == nil then
-        return { bg = mode.n.b.bg }
-      end
-      return { bg = mode[vim.fn.mode()].b.bg }
-    end,
+    padding = { left = 2, right = 2 },
+    -- color = function()
+    --   local mode_code = vim.api.nvim_get_mode().mode
+    --   if mode[mode_code] == nil then
+    --     return { bg = mode.n.b.bg }
+    --   end
+    --   return { bg = mode[vim.fn.mode()].b.bg }
+    -- end,
+    color = {},
     cond = function()
       return vim.opt.columns._value > 100
     end,
@@ -154,14 +156,15 @@ return {
     "diagnostics",
     sources = { "nvim_diagnostic" },
     symbols = { error = " ", warn = " ", info = " ", hint = " " },
-    color = function()
-      local mode_code = vim.api.nvim_get_mode().mode
-      if mode[mode_code] == nil then
-        return { bg = mode.n.b.bg }
-      end
-      return { bg = mode[vim.fn.mode()].b.bg }
-    end,
-    padding = { left = 2, right = 0 },
+    -- color = function()
+    --   local mode_code = vim.api.nvim_get_mode().mode
+    --   if mode[mode_code] == nil then
+    --     return { bg = mode.n.b.bg }
+    --   end
+    --   return { bg = mode[vim.fn.mode()].b.bg }
+    -- end,
+    color = {},
+    padding = { left = 2, right = 2 },
     update_in_insert = true,
     always_visible = false,
     cond = nil,
@@ -174,7 +177,7 @@ return {
       end
       return ""
     end,
-    padding = { left = 2, right = 1 },
+    padding = { left = 1, right = 1 },
     color = { fg = colors.green },
     cond = function()
       return vim.opt.columns._value > 120
@@ -242,6 +245,7 @@ return {
       end
       return { bg = mode[vim.fn.mode()].b.bg, gui = "bold" }
     end,
+    -- color = {},
     padding = { left = 2, right = 2 },
     cond = nil,
   },
@@ -281,13 +285,13 @@ return {
     "filetype",
     icon_only = true,
     color = {},
-    padding = { left = 2, right = 1 },
+    padding = { left = 1, right = 1 },
     cond = nil,
   },
   location = {
     "location",
     color = {},
-    padding = { left = 1, right = 0 },
+    padding = { left = 1, right = 1 },
     cond = function()
       return vim.opt.columns._value > 75
     end,
@@ -308,7 +312,7 @@ return {
       local index = math.ceil(line_ratio * #chars)
       return chars[index]
     end,
-    padding = { left = 1, right = 0 },
+    padding = { left = 1, right = 1 },
     color = { fg = colors.yellow, bg = colors.bg },
     cond = function()
       return vim.opt.columns._value > 70
