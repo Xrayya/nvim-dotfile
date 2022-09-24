@@ -32,22 +32,8 @@ M.navic_filetype_exclude = {
   "py",
 }
 
--- M.get_file_tree = function ()
---   if vim.bo.filetype == "alpha" then
---     return " "
---   end
---   local tree = vim.fn.split(vim.fn.expand("%:h"), "\\")
---   local full_tree = " "
---   if tree == "" then
---     return full_tree
---   end
---   for _, folder_name in pairs(tree) do
---     full_tree = full_tree .. "%#NavicText#" .. folder_name .. "%*" .. " " .. "%#NavicSeparator#" .. icons.ui.ChevronRight .. "%*" .. " "
---   end
---   return full_tree
--- end
-
 M.get_filename = function()
+  local folders = vim.fn.expand("%:h")
   local filename = vim.fn.expand("%:t")
   local extension = vim.fn.expand("%:e")
   local f = require("user-functions")
@@ -64,7 +50,24 @@ M.get_filename = function()
       file_icon_color = ""
     end
 
-    return " " .. "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. "%#NavicText#" .. filename .. "%*"
+    return " "
+      .. "%#NavicText#"
+      .. folders
+      .. "%*"
+      .. " "
+      .. "%#NavicSeparator#"
+      .. icons.ui.ChevronRight
+      .. "%*"
+      .. " "
+      .. "%#"
+      .. hl_group
+      .. "#"
+      .. file_icon
+      .. "%*"
+      .. " "
+      .. "%#NavicText#"
+      .. filename
+      .. "%*"
   end
 end
 
