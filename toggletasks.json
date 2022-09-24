@@ -1,6 +1,10 @@
 {
   "tasks": [
     {
+      "name": "Echo test",
+      "cmd": "echo this is a test"
+    },
+    {
       "name": "Makefile build",
       "cmd": "make -j",
       "cwd": "${config_dir}",
@@ -28,8 +32,8 @@
     },
     {
       "name": "Create VS Code Java workspace",
-      "cmd": "md \".vscode\" && md \"src\" && md \"lib\" && (echo { & echo   \"java.project.sourcePaths\": [\"src\"], & echo   \"java.project.outputPath\": \"bin\", & echo   \"java.project.referencedLibraries\": [\"lib/**/*.jar\"] & echo   }) > .\\.vscode\\settings.json",
-      "cwd": "${config_dir}",
+      "cmd": "md \".vscode\" && md \"src\" && md \"lib\" && (echo { & echo   \"java.project.sourcePaths\": [\"src\"], & echo   \"java.project.outputPath\": \"bin\", & echo   \"java.project.referencedLibraries\": [\"lib/**/*.jar\"] & echo }) > .\\.vscode\\settings.json",
+      "cwd": "${win_cwd}",
       "tags": [
         "java",
         "setup"

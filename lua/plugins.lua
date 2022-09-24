@@ -178,15 +178,6 @@ return require("packer").startup(function(use)
       end,
     },
     {
-      "matbme/JABS.nvim",
-      commit = "4ec901b1f30ae121f462380509800debdb273215",
-      requires = "kyazdani42/nvim-web-devicons",
-      event = "BufWinEnter",
-      config = function()
-        require("jabs-config")
-      end,
-    },
-    {
       "ghillb/cybu.nvim",
       branch = "main",
       requires = { "kyazdani42/nvim-web-devicons" },

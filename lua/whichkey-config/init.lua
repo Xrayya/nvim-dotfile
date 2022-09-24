@@ -98,7 +98,7 @@ local bl_opts = {
 }
 
 local n_mappings = {
-  b = { "<cmd>JABSOpen<cr>", "Buffer explorer" },
+  b = { "<cmd>Telescope buffers theme=dropdown<cr>", "Buffer explorer" },
   c = {"<cmd>ColorizerToggle<cr>", "Colorizer toggle"},
   C = { "<cmd>PickColor<cr>", "Pick Color" },
   d = {
@@ -122,8 +122,6 @@ local n_mappings = {
   e = { "<cmd>NvimTreeToggle<cr>", "Explorer" },
   f = {
     name = "Find",
-    b = { "<cmd>Telescope buffers<cr>", "Opened buffer" },
-    B = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     c = { "<cmd>lua require('telescope.builtin').colorscheme({enable_preview = true})<cr>", "Colorscheme" },
     C = { "<cmd>Telescope commands<cr>", "Commands" },
     f = { "<cmd>Telescope find_files<cr>", "File" },

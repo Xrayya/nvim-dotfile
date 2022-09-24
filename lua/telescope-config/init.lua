@@ -4,11 +4,27 @@ if telescope == nil then
 end
 
 local themes = require("telescope.themes")
+local actions = require("telescope.actions")
 
 local ui = require("icons").ui
 
 telescope.setup({
   pickers = {
+    buffers = {
+      theme = "dropdown",
+      previewer = false,
+      initial_mode = "normal",
+      mappings = {
+        n = {
+          ["D"] = actions.delete_buffer,
+        },
+      },
+    },
+    help_tags = {
+      layout_config = {
+        preview_width = 0.6,
+      },
+    },
     lsp_document_symbols = {
       theme = "ivy",
       layout_config = {
@@ -33,11 +49,6 @@ telescope.setup({
         height = 0.4,
       },
     },
-    help_tags = {
-      layout_config = {
-        preview_width = 0.6,
-      }
-    }
   },
   defaults = {
     prompt_prefix = ui.Telescope .. " ",
@@ -47,6 +58,20 @@ telescope.setup({
     sorting_strategy = "ascending",
     layout_config = {
       prompt_position = "top",
+    },
+    mappings = {
+      i = {
+        ["<Tab>"] = actions.move_selection_next,
+        ["<S-Tab>"] = actions.move_selection_previous,
+        ["<C-n>"] = actions.toggle_selection + actions.move_selection_worse,
+        ["<C-p>"] = actions.toggle_selection + actions.move_selection_better,
+      },
+      n = {
+        ["<Tab>"] = actions.move_selection_next,
+        ["<S-Tab>"] = actions.move_selection_previous,
+        ["<C-n>"] = actions.toggle_selection + actions.move_selection_worse,
+        ["<C-p>"] = actions.toggle_selection + actions.move_selection_better,
+      },
     },
   },
   extensions = {
