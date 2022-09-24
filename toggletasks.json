@@ -4,25 +4,36 @@
       "name": "Makefile build",
       "cmd": "make -j",
       "cwd": "${config_dir}",
-      "tags": ["build", "make"]
+      "tags": [
+        "build",
+        "make"
+      ]
     },
     {
       "name": "CMake setup",
       "cmd": "mkdir -p build && cd build && cmake ..",
       "cwd": "${config_dir}",
-      "tags": ["cmake"]
+      "tags": [
+        "cmake"
+      ]
     },
     {
       "name": "CMake build",
       "cmd": "cmake --build build -j",
       "cwd": "${config_dir}",
-      "tags": ["build", "cmake"]
+      "tags": [
+        "build",
+        "cmake"
+      ]
     },
     {
       "name": "Create VS Code Java workspace",
-      "cmd": "md \".vscode\" && md \"src\" && md \"lib\" && (echo { & echo \"java.project.sourcePaths\": [\"src\"], & echo \"java.project.outputPath\": \"bin\", & echo \"java.project.referencedLibraries\": [ & echo \"lib/**/*.jar\" & echo ] & echo }) > .\\.vscode\\settings.json",
+      "cmd": "md \".vscode\" && md \"src\" && md \"lib\" && (echo { & echo   \"java.project.sourcePaths\": [\"src\"], & echo   \"java.project.outputPath\": \"bin\", & echo   \"java.project.referencedLibraries\": [\"lib/**/*.jar\"] & echo   }) > .\\.vscode\\settings.json",
       "cwd": "${config_dir}",
-      "tags": ["java", "setup"]
+      "tags": [
+        "java",
+        "setup"
+      ]
     }
   ]
 }

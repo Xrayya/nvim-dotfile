@@ -2,7 +2,7 @@
   "taks": [
     {
       "name": "Create VS Code Java workspace",
-      "cmd": "md \".vscode\" && md \"src\" && md \"lib\" && (echo { & echo \"java.project.sourcePaths\": [\"src\"], & echo \"java.project.outputPath\": \"bin\", & echo \"java.project.referencedLibraries\": [ & echo \"lib/**/*.jar\" & echo ] & echo }) > .\\.vscode\\settings.json",
+      "cmd": "md \".vscode\" && md \"src\" && md \"lib\" && (echo { & echo   \"java.project.sourcePaths\": [\"src\"], & echo   \"java.project.outputPath\": \"bin\", & echo   \"java.project.referencedLibraries\": [\"lib/**/*.jar\"] & echo   }) > .\\.vscode\\settings.json",
       "cwd": "${config_dir}",
       "tags": [
         "java",

@@ -37,12 +37,11 @@ end
 
 local extendedClientCapabilities = nvim_jdtls.extendedClientCapabilities
 extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
+-- extendedClientCapabilities.progressReportProvider = false
 
 local project_name = vim.fn.fnamemodify(vim.fn.getcwd(), ":p:h:t")
 
 local workspace_dir = WORKSPACE_PATH .. project_name
-
--- TODO: Testing
 
 JAVA_DAP_ACTIVE = true
 
@@ -70,6 +69,13 @@ if JAVA_DAP_ACTIVE then
   --     "&& echo java-debug successfully installed",
   --   })
   -- end
+
+  vim.cmd([[packadd nvim-dap]])
+  vim.cmd([[packadd nvim-dap-ui]])
+  require("dap-config")
+
+  vim.cmd([[packadd nvim-dap-virtual-text]])
+  require("dap-virtual-text-config")
 
   vim.list_extend(
     bundles,
@@ -187,6 +193,9 @@ local config = {
   -- for a list of options
   settings = {
     java = {
+      autobild = {
+        enabled = true
+      },
       codeGeneration = {
         toString = {
           template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",

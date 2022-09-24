@@ -29,7 +29,7 @@ return {
       "TelescopePrompt",
       "JABSwindow",
       "lspinfo",
-      "lsp-installer",
+      "mason",
       "null-ls-info",
       "packer",
       "Trouble",

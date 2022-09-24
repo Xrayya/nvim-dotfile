@@ -287,7 +287,7 @@ return require("packer").startup(function(use)
     -- TODO : update this
     {
       "RRethy/vim-illuminate",
-      commit = "6bfa5dc069bd4aa8513a3640d0b73392094749be",
+      commit = "a2e8476af3f3e993bb0d6477438aad3096512e42",
       event = "BufWinEnter",
       config = function()
         require("illuminate-config")
@@ -338,7 +338,6 @@ return require("packer").startup(function(use)
 
   use({
     {
-      -- TODO: last update
       "hrsh7th/nvim-cmp",
       tag = "v0.0.1",
       after = { "nvim-autopairs", "LuaSnip", "friendly-snippets" },

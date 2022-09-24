@@ -14,6 +14,15 @@ if vim.fn.has("nvim-0.8") == 1 then
   )
 end
 
+vim.api.nvim_create_autocmd({ "VimEnter" }, {
+  group = vim.api.nvim_create_augroup("illuminated_augroup", {clear = true}),
+  callback = function()
+    vim.api.nvim_set_hl(0, "illuminatedWordText", { default = true, link = "LspReferenceText" })
+    vim.api.nvim_set_hl(0, "illuminatedWordRead", { default = true, link = "LspReferenceRead" })
+    vim.api.nvim_set_hl(0, "illuminatedWordWrite", { default = true, link = "LspReferenceWrite" })
+  end,
+})
+
 -- vim.api.nvim_create_autocmd({ "UIEnter" }, {
 --   once = true,
 --   callback = function()
