@@ -275,10 +275,10 @@ return require("packer").startup(function(use)
     },
 
     -- Illuminate
-    -- TODO : update this
+    -- NOTE: keep this one outdated, hard to configure the highlight
     {
       "RRethy/vim-illuminate",
-      commit = "a2e8476af3f3e993bb0d6477438aad3096512e42",
+      commit = "6bfa5dc069bd4aa8513a3640d0b73392094749be",
       event = "BufWinEnter",
       config = function()
         require("illuminate-config")

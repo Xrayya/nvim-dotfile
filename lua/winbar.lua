@@ -50,24 +50,10 @@ M.get_filename = function()
       file_icon_color = ""
     end
 
-    return " "
-      .. "%#NavicText#"
-      .. folders
-      .. "%*"
-      .. " "
-      .. "%#NavicSeparator#"
-      .. icons.ui.ChevronRight
-      .. "%*"
-      .. " "
-      .. "%#"
-      .. hl_group
-      .. "#"
-      .. file_icon
-      .. "%*"
-      .. " "
-      .. "%#NavicText#"
-      .. filename
-      .. "%*"
+    local value = "%#" .. hl_group .. "#" .. file_icon .. "%*" .. " " .. "%#NavicText#" .. filename .. "%*"
+    return folders ~= "."
+        and " " .. "%#NavicText#" .. folders .. "%*" .. " " .. "%#NavicSeparator#" .. icons.ui.ChevronRight .. "%*" .. " " .. value
+      or " " .. value
   end
 end
 

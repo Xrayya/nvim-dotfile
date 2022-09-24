@@ -10,7 +10,6 @@ if cmp_nvim_lsp ~= nil then
   M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
 end
 
-
 M.setup = function()
   local signs = {
     { name = "DiagnosticSignError", text = diagnostic_signs.Error },
@@ -60,6 +59,15 @@ M.setup = function()
   })
 end
 
+function M.lsp_highlight_document(client)
+  local illuminate = NOTIF_REQ("illuminate", "lsp-config.handlers (func lsp_highlight_document)", "error")
+  if illuminate == nil then
+    return
+  end
+
+  illuminate.on_attach(client)
+end
+
 function M.attach_navic(client, bufnr)
   vim.g.navic_silence = true
   local navic = NOTIF_REQ("nvim-navic", "lsp-config.handlers (func attach_navic)", "error")
@@ -97,6 +105,7 @@ end
 M.on_attach = function(client, bufnr)
   -- lsp_keymaps(bufnr)
   M.attach_navic(client, bufnr)
+  M.lsp_highlight_document(client)
   vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format()' ]])
 end
 

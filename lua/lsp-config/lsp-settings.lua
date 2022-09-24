@@ -49,7 +49,7 @@ for _, server in pairs(installed_servers) do
     goto continue
   end
 
-  if server == "html" then
+  if server == "emmet_ls" then
     local emmet_opts = require("lsp-config.custom-lsp-settings.emmet")
     opts = vim.tbl_deep_extend("force", emmet_opts, opts)
   end
