@@ -234,12 +234,12 @@ local n_mappings = {
   [","] = {"<cmd>set wrap<cr>", "Set wrap"},
 }
 
-local br_mappings = {
+local bl_mappings = {
   d = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Jump to previous diagnostics" },
   h = { '<cmd>lua require"gitsigns.actions".prev_hunk()<CR>', "Jump to previous hunk" },
 }
 
-local bl_mappings = {
+local br_mappings = {
   d = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Jump to next diagnostics" },
   h = { '<cmd>lua require"gitsigns.actions".next_hunk()<CR>', "Jump to next hunk" },
 }
