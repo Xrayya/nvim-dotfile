@@ -16,7 +16,7 @@ telescope.setup({
       initial_mode = "normal",
       mappings = {
         n = {
-          ["D"] = actions.delete_buffer,
+          ["dd"] = actions.delete_buffer,
         },
       },
     },
