@@ -20,13 +20,8 @@ My simple Neovim config
 ## Notes for future update
 
 - see `:h nvim_open_win()` for floating window
-- last updated plugins: `nvim-jdtls`
 
 ## TODO
 
-- [x] try dap.nvim
 - [ ] try harpoon
 - [ ] try vim-bookmark
-- [x] add keybinding for hop to work with `d`, `v`, `c`, `y`
-- [x] try mason.nvim and mason-lspconfig.nvim
-- [x] add shortcut for dap (F5, etc)
