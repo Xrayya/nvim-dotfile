@@ -643,7 +643,7 @@ return require("packer").startup(function(use)
 
   use({
     "jedrzejboczar/toggletasks.nvim",
-    commit = "f9c6f819ef44a78a8ad61855ec2913f992f9b989",
+    commit = "b22c85f8a5d93a85196e0e46126f3af972832f7a",
     after = { "toggleterm.nvim" },
     requires = {
       "nvim-lua/plenary.nvim",
