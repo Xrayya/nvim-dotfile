@@ -20,9 +20,9 @@ end
 local kind_icons = require("icons").kind
 
 cmp.setup({
-  enabled = function()
-    return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
-  end,
+  -- enabled = function()
+  --   return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
+  -- end,
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body) -- For `luasnip` users.
