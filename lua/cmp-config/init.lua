@@ -20,6 +20,9 @@ end
 local kind_icons = require("icons").kind
 
 cmp.setup({
+  enabled = function()
+    return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
+  end,
   snippet = {
     expand = function(args)
       luasnip.lsp_expand(args.body) -- For `luasnip` users.
@@ -116,11 +119,11 @@ cmp.setup({
 })
 
 -- completion for dap-repl and dapui watches
-cmp.setup.filetype({ "dap-repl", "dapui_watches" }, {
-  sources = {
-    { name = "dap" },
-  },
-})
+-- cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+--   sources = {
+--     { name = "dap" },
+--   },
+-- })
 
 -- Use buffer source for `/` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline("/", {

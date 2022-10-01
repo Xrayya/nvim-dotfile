@@ -117,7 +117,7 @@ return require("packer").startup(function(use)
     -- GPS / context
     {
       "SmiteshP/nvim-navic",
-      commit = "202312e93869213c574d200a40eafeff4b4caec2",
+      commit = "132b273773768b36e9ecab2138b82234a9faf5ed",
       requires = "neovim/nvim-lspconfig",
       after = "nvim-lspconfig",
       config = function()
@@ -145,7 +145,7 @@ return require("packer").startup(function(use)
 
   use({
     "kyazdani42/nvim-tree.lua",
-    commit = "52b0c3215271349ed91421b9bb39d61b58d9e5d4",
+    commit = "45d386a3591f87390390c0d718a81e05895465ca",
     requires = "kyazdani42/nvim-web-devicons",
     cmd = "NvimTreeToggle",
     config = function()
@@ -350,7 +350,7 @@ return require("packer").startup(function(use)
     },
     {
       "hrsh7th/cmp-buffer",
-      commit = "62fc67a2b0205136bc3e312664624ba2ab4a9323",
+      commit = "3022dbc9166796b644a841a02de8dd1cc1d311fa",
       after = "nvim-cmp",
     },
     {
@@ -365,13 +365,13 @@ return require("packer").startup(function(use)
     },
     {
       "hrsh7th/cmp-nvim-lsp-signature-help",
-      commit = "007dd2740d9b70f2688db01a39d6d25b7169cd57",
+      commit = "3dd40097196bdffe5f868d5dddcc0aa146ae41eb",
       after = "nvim-cmp",
     },
     {
       "rcarriga/cmp-dap",
-      disable = false,
-      commit = "e21f0e5d188ee428f8acab1af21839af391607a4",
+      disable = true,
+      commit = "a67883cfe574923d3414035ba16159c0ed6d8dcf",
       after = { "nvim-cmp", "nvim-dap" },
     },
     {
@@ -396,20 +396,6 @@ return require("packer").startup(function(use)
   --------------------
 
   use({
-    -- vsnip
-    {
-      "hrsh7th/vim-vsnip",
-      disable = true,
-      commit = "8f199ef690ed26dcbb8973d9a6760d1332449ac9",
-      event = "BufWinEnter",
-    },
-    {
-      "hrsh7th/cmp-vsnip",
-      disable = true,
-      commit = "0abfa1860f5e095a07c477da940cfcb0d273b700",
-      after = "nvim-cmp",
-    },
-
     -- luasnip
     {
       "L3MON4D3/LuaSnip",
@@ -488,7 +474,6 @@ return require("packer").startup(function(use)
   -- doesn't seem to work if you also use vim-vsnip
   use({
     "abecodes/tabout.nvim",
-    disable = false,
     commit = "be655cc7ce0f5d6d24eeaf8b36e82693fd2facca",
     requires = { "nvim-treesitter" },
     after = { "nvim-cmp", "nvim-treesitter" },
@@ -504,7 +489,7 @@ return require("packer").startup(function(use)
   use({
     {
       "nvim-telescope/telescope.nvim",
-      commit = "30e2dc5232d0dd63709ef8b44a5d6184005e8602",
+      commit = "76ea9a898d3307244dce3573392dcf2cc38f340f",
       requires = {
         { "nvim-lua/plenary.nvim" },
         { "nvim-lua/popup.nvim" },
@@ -557,14 +542,14 @@ return require("packer").startup(function(use)
     -- DAP client
     {
       "mfussenegger/nvim-dap",
-      commit = "3c3e0a82457e2279563510ca16ae71279687c19c",
+      tag = "0.3.0",
       event = "BufWinEnter",
     },
 
     -- UI views vscode-like for nvim-dap
     {
       "rcarriga/nvim-dap-ui",
-      tag = "v1.6.0",
+      tag = "v2.0.0",
       after = "nvim-dap",
       config = function()
         require("dap-config")
@@ -601,7 +586,7 @@ return require("packer").startup(function(use)
 
   use({
     "phaazon/hop.nvim",
-    commit = "03675eba34d416dd22ad49b2d0e52b6113b434ad",
+    commit = "2a1b686aad85a3c241f8cd8fd42eb09c7de5ed79",
     event = "BufWinEnter",
     config = function()
       require("hop-config")
@@ -630,7 +615,7 @@ return require("packer").startup(function(use)
 
   use({
     "akinsho/toggleterm.nvim",
-    commit = "5ea823359b450bcf9a784f73734fd2d52e9de0ec",
+    commit = "2a787c426ef00cb3488c11b14f5dcf892bbd0bda",
     event = "BufWinEnter",
     config = function()
       require("terminal-config")
@@ -661,7 +646,7 @@ return require("packer").startup(function(use)
 
   use({
     "rcarriga/nvim-notify",
-    tag = "v3.4.0",
+    tag = "v3.5.0",
     event = "BufWinEnter",
     config = function()
       require("notification-config")
@@ -674,7 +659,7 @@ return require("packer").startup(function(use)
 
   use({
     "Shatur/neovim-session-manager",
-    commit = "43440e71f9b06a5df1acacf84c232901c7562016",
+    commit = "4005dac93f5cd1257792259ef4df6af0e3afc213",
     requires = { "nvim-lua/plenary.nvim" },
     event = "BufWinEnter",
     config = function()
