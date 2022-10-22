@@ -145,7 +145,7 @@ return require("packer").startup(function(use)
 
   use({
     "kyazdani42/nvim-tree.lua",
-    commit = "45d386a3591f87390390c0d718a81e05895465ca",
+    commit = "e94f5177983c033aad340b5351bf65ef1fa9737a",
     requires = "kyazdani42/nvim-web-devicons",
     cmd = "NvimTreeToggle",
     config = function()
@@ -160,7 +160,7 @@ return require("packer").startup(function(use)
   use({
     {
       "nvim-lualine/lualine.nvim",
-      commit = "a52f078026b27694d2290e34efa61a6e4a690621",
+      commit = "abb03129e0b0b7f4c992b1b4c98245cd4422e7d5",
       requires = { "kyazdani42/nvim-web-devicons", opt = true },
       after = "nvim-lspconfig",
       config = function()
@@ -289,7 +289,7 @@ return require("packer").startup(function(use)
     -- Inlay hints
     {
       "lvimuser/lsp-inlayhints.nvim",
-      commit = "9bcd6fe25417b7808fe039ab63d4224f2071d24a",
+      commit = "439b4811276a149e3fccb226cc9a43ff2fb0e33b",
       after = "nvim-lspconfig",
       config = function()
         require("lsp-inlayhints-config")
@@ -316,7 +316,7 @@ return require("packer").startup(function(use)
     },
     {
       "j-hui/fidget.nvim",
-      commit = "492492e7d50452a9ace8346d31f6d6da40439f0e",
+      commit = "1097a86db8ba38e390850dc4035a03ed234a4673",
       event = "BufWinEnter",
       config = function()
         require("fidget-config")
@@ -355,7 +355,7 @@ return require("packer").startup(function(use)
     },
     {
       "hrsh7th/cmp-path",
-      commit = "447c87cdd6e6d6a1d2488b1d43108bfa217f56e1",
+      commit = "91ff86cd9c29299a64f968ebb45846c485725f23",
       after = "nvim-cmp",
     },
     {
@@ -365,7 +365,7 @@ return require("packer").startup(function(use)
     },
     {
       "hrsh7th/cmp-nvim-lsp-signature-help",
-      commit = "3dd40097196bdffe5f868d5dddcc0aa146ae41eb",
+      commit = "d2768cb1b83de649d57d967085fe73c5e01f8fd7",
       after = "nvim-cmp",
     },
     {
@@ -399,7 +399,7 @@ return require("packer").startup(function(use)
     -- luasnip
     {
       "L3MON4D3/LuaSnip",
-      tag = "v1.0.0",
+      tag = "v1.1.0",
       event = "BufWinEnter",
     },
     {
@@ -421,7 +421,7 @@ return require("packer").startup(function(use)
 
   use({
     "folke/trouble.nvim",
-    commit = "929315ea5f146f1ce0e784c76c943ece6f36d786",
+    commit = "ed65f84abc4a1e5d8f368d7e02601fc0357ea15e",
     requires = "kyazdani42/nvim-web-devicons",
     cmd = { "Trouble", "TroubleToggle" },
     config = function()
@@ -434,7 +434,7 @@ return require("packer").startup(function(use)
   ------------------
   use({
     "folke/todo-comments.nvim",
-    commit = "02eb3019786d9083b93ab9457761899680c6f3ec",
+    commit = "61240662fd9ffa4a546db57abcc50b97f6fab27b",
     requires = "nvim-lua/plenary.nvim",
     event = "BufWinEnter",
     config = function()
@@ -460,7 +460,7 @@ return require("packer").startup(function(use)
 
   use({
     "numToStr/Comment.nvim",
-    commit = "30d23aa2e1ba204a74d5dfb99777e9acbe9dd2d6",
+    commit = "ad7ffa8ed2279f1c8a90212c7d3851f9b783a3d6",
     event = "BufWinEnter",
     config = function()
       require("commentary-config")
@@ -474,7 +474,7 @@ return require("packer").startup(function(use)
   -- doesn't seem to work if you also use vim-vsnip
   use({
     "abecodes/tabout.nvim",
-    commit = "be655cc7ce0f5d6d24eeaf8b36e82693fd2facca",
+    commit = "c37ce26f316a2df693140450b8def41e89c0f57e",
     requires = { "nvim-treesitter" },
     after = { "nvim-cmp", "nvim-treesitter" },
     config = function()
@@ -489,7 +489,7 @@ return require("packer").startup(function(use)
   use({
     {
       "nvim-telescope/telescope.nvim",
-      commit = "76ea9a898d3307244dce3573392dcf2cc38f340f",
+      commit = "f174a0367b4fc7cb17710d867e25ea792311c418",
       requires = {
         { "nvim-lua/plenary.nvim" },
         { "nvim-lua/popup.nvim" },
@@ -549,7 +549,7 @@ return require("packer").startup(function(use)
     -- UI views vscode-like for nvim-dap
     {
       "rcarriga/nvim-dap-ui",
-      tag = "v2.0.0",
+      tag = "v2.1.1",
       after = "nvim-dap",
       config = function()
         require("dap-config")
@@ -573,7 +573,7 @@ return require("packer").startup(function(use)
 
   use({
     "folke/which-key.nvim",
-    commit = "6885b669523ff4238de99a7c653d47b081b5506d",
+    commit = "a03265ed97ef52680732809f274ae18ac4a61a33",
     event = "BufWinEnter",
     config = function()
       require("whichkey-config")
@@ -586,7 +586,7 @@ return require("packer").startup(function(use)
 
   use({
     "phaazon/hop.nvim",
-    commit = "2a1b686aad85a3c241f8cd8fd42eb09c7de5ed79",
+    commit = "6591b3656b75ff313cc38dc662a7ee8f75f1c165",
     event = "BufWinEnter",
     config = function()
       require("hop-config")
@@ -599,7 +599,7 @@ return require("packer").startup(function(use)
 
   use({
     "lewis6991/gitsigns.nvim",
-    commit = "231fa923fbc2797eef92b24860ab882cebf645b2",
+    commit = "21ab05c2629ef613b1c3452d12469f936855648b",
     event = "BufWinEnter",
     requires = {
       "nvim-lua/plenary.nvim",
@@ -646,7 +646,7 @@ return require("packer").startup(function(use)
 
   use({
     "rcarriga/nvim-notify",
-    tag = "v3.5.0",
+    tag = "v3.7.2",
     event = "BufWinEnter",
     config = function()
       require("notification-config")
