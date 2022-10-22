@@ -270,7 +270,7 @@ return require("packer").startup(function(use)
     -- Java LSP
     {
       "mfussenegger/nvim-jdtls",
-      commit = "e9f40e793a16f3cebbd7e864e1ea0c32afa38747",
+      commit = "0422245fdef57aa4eddba3d99aee1afaaf425da7",
       ft = "java",
     },
 
