@@ -136,6 +136,20 @@ end
 --   lsp.handlers["$/progress"](nil, msg, info)
 -- end
 
+local project_settings
+
+if vim.fn.empty(vim.fn.glob(vim.fn.getcwd() .. "/.vscode/settings.json")) > 0 then
+  project_settings = {
+    outputPath = "bin",
+  }
+else
+  project_settings = {
+    sourcePaths = { "src" },
+    outputPath = "bin",
+    referencedLibraries = { "lib/**/*.jar" },
+  }
+end
+
 -- See `:help vim.lsp.start_client` for an overview of the supported `config` options.
 local config = {
   -- The command that starts the language server
@@ -253,6 +267,7 @@ local config = {
       maven = {
         downloadSources = true,
       },
+      project = project_settings,
       referencesCodeLens = {
         enabled = true,
       },
