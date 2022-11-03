@@ -615,7 +615,7 @@ return require("packer").startup(function(use)
 
   use({
     "akinsho/toggleterm.nvim",
-    commit = "2a787c426ef00cb3488c11b14f5dcf892bbd0bda",
+    commit = "8f302c9a05ff53fc3f891cbf09c5f959b10392a3",
     event = "BufWinEnter",
     config = function()
       require("terminal-config")
