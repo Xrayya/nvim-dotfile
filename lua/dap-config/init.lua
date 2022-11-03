@@ -1,4 +1,4 @@
-require("dap-config.dap-ui-config").setup_debugging()
+require("dap-config.dap-ui-config").setup_running()
 require("dap-config.debuggers")
 
 local map = vim.keymap.set
