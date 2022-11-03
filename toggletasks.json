@@ -2,42 +2,31 @@
   "tasks": [
     {
       "name": "Echo test",
-      "cmd": "echo this is a test"
+      "cmd": "echo this is a test && echo ${global_cwd}"
     },
     {
       "name": "Makefile build",
       "cmd": "make -j",
       "cwd": "${config_dir}",
-      "tags": [
-        "build",
-        "make"
-      ]
+      "tags": ["build", "make"]
     },
     {
       "name": "CMake setup",
       "cmd": "mkdir -p build && cd build && cmake ..",
       "cwd": "${config_dir}",
-      "tags": [
-        "cmake"
-      ]
+      "tags": ["cmake"]
     },
     {
       "name": "CMake build",
       "cmd": "cmake --build build -j",
       "cwd": "${config_dir}",
-      "tags": [
-        "build",
-        "cmake"
-      ]
+      "tags": ["build", "cmake"]
     },
     {
       "name": "Create VS Code Java workspace",
-      "cmd": "md \".vscode\" && md \"src\" && md \"lib\" && (echo { & echo   \"java.project.sourcePaths\": [\"src\"], & echo   \"java.project.outputPath\": \"bin\", & echo   \"java.project.referencedLibraries\": [\"lib/**/*.jar\"] & echo }) > .\\.vscode\\settings.json",
-      "cwd": "${win_cwd}",
-      "tags": [
-        "java",
-        "setup"
-      ]
+      "cmd": "md \"${global_cwd}\\.vscode\" && md \"${global_cwd}\\src\" && md \"${global_cwd}\\lib\" && (echo { & echo   \"java.project.sourcePaths\": [\"src\"], & echo   \"java.project.outputPath\": \"bin\", & echo   \"java.project.referencedLibraries\": [\"lib/**/*.jar\"] & echo }) > \"${global_cwd}\\.vscode\\settings.json\"",
+      "cwd": "",
+      "tags": ["java", "setup"]
     }
   ]
 }
