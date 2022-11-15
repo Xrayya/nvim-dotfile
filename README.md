@@ -25,3 +25,6 @@ My simple Neovim config
 
 - [ ] try harpoon
 - [ ] try vim-bookmark
+- [ ] try noice.nvim
+- [ ] try ccc.nvim
+
