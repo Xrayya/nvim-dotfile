@@ -138,13 +138,38 @@ function P(item)
   print(vim.inspect(item))
 end
 
-RELOAD = function (...)
+RELOAD = function(...)
   return require("plenary.reload").reload_module(...)
 end
 
 function R(item)
   RELOAD(item)
   return require(item)
+end
+
+local function tablify(string_value)
+  local tmp = tostring(string_value)
+  local output = {}
+  if string.find(tmp, "%.") ~= nil then
+    output[string.sub(tmp, 1, string.find(tmp, "%.") - 1)] = { string.sub(tmp, string.find(tmp, "%.") + 1) }
+  end
+
+  if string.find(output[string.sub(tmp, 1, string.find(tmp, "%.") - 1)][1], "%.")  then
+    tablify(output[string.sub(tmp, 1, string.find(tmp, "%.") - 1)][1])
+  end
+
+  return output;
+end
+
+function PARSE_VSCODE_LAUNCH(json_file)
+  local parsed_json = vim.fn.json_decode(json_file)
+  local output = {}
+  for key, value in pairs(parsed_json) do
+    local tmp = tostring(key)
+    if string.find(tmp, "%.") ~= nil then
+      output[string.sub(tmp, 1, string.find(tmp, "%.") - 1)] = { string.sub(tmp, string.find(tmp, "%.") + 1) }
+    end
+  end
 end
 
 return M

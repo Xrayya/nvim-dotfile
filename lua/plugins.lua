@@ -258,7 +258,7 @@ return require("packer").startup(function(use)
 
     {
       "rmagatti/goto-preview",
-      commit = "a5af27cff485b325f0ef2dcdf55ae51faed05cba",
+      commit = "778cf600684a87eb36f9bb469346cfa8d5384a76",
       after = { "nvim-lspconfig", "telescope.nvim" },
       event = "BufWinEnter",
       requires = { "nvim-telescope/telescope.nvim" },
