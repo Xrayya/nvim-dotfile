@@ -1,4 +1,4 @@
-local dap = NOTIF_REQ("dap", "dap-config.debuggers.cpptools", "error")
+local dap = NOTIF_REQ("dap", "xrayya.dap.debuggers.cpptools", "error")
 if dap == nil then
   return
 end

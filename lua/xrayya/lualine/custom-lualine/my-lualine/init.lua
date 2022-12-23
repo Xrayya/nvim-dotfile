@@ -1,9 +1,9 @@
-local lualine = NOTIF_REQ("lualine", "lualine-config.custom-lualine.my-lualine", "error")
+local lualine = NOTIF_REQ("lualine", "xrayya.lualine.custom-lualine.my-lualine", "error")
 if lualine == nil then
   return
 end
 
-local status_ok, components = pcall(require, "lualine-config.custom-lualine.my-lualine.components")
+local status_ok, components = pcall(require, "xrayya.lualine.custom-lualine.my-lualine.components")
 if not status_ok then
   vim.notify(
     'lualine-config.custom-lualine.my-lualine: error occured when attempt to call "lualine-config.my-lualine.components"',

@@ -9,7 +9,7 @@ lualine.setup({
 })
 
 function LOAD_CUSTOM_LUALINE_STYLE(theme)
-  local status_ok, opts = pcall(require, "lualine-config.custom-lualine." .. theme)
+  local status_ok, opts = pcall(require, "xrayya.lualine.custom-lualine." .. theme)
   if not status_ok then
     vim.notify("lualine-cofig: failed to load \"" ..  "\" lualine style", "error", {
       title = "nvim config file: error"

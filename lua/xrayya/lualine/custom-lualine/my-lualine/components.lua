@@ -1,5 +1,5 @@
-local conditions = require("lualine-config.custom-lualine.my-lualine.condition")
-local colors = require("lualine-config.custom-lualine.my-lualine.colors")
+local conditions = require("xrayya.lualine.custom-lualine.my-lualine.condition")
+local colors = require("xrayya.lualine.custom-lualine.my-lualine.colors")
 
 local function diff_source()
   local gitsigns = vim.b.gitsigns_status_dict

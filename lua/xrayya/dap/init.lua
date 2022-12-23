@@ -1,5 +1,5 @@
-require("dap-config.dap-ui-config").setup_running()
-require("dap-config.debuggers")
+require("xrayya.dap.dap-ui-config").setup_running()
+require("xrayya.dap.debuggers")
 
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }

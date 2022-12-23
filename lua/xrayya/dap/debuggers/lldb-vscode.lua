@@ -1,4 +1,4 @@
-local dap = NOTIF_REQ("dap", "dap-config.debuggers.lldb-vscode", "error")
+local dap = NOTIF_REQ("dap", "xrayya.dap.debuggers.lldb-vscode", "error")
 if dap == nil then
   return
 end

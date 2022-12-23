@@ -78,7 +78,7 @@ return require("packer").startup(function(use)
       "nvim-treesitter/nvim-treesitter",
       run = ":TSUpdate",
       config = function()
-        require("treesitter-config")
+        require("xrayya.treesitter")
       end,
     },
 
@@ -121,7 +121,7 @@ return require("packer").startup(function(use)
       requires = "neovim/nvim-lspconfig",
       after = "nvim-lspconfig",
       config = function()
-        require("navic-config")
+        require("xrayya.navic")
       end,
     },
   })
@@ -135,7 +135,7 @@ return require("packer").startup(function(use)
     tag = "v2.20.2",
     after = "nvim-treesitter",
     config = function()
-      require("indentation-config")
+      require("xrayya.indent-blankline")
     end,
   })
 
@@ -149,7 +149,7 @@ return require("packer").startup(function(use)
     requires = "kyazdani42/nvim-web-devicons",
     cmd = "NvimTreeToggle",
     config = function()
-      require("nvim-tree-config")
+      require("xrayya.nvim-tree")
     end,
   })
 
@@ -164,7 +164,7 @@ return require("packer").startup(function(use)
       requires = { "kyazdani42/nvim-web-devicons", opt = true },
       after = "nvim-lspconfig",
       config = function()
-        require("lualine-config")
+        require("xrayya.lualine")
       end,
     },
     {
@@ -174,7 +174,7 @@ return require("packer").startup(function(use)
       requires = "kyazdani42/nvim-web-devicons",
       event = "BufWinEnter",
       config = function()
-        require("bufferline-config")
+        require("xrayya.bufferline")
       end,
     },
     {
@@ -183,7 +183,7 @@ return require("packer").startup(function(use)
       requires = { "kyazdani42/nvim-web-devicons" },
       event = "BufWinEnter",
       config = function()
-        require("cybu-config")
+        require("xrayya.cybu")
       end,
     },
   })
@@ -199,7 +199,7 @@ return require("packer").startup(function(use)
     event = "BufWinEnter",
     config = function()
       -- require'alpha'.setup(require'alpha.themes.startify'.opts)
-      require("alpha-config")
+      require("xrayya.alpha")
     end,
   })
 
@@ -210,7 +210,7 @@ return require("packer").startup(function(use)
   use({
     "williamboman/mason.nvim",
     config = function()
-      require("mason-config")
+      require("xrayya.mason")
     end,
   })
 
@@ -319,7 +319,7 @@ return require("packer").startup(function(use)
       commit = "1097a86db8ba38e390850dc4035a03ed234a4673",
       event = "BufWinEnter",
       config = function()
-        require("fidget-config")
+        require("xrayya.fidget")
       end,
     },
   })
@@ -334,7 +334,7 @@ return require("packer").startup(function(use)
       tag = "v0.0.1",
       after = { "nvim-autopairs", "LuaSnip", "friendly-snippets" },
       config = function()
-        require("cmp-config")
+        require("xrayya.cmp")
       end,
     },
     {
@@ -438,7 +438,7 @@ return require("packer").startup(function(use)
     requires = "nvim-lua/plenary.nvim",
     event = "BufWinEnter",
     config = function()
-      require("todo-comments-config")
+      require("xrayya.todo-comments")
     end,
   })
 
@@ -450,7 +450,7 @@ return require("packer").startup(function(use)
     "simrat39/symbols-outline.nvim",
     commit = "6a3ed24c5631da7a5d418bced57c16b32af7747c",
     config = function()
-      require("symbols-outline-config")
+      require("xrayya.symbols-outline")
     end,
   })
 
@@ -478,7 +478,7 @@ return require("packer").startup(function(use)
     requires = { "nvim-treesitter" },
     after = { "nvim-cmp", "nvim-treesitter" },
     config = function()
-      require("tabout-config")
+      require("xrayya.tabout")
     end,
   })
 
@@ -497,7 +497,7 @@ return require("packer").startup(function(use)
       -- cmd = "Telescope",
       after = { "toggletasks.nvim", "project.nvim", "telescope-fzf-native.nvim", "telescope-ui-select.nvim" },
       config = function()
-        require("telescope-config")
+        require("xrayya.telescope")
       end,
     },
 
@@ -507,7 +507,7 @@ return require("packer").startup(function(use)
       commit = "628de7e433dd503e782831fe150bb750e56e55d6",
       event = "BufWinEnter",
       config = function()
-        require("projects-config")
+        require("xrayya.projects")
       end,
     },
 
@@ -552,7 +552,7 @@ return require("packer").startup(function(use)
       tag = "v2.1.1",
       after = "nvim-dap",
       config = function()
-        require("dap-config")
+        require("xrayya.dap")
       end,
     },
 
@@ -562,7 +562,7 @@ return require("packer").startup(function(use)
       commit = "2971ce3e89b1711cc26e27f73d3f854b559a77d4",
       after = "nvim-dap",
       config = function()
-        require("dap-virtual-text-config")
+        require("xrayya.dap-virtual-text")
       end,
     },
   })
@@ -576,7 +576,7 @@ return require("packer").startup(function(use)
     commit = "a03265ed97ef52680732809f274ae18ac4a61a33",
     event = "BufWinEnter",
     config = function()
-      require("whichkey-config")
+      require("xrayya.whichkey")
     end,
   })
 
@@ -589,7 +589,7 @@ return require("packer").startup(function(use)
     commit = "6591b3656b75ff313cc38dc662a7ee8f75f1c165",
     event = "BufWinEnter",
     config = function()
-      require("hop-config")
+      require("xrayya.hop")
     end,
   })
 
@@ -605,7 +605,7 @@ return require("packer").startup(function(use)
       "nvim-lua/plenary.nvim",
     },
     config = function()
-      require("gitsigns-config")
+      require("xrayya.gitsigns")
     end,
   })
 
@@ -618,7 +618,7 @@ return require("packer").startup(function(use)
     commit = "8f302c9a05ff53fc3f891cbf09c5f959b10392a3",
     event = "BufWinEnter",
     config = function()
-      require("terminal-config")
+      require("xrayya.toggleterm")
     end,
   })
 
@@ -636,7 +636,7 @@ return require("packer").startup(function(use)
       "nvim-telescope/telescope.nvim",
     },
     config = function()
-      require("toggletasks-config")
+      require("xrayya.toggletasks")
     end,
   })
 
@@ -649,7 +649,7 @@ return require("packer").startup(function(use)
     tag = "v3.7.2",
     event = "BufWinEnter",
     config = function()
-      require("notification-config")
+      require("xrayya.notify")
     end,
   })
 
@@ -663,7 +663,7 @@ return require("packer").startup(function(use)
     requires = { "nvim-lua/plenary.nvim" },
     event = "BufWinEnter",
     config = function()
-      require("session-manager-config")
+      require("xrayya.session-manager")
     end,
   })
 
@@ -676,14 +676,14 @@ return require("packer").startup(function(use)
       "NvChad/nvim-colorizer.lua",
       event = "BufWinEnter",
       config = function()
-        require("colorizer-config")
+        require("xrayya.colorizer")
       end,
     },
     {
       "ziontee113/color-picker.nvim",
       event = "BufWinEnter",
       config = function()
-        require("color-picker-config")
+        require("xrayya.color-picker")
       end,
     },
     {
@@ -691,7 +691,7 @@ return require("packer").startup(function(use)
       disable = true,
       event = "BufWinEnter",
       config = function()
-        require("colortils-config")
+        require("xrayya.colortils")
       end,
     },
   })
@@ -704,7 +704,7 @@ return require("packer").startup(function(use)
     "nacro90/numb.nvim",
     event = "BufWinEnter",
     config = function()
-      require("numb-config")
+      require("xrayya.numb")
     end,
   })
 
@@ -727,11 +727,11 @@ return require("packer").startup(function(use)
 
   use({
     "andweeb/presence.nvim",
-    commit = "03e09d3f9be8b3d9481d97d957c62d28b5850ab6",
+    commit = "c1c54758824cbecd4e18065d37191f7666fdd097",
     event = "BufWinEnter",
     config = {
       function()
-        require("discord-presence-config")
+        require("xrayya.discord-presence")
       end,
     },
   })
