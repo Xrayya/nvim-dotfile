@@ -87,9 +87,7 @@ return require("packer").startup(function(use)
       "windwp/nvim-autopairs",
       after = "nvim-treesitter",
       config = function()
-        require("nvim-autopairs").setup({
-          check_ts = true,
-        })
+        require("xrayya.autopairs")
       end,
     },
 
@@ -103,9 +101,6 @@ return require("packer").startup(function(use)
     {
       "windwp/nvim-ts-autotag",
       after = "nvim-treesitter",
-      config = function()
-        require("nvim-ts-autotag").setup()
-      end,
     },
 
     -- Commentstring
@@ -263,7 +258,7 @@ return require("packer").startup(function(use)
       event = "BufWinEnter",
       requires = { "nvim-telescope/telescope.nvim" },
       config = function()
-        require("goto-preview-config")
+        require("xrayya.goto-preview")
       end,
     },
 
@@ -282,7 +277,7 @@ return require("packer").startup(function(use)
       commit = "6bfa5dc069bd4aa8513a3640d0b73392094749be",
       event = "BufWinEnter",
       config = function()
-        require("illuminate-config")
+        require("xrayya.illuminate")
       end,
     },
 
@@ -463,7 +458,7 @@ return require("packer").startup(function(use)
     commit = "ad7ffa8ed2279f1c8a90212c7d3851f9b783a3d6",
     event = "BufWinEnter",
     config = function()
-      require("commentary-config")
+      require("xrayya.commentary")
     end,
   })
 

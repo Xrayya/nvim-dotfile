@@ -31,9 +31,9 @@ treesitter.setup({
     extended_mode = true,
     max_file_lines = nil,
   },
-  -- autotag = {
-  --   enable = true,
-  -- },
+  autotag = {
+    enable = true,
+  },
   autopairs = {
     enable = true,
   },
