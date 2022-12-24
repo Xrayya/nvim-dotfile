@@ -22,4 +22,4 @@ function LOAD_CUSTOM_LUALINE_STYLE(theme)
   end
 end
 
-LOAD_CUSTOM_LUALINE_STYLE("my-lualine")
+LOAD_CUSTOM_LUALINE_STYLE("extended")
