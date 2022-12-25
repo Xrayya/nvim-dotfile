@@ -109,15 +109,10 @@ return require("packer").startup(function(use)
       after = "nvim-treesitter",
     },
 
-    -- GPS / context
+    -- Endwise
     {
-      "SmiteshP/nvim-navic",
-      commit = "132b273773768b36e9ecab2138b82234a9faf5ed",
-      requires = "neovim/nvim-lspconfig",
-      after = "nvim-lspconfig",
-      config = function()
-        require("xrayya.navic")
-      end,
+      "RRethy/nvim-treesitter-endwise",
+      after = "nvim-treesitter",
     },
   })
 
@@ -296,9 +291,9 @@ return require("packer").startup(function(use)
       "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
       as = "lsp_lines.nvim",
       after = "nvim-lspconfig",
-      config = function ()
+      config = function()
         require("xrayya.lsp-lines")
-      end
+      end,
     },
 
     -- null-ls
@@ -450,6 +445,20 @@ return require("packer").startup(function(use)
     commit = "6a3ed24c5631da7a5d418bced57c16b32af7747c",
     config = function()
       require("xrayya.symbols-outline")
+    end,
+  })
+
+  -------------
+  -- Context --
+  -------------
+
+  use({
+    "SmiteshP/nvim-navic",
+    commit = "132b273773768b36e9ecab2138b82234a9faf5ed",
+    requires = "neovim/nvim-lspconfig",
+    after = "nvim-lspconfig",
+    config = function()
+      require("xrayya.navic")
     end,
   })
 

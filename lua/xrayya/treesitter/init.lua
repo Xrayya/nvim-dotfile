@@ -40,4 +40,7 @@ treesitter.setup({
   context_commentstring = {
     enable = true,
   },
+  endwise = {
+    enable = true,
+  },
 })
