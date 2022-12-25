@@ -17,7 +17,78 @@ if not status_ok then
   return
 end
 
+local icons = require("icons")
+
+local custom_extension = {
+  telescope = {
+    sections = {
+      lualine_a = {
+        function()
+          return icons.ui.Telescope .. " Telescope"
+        end,
+      },
+    },
+    filetypes = { "TelescopePrompt" },
+  },
+  color_picker = {
+    sections = {
+      lualine_a = {
+        function()
+          return icons.kind.Color .. " Color Picker"
+        end,
+      },
+    },
+    filetypes = { "color-picker" },
+  },
+  lspinfo = {
+    sections = {
+      lualine_a = {
+        function()
+          return "LSP Info"
+        end,
+      },
+    },
+    filetypes = { "lspinfo" },
+  },
+  null_ls_info = {
+    sections = {
+      lualine_a = {
+        function()
+          return "Null LS Info"
+        end,
+      },
+    },
+    filetypes = { "null-ls-info" },
+  },
+  trouble = {
+    sections = {
+      lualine_a = {
+        function()
+          return "Trouble"
+        end,
+      },
+    },
+    filetypes = { "Trouble" },
+  },
+  packer = {
+    sections = {
+      lualine_a = {
+        function()
+          return "Packer"
+        end,
+      },
+    },
+    filetypes = { "packer" },
+  },
+}
+
 return {
+  options = {
+    disabled_filetypes = {
+      "alpha",
+      "mason"
+    },
+  },
   sections = {
     lualine_a = { components.mode },
     lualine_b = { components.filename },
@@ -33,5 +104,18 @@ return {
     lualine_x = { "location" },
     lualine_y = {},
     lualine_z = {},
+  },
+  extensions = {
+    "quickfix",
+    "symbols-outline",
+    "toggleterm",
+    "nvim-dap-ui",
+    "nvim-tree",
+    custom_extension.color_picker,
+    custom_extension.lspinfo,
+    custom_extension.null_ls_info,
+    custom_extension.packer,
+    custom_extension.telescope,
+    custom_extension.trouble,
   },
 }
