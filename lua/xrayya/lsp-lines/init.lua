@@ -4,3 +4,4 @@ if lsp_lines == nil then
 end
 
 lsp_lines.setup()
+lsp_lines.toggle();
