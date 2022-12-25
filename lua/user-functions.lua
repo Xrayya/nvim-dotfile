@@ -125,7 +125,7 @@ function NOTIF_REQ(module, filename, level)
 
   local status_ok, m = pcall(require, module)
   if not status_ok then
-    require("notification-config.utils").notify_config(filename .. ': failed load "' .. module .. '" module', "error")
+    require("xrayya.notify.utils").notify_config(filename .. ': failed load "' .. module .. '" module', "error")
     return
   end
 
