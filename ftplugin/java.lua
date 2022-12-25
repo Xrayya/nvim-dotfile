@@ -1,8 +1,10 @@
+-- vim.cmd('autocmd FileType java setlocal tabstop=4 shiftwidth=4 softtabstop=4')
+
 vim.cmd([[packadd nvim-notify]])
-require("notification-config")
+require("xrayya.notify")
 
 vim.cmd([[packadd nvim-navic]])
-require("navic-config")
+require("xrayya.navic")
 
 -- vim.cmd([[packadd fidget.nvim]])
 -- require("fidget-config")
@@ -72,10 +74,10 @@ if JAVA_DAP_ACTIVE then
 
   vim.cmd([[packadd nvim-dap]])
   vim.cmd([[packadd nvim-dap-ui]])
-  require("dap-config")
+  require("xrayya.dap")
 
   vim.cmd([[packadd nvim-dap-virtual-text]])
-  require("dap-virtual-text-config")
+  require("xrayya.dap-virtual-text")
 
   vim.list_extend(
     bundles,
@@ -345,7 +347,7 @@ vim.cmd("command! -buffer JdtBytecode lua require('jdtls').javap()")
 -- vim.cmd "command! -buffer JdtJshell lua require('jdtls').jshell()"
 
 vim.cmd([[packadd which-key.nvim]])
-require("whichkey-config")
+require("xrayya.whichkey")
 
 local which_key = NOTIF_REQ("which-key", "ftplugin/java", "error")
 if which_key == nil then
