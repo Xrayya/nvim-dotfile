@@ -292,10 +292,14 @@ return require("packer").startup(function(use)
     },
 
     -- LSP lines
-    -- {
-    --   "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    --   after = "nvim-lspconfig",
-    -- },
+    {
+      "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+      as = "lsp_lines.nvim",
+      after = "nvim-lspconfig",
+      config = function ()
+        require("xrayya.lsp-lines")
+      end
+    },
 
     -- null-ls
     {
