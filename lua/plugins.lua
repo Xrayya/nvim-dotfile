@@ -225,6 +225,7 @@ return require("packer").startup(function(use)
         "vim-illuminate",
         "null-ls.nvim",
         "SchemaStore.nvim",
+        "typescript.nvim",
       },
       config = function()
         require("lsp-config")
@@ -262,6 +263,14 @@ return require("packer").startup(function(use)
       "mfussenegger/nvim-jdtls",
       commit = "0422245fdef57aa4eddba3d99aee1afaaf425da7",
       ft = "java",
+    },
+
+    -- Typescript LSP
+    {
+      "jose-elias-alvarez/typescript.nvim",
+      disable = true,
+      commit = "f66d4472606cb24615dfb7dbc6557e779d177624",
+      event = "BufWinEnter",
     },
 
     -- Illuminate

@@ -55,6 +55,15 @@ for _, server in pairs(installed_servers) do
   end
 
   if server == "tsserver" then
+    -- local extended_typescript = require("lsp-config.custom-lsp-settings.typescript")
+    -- if extended_typescript ~= nil then
+    --   vim.notify("succeed")
+    --   extended_typescript.setup()
+    --   goto continue
+    -- end
+    -- vim.notify("lsp-config.lsp-settings: failed to setup extended LSP", "warning")
+    -- vim.notify("lsp-config.lsp-settings: use default nvim-lspconfig settings", "info")
+
     local tsserver_opts = require("lsp-config.custom-lsp-settings.tsserver")
     opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
   end
