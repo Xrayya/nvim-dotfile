@@ -66,8 +66,8 @@ for _, server in pairs(installed_servers) do
       goto continue
     end
 
-    vim.notify("lsp-config.lsp-settings: failed to setup extended LSP", "warning")
-    vim.notify("lsp-config.lsp-settings: use default nvim-lspconfig settings", "info")
+    vim.notify("lsp-config.lsp-settings: failed to setup extended LSP", vim.log.levels.WARN)
+    vim.notify("lsp-config.lsp-settings: use default nvim-lspconfig settings", vim.log.levels.INFO)
   end
 
   if server == "clangd" then
