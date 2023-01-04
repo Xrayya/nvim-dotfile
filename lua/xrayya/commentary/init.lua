@@ -7,9 +7,9 @@ Comment.setup({
   pre_hook = function(ctx)
 
     -- For inlay hints
-    local line_start = (ctx.srow or ctx.range.srow) - 1
-    local line_end = ctx.erow or ctx.range.erow
-    require("lsp-inlayhints.core").clear(0, line_start, line_end)
+    -- local line_start = (ctx.srow or ctx.range.srow) - 1
+    --- local line_end = ctx.erow or ctx.range.erow
+    --- require("lsp-inlayhints.core").clear(0, line_start, line_end)
 
     require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook()
 
