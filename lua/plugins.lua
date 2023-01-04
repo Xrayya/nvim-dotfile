@@ -289,6 +289,10 @@ return require("packer").startup(function(use)
       "lvimuser/lsp-inlayhints.nvim",
       commit = "439b4811276a149e3fccb226cc9a43ff2fb0e33b",
       after = "nvim-lspconfig",
+    {
+      "simrat39/inlay-hints.nvim",
+      commit = "006b0898f5d3874e8e528352103733142e705834",
+      after = "nvim-lspconfig",
       config = function()
         require("lsp-inlayhints-config")
       end,
