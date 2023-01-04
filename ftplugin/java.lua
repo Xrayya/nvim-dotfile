@@ -50,28 +50,6 @@ JAVA_DAP_ACTIVE = true
 local bundles = {}
 
 if JAVA_DAP_ACTIVE then
-  -- bootstraping java-debug
-  -- local install_path = vim.fn.stdpath("data") .. "/dapinstall/java/java-debug"
-  -- if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-  --   vim.notify("ftplugin/java: installing java-debug, please wait...", "info", {title= "nvim config file: info"})
-
-  --   local install_commad = "./mvnw clean install"
-  --   if CONFIG == "windows" then
-  --     install_commad = "mvnw.cmd clean install"
-  --   end
-  --   vim.fn.system({
-  --     "git",
-  --     "clone",
-  --     "--depth",
-  --     "1",
-  --     "https://github.com/microsoft/java-debug.git",
-  --     install_path,
-  --     "&& cd java-debug && ",
-  --     install_commad,
-  --     "&& echo java-debug successfully installed",
-  --   })
-  -- end
-
   vim.cmd([[packadd nvim-dap]])
   vim.cmd([[packadd nvim-dap-ui]])
   require("xrayya.dap")
@@ -84,21 +62,15 @@ if JAVA_DAP_ACTIVE then
     vim.split(
       vim.fn.glob(
         vim.fn.stdpath("data")
-          .. "/dapinstall/java/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
+          .. "/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar"
       ),
       "\n"
     )
   )
-  -- vim.list_extend(
-  --   bundles,
-  --   vim.split(
-  --     vim.fn.glob(
-  --       home .. "/.config/nvim/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
-  --     ),
-  --     "\n"
-  --   )
-  -- )
-  -- vim.list_extend(bundles, vim.split(vim.fn.glob(home .. "/.config/nvim/vscode-java-test/server/*.jar"), "\n"))
+  vim.list_extend(
+    bundles,
+    vim.split(vim.fn.glob(vim.fn.stdpath("data") .. "/mason/packages/java-test/extension/server/*.jar"), "\n")
+  )
 end
 
 -- for fidget.nvim
@@ -383,8 +355,8 @@ local mappings = {
     s = { "<Cmd>lua require('jdtls.dap').setup_dap_main_class_configs()<CR>", "Setup main class for debugging" },
 
     -- insatall vscode-java-test to enable these two
-    -- t = { "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method" },
-    -- T = { "<Cmd>lua require'jdtls'.test_class()<CR>", "Test Class" },
+    t = { "<Cmd>lua require'jdtls'.test_nearest_method()<CR>", "Test Method" },
+    T = { "<Cmd>lua require'jdtls'.test_class()<CR>", "Test Class" },
   },
 }
 
