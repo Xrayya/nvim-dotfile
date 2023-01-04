@@ -577,6 +577,13 @@ return require("packer").startup(function(use)
       "rcarriga/nvim-dap-ui",
       tag = "v2.1.1",
       after = "nvim-dap",
+    },
+
+    -- Bridge for mason.nvim and nvim-dap
+    {
+      "jay-babu/mason-nvim-dap.nvim",
+      commit = "d6cb770928b5cb9a6e3880d6bbb58858c1deeb18",
+      after = {"nvim-dap", "nvim-dap-ui"},
       config = function()
         require("xrayya.dap")
       end,
