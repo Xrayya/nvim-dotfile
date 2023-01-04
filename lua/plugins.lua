@@ -268,7 +268,6 @@ return require("packer").startup(function(use)
     -- Typescript LSP
     {
       "jose-elias-alvarez/typescript.nvim",
-      disable = true,
       commit = "f66d4472606cb24615dfb7dbc6557e779d177624",
       event = "BufWinEnter",
     },
