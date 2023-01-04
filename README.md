@@ -27,4 +27,6 @@ My simple Neovim config
 - [ ] try vim-bookmark
 - [ ] try noice.nvim
 - [ ] try ccc.nvim
-
+- [ ] add flutter-tools.nvim
+- [ ] add phpactor.nvim
+- [ ] change markdown LSP
