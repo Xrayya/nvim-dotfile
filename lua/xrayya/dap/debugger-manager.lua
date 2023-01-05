@@ -31,18 +31,17 @@ require("mason-nvim-dap").setup_handlers({
         detached = false,
       },
     }
-    dap.configurations.cpp = vim.tbl_deep_extend("force", dap.configurations.cpp or {}, {
-      {
-        name = "Cpptools: Launch this file",
-        type = "cppdbg",
-        request = "launch",
-        program = function()
-          -- return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
-          return vim.fn.expand("%:p:r") .. ".exe"
-        end,
-        cwd = "${workspaceFolder}",
-        stopOnEntry = true,
-      },
+    dap.configurations.cpp = dap.configurations.cpp or {}
+    table.insert(dap.configurations.cpp, 1, {
+      name = "Cpptools: Launch this file",
+      type = "cppdbg",
+      request = "launch",
+      program = function()
+        -- return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/", "file")
+        return vim.fn.expand("%:p:r") .. ".exe"
+      end,
+      cwd = "${workspaceFolder}",
+      stopOnEntry = true,
     })
     dap.configurations.c = dap.configurations.cpp
     dap.configurations.rust = dap.configurations.rust
@@ -53,50 +52,49 @@ require("mason-nvim-dap").setup_handlers({
       command = "node",
       args = { vim.fn.stdpath("data") .. "\\mason\\packages\\node-debug2-adapter\\out\\src\\nodeDebug.js" },
     }
-    dap.configurations.javascript = vim.tbl_deep_extend("force", dap.configurations.javascript or {}, {
-      {
-        name = "Node2: Launch this file",
-        type = "node2",
-        request = "launch",
-        program = "${file}",
-        cwd = vim.fn.getcwd(),
-        sourceMaps = true,
-        protocol = "inspector",
-        console = "integratedTerminal",
-      },
-      {
-        -- For this to work you need to make sure the node process is started with the `--inspect` flag.
-        name = "Node2: Attach to process",
-        type = "node2",
-        request = "attach",
-        processId = require("dap.utils").pick_process,
-      },
+    dap.configurations.javascript = dap.configurations.javascript or {}
+    table.insert(dap.configurations.javascript, 1, {
+      name = "Node2: Launch this file",
+      type = "node2",
+      request = "launch",
+      program = "${file}",
+      cwd = vim.fn.getcwd(),
+      sourceMaps = true,
+      protocol = "inspector",
+      console = "integratedTerminal",
+    })
+    table.insert(dap.configurations.javascript, 1, {
+      -- For this to work you need to make sure the node process is started with the `--inspect` flag.
+      name = "Node2: Attach to process",
+      type = "node2",
+      request = "attach",
+      processId = require("dap.utils").pick_process,
+    })
+
+    dap.configurations.typescript = dap.configurations.javascript
+    dap.configurations.javascriptreact = dap.configurations.javascript
+    dap.configurations.typescriptreact = dap.configurations.javascript
+  end,
+  chrome = function(source_name)
+    dap.adapters.chrome = {
+      type = "executable",
+      command = "node",
+      args = { vim.fn.stdpath("data") .. "\\mason\\packages\\chrome-debug-adapter\\out\\src\\chromeDebug.js" },
+    }
+    dap.configurations.javascript = dap.configurations.javascript or {}
+    table.insert(dap.configurations.javascript, 1, {
+      name = "Chrome: attach",
+      type = "chrome",
+      request = "attach",
+      program = "${file}",
+      cwd = vim.fn.getcwd(),
+      sourceMaps = true,
+      protocol = "inspector",
+      port = 9222,
+      webRoot = "${workspaceFolder}",
     })
     dap.configurations.typescript = dap.configurations.javascript
     dap.configurations.javascriptreact = dap.configurations.javascript
     dap.configurations.typescriptreact = dap.configurations.javascript
   end,
-  -- chrome = function(source_name)
-  --   dap.adapters.chrome = {
-  --     type = "executable",
-  --     command = "node",
-  --     args = { vim.fn.stdpath("data") .. "\\mason\\packages\\node-debug2-adapter\\out\\src\\chromeDebug.js" },
-  --   }
-  --   dap.configurations.javascript = vim.tbl_deep_extend("keep", dap.configurations.javascript, {
-  --     {
-  --       name = "Chrome: attach",
-  --       type = "chrome",
-  --       request = "attach",
-  --       program = "${file}",
-  --       cwd = vim.fn.getcwd(),
-  --       sourceMaps = true,
-  --       protocol = "inspector",
-  --       port = 9222,
-  --       webRoot = "${workspaceFolder}",
-  --     },
-  --   })
-  --   dap.configurations.typescript = dap.configurations.javascript
-  --   dap.configurations.javascriptreact = dap.configurations.javascript
-  --   dap.configurations.typescriptreact = dap.configurations.javascript
-  -- end,
 })
