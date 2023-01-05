@@ -62,14 +62,15 @@ if JAVA_DAP_ACTIVE then
     vim.split(
       vim.fn.glob(
         vim.fn.stdpath("data")
-          .. "/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar"
+          .. "/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar",
+        1
       ),
       "\n"
     )
   )
   vim.list_extend(
     bundles,
-    vim.split(vim.fn.glob(vim.fn.stdpath("data") .. "/mason/packages/java-test/extension/server/*.jar"), "\n")
+    vim.split(vim.fn.glob(vim.fn.stdpath("data") .. "/mason/packages/java-test/extension/server/*.jar", 1), "\n")
   )
 end
 
