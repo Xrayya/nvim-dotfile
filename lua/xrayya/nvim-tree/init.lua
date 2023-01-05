@@ -15,7 +15,7 @@ nvim_tree.setup({
      width = 35,
   },
   renderer = {
-    root_folder_modifier = ":t",
+    root_folder_label = ":t",
     indent_markers = {
       enable = true,
     },
