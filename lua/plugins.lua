@@ -487,7 +487,7 @@ return require("packer").startup(function(use)
 
   use({
     "numToStr/Comment.nvim",
-    commit = "ad7ffa8ed2279f1c8a90212c7d3851f9b783a3d6",
+    commit = "7bb563ff2d811a63b207e9de63e3e9c0877cb6d5",
     event = "BufWinEnter",
     config = function()
       require("xrayya.commentary")
