@@ -30,12 +30,12 @@ M.on_attach = function(client, bufnr)
   handlers.lsp_highlight_document(client)
   handlers.attach_navic(client, bufnr)
 
-  M.capabilities = vim.lsp.protocol.make_client_capabilities()
-  M.capabilities.textDocument.completion.completionItem.snippetSupport = true
+  -- M.capabilities = vim.lsp.protocol.make_client_capabilities()
+  -- M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 
   local cmp_nvim_lsp = NOTIF_REQ("cmp_nvim_lsp", "lsp-config.custom-lsp-settings.jdtls_lspconfig", "error")
   if cmp_nvim_lsp ~= nil then
-    M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
+    M.capabilities = cmp_nvim_lsp.default_capabilities()
   end
 
   -- vim.lsp.codelens.refresh()

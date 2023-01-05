@@ -1,14 +1,12 @@
 local M = {}
 
 local diagnostic_signs = require("icons").diagnostics
-
-M.capabilities = vim.lsp.protocol.make_client_capabilities()
-M.capabilities.textDocument.completion.completionItem.snippetSupport = true
-
 local cmp_nvim_lsp = NOTIF_REQ("cmp_nvim_lsp", "lsp-config.handlers", "error")
 if cmp_nvim_lsp ~= nil then
-  M.capabilities = cmp_nvim_lsp.update_capabilities(M.capabilities)
+  M.capabilities = cmp_nvim_lsp.default_capabilities()
 end
+
+-- M.capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 M.setup = function()
   local signs = {

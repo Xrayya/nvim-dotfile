@@ -352,7 +352,7 @@ return require("packer").startup(function(use)
     },
     {
       "hrsh7th/cmp-nvim-lsp",
-      commit = "affe808a5c56b71630f17aa7c38e15c59fd648a8",
+      commit = "59224771f91b86d1de12570b4070fe4ad7cd1eeb",
       after = "nvim-cmp",
     },
     {
