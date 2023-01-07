@@ -1,0 +1,14 @@
+{
+  "tasks": [
+    {
+      "name": "React start dev",
+      "cmd": "npm start",
+      "tags": ["react", "js", "ts", "jsx", "tsx", "dev"]
+    },
+    {
+      "name": "React build",
+      "cmd": "react run build",
+      "tags": ["react", "js", "ts", "jsx", "tsx", "build"]
+    }
+  ]
+}
