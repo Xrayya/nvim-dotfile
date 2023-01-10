@@ -414,6 +414,9 @@ return require("packer").startup(function(use)
       "L3MON4D3/LuaSnip",
       commit = "5570fd797eae0790affb54ea669a150cad76db5d",
       event = "BufWinEnter",
+      config = function ()
+        require("xrayya.luasnip")
+      end
     },
     {
       "saadparwaiz1/cmp_luasnip",
