@@ -3,6 +3,9 @@ if luasnip == nil then
   return
 end
 
+require("luasnip.loaders.from_vscode").lazy_load()
+luasnip.filetype_extend("javascript", { "javascriptreact" })
+
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 map("i", "<M-l>", "<cmd>lua require('luasnip').expand_or_jump()<cr>", opts)
