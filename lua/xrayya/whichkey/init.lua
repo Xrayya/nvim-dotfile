@@ -168,7 +168,7 @@ local n_mappings = {
     -- D = { "<cmd>lua vim.lsp.buf.type_definition()<CR>", "Go to type definition" },
     d = { "<cmd>Telescope lsp_definitions<CR>", "Go to definition" },
     D = { "<cmd>Telescope lsp_type_definition<CR>", "Go to type definition" },
-    f = { "<cmd>lua vim.lsp.buf.format()<CR>", "Format current buffer" },
+    f = { "<cmd>lua vim.lsp.buf.format({timeout_ms=2000})<CR>", "Format current buffer" },
     h = { "<cmd>lua vim.lsp.buf.hover()<CR>", "Hover" },
     H = { "<cmd>lua vim.lsp.buf.signature_help()<CR>", "Signture help" },
     i = { "<cmd>LspInfo<cr>", "LSP info" },
@@ -231,7 +231,7 @@ local n_mappings = {
     },
   },
   w = { ":w<cr>", "Write (save)" },
-  W = { "<cmd>lua vim.lsp.buf.format()<CR><cmd>write<cr>", "Write and format" },
+  W = { "<cmd>lua vim.lsp.buf.format({timeout_ms=2000})<CR><cmd>write<cr>", "Write and format" },
   [","] = { "<cmd>set wrap<cr>", "Set wrap" },
 }
 
