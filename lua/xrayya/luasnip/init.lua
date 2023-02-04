@@ -8,7 +8,7 @@ luasnip.filetype_extend("javascript", { "javascriptreact" })
 
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
-map("i", "<M-l>", "<cmd>lua require('luasnip').expand_or_jump()<cr>", opts)
+map("i", "<M-l>", "<cmd>lua require('luasnip').jump(1)<cr>", opts)
 map("i", "<M-h>", "<cmd>lua require('luasnip').jump(-1)<cr>", opts)
 map("s", "<M-l>", "<cmd>lua require('luasnip').jump(1)<cr>", opts)
 map("s", "<M-h>", "<cmd>lua require('luasnip').jump(-1)<cr>", opts)
