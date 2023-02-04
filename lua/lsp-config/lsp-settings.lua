@@ -89,14 +89,20 @@ for _, server in pairs(installed_servers) do
   ::continue::
 end
 
--- setup clangd manually cuz I install llvm
-
+-- mason doesn't cover this dart
 opts = {
   on_attach = require("lsp-config.handlers").on_attach,
   capabilities = require("lsp-config.handlers").capabilities,
 }
+local dartls_opt = require("lsp-config.custom-lsp-settings.dartls")
+opts = vim.tbl_deep_extend("force", dartls_opt, opts)
+lspconfig.dartls.setup(opts)
 
+-- setup clangd manually cuz I install llvm
+opts = {
+  on_attach = require("lsp-config.handlers").on_attach,
+  capabilities = require("lsp-config.handlers").capabilities,
+}
 local clangd_opts = require("lsp-config.custom-lsp-settings.clangd")
 opts = vim.tbl_deep_extend("force", clangd_opts, opts)
-
 lspconfig.clangd.setup(opts)

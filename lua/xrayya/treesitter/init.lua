@@ -18,6 +18,7 @@ treesitter.setup({
     "yaml",
     "python",
     "java",
+    "dart",
     "cpp",
     "c",
     "vim",
