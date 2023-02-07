@@ -66,17 +66,21 @@ cmp.setup({
     -- Accept currently selected item. If none selected, `select` first item.
     -- Set `select` to `false` to only confirm explicitly selected items.
     -- ["<CR>"] = cmp.mapping.confirm({ select = true }),
-    ['<CR>'] = cmp.mapping(function(fallback) 
-      -- workaround for https://github.com/hrsh7th/cmp-nvim-lsp-signature-help/issues/13
-      if cmp.get_selected_entry().source.name == 'nvim_lsp_signature_help' then
+    ['<CR>'] = function(fallback)
+      -- Don't block <CR> if signature help is active
+      -- https://github.com/hrsh7th/cmp-nvim-lsp-signature-help/issues/13
+      if not cmp.visible() or not cmp.get_selected_entry() or cmp.get_selected_entry().source.name == 'nvim_lsp_signature_help' then
         fallback()
       else
-        cmp.mapping.confirm {
+        cmp.confirm({
+          -- Replace word if completing in the middle of a word
+          -- https://github.com/hrsh7th/nvim-cmp/issues/664
           behavior = cmp.ConfirmBehavior.Replace,
-          select = true,
-        }(fallback)
+          -- Don't select first item on CR if nothing was selected
+          select = false,
+        })
       end
-    end),
+    end,
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
