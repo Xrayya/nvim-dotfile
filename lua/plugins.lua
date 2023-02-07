@@ -63,6 +63,7 @@ return require("packer").startup(function(use)
     { "EdenEast/nightfox.nvim" },
     { "rebelot/kanagawa.nvim" },
     { "Xrayya/tokyonight.nvim" },
+    -- { "folke/tokyonight.nvim", tag="v1.1.0" },
     {
       "LunarVim/Colorschemes",
       as = "lvim-colorschemes",
@@ -769,6 +770,7 @@ return require("packer").startup(function(use)
 
   use({
     "andweeb/presence.nvim",
+    disable = true,
     commit = "c1c54758824cbecd4e18065d37191f7666fdd097",
     event = "BufWinEnter",
     config = {
