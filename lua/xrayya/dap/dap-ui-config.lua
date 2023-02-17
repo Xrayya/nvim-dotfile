@@ -146,7 +146,7 @@ if dap ~= nil then
   -- end
 end
 
-vim.cmd([[ command! DapSetupDebugging execute 'lua require("dap-config.dap-ui-config").setup_debugging()<cr>' ]])
-vim.cmd([[ command! DapSetupRunning execute 'lua require("dap-config.dap-ui-config").setup_running()<cr>' ]])
+vim.cmd([[ command! DapSetupDebugging execute 'lua require("xrayya.dap.dap-ui-config").setup_debugging()<cr>' ]])
+vim.cmd([[ command! DapSetupRunning execute 'lua require("xrayya.dap.dap-ui-config").setup_running()<cr>' ]])
 
 return M
