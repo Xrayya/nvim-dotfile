@@ -770,7 +770,7 @@ return require("packer").startup(function(use)
 
   use({
     "andweeb/presence.nvim",
-    disable = true,
+    -- disable = true,
     commit = "c1c54758824cbecd4e18065d37191f7666fdd097",
     event = "BufWinEnter",
     config = {
