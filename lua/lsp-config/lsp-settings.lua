@@ -20,6 +20,7 @@ mason_lspconfig.setup({
     "marksman",
     "jsonls",
     "vimls",
+    "gopls",
   },
 })
 
@@ -83,6 +84,11 @@ for _, server in pairs(installed_servers) do
   if server == "jsonls" then
     local jsonls_opts = require("lsp-config.custom-lsp-settings.jsonls")
     opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
+  end
+
+  if server == "intelephense" then
+    local php_opts = require("lsp-config.custom-lsp-settings.php")
+    opts = vim.tbl_deep_extend("force", php_opts, opts)
   end
 
   lspconfig[server].setup(opts)
