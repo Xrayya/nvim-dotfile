@@ -7,6 +7,7 @@ return {
     "javascriptreact",
     "typescript",
     "typescriptreact",
+    "php",
     "haml",
     "xml",
     "xsl",
