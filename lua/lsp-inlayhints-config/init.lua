@@ -1,20 +1,38 @@
-local inlayhints = NOTIF_REQ("inlay-hints", "lsp-inlayhints-config", "error")
-if inlayhints == nil then
+-- local inlayhints = NOTIF_REQ("inlay-hints", "lsp-inlayhints-config", "error")
+-- if inlayhints == nil then
+--   return
+-- end
+
+-- inlayhints.setup({
+--   hints = {
+--     parameter = {
+--       show = true,
+--       highlight = "NavicText",
+--     },
+--     type = {
+--       show = true,
+--       highlight = "NavicText",
+--     },
+--   },
+-- })
+
+-- vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
+-- vim.api.nvim_create_autocmd("LspAttach", {
+--   group = "LspAttach_inlayhints",
+--   callback = function(args)
+--     if not (args.data and args.data.client_id) then
+--       return
+--     end
+
+--     local client = vim.lsp.get_client_by_id(args.data.client_id)
+--     inlayhints.on_attach(client, args.buf)
+--   end,
+-- })
+
+local hints = NOTIF_REQ("lsp-inlayhints", "lsp-inlayhints-config", "error")
+if hints == nil then
   return
 end
-
-inlayhints.setup({
-  hints = {
-    parameter = {
-      show = true,
-      highlight = "NavicText",
-    },
-    type = {
-      show = true,
-      highlight = "NavicText",
-    },
-  },
-})
 
 vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -25,28 +43,12 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
 
     local client = vim.lsp.get_client_by_id(args.data.client_id)
-    inlayhints.on_attach(client, args.buf)
+    hints.on_attach(client, args.buf)
   end,
 })
 
--- local hints = NOTIF_REQ("lsp-inlayhints", "lsp-inlayhints-config", "error")
--- if hints == nil then
---   return
--- end
---
--- vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
--- vim.api.nvim_create_autocmd("LspAttach", {
---   group = "LspAttach_inlayhints",
---   callback = function(args)
---     if not (args.data and args.data.client_id) then
---       return
---     end
---
---     local client = vim.lsp.get_client_by_id(args.data.client_id)
---     hints.on_attach(client, args.buf)
---   end,
--- })
---
+hints.setup()
+
 -- hints.setup({
 --   inlay_hints = {
 --     parameter_hints = {

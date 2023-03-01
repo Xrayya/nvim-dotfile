@@ -217,7 +217,8 @@ return require("packer").startup(function(use)
       },
     },
     {
-      "neovim/nvim-lspconfig",
+      "Xrayya/nvim-lspconfig",
+      branch = "fix-cwd_error",
       after = {
         "mason-lspconfig.nvim",
         "nvim-cmp",
@@ -289,16 +290,17 @@ return require("packer").startup(function(use)
     -- Inlay hints
     {
       "lvimuser/lsp-inlayhints.nvim",
-      disable = true,
-      commit = "439b4811276a149e3fccb226cc9a43ff2fb0e33b",
+      branch = "anticonceal",
+      -- commit = "439b4811276a149e3fccb226cc9a43ff2fb0e33b",
       after = "nvim-lspconfig",
-      -- config = function()
-      --   require("lsp-inlayhints-config")
-      -- end,
+      config = function()
+        require("lsp-inlayhints-config")
+      end,
     },
 
     {
       "ofirgall/inlay-hints.nvim",
+      disable = true,
       commit = "d26b6158349e311731ce2fbd5052ca45f8d8d792",
       after = "nvim-lspconfig",
       config = function()
