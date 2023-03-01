@@ -5,6 +5,7 @@ end
 
 require("luasnip.loaders.from_vscode").lazy_load()
 luasnip.filetype_extend("javascript", { "javascriptreact" })
+luasnip.filetype_extend("php", { "html" })
 
 local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
