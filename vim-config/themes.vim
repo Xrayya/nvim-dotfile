@@ -8,6 +8,7 @@ let g:rose_pine_variant = 'darker'
 
 let g:tokyonight_style = "storm"
 
+" if has('unix')
 if (!exists('neovide'))
 
   let g:tokyonight_transparent = 1

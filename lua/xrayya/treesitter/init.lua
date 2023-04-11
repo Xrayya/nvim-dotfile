@@ -7,22 +7,23 @@ require("nvim-treesitter.install").compilers = { "gcc", "clang" }
 
 treesitter.setup({
   ensure_installed = {
-    "html",
+    "c",
+    "comment", -- for comment highlighting like @params, @return, etc
+    "cpp",
     "css",
-    "tsx",
-    "typescript",
+    "dart",
+    "html",
+    "java",
     "javascript",
     "json",
     "lua",
     "markdown",
-    "yaml",
+    "php",
     "python",
-    "java",
-    "dart",
-    "cpp",
-    "c",
+    "tsx",
+    "typescript",
     "vim",
-    "comment", -- for comment highlighting like @params, @return, etc
+    "yaml",
   },
   highlight = {
     enable = true,

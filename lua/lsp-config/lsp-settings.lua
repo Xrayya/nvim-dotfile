@@ -20,7 +20,7 @@ mason_lspconfig.setup({
     "marksman",
     "jsonls",
     "vimls",
-    "gopls",
+    -- "gopls",
   },
 })
 
