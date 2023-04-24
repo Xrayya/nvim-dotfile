@@ -20,6 +20,7 @@ mason_lspconfig.setup({
     "marksman",
     "jsonls",
     "vimls",
+    "tailwindcss",
     -- "gopls",
   },
 })
