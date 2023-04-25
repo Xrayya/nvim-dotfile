@@ -193,15 +193,7 @@ local n_mappings = {
     },
   },
   m = { "<cmd>Mason<cr>", "Open Mason" },
-  p = {
-    name = "Plugin action",
-    c = { "<cmd>PackerCompile<cr>", "Compile" },
-    e = { "<cmd>e " .. vim.fn.stdpath("config") .. "/lua/plugins.lua<cr>", "Edit plugins" },
-    C = { "<cmd>PackerClean<cr>", "Clean" },
-    i = { "<cmd>PackerInstall<cr>", "Install" },
-    s = { "<cmd>PackerSync<cr>", "Sync" },
-    S = { "<cmd>PackerStatus<cr>", "Status" },
-  },
+  p = { "<cmd>Lazy<CR>", "Open Plugin Manager" },
   s = { "<cmd>SymbolsOutline<cr>", "Open Symbols Outline" },
   t = {
     name = "Terminal",
