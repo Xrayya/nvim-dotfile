@@ -1,169 +1,157 @@
 local fn = vim.fn
 
 -- Automatically install packer
-local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
-if fn.empty(fn.glob(install_path)) > 0 then
-  PACKER_BOOTSTRAP = fn.system({
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
     "git",
     "clone",
-    "--depth",
-    "1",
-    "https://github.com/wbthomason/packer.nvim",
-    install_path,
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
   })
-  print("Installing packer. After plugins installed, close and reopen Neovim...")
-  vim.cmd([[packadd packer.nvim]])
 end
+vim.opt.rtp:prepend(lazypath)
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.cmd([[
   augroup packer_user_config
     autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerCompile
+    autocmd BufWritePost plugins.lua | Lazy sync
   augroup end
 ]])
 
 -- Use a protected call so we don't error out on first use
-local status_ok, packer = pcall(require, "packer")
+local status_ok, lazy = pcall(require, "lazy")
 if not status_ok then
   print("Error occured when loading packer.nvim")
   return
 end
 
 -- Have packer use a popup window
-packer.init({
-  display = {
-    open_fn = function()
-      return require("packer.util").float({ border = "rounded" })
-    end,
-  },
-})
+-- lazy.init({
+--   display = {
+--     open_fn = function()
+--       return require("packer.util").float({ border = "rounded" })
+--     end,
+--   },
+-- })
 
-return require("packer").startup(function(use)
+lazy.setup({
   ------------------------------
   -- Packer can manage itself --
   ------------------------------
 
-  use("wbthomason/packer.nvim")
+  { "wbthomason/packer.nvim" },
 
   ------------
   -- Themes --
   ------------
 
-  use({
-    { "navarasu/onedark.nvim" },
-    {
-      "Xrayya/nvcode-color-schemes.vim",
-      branch = "delete-onedark",
-    },
-    {
-      "rose-pine/neovim",
-      as = "rose-pine",
-    },
-    { "EdenEast/nightfox.nvim" },
-    { "rebelot/kanagawa.nvim" },
-    { "Xrayya/tokyonight.nvim" },
-    -- { "folke/tokyonight.nvim", tag="v1.1.0" },
-    {
-      "LunarVim/Colorschemes",
-      as = "lvim-colorschemes",
-    },
-  })
+  { "navarasu/onedark.nvim" },
+  {
+    "Xrayya/nvcode-color-schemes.vim",
+    branch = "delete-onedark",
+  },
+  {
+    "rose-pine/neovim",
+    as = "rose-pine",
+  },
+  { "EdenEast/nightfox.nvim" },
+  { "rebelot/kanagawa.nvim" },
+  { "Xrayya/tokyonight.nvim" },
+  -- { "folke/tokyonight.nvim", version="v1.1.0" },
+  {
+    "LunarVim/Colorschemes",
+    as = "lvim-colorschemes",
+  },
 
   ----------------------
   -- Treesitter stuff --
   ----------------------
 
-  use({
-    {
-      "nvim-treesitter/nvim-treesitter",
-      run = ":TSUpdate",
-      config = function()
-        require("xrayya.treesitter")
-      end,
-    },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    build = ":TSUpdate",
+    config = function()
+      require("xrayya.treesitter")
+    end,
+  },
 
-    -- Autopair
-    {
-      "windwp/nvim-autopairs",
-      after = "nvim-treesitter",
-      config = function()
-        require("xrayya.autopairs")
-      end,
-    },
+  -- Autopair
+  {
+    "windwp/nvim-autopairs",
+    config = function()
+      require("xrayya.autopairs")
+    end,
+  },
 
-    -- Rainbow
-    {
-      "p00f/nvim-ts-rainbow",
-      after = "nvim-treesitter",
-    },
+  -- Rainbow
+  {
+    "p00f/nvim-ts-rainbow",
+  },
 
-    -- Autotag
-    {
-      "windwp/nvim-ts-autotag",
-      after = "nvim-treesitter",
-    },
+  -- Autotag
+  {
+    "windwp/nvim-ts-autotag",
+  },
 
-    -- Commentstring
-    {
-      "JoosepAlviste/nvim-ts-context-commentstring",
-      after = "nvim-treesitter",
-    },
+  -- Commentstring
+  {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+  },
 
-    -- Endwise
-    {
-      "RRethy/nvim-treesitter-endwise",
-      after = "nvim-treesitter",
-    },
-  })
+  -- Endwise
+  {
+    "RRethy/nvim-treesitter-endwise",
+  },
 
   -----------------
   -- Indentation --
   -----------------
 
-  use({
+  {
     "lukas-reineke/indent-blankline.nvim",
-    tag = "v2.20.2",
-    after = "nvim-treesitter",
+    version = "v2.20.2",
+    event = "BufWinEnter",
     config = function()
       require("xrayya.indent-blankline")
     end,
-  })
+  },
 
   --------------
   -- Nvimtree --
   --------------
 
-  use({
+  {
     "kyazdani42/nvim-tree.lua",
     commit = "bb375fb20327c49920c41d2b51c1ce2f4fe7deb3",
-    requires = "kyazdani42/nvim-web-devicons",
+    dependencies = "kyazdani42/nvim-web-devicons",
     cmd = "NvimTreeToggle",
     config = function()
       require("xrayya.nvim-tree")
     end,
-  })
+  },
 
   -------------------------------
   -- Statusline and buffer manager --
   -------------------------------
 
-  use({
+  {
     {
       "nvim-lualine/lualine.nvim",
       commit = "84ffb80e452d95e2c46fa29a98ea11a240f7843e",
-      requires = { "kyazdani42/nvim-web-devicons", opt = true },
-      after = "nvim-lspconfig",
+      dependencies = { "kyazdani42/nvim-web-devicons", lazy = true },
       config = function()
         require("xrayya.lualine")
       end,
     },
     {
       "akinsho/bufferline.nvim",
-      disable = true,
+      enabled = false,
       commit = "68839d62785edfb4ff7a7b3c1e9f4b64d55749e8",
-      requires = "kyazdani42/nvim-web-devicons",
-      event = "BufWinEnter",
+      dependencies = "kyazdani42/nvim-web-devicons",
       config = function()
         require("xrayya.bufferline")
       end,
@@ -171,78 +159,71 @@ return require("packer").startup(function(use)
     {
       "ghillb/cybu.nvim",
       branch = "main",
-      requires = { "kyazdani42/nvim-web-devicons" },
-      event = "BufWinEnter",
+      dependencies = { "kyazdani42/nvim-web-devicons" },
       config = function()
         require("xrayya.cybu")
       end,
     },
-  })
+  },
 
   ---------------
   -- Dashboard --
   ---------------
 
-  use({
+  {
     "goolord/alpha-nvim",
     commit = "87c204040e3f5d4c1c95067b35905d8f8a2f2545",
-    requires = { "kyazdani42/nvim-web-devicons" },
-    event = "BufWinEnter",
+    dependencies = { "kyazdani42/nvim-web-devicons" },
     config = function()
-      -- require'alpha'.setup(require'alpha.themes.startify'.opts)
       require("xrayya.alpha")
     end,
-  })
+    -- config = function()
+    --   require("alpha").setup(require("alpha.themes.dashboard").config)
+    -- end,
+  },
 
   ---------------------
   -- Package manager --
   ---------------------
 
-  use({
+  {
     "williamboman/mason.nvim",
     config = function()
       require("xrayya.mason")
     end,
-  })
+  },
 
   ---------------
   -- LSP stuff --
   ---------------
 
-  use({
+  {
     {
       "williamboman/mason-lspconfig.nvim",
-      after = {
-        "mason.nvim",
+      dependencies = {
+        "williamboman/mason.nvim",
+        "neovim/nvim-lspconfig",
       },
     },
     {
       "neovim/nvim-lspconfig",
-      after = {
-        "mason-lspconfig.nvim",
-        "nvim-cmp",
-        "cmp-nvim-lsp",
-        "nlsp-settings.nvim",
-        "vim-illuminate",
-        "null-ls.nvim",
-        "SchemaStore.nvim",
-        "typescript.nvim",
-      },
       config = function()
         require("lsp-config")
       end,
     },
     {
       "tamago324/nlsp-settings.nvim",
-      disable = true,
+      enabled = false,
+      dependencies = {
+        "neovim/nvim-lspconfig",
+      },
     },
 
     -- Renamer
     {
       "filipdutescu/renamer.nvim",
-      tag = "v5.1.0",
-      requires = { { "nvim-lua/plenary.nvim" } },
-      after = "nvim-lspconfig",
+      version = "v5.1.0",
+      dependencies = { "nvim-lua/plenary.nvim" },
       config = function()
         require("renamer-config")
       end,
@@ -251,9 +232,7 @@ return require("packer").startup(function(use)
     {
       "rmagatti/goto-preview",
       commit = "82ce83ae589be7a59e4ec5cfbbf82d9f5eb8bded",
-      after = { "nvim-lspconfig", "telescope.nvim" },
-      event = "BufWinEnter",
-      requires = { "nvim-telescope/telescope.nvim" },
+      dependencies = { "nvim-telescope/telescope.nvim" },
       config = function()
         require("xrayya.goto-preview")
       end,
@@ -262,8 +241,7 @@ return require("packer").startup(function(use)
     -- Java LSP
     {
       "mfussenegger/nvim-jdtls",
-      -- commit = "0422245fdef57aa4eddba3d99aee1afaaf425da7",
-      tag = "0.2.0",
+      version = "0.2.0",
       ft = "java",
     },
 
@@ -271,6 +249,9 @@ return require("packer").startup(function(use)
     {
       "jose-elias-alvarez/typescript.nvim",
       commit = "f66d4472606cb24615dfb7dbc6557e779d177624",
+      dependencies = {
+        "neovim/nvim-lspconfig",
+      },
       event = "BufWinEnter",
     },
 
@@ -280,7 +261,9 @@ return require("packer").startup(function(use)
     {
       "RRethy/vim-illuminate",
       commit = "6bfa5dc069bd4aa8513a3640d0b73392094749be",
-      event = "BufWinEnter",
+      dependencies = {
+        "neovim/nvim-lspconfig",
+      },
       config = function()
         require("xrayya.illuminate")
       end,
@@ -289,9 +272,8 @@ return require("packer").startup(function(use)
     -- Inlay hints
     {
       "lvimuser/lsp-inlayhints.nvim",
-      disable = true,
+      enabled = false,
       commit = "62c7b8dd8ac9933b071912fe3c789ef2cb704672",
-      after = "nvim-lspconfig",
       -- config = function()
       --   require("lsp-inlayhints-config")
       -- end,
@@ -300,7 +282,6 @@ return require("packer").startup(function(use)
     {
       "ofirgall/inlay-hints.nvim",
       commit = "d26b6158349e311731ce2fbd5052ca45f8d8d792",
-      after = "nvim-lspconfig",
       config = function()
         require("lsp-inlayhints-config")
       end,
@@ -309,8 +290,7 @@ return require("packer").startup(function(use)
     -- LSP lines
     {
       "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-      as = "lsp_lines.nvim",
-      after = "nvim-lspconfig",
+      name = "lsp_lines.nvim",
       config = function()
         require("xrayya.lsp-lines")
       end,
@@ -319,34 +299,32 @@ return require("packer").startup(function(use)
     -- null-ls
     {
       "jose-elias-alvarez/null-ls.nvim",
-      requires = { "nvim-lua/plenary.nvim" },
-      event = "BufWinEnter",
     },
 
     -- Schemastore
     {
       "b0o/SchemaStore.nvim",
-      event = "BufWinEnter",
+      dependencies = {
+        "neovim/nvim-lspconfig",
+      },
     },
     {
       "j-hui/fidget.nvim",
       commit = "0ba1e16d07627532b6cae915cc992ecac249fb97",
-      event = "BufWinEnter",
       config = function()
         require("xrayya.fidget")
       end,
     },
-  })
+  },
 
   --------------------
   -- Autocompletion --
   --------------------
 
-  use({
+  {
     {
       "hrsh7th/nvim-cmp",
       commit = "c49ad26e894e137e401b1d294948c46327877eaf",
-      after = { "nvim-autopairs", "LuaSnip", "friendly-snippets" },
       config = function()
         require("xrayya.cmp")
       end,
@@ -354,182 +332,184 @@ return require("packer").startup(function(use)
     {
       "hrsh7th/cmp-nvim-lsp",
       commit = "59224771f91b86d1de12570b4070fe4ad7cd1eeb",
-      after = "nvim-cmp",
+      dependencies = {
+        "neovim/nvim-lspconfig",
+      },
     },
     {
       "hrsh7th/cmp-nvim-lua",
       commit = "d276254e7198ab7d00f117e88e223b4bd8c02d21",
-      after = "nvim-cmp",
       ft = "lua",
     },
     {
       "hrsh7th/cmp-buffer",
       commit = "3022dbc9166796b644a841a02de8dd1cc1d311fa",
-      after = "nvim-cmp",
     },
     {
       "hrsh7th/cmp-path",
       commit = "91ff86cd9c29299a64f968ebb45846c485725f23",
-      after = "nvim-cmp",
     },
     {
       "hrsh7th/cmp-calc",
       commit = "f7efc20768603bd9f9ae0ed073b1c129f63eb312",
-      after = "nvim-cmp",
     },
     {
       "hrsh7th/cmp-nvim-lsp-signature-help",
       commit = "d2768cb1b83de649d57d967085fe73c5e01f8fd7",
-      after = "nvim-cmp",
+      dependencies = {
+        "neovim/nvim-lspconfig",
+      },
     },
     {
       "rcarriga/cmp-dap",
-      disable = true,
+      enabled = false,
       commit = "a67883cfe574923d3414035ba16159c0ed6d8dcf",
-      after = { "nvim-cmp", "nvim-dap" },
     },
     {
       "hrsh7th/cmp-cmdline",
       commit = "23c51b2a3c00f6abc4e922dbd7c3b9aca6992063",
-      after = { "nvim-cmp", "cmp-buffer", "cmp-path" },
+      dependencies = {
+        "hrsh7th/cmp-path",
+        "hrsh7th/cmp-buffer",
+      },
     },
 
     -- Tabnine
     {
       "tzachar/cmp-tabnine",
       commit = "a5081776185e3c7f406e7fc3dd5f0a0ae0288e59",
-      disable = true,
-      run = "powershell ./install.ps1",
-      after = "nvim-cmp",
-      requires = "hrsh7th/nvim-cmp",
+      enabled = false,
+      build = "powershell ./install.ps1",
+      dependencies = "hrsh7th/nvim-cmp",
     },
-  })
+  },
 
   --------------------
   -- Snippets stuff --
   --------------------
 
-  use({
+  {
     -- luasnip
     {
       "L3MON4D3/LuaSnip",
       commit = "e77fa9ad0b1f4fc6cddf54e51047e17e90c7d7ed",
-      event = "BufWinEnter",
-      config = function ()
+      config = function()
         require("xrayya.luasnip")
-      end
+      end,
     },
     {
       "saadparwaiz1/cmp_luasnip",
       commit = "18095520391186d634a0045dacaa346291096566",
-      after = "nvim-cmp",
+      dependencies = {
+        "L3MON4D3/LuaSnip",
+        "rafamadriz/friendly-snippets",
+      },
     },
 
     -- snippets library
     {
       "rafamadriz/friendly-snippets",
-      event = "BufWinEnter",
+      dependencies = {
+        "hrsh7th/nvim-cmp",
+      },
     },
-  })
+  },
 
   ---------------------
   -- Diagnostic list --
   ---------------------
 
-  use({
+  {
     "folke/trouble.nvim",
     -- commit = "ed65f84abc4a1e5d8f368d7e02601fc0357ea15e",
-    tag = "v2.2.2",
-    requires = "kyazdani42/nvim-web-devicons",
+    version = "v2.2.2",
+    dependencies = "kyazdani42/nvim-web-devicons",
     cmd = { "Trouble", "TroubleToggle" },
     config = function()
       require("trouble").setup({})
     end,
-  })
+  },
 
   ------------------
   -- Todo-Comments --
   ------------------
-  use({
+  {
     "folke/todo-comments.nvim",
     -- commit = "61240662fd9ffa4a546db57abcc50b97f6fab27b",
-    tag = "v1.1.0",
-    requires = "nvim-lua/plenary.nvim",
-    event = "BufWinEnter",
+    version = "v1.1.0",
+    dependencies = "nvim-lua/plenary.nvim",
     config = function()
       require("xrayya.todo-comments")
     end,
-  })
+  },
 
   ---------------------
   -- Symbols outline --
   ---------------------
 
-  use({
+  {
     "simrat39/symbols-outline.nvim",
     commit = "512791925d57a61c545bc303356e8a8f7869763c",
     config = function()
       require("xrayya.symbols-outline")
     end,
-  })
+  },
 
   -------------
   -- Context --
   -------------
 
-  use({
+  {
     "SmiteshP/nvim-navic",
     commit = "83dc174da915f9dbc9b51169e9b62a2e0d42b527",
-    requires = "neovim/nvim-lspconfig",
-    after = "nvim-lspconfig",
+    dependencies = "neovim/nvim-lspconfig",
     config = function()
       require("xrayya.navic")
     end,
-  })
+  },
 
   ----------------
   -- Commentary --
   ----------------
 
-  use({
+  {
     "numToStr/Comment.nvim",
     -- commit = "7bb563ff2d811a63b207e9de63e3e9c0877cb6d5",
-    tag = "v0.8.0",
-    event = "BufWinEnter",
+    version = "v0.8.0",
     config = function()
       require("xrayya.commentary")
     end,
-  })
+  },
 
   ------------
   -- Tabout --
   ------------
 
   -- doesn't seem to work if you also use vim-vsnip
-  use({
+  {
     "abecodes/tabout.nvim",
     commit = "0d275c8d25f32457e67b5c66d6ae43f26a61bce5",
-    requires = { "nvim-treesitter" },
-    after = { "nvim-cmp", "nvim-treesitter" },
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "hrsh7th/nvim-cmp",
+    },
     config = function()
       require("xrayya.tabout")
     end,
-  })
+  },
 
   ---------------------
   -- Telescope stuff --
   ---------------------
 
-  use({
+  {
     {
       "nvim-telescope/telescope.nvim",
       commit = "f2645c13205abb9ee3dbcee68416645c69b863c8",
-      requires = {
-        { "nvim-lua/plenary.nvim" },
-        { "nvim-lua/popup.nvim" },
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "nvim-lua/popup.nvim",
       },
-      -- cmd = "Telescope",
-      after = { "toggletasks.nvim", "project.nvim", "telescope-fzf-native.nvim", "telescope-ui-select.nvim" },
       config = function()
         require("xrayya.telescope")
       end,
@@ -539,7 +519,6 @@ return require("packer").startup(function(use)
     {
       "ahmedkhalf/project.nvim",
       commit = "8c6bad7d22eef1b71144b401c9f74ed01526a4fb",
-      event = "BufWinEnter",
       config = function()
         require("xrayya.projects")
       end,
@@ -548,44 +527,46 @@ return require("packer").startup(function(use)
     -- Frecency algorithm for telescope
     {
       "nvim-telescope/telescope-frecency.nvim",
-      disable = true,
-      requires = { "tami5/sqlite.lua" },
+      enabled = false,
+      dependencies = { "tami5/sqlite.lua" },
     },
 
     -- FZF Native
     {
       "nvim-telescope/telescope-fzf-native.nvim",
       commit = "580b6c48651cabb63455e97d7e131ed557b8c7e2",
-      run = "make",
-      event = "BufWinEnter",
+      dependencies = {
+        "nvim-telescope/telescope.nvim",
+      },
+      build = "make",
     },
 
     -- UI select handler
     {
       "nvim-telescope/telescope-ui-select.nvim",
       commit = "62ea5e58c7bbe191297b983a9e7e89420f581369",
-      event = "BufWinEnter",
+      dependencies = {
+        "nvim-telescope/telescope.nvim",
+      },
     },
-  })
+  },
 
   ---------------------------------------------
   -- Debug Adapter Protocol client and stuff --
   ---------------------------------------------
-  use({
+  {
 
     -- DAP client
     {
       "mfussenegger/nvim-dap",
-      tag = "0.6.0",
-      event = "BufWinEnter",
+      version = "0.6.0",
     },
 
     -- UI views vscode-like for nvim-dap
     {
       -- FIXME: error notification
       "rcarriga/nvim-dap-ui",
-      tag = "v3.8.0",
-      after = "nvim-dap",
+      version = "v3.8.0",
     },
 
     -- Bridge for mason.nvim and nvim-dap
@@ -594,7 +575,6 @@ return require("packer").startup(function(use)
       -- FIXME: breaking change
       "jay-babu/mason-nvim-dap.nvim",
       commit = "d6cb770928b5cb9a6e3880d6bbb58858c1deeb18",
-      after = {"nvim-dap", "nvim-dap-ui"},
       config = function()
         require("xrayya.dap")
       end,
@@ -604,82 +584,71 @@ return require("packer").startup(function(use)
     {
       "theHamsta/nvim-dap-virtual-text",
       commit = "9dc45a6eb33871f4c5cb2ba08fa307467657471e",
-      after = "nvim-dap",
       config = function()
         require("xrayya.dap-virtual-text")
       end,
     },
-  })
+  },
 
   --------------
   -- Whichkey --
   --------------
 
-  use({
+  {
     "folke/which-key.nvim",
-    -- commit = "b7e0b1f16c20bc1ea0515851bc5740d1c1f18444",
-    tag = "v1.4.0",
-    event = "BufWinEnter",
+    version = "v1.4.0",
     config = function()
       require("xrayya.whichkey")
     end,
-  })
+  },
 
   ---------
   -- HOP --
   ---------
 
-  use({
+  {
     "phaazon/hop.nvim",
-    -- commit = "6591b3656b75ff313cc38dc662a7ee8f75f1c165",
-    tag = "v2.0.3",
-    event = "BufWinEnter",
+    version = "v2.0.3",
     config = function()
       require("xrayya.hop")
     end,
-  })
+  },
 
   --------------
   -- Gitsigns --
   --------------
 
-  use({
+  {
     "lewis6991/gitsigns.nvim",
-    -- commit = "21ab05c2629ef613b1c3452d12469f936855648b",
-    tag = "v0.6",
-    event = "BufWinEnter",
-    requires = {
-      "nvim-lua/plenary.nvim",
-    },
+    version = "v0.6",
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("xrayya.gitsigns")
     end,
-  })
+  },
 
   --------------
   -- Terminal --
   --------------
 
-  use({
+  {
     -- TODO: linux compatibility
     "akinsho/toggleterm.nvim",
     commit = "b02a1674bd0010d7982b056fd3df4f717ff8a57a",
-    event = "BufWinEnter",
     config = function()
       require("xrayya.toggleterm")
     end,
-  })
+  },
 
   -----------------
   -- Taks Runner --
   -----------------
 
-  use({
+  {
     -- TODO: linux compatibility
     "jedrzejboczar/toggletasks.nvim",
     commit = "8567f91a0eb42f17e9134fe1fed7bfce16918ba4",
-    after = { "toggleterm.nvim" },
-    requires = {
+    dependencies = {
       "nvim-lua/plenary.nvim",
       "akinsho/toggleterm.nvim",
       "nvim-telescope/telescope.nvim",
@@ -687,96 +656,90 @@ return require("packer").startup(function(use)
     config = function()
       require("xrayya.toggletasks")
     end,
-  })
+  },
 
   ------------------
   -- Notification --
   ------------------
 
-  use({
+  {
     "rcarriga/nvim-notify",
-    tag = "v3.11.0",
-    event = "BufWinEnter",
+    version = "v3.11.0",
     config = function()
       require("xrayya.notify")
     end,
-  })
+  },
 
   ---------------------
   -- Session Manager --
   ---------------------
 
-  use({
+  {
     "Shatur/neovim-session-manager",
     commit = "d1883f30921193f3cff4537e27514e454e0331e9",
-    requires = { "nvim-lua/plenary.nvim" },
-    event = "BufWinEnter",
+    dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
       require("xrayya.session-manager")
     end,
-  })
+  },
 
   ---------------------
   -- Color and stuff --
   ---------------------
 
-  use({
+  {
     {
       "NvChad/nvim-colorizer.lua",
-      event = "BufWinEnter",
       config = function()
         require("xrayya.colorizer")
       end,
     },
     {
       "ziontee113/color-picker.nvim",
-      event = "BufWinEnter",
       config = function()
         require("xrayya.color-picker")
       end,
     },
     {
       "max397574/colortils.nvim",
-      disable = true,
-      event = "BufWinEnter",
+      enabled = false,
       config = function()
         require("xrayya.colortils")
       end,
     },
-  })
+  },
 
   ----------
   -- Numb --
   ----------
 
-  use({
+  {
     "nacro90/numb.nvim",
-    event = "BufWinEnter",
     config = function()
       require("xrayya.numb")
     end,
-  })
+  },
 
   ------------------------
   -- Markdown previewer --
   ------------------------
 
-  use({
+  {
     "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install",
-    setup = function()
+    build = "cd app && npm install",
+    init = function()
       vim.g.mkdp_filetypes = { "markdown" }
     end,
     ft = { "markdown" },
-  })
+  },
 
   ---------------------
   -- Discord Presece --
   ---------------------
 
-  use({
+  {
     "andweeb/presence.nvim",
-    -- disable = true,
+    -- enabled = false,
     commit = "87c857a56b7703f976d3a5ef15967d80508df6e6",
     event = "BufWinEnter",
     config = {
@@ -784,10 +747,5 @@ return require("packer").startup(function(use)
         require("xrayya.discord-presence")
       end,
     },
-  })
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  if PACKER_BOOTSTRAP then
-    require("packer").sync()
-  end
-end)
+  },
+})
