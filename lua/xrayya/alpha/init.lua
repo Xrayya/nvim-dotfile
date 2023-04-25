@@ -1,6 +1,6 @@
 local alpha = NOTIF_REQ("alpha", "alpha-config", "error")
 if alpha == nil then
-  return
+  return {}
 end
 
 local ui = require("icons").ui
@@ -37,13 +37,13 @@ dashboard.section.buttons.val = {
   dashboard.button("Q", ui.Close .. "  Quit Neovim", "<cmd>qa<CR>"),
 }
 
-local function footer()
-  local total_plugins = #vim.tbl_keys(packer_plugins)
-  local datetime = os.date(ui.Calendar .. " %d-%m-%Y " .. ui.Clock3 .. " %H:%M:%S")
-  return ui.Socket .. " " .. total_plugins .. " plugins " .. datetime
-end
+-- local function footer()
+--   local total_plugins = #vim.tbl_keys(packer_plugins)
+--   local datetime = os.date(ui.Calendar .. " %d-%m-%Y " .. ui.Clock3 .. " %H:%M:%S")
+--   return ui.Socket .. " " .. total_plugins .. " plugins " .. datetime
+-- end
 
-dashboard.section.footer.val = footer()
+-- dashboard.section.footer.val = footer()
 dashboard.section.header.opts.hl = "Include"
 dashboard.section.buttons.opts.hl = "Keyword"
 
