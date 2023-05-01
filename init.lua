@@ -1,8 +1,8 @@
 -- Setup settings
 require("user-functions")
 require("keymappings")
-require("plugins")
 require("settings")
+require("plugins")
 require("autocommands")
 
 if vim.fn.has("unix") then
