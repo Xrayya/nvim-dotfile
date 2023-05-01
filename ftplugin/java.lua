@@ -1,17 +1,20 @@
 -- vim.cmd('autocmd FileType java setlocal tabstop=4 shiftwidth=4 softtabstop=4')
 
-vim.cmd([[packadd nvim-notify]])
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+vim.opt.rtp:prepend(lazypath)
+
+vim.cmd([[Lazy load nvim-notify]])
 require("xrayya.notify")
 
-vim.cmd([[packadd nvim-navic]])
+vim.cmd([[Lazy load nvim-navic]])
 require("xrayya.navic")
 
--- vim.cmd([[packadd fidget.nvim]])
+-- vim.cmd([[Lazy load fidget.nvim]])
 -- require("fidget-config")
 
-vim.cmd([[packadd cmp-nvim-lsp]])
+vim.cmd([[Lazy load cmp-nvim-lsp]])
 
-vim.cmd([[packadd nvim-jdtls]])
+vim.cmd([[Lazy load nvim-jdtls]])
 local nvim_jdtls = NOTIF_REQ("jdtls", "ftplugin/java", "error")
 if nvim_jdtls == nil then
   return
@@ -50,11 +53,11 @@ JAVA_DAP_ACTIVE = true
 local bundles = {}
 
 if JAVA_DAP_ACTIVE then
-  vim.cmd([[packadd nvim-dap]])
-  vim.cmd([[packadd nvim-dap-ui]])
+  vim.cmd([[Lazy load nvim-dap]])
+  vim.cmd([[Lazy load nvim-dap-ui]])
   require("xrayya.dap")
 
-  vim.cmd([[packadd nvim-dap-virtual-text]])
+  vim.cmd([[Lazy load nvim-dap-virtual-text]])
   require("xrayya.dap-virtual-text")
 
   vim.list_extend(
@@ -319,7 +322,7 @@ vim.cmd("command! -buffer JdtUpdateConfig lua require('jdtls').update_project_co
 vim.cmd("command! -buffer JdtBytecode lua require('jdtls').javap()")
 -- vim.cmd "command! -buffer JdtJshell lua require('jdtls').jshell()"
 
-vim.cmd([[packadd which-key.nvim]])
+vim.cmd([[Lazy load which-key.nvim]])
 require("xrayya.whichkey")
 
 local which_key = NOTIF_REQ("which-key", "ftplugin/java", "error")
