@@ -3,6 +3,7 @@ if notify == nil then
   return
 end
 
+vim.opt.termguicolors = true
 local icons = require("icons")
 
 vim.notify = notify
