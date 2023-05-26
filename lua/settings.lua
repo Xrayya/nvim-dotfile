@@ -47,3 +47,4 @@ vim.opt.guifont = "JetBrainsMono\\ NF:h11"    -- the font used in graphical neov
 
 vim.cmd('autocmd FileType cpp setlocal tabstop=4 shiftwidth=4 softtabstop=4')
 vim.cmd('autocmd FileType java setlocal tabstop=4 shiftwidth=4 softtabstop=4')
+vim.cmd('autocmd FileType php setlocal tabstop=4 shiftwidth=4 softtabstop=4')
