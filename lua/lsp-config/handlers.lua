@@ -101,6 +101,9 @@ end
 -- end
 
 M.on_attach = function(client, bufnr)
+  if client.name == "intelephense" then
+    client.resolved_capabilities.document_formatting = false
+  end
   -- lsp_keymaps(bufnr)
   M.attach_navic(client, bufnr)
   M.lsp_highlight_document(client)
