@@ -14,14 +14,6 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
--- Autocommand that reloads neovim whenever you save the plugins.lua file
-vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua | Lazy sync
-  augroup end
-]])
-
 -- Use a protected call so we don't error out on first use
 local status_ok, lazy = pcall(require, "lazy")
 if not status_ok then
@@ -29,21 +21,12 @@ if not status_ok then
   return
 end
 
--- Have packer use a popup window
--- lazy.init({
---   display = {
---     open_fn = function()
---       return require("packer.util").float({ border = "rounded" })
---     end,
---   },
--- })
-
 lazy.setup({
   ------------------------------
   -- Packer can manage itself --
   ------------------------------
 
-  { "wbthomason/packer.nvim" },
+  { "folke/lazy.nvim" },
 
   ------------
   -- Themes --
@@ -255,6 +238,10 @@ lazy.setup({
       event = "BufWinEnter",
     },
 
+    {
+      "jwalton512/vim-blade",
+    },
+
     -- Illuminate
     -- NOTE: keep this one outdated for now, hard to configure the highlight
     -- FIXME: need help
@@ -393,6 +380,8 @@ lazy.setup({
     {
       "L3MON4D3/LuaSnip",
       commit = "e77fa9ad0b1f4fc6cddf54e51047e17e90c7d7ed",
+      run = "make install_jsregexp",
+      dependencies = { "rafamadriz/friendly-snippets" },
       config = function()
         require("xrayya.luasnip")
       end,
@@ -747,5 +736,9 @@ lazy.setup({
         require("xrayya.discord-presence")
       end,
     },
+  },
+}, {
+  ui = {
+    border = "rounded",
   },
 })
