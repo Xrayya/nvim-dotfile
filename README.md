@@ -1,32 +1,14 @@
-# nvim-dotfile
+# My Neovim Config
 
-My simple Neovim config
-
-## Screenshot
-
-![alpha in neovide](<./screenshot/img%20(4).png>)
-![transparent background](<./screenshot/img%20(1).png>)
-![nvim-tree, which-key, symbols-outline](<./screenshot/img%20(2).png>)
-![goto-preview, telescope](<./screenshot/img%20(3).png>)
-
-## Line that MUST NOT be crossed
-
-- Keep it simple!
-
-## Plugins update notes
-
-- hop haven't been update (have some breaking change)
-
-## Notes for future update
-
-- see `:h nvim_open_win()` for floating window
+- This config contains 44 plugins (will probably add more soon)
+- LSP has been set up for several languages (java, html, css, js, cpp, etc)
+- DAP has been set up for java and soon cpp
 
 ## TODO
+- Consistent icon on all sections
+- Customize lualine for better info
+- Provide more documentation for `README`
 
-- [ ] try harpoon
-- [ ] try vim-bookmark
-- [ ] try noice.nvim
-- [ ] try ccc.nvim
-- [ ] add flutter-tools.nvim
-- [ ] add phpactor.nvim
-- [ ] change markdown LSP
+## TODO (Experimental)
+- Use nightly neovim version for inline virtual text
+- Install [`lvimuser/lsp-inlayhints.nvim`](https://github.com/lvimuser/lsp-inlayhints.nvim/) in `anticonceal` branch for better inlayhints
