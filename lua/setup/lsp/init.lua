@@ -134,7 +134,7 @@ local lsp = {
   },
   {
     "lvimuser/lsp-inlayhints.nvim",
-    branch = "anticonceal",
+    -- branch = "anticonceal",
     config = function()
       vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
       vim.api.nvim_create_autocmd("LspAttach", {
