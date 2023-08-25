@@ -1,18 +1,15 @@
 -- vim.cmd('autocmd FileType java setlocal tabstop=4 shiftwidth=4 softtabstop=4')
 
-vim.cmd([[packadd nvim-notify]])
-require("xrayya.notify")
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+vim.opt.rtp:prepend(lazypath)
 
-vim.cmd([[packadd nvim-navic]])
-require("xrayya.navic")
+vim.cmd([[Lazy load nvim-notify]])
+require("setup.notification")
 
--- vim.cmd([[packadd fidget.nvim]])
--- require("fidget-config")
+vim.cmd([[Lazy load cmp-nvim-lsp]])
 
-vim.cmd([[packadd cmp-nvim-lsp]])
-
-vim.cmd([[packadd nvim-jdtls]])
-local nvim_jdtls = NOTIF_REQ("jdtls", "ftplugin/java", "error")
+vim.cmd([[Lazy load nvim-jdtls]])
+local nvim_jdtls = require("jdtls")
 if nvim_jdtls == nil then
   return
 end
@@ -50,19 +47,17 @@ JAVA_DAP_ACTIVE = true
 local bundles = {}
 
 if JAVA_DAP_ACTIVE then
-  vim.cmd([[packadd nvim-dap]])
-  vim.cmd([[packadd nvim-dap-ui]])
-  require("xrayya.dap")
-
-  vim.cmd([[packadd nvim-dap-virtual-text]])
-  require("xrayya.dap-virtual-text")
+  vim.cmd([[Lazy load nvim-dap]])
+  vim.cmd([[Lazy load nvim-dap-ui]])
+  vim.cmd([[Lazy load nvim-dap-virtual-text]])
+  require("setup.debugger")
 
   vim.list_extend(
     bundles,
     vim.split(
       vim.fn.glob(
         vim.fn.stdpath("data")
-          .. "/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar",
+        .. "/mason/packages/java-debug-adapter/extension/server/com.microsoft.java.debug.plugin-*.jar",
         1
       ),
       "\n"
@@ -168,8 +163,12 @@ local config = {
     workspace_dir,
   },
 
-  on_attach = require("lsp-config.custom-lsp-settings.jdtls_lspconfig").on_attach,
-  capabilities = require("lsp-config.custom-lsp-settings.jdtls_lspconfig").capabilities,
+  on_attach = function(client, bufnr)
+    if JAVA_DAP_ACTIVE then
+      require("jdtls.dap").setup_dap_main_class_configs()
+    end
+  end,
+  capabilities = require("cmp_nvim_lsp").default_capabilities(),
 
   -- 💀
   -- This is the default if not provided, you can remove it. Or adjust as needed.
@@ -236,7 +235,8 @@ local config = {
       -- },
       jdt = {
         ls = {
-          vmargs = "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m",
+          vmargs =
+          "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx1G -Xms100m",
         },
       },
       maven = {
@@ -319,27 +319,27 @@ vim.cmd("command! -buffer JdtUpdateConfig lua require('jdtls').update_project_co
 vim.cmd("command! -buffer JdtBytecode lua require('jdtls').javap()")
 -- vim.cmd "command! -buffer JdtJshell lua require('jdtls').jshell()"
 
-vim.cmd([[packadd which-key.nvim]])
-require("xrayya.whichkey")
+vim.cmd([[Lazy load which-key.nvim]])
+require("setup.whichkey")
 
-local which_key = NOTIF_REQ("which-key", "ftplugin/java", "error")
+local which_key = require("which-key")
 if which_key == nil then
   return
 end
 
 local opts = {
-  mode = "n", -- NORMAL mode
+  mode = "n",    -- NORMAL mode
   prefix = "<leader>",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  buffer = nil,  -- Global mappings. Specify a buffer number for buffer local mappings
   silent = true, -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
   nowait = true, -- use `nowait` when creating keymaps
 }
 
 local vopts = {
-  mode = "v", -- VISUAL mode
+  mode = "v",    -- VISUAL mode
   prefix = "<leader>",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
+  buffer = nil,  -- Global mappings. Specify a buffer number for buffer local mappings
   silent = true, -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
   nowait = true, -- use `nowait` when creating keymaps
@@ -372,6 +372,3 @@ local vmappings = {
 
 which_key.register(mappings, opts)
 which_key.register(vmappings, vopts)
-
--- debugging
--- git clone git@github.com:microsoft/java-debug.git
