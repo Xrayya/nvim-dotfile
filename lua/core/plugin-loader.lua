@@ -36,7 +36,7 @@ require("lazy").setup({
 	navigation,
 	notification,
 	startup,
-	-- treesitter,
+	treesitter,
 	indent_blankline,
 	whichkey,
 	autocompletion,
