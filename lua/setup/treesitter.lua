@@ -2,7 +2,6 @@ local treesitter = {
 	"nvim-treesitter/nvim-treesitter",
 	build = ":TSUpdate",
 	dependencies = {
-		"p00f/nvim-ts-rainbow",
 		"windwp/nvim-ts-autotag",
 		"JoosepAlviste/nvim-ts-context-commentstring",
 		"RRethy/nvim-treesitter-endwise",
