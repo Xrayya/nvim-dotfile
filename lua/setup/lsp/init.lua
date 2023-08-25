@@ -55,6 +55,11 @@ local lsp = {
           opts = vim.tbl_deep_extend("force", lua_ls_opts, opts)
         end
 
+        if server == "tsserver" then
+          local tsserver_opts = require("setup.lsp.custom-lsp-config.tsserver")
+          opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
+        end
+
         if server == "jdtls" then
           -- local jdtls_opts = require("lsp-config.custom-lsp-settings.jdtls_lspconfig")
           -- opts = {
@@ -117,6 +122,27 @@ local lsp = {
     end,
     config = function()
       require("lsp_lines").setup()
+    end,
+  },
+  {
+    "lvimuser/lsp-inlayhints.nvim",
+    branch = "anticonceal",
+    config = function()
+      vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
+      vim.api.nvim_create_autocmd("LspAttach", {
+        group = "LspAttach_inlayhints",
+        callback = function(args)
+          if not (args.data and args.data.client_id) then
+            return
+          end
+
+          local bufnr = args.buf
+          local client = vim.lsp.get_client_by_id(args.data.client_id)
+          require("lsp-inlayhints").on_attach(client, bufnr)
+        end,
+      })
+
+      require("lsp-inlayhints").setup()
     end,
   },
   {
