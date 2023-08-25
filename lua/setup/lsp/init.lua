@@ -33,7 +33,7 @@ local lsp = {
           "lua_ls",
           "jdtls",
           "clangd",
-          "tsserver",
+          -- "tsserver",
           "html",
           "cssls",
           "emmet_ls",
@@ -69,6 +69,14 @@ local lsp = {
         lspconfig[server].setup(opts)
         ::continue::
       end
+
+      opts = {
+        --on_attach = require("lsp-config.handlers").on_attach,
+        capabilities = require("cmp_nvim_lsp").default_capabilities(),
+      }
+      local tsserver_opts = require("setup.lsp.custom-lsp-config.tsserver")
+      opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
+      lspconfig.tsserver.setup(opts)
     end,
   },
   {
