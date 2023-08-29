@@ -37,6 +37,7 @@ local lsp = {
           "html",
           "cssls",
           "emmet_ls",
+          "tailwindcss",
         },
       })
 
