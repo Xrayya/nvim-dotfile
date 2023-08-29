@@ -30,6 +30,7 @@ local illuminate = require("setup.illuminate")
 local startup = require("setup.startup")
 local lualine = require("setup.lualine")
 local debugger = require("setup.debugger")
+local presence = require("setup.presence")
 
 require("lazy").setup({
 	"folke/lazy.nvim",
@@ -51,4 +52,5 @@ require("lazy").setup({
 	lualine,
 	colorizer,
   debugger,
+  presence,
 })
