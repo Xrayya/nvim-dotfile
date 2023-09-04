@@ -71,6 +71,11 @@ local lsp = {
 					opts = vim.tbl_deep_extend("force", lua_ls_opts, opts)
 				end
 
+				if server == "clangd" then
+					local clangd_opts = require("setup.lsp.custom-lsp-config.clangd")
+					opts = vim.tbl_deep_extend("force", clangd_opts, opts)
+				end
+
 				if server == "tsserver" then
 					local tsserver_opts = require("setup.lsp.custom-lsp-config.tsserver")
 					opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
