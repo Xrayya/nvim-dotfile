@@ -18,18 +18,18 @@ local startup = {
 		}
 
 		dashboard.section.buttons.val = {
-			dashboard.button("f", "x" .. "  Find file", "<cmd>Telescope find_files<CR>"),
-			dashboard.button("p", "x" .. "  Find project", "<cmd>Telescope projects<CR>"),
-			dashboard.button("r", "x" .. "  Recently used files", "<cmd>Telescope oldfiles<CR>"),
-			-- dashboard.button("l", "x" .. "  Load last session", "<cmd>SessionManager load_current_dir_session<CR>"),
-			dashboard.button("t", "x" .. "  Find text", "<cmd>Telescope live_grep<CR>"),
+			dashboard.button("f", "x" .. "  Find file", "<cmd>Telescope find_files<cr>"),
+			dashboard.button("p", "x" .. "  Find project", "<cmd>Telescope projects<cr>"),
+			dashboard.button("r", "x" .. "  Recently used files", "<cmd>Telescope oldfiles<cr>"),
+			dashboard.button("l", "x" .. "  Load last session", "<cmd>SessionLoad<cr>"),
+			dashboard.button("t", "x" .. "  Find text", "<cmd>Telescope live_grep<cr>"),
 			dashboard.button(
 				"c",
 				"x" .. "  Browse nvim config file",
-				"<cmd>Telescope find_files cwd=" .. vim.fn.stdpath("config") .. "<CR>"
+				"<cmd>Telescope find_files cwd=" .. vim.fn.stdpath("config") .. "<cr>"
 			),
-			dashboard.button("S", "x" .. "  Sync Plugins", "<cmd><CR>"),
-			dashboard.button("Q", "x" .. "  Quit Neovim", "<cmd>qa<CR>"),
+			dashboard.button("S", "x" .. "  Sync Plugins", "<cmd><cr>"),
+			dashboard.button("Q", "x" .. "  Quit Neovim", "<cmd>qa<cr>"),
 		}
 
 		local function footer()
