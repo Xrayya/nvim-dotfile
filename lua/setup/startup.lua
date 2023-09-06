@@ -2,6 +2,7 @@ local startup = {
 	"goolord/alpha-nvim",
 	config = function()
 		local alpha = require("alpha")
+    local ui = require("utils.icons").ui
 		math.randomseed(os.time())
 
 		local dashboard = require("alpha.themes.dashboard")
@@ -18,24 +19,24 @@ local startup = {
 		}
 
 		dashboard.section.buttons.val = {
-			dashboard.button("f", "x" .. "  Find file", "<cmd>Telescope find_files<cr>"),
-			dashboard.button("p", "x" .. "  Find project", "<cmd>Telescope projects<cr>"),
-			dashboard.button("r", "x" .. "  Recently used files", "<cmd>Telescope oldfiles<cr>"),
-			dashboard.button("l", "x" .. "  Load last session", "<cmd>SessionLoad<cr>"),
-			dashboard.button("t", "x" .. "  Find text", "<cmd>Telescope live_grep<cr>"),
+			dashboard.button("f", ui.FindFile .. "  Find file", "<cmd>Telescope find_files<cr>"),
+			dashboard.button("p", ui.Project .. "  Find project", "<cmd>Telescope projects<cr>"),
+			dashboard.button("r", ui.RecentFile .. "  Recently used files", "<cmd>Telescope oldfiles<cr>"),
+			dashboard.button("l", ui.Clock2 .. "  Load last session", "<cmd>SessionLoad<cr>"),
+			dashboard.button("t", ui.GrepString .. "  Find text", "<cmd>Telescope live_grep<cr>"),
 			dashboard.button(
 				"c",
-				"x" .. "  Browse nvim config file",
+				ui.Gear .. "  Browse nvim config file",
 				"<cmd>Telescope find_files cwd=" .. vim.fn.stdpath("config") .. "<cr>"
 			),
-			dashboard.button("S", "x" .. "  Sync Plugins", "<cmd><cr>"),
-			dashboard.button("Q", "x" .. "  Quit Neovim", "<cmd>qa<cr>"),
+			dashboard.button("P", ui.Socket .. "  Open Plugin Manager", "<cmd>Lazy<cr>"),
+			dashboard.button("Q", ui.Out .. "  Quit Neovim", "<cmd>qa<cr>"),
 		}
 
 		local function footer()
 			local total_plugins = "x" -- #vim.tbl_keys(packer_plugins)
-			local datetime = os.date("x" .. " %d-%m-%Y " .. "x" .. " %H:%M:%S")
-			return "x" .. " " .. total_plugins .. " plugins " .. datetime
+			local datetime = os.date(ui.Calendar .. " %d-%m-%Y " .. ui.Clock1 .. " %H:%M:%S")
+			return ui.Socket .. " " .. total_plugins .. " plugins " .. datetime
 		end
 
 		dashboard.section.footer.val = footer()

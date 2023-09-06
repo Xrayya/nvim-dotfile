@@ -12,6 +12,8 @@ local telescope = {
 			local themes = require("telescope.themes")
 			local actions = require("telescope.actions")
 
+			local ui = require("utils.icons").ui
+
 			require("telescope").setup({
 				pickers = {
 					buffers = {
@@ -55,6 +57,8 @@ local telescope = {
 					},
 				},
 				defaults = {
+					prompt_prefix = ui.Telescope .. "  ",
+					selection_caret = ui.GoTo .. " ",
 					path_display = { "smart" },
 					file_ignore_patterns = { ".git/", "node_modules" },
 					sorting_strategy = "ascending",
