@@ -30,6 +30,7 @@ local treesitter = {
 				"json",
 				"lua",
 				"markdown",
+				"markdown_inline",
 				"php",
 				"python",
 				"tsx",
