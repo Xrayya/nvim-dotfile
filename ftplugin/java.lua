@@ -1,5 +1,3 @@
--- vim.cmd('autocmd FileType java setlocal tabstop=4 shiftwidth=4 softtabstop=4')
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 vim.opt.rtp:prepend(lazypath)
 
