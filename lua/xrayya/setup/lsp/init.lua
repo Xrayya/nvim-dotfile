@@ -21,7 +21,7 @@ local lsp = {
 			"williamboman/mason-lspconfig.nvim",
 		},
 		config = function()
-      local diagnostic_signs = require("utils.icons").diagnostics
+      local diagnostic_signs = require("xrayya.utils.icons").diagnostics
 			local signs = {
 				{ name = "DiagnosticSignError", text = diagnostic_signs.Error },
 				{ name = "DiagnosticSignWarn", text = diagnostic_signs.Warning },
@@ -60,6 +60,10 @@ local lsp = {
 
 			local opts = {}
 
+      local import_custom_lsp_config = function(server)
+        return require("xrayya.setup.lsp.custom-lsp-config." .. server)
+      end
+
 			for _, server in pairs(installed_servers) do
 				opts = {
 					--on_attach = require("lsp-config.handlers").on_attach,
@@ -67,28 +71,21 @@ local lsp = {
 				}
 
 				if server == "lua_ls" then
-					local lua_ls_opts = require("setup.lsp.custom-lsp-config.lua_ls")
+					local lua_ls_opts = import_custom_lsp_config("lua_ls")
 					opts = vim.tbl_deep_extend("force", lua_ls_opts, opts)
 				end
 
 				if server == "clangd" then
-					local clangd_opts = require("setup.lsp.custom-lsp-config.clangd")
+					local clangd_opts = import_custom_lsp_config("clangd")
 					opts = vim.tbl_deep_extend("force", clangd_opts, opts)
 				end
 
 				if server == "tsserver" then
-					local tsserver_opts = require("setup.lsp.custom-lsp-config.tsserver")
+					local tsserver_opts = import_custom_lsp_config("tsserver")
 					opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
 				end
 
 				if server == "jdtls" then
-					-- local jdtls_opts = require("lsp-config.custom-lsp-settings.jdtls_lspconfig")
-					-- opts = {
-					--   on_attach = jdtls_opts.on_attach,
-					--   capabilities = jdtls_opts.capabilities,
-					-- }
-
-					-- opts = vim.tbl_deep_extend("force", jdtls_opts.opts, opts)
 					goto continue
 				end
 

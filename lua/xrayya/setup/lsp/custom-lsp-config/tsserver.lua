@@ -3,13 +3,13 @@ return {
   settings = {
     typescript = {
       inlayHints = {
-        includeInlayEnumMemberValueHints = true,
+        includeInlayEnumMemberValueHints = false,
         includeInlayFunctionLikeReturnTypeHints = true,
         includeInlayFunctionParameterTypeHints = true,
         includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
         includeInlayParameterNameHintsWhenArgumentMatchesName = true,
         includeInlayPropertyDeclarationTypeHints = true,
-        includeInlayVariableTypeHints = true,
+        includeInlayVariableTypeHints = false,
       },
     },
     javascript = {

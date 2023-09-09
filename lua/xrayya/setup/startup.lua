@@ -2,7 +2,7 @@ local startup = {
 	"goolord/alpha-nvim",
 	config = function()
 		local alpha = require("alpha")
-    local ui = require("utils.icons").ui
+    local ui = require("xrayya.utils.icons").ui
 		math.randomseed(os.time())
 
 		local dashboard = require("alpha.themes.dashboard")
