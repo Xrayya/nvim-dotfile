@@ -21,7 +21,7 @@ local lsp = {
 			"williamboman/mason-lspconfig.nvim",
 		},
 		config = function()
-      local diagnostic_signs = require("xrayya.utils.icons").diagnostics
+      local diagnostic_signs = LOAD_UTIL("icons").diagnostics
 			local signs = {
 				{ name = "DiagnosticSignError", text = diagnostic_signs.Error },
 				{ name = "DiagnosticSignWarn", text = diagnostic_signs.Warning },

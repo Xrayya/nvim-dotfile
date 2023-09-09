@@ -14,7 +14,7 @@ local telescope = {
 		local themes = require("telescope.themes")
 		local actions = require("telescope.actions")
 
-		local ui = require("xrayya.utils.icons").ui
+		local ui = LOAD_UTIL("icons").ui
 
 		require("telescope").setup({
 			pickers = {

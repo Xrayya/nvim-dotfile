@@ -42,7 +42,7 @@ local autocompletion = {
 
       local cmp = require("cmp")
       local luasnip = require("luasnip")
-      local icons = require("xrayya.utils.icons")
+      local icons = LOAD_UTIL("icons")
 
       vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { default = true, fg = "#bb5df3" })
 

@@ -4,7 +4,7 @@ local explorer = {
 		"nvim-tree/nvim-web-devicons",
 	},
 	config = function()
-		local icons = require("xrayya.utils.icons")
+		local icons = LOAD_UTIL("icons")
 
 		require("nvim-tree").setup({
 			sync_root_with_cwd = true,
