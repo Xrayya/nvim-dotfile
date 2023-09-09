@@ -187,6 +187,7 @@ local config = {
       codeGeneration = {
         toString = {
           template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
+          codeStyle = "STRING_FORMAT",
         },
         useBlocks = false,
       },
