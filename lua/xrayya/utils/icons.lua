@@ -115,6 +115,7 @@ return {
     ChevronRight      = "",
     Table             = "",
     Terminal          = "",
+    ToolBox           = "󰦬",
     Calendar          = "",
     CloudDownload     = "",
   },
