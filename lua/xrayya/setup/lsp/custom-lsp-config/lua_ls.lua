@@ -25,7 +25,6 @@ return {
 					[vim.fn.expand("$VIMRUNTIME/lua")] = true,
 					[vim.fn.stdpath("config") .. "/lua"] = true,
 					[vim.fn.stdpath("config") .. "/ftplugin"] = true,
-					[vim.fn.stdpath("data") .. "/site/pack"] = true,
 					vim.api.nvim_get_runtime_file("", true),
 				},
 			},
