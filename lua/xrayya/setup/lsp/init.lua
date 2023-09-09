@@ -101,7 +101,7 @@ local lsp = {
 		},
 		config = function()
 			require("mason-null-ls").setup({
-				ensure_installed = { "stylua", "prettier", "google-java-format" },
+				ensure_installed = { "stylua", "prettier"},
 				automatic_installation = true,
 			})
 
@@ -113,7 +113,6 @@ local lsp = {
 				sources = {
 					formatting.prettier,
 					formatting.stylua,
-					formatting.google_java_format,
 				},
 			})
 		end,
