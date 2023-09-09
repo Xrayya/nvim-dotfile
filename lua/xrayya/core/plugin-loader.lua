@@ -34,7 +34,7 @@ require("lazy").setup({
 	import_setup("git"),
 	import_setup("illuminate"),
 	import_setup("startup"),
-	import_setup("lualine"),
+	import_setup("statusline"),
 	import_setup("debugger"),
 	import_setup("presence"),
 	import_setup("session-manager"),
