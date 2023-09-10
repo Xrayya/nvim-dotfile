@@ -39,6 +39,8 @@ map("i", "<expr> <S-TAB>", 'pumvisible() ? "\\<C-p>" : "\\<TAB>"', opts)
 map("n", "n", "nzzzv", opts)
 map("n", "N", "Nzzzv", opts)
 map("n", "J", "mzJ`z", opts)
+map("n", "<C-u>", "<C-u>zz", opts)
+map("n", "<C-d>", "<C-d>zz", opts)
 
 -- Keep the last thing yanked on the register
 map("v", "p", '"_dP', opts)
