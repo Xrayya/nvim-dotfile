@@ -1,6 +1,5 @@
 local telescope = {
 	"nvim-telescope/telescope.nvim",
-	tag = "0.1.2",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		{
@@ -52,6 +51,12 @@ local telescope = {
 					},
 				},
 				lsp_type_definitions = {
+					theme = "ivy",
+					layout_config = {
+						height = 0.4,
+					},
+				},
+				lsp_references = {
 					theme = "ivy",
 					layout_config = {
 						height = 0.4,
