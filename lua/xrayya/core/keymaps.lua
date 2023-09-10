@@ -28,10 +28,6 @@ map("n", "<M-x>", ":bdelete<CR>", opts)
 map("t", "<esc><esc>", "<C-\\><c-n>", opts)
 
 -- Useful for switching between floating windows
--- map("n", "<TAB>", "<C-w>w", opts)
--- map("n", "<S-TAB>", "<C-w><S-w>", opts)
-
--- Useful for switching between floating windows
 map("n", "<TAB>", "gt", opts)
 map("n", "<S-TAB>", "gT", opts)
 
