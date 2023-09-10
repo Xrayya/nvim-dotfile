@@ -11,10 +11,6 @@ map("n", "<M-Up>", ":resize +1<CR>", opts)
 map("n", "<M-Right>", ":vertical resize +1<CR>", opts)
 map("n", "<M-Left>", ":vertical resize -1<CR>", opts)
 
--- Easy CAPS
-map("i", "<C-u>", "<ESC>viwUi", opts)
-map("n", "<C-u>", "viwU<ESC>", opts)
-
 -- Set command to enter visual block mode (since <C-v> always do paste)
 vim.cmd("command! Vb normal! <C-v>")
 
