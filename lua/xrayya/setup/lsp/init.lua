@@ -21,7 +21,7 @@ local lsp = {
 			"williamboman/mason-lspconfig.nvim",
 		},
 		config = function()
-      local diagnostic_signs = LOAD_UTIL("icons").diagnostics
+			local diagnostic_signs = LOAD_UTIL("icons").diagnostics
 			local signs = {
 				{ name = "DiagnosticSignError", text = diagnostic_signs.Error },
 				{ name = "DiagnosticSignWarn", text = diagnostic_signs.Warning },
@@ -35,9 +35,9 @@ local lsp = {
 
 			vim.diagnostic.config({
 				update_in_insert = true,
-        signs = {
-          active = signs,
-        },
+				signs = {
+					active = signs,
+				},
 				float = {
 					border = "rounded",
 					source = "always",
@@ -64,9 +64,9 @@ local lsp = {
 
 			local opts = {}
 
-      local import_custom_lsp_config = function(server)
-        return require("xrayya.setup.lsp.custom-lsp-config." .. server)
-      end
+			local import_custom_lsp_config = function(server)
+				return require("xrayya.setup.lsp.custom-lsp-config." .. server)
+			end
 
 			for _, server in pairs(installed_servers) do
 				opts = {
@@ -105,7 +105,7 @@ local lsp = {
 		},
 		config = function()
 			require("mason-null-ls").setup({
-				ensure_installed = { "stylua", "prettier"},
+				ensure_installed = { "stylua", "prettier" },
 				automatic_installation = true,
 			})
 
