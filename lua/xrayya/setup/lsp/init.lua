@@ -38,6 +38,10 @@ local lsp = {
         signs = {
           active = signs,
         },
+				float = {
+					border = "rounded",
+					source = "always",
+				},
 			})
 
 			local mason_lspconfig = require("mason-lspconfig")
