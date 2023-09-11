@@ -28,6 +28,7 @@ require("lazy").setup({
 	import_setup("treesitter"),
 	import_setup("commentary"),
 	import_setup("notification"),
+  import_setup("project"),
 	import_setup("colorizer"),
 	import_setup("indent-blankline"),
 	import_setup("navigation"),
