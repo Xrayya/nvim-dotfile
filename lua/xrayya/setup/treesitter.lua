@@ -43,6 +43,7 @@ local treesitter = {
 			},
 			indent = {
 				enable = true,
+				disable = { "html" },
 			},
 			rainbow = {
 				enable = true,
