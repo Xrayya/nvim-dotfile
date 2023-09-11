@@ -1,10 +1,10 @@
 local presence = {
   "andweeb/presence.nvim",
-  config = function ()
+  config = function()
     require("presence").setup({
       main_image = "file",
     })
-  end
+  end,
 }
 
 return presence
