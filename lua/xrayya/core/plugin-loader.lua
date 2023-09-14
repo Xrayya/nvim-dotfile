@@ -39,4 +39,5 @@ require("lazy").setup({
 	import_setup("debugger"),
 	import_setup("presence"),
 	import_setup("session-manager"),
+	import_setup("vim-be-good"),
 })
