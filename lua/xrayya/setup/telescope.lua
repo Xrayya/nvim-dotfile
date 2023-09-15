@@ -58,9 +58,9 @@ local telescope = {
 					},
 				},
 				lsp_references = {
-					theme = "ivy",
+					theme = "dropdown",
 					layout_config = {
-						height = 0.4,
+						width = 0.8,
 					},
 				},
 			},

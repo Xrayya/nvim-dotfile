@@ -11,6 +11,9 @@ local lsp = {
 				ui = {
 					border = "rounded",
 				},
+        outline = {
+          win_width = 35,
+        }
 			})
 		end,
 	},
