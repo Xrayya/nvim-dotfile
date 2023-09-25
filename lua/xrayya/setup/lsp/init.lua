@@ -60,6 +60,7 @@ local lsp = {
 					"cssls",
 					"emmet_ls",
 					"tailwindcss",
+          "prismals",
 				},
 			})
 
