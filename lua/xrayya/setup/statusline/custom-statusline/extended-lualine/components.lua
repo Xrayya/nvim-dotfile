@@ -47,6 +47,7 @@ return {
   },
   branch = {
     "branch",
+    icon = ""
   },
   filename = {
     "filename",
