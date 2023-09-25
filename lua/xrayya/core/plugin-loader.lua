@@ -41,4 +41,5 @@ require("lazy").setup({
 	import_setup("session-manager"),
 	import_setup("vim-be-good"),
   import_setup("markdown-previewer"),
+  import_setup("database")
 })
