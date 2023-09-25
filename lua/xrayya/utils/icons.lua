@@ -2,7 +2,7 @@ return {
   -- stylua: ignore
   kind = {
     Text          = " ",
-    Method        = " ",
+    Method        = " ",
     Function      = "󰡱 ",
     Constructor   = " ",
     Field         = " ",
