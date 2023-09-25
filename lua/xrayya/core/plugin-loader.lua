@@ -40,4 +40,5 @@ require("lazy").setup({
 	import_setup("presence"),
 	import_setup("session-manager"),
 	import_setup("vim-be-good"),
+  import_setup("markdown-previewer"),
 })
