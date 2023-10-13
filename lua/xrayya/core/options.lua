@@ -12,7 +12,7 @@ set.fileencoding = "utf-8" -- The encoding written to file
 -- set.spelllang = { 'en_us' }
 set.ruler = true -- Show the cursor position all the time
 set.cmdheight = 1 -- More space for displaying messages
-set.shell = "pwsh"
+set.shell = vim.fn.has("win32") > 0 and "pwsh" or vim.fn.has("unix") > 0 and "fish" or "bash"
 set.iskeyword:append("-") -- treat dash separated words as a word text object--
 set.mouse = "a" -- Enable your mouse
 set.splitbelow = true -- Horizontal splits will automatically be below
