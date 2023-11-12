@@ -100,6 +100,8 @@ local lsp = {
 				lspconfig[server].setup(opts)
 				::continue::
 			end
+
+      lspconfig.dartls.setup(import_custom_lsp_config("dartls"))
 		end,
 	},
 	{
