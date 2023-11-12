@@ -60,7 +60,7 @@ local whichkey = {
         name = "LSP",
         a = { "<cmd>Lspsaga code_action<cr>", "Code Action" },
         A = { "<cmd>LspRestart<CR>", "Activate/reactivate LSP" },
-        d = { "<cmd>Telescope lsp_definitions()<cr>", "Go to definition(s)" },
+        d = { "<cmd>Telescope lsp_definitions<cr>", "Go to definition(s)" },
         D = { "<cmd>Telescope lsp_type_definitions<cr>", "Go to type definition(s)" },
         f = { "<cmd>lua vim.lsp.buf.format({timeout_ms=2000})<CR>", "Format current buffer" },
         h = { "<cmd>Lspsaga hover_doc<cr>", "Hover" },
