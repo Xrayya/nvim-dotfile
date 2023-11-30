@@ -110,7 +110,20 @@ local debugger = {
       {
         "rcarriga/nvim-dap-ui",
         config = function()
-          require("dapui").setup()
+          require("dapui").setup({
+            layouts = {
+              {
+                elements = {
+                  {
+                    id = "console",
+                    size = 1
+                  },
+                },
+                position = "bottom",
+                size = 0.45
+              }
+            }
+          })
         end,
       },
       {
