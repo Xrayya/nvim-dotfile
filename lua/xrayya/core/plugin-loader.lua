@@ -39,7 +39,8 @@ require("lazy").setup({
 	import_setup("debugger"),
 	import_setup("presence"),
 	import_setup("session-manager"),
-	import_setup("vim-be-good"),
+	import_setup("nvim-habit"),
   import_setup("markdown-previewer"),
   import_setup("database")
+  import_setup("delimiter")
 })
