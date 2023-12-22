@@ -48,7 +48,7 @@ local treesitter = {
       },
       indent = {
         enable = true,
-        disable = { "html" },
+        disable = { "html", "dart" },
       },
       rainbow = {
         enable = true,
