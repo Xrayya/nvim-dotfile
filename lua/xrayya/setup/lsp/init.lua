@@ -11,9 +11,9 @@ local lsp = {
 				ui = {
 					border = "rounded",
 				},
-        outline = {
-          win_width = 35,
-        }
+				outline = {
+					win_width = 35,
+				},
 			})
 		end,
 	},
@@ -60,7 +60,8 @@ local lsp = {
 					"cssls",
 					"emmet_ls",
 					"tailwindcss",
-          "prismals",
+					"prismals",
+					"rust_analyzer",
 				},
 			})
 
@@ -100,12 +101,10 @@ local lsp = {
 				lspconfig[server].setup(opts)
 				::continue::
 			end
-
-      lspconfig.dartls.setup(import_custom_lsp_config("dartls"))
 		end,
 	},
 	{
-		"jose-elias-alvarez/null-ls.nvim",
+		"nvimtools/none-ls.nvim",
 		dependencies = {
 			"jay-babu/mason-null-ls.nvim",
 		},
@@ -181,6 +180,14 @@ local lsp = {
 	},
 	{
 		"mfussenegger/nvim-jdtls",
+	},
+	{
+		"akinsho/flutter-tools.nvim",
+		lazy = false,
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		config = true,
 	},
 }
 
