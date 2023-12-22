@@ -35,7 +35,7 @@ local startup = {
 		}
 
 		local function footer()
-			local total_plugins = "x" -- #vim.tbl_keys(packer_plugins)
+			local total_plugins = #vim.tbl_keys(require("lazy").plugins())
 			local datetime = os.date(ui.Calendar .. " %d-%m-%Y " .. ui.Clock1 .. " %H:%M:%S")
 			return ui.Socket .. " " .. total_plugins .. " plugins " .. datetime
 		end
