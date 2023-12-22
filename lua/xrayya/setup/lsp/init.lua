@@ -22,6 +22,7 @@ local lsp = {
 		dependencies = {
 			"hrsh7th/nvim-cmp",
 			"williamboman/mason-lspconfig.nvim",
+      "b0o/SchemaStore.nvim"
 		},
 		config = function()
 			local diagnostic_signs = LOAD_UTIL("icons").diagnostics
@@ -62,6 +63,8 @@ local lsp = {
 					"tailwindcss",
 					"prismals",
 					"rust_analyzer",
+          "jsonls",
+          "yamlls",
 				},
 			})
 
@@ -92,6 +95,16 @@ local lsp = {
 				if server == "tsserver" then
 					local tsserver_opts = import_custom_lsp_config("tsserver")
 					opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
+				end
+
+				if server == "jsonls" then
+					local jsonls = import_custom_lsp_config("jsonls")
+					opts = vim.tbl_deep_extend("force", jsonls, opts)
+				end
+
+				if server == "yamlls" then
+					local yamlls = import_custom_lsp_config("yamlls")
+					opts = vim.tbl_deep_extend("force", yamlls, opts)
 				end
 
 				if server == "jdtls" then
