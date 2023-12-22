@@ -7,11 +7,11 @@ return {
 			},
 			hint = {
 				enable = true,
-				arrayIndex = "Disable", -- "Enable", "Auto", "Disable"
+				arrayIndex = "Disable",
 				await = true,
-				paramName = "All", -- "All", "Literal", "Disable"
+				paramName = "All",
 				paramType = true,
-				semicolon = "SameLine", -- "All", "SameLine", "Disable"
+				semicolon = "SameLine",
 				setType = true,
 			},
 			runtime = {
