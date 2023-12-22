@@ -63,6 +63,7 @@ local whichkey = {
         d = { "<cmd>Telescope lsp_definitions<cr>", "Go to definition(s)" },
         D = { "<cmd>Telescope lsp_type_definitions<cr>", "Go to type definition(s)" },
         f = { "<cmd>lua vim.lsp.buf.format({timeout_ms=2000})<CR>", "Format current buffer" },
+        F = { "<cmd>Lspsaga finder<CR>", "Find references and implementations" },
         h = { "<cmd>Lspsaga hover_doc<cr>", "Hover" },
         H = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signture help" },
         i = { "<cmd>Telescope lsp_implementations<cr>", "Goto implementation(s)" },
