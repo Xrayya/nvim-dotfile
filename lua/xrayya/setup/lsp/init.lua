@@ -22,7 +22,7 @@ local lsp = {
 		dependencies = {
 			"hrsh7th/nvim-cmp",
 			"williamboman/mason-lspconfig.nvim",
-      "b0o/SchemaStore.nvim"
+			"b0o/SchemaStore.nvim",
 		},
 		config = function()
 			local diagnostic_signs = LOAD_UTIL("icons").diagnostics
@@ -63,8 +63,8 @@ local lsp = {
 					"tailwindcss",
 					"prismals",
 					"rust_analyzer",
-          "jsonls",
-          "yamlls",
+					"jsonls",
+					"yamlls",
 				},
 			})
 
@@ -78,7 +78,6 @@ local lsp = {
 
 			for _, server in pairs(installed_servers) do
 				opts = {
-					--on_attach = require("lsp-config.handlers").on_attach,
 					capabilities = require("cmp_nvim_lsp").default_capabilities(),
 				}
 
@@ -196,11 +195,31 @@ local lsp = {
 	},
 	{
 		"akinsho/flutter-tools.nvim",
-		lazy = false,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
+			"jay-babu/mason-nvim-dap.nvim",
+			"mfussenegger/nvim-dap",
+			"rcarriga/nvim-dap-ui",
+			"theHamsta/nvim-dap-virtual-text",
 		},
-		config = true,
+		config = function()
+			require("flutter-tools").setup({
+				debugger = {
+					enabled = true,
+					run_via_dap = true,
+				},
+				fvm = true,
+				lsp = {
+					capabilities = require("cmp_nvim_lsp").default_capabilities(),
+				},
+				settings = {
+					renameFilesWithClasses = "always",
+				},
+				widget_guides = {
+					enabled = true,
+				},
+			})
+		end,
 	},
 }
 
