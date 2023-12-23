@@ -14,13 +14,6 @@ map("n", "<M-Left>", ":vertical resize -1<CR>", opts)
 -- Set command to enter visual block mode (since <C-v> always do paste)
 vim.cmd("command! Vb normal! <C-v>")
 
--- TAB in normal mode will move to text buffer
---map('n', '<TAB>',   ':bnext<CR>', opts)
--- SHIFT-TAB will go back
---map('n', '<S-TAB>', ':bprevious<CR>', opts)
--- CTRL-W to close current buffer
---map('n', '<C-W>',   ':bdelete<CR>', opts)
-
 -- Kill buffer
 map("n", "<M-x>", ":bdelete<CR>", opts)
 
