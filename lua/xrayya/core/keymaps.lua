@@ -24,6 +24,10 @@ map("t", "<esc><esc>", "<C-\\><c-n>", opts)
 map("n", "<TAB>", "gt", opts)
 map("n", "<S-TAB>", "gT", opts)
 
+-- Useful for switching between floating windows
+map("n", "<M-TAB>", ":cnext<CR>", opts)
+map("n", "<M-S-TAB>", ":cprevious<CR>", opts)
+
 -- <TAB> Completion
 map("i", "<expr> <TAB>", 'pumvisible() ? "\\<C-n>" : "\\<TAB>"', opts)
 map("i", "<expr> <S-TAB>", 'pumvisible() ? "\\<C-p>" : "\\<TAB>"', opts)
