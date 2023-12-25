@@ -1,3 +1,5 @@
+local convert_to_hex = LOAD_UTIL("color-functions").convert_decimal_to_hex
+
 return {
   mode = {
     function()
@@ -32,8 +34,8 @@ return {
         ['Rvx']   = ' V-R',
         ['c']     = ' CMD',
         ['C']     = ' CMD',
-        ['cv']    = 'EX',
-        ['ce']    = 'EX',
+        ['cv']    = ' EX',
+        ['ce']    = ' EX',
         ['r']     = 'HIT-ENTER',
         ['rm']    = '--MORE',
         ['r?']    = ':CONFIRM',
@@ -47,7 +49,7 @@ return {
   },
   branch = {
     "branch",
-    icon = ""
+    icon = "",
   },
   filename = {
     "filename",
@@ -74,9 +76,9 @@ return {
     end,
     symbols = { added = " ", modified = " ", removed = " " },
     diff_color = {
-      added = { fg = "#98be65" },
-      modified = { fg = "#ECBE7B" },
-      removed = { fg = "#ec5f67" },
+      added = { fg = convert_to_hex(vim.api.nvim_get_hl(0, { name = "GitSignsAdd" }).fg) or "#98be65" },
+      modified = { fg = convert_to_hex(vim.api.nvim_get_hl(0, { name = "GitSignsChange" }).fg) or "#ECBE7B" },
+      removed = { fg = convert_to_hex(vim.api.nvim_get_hl(0, { name = "GitSignsDelete" }).fg) or "#ec5f67" },
     },
   },
   diagnostics = {
