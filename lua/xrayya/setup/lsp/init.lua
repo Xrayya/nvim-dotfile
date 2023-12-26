@@ -92,6 +92,7 @@ local lsp = {
 				end
 
 				if server == "tsserver" then
+					goto continue
 					local tsserver_opts = import_custom_lsp_config("tsserver")
 					opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
 				end
@@ -193,34 +194,7 @@ local lsp = {
 	{
 		"mfussenegger/nvim-jdtls",
 	},
-	{
-		"akinsho/flutter-tools.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"jay-babu/mason-nvim-dap.nvim",
-			"mfussenegger/nvim-dap",
-			"rcarriga/nvim-dap-ui",
-			"theHamsta/nvim-dap-virtual-text",
-		},
-		config = function()
-			require("flutter-tools").setup({
-				debugger = {
-					enabled = true,
-					run_via_dap = true,
-				},
-				fvm = true,
-				lsp = {
-					capabilities = require("cmp_nvim_lsp").default_capabilities(),
-				},
-				settings = {
-					renameFilesWithClasses = "always",
-				},
-				widget_guides = {
-					enabled = true,
-				},
-			})
-		end,
-	},
+	require("xrayya.setup.lsp.advanced-lsp-config"),
 }
 
 return lsp
