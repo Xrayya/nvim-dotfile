@@ -1,1 +1,1 @@
-require "xrayya.core"
+require("xrayya.core")
