@@ -22,7 +22,7 @@ local startup = {
 			dashboard.button("f", ui.FindFile .. "  Find file", "<cmd>Telescope find_files<cr>"),
 			-- dashboard.button("p", ui.Project .. "  Find project", "<cmd>Telescope projects<cr>"),
 			dashboard.button("r", ui.RecentFile .. "  Recently used files", "<cmd>Telescope oldfiles<cr>"),
-			dashboard.button("l", ui.Clock2 .. "  Load last session", "<cmd>SessionLoad<cr>"),
+			dashboard.button("l", ui.Clock2 .. "  Load last session", "<cmd>SessionManager load_current_dir_session<cr>"),
 			dashboard.button("t", ui.GrepString .. "  Find text", "<cmd>Telescope live_grep<cr>"),
 			dashboard.button(
 				"c",

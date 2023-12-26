@@ -1,15 +1,10 @@
 local session_manager = {
-	"olimorris/persisted.nvim",
-	config = function()
-		require("persisted").setup({
-			silent = false,
-			use_git_branch = true,
-			autosave = true,
-			telescope = {
-				reset_prompt_after_deletion = true,
-			},
-		})
-	end,
+  "Shatur/neovim-session-manager",
+  config = function()
+    require("session_manager").setup({
+      autoload_mode = require("session_manager.config").AutoloadMode.Disabled,
+    })
+  end,
 }
 
 return session_manager
