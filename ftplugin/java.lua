@@ -1,10 +1,12 @@
--- vim.cmd('autocmd FileType java setlocal tabstop=4 shiftwidth=4 softtabstop=4')
-
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 vim.opt.rtp:prepend(lazypath)
 
+local import_setup = function(module)
+	return require("xrayya.setup." .. module)
+end
+
 vim.cmd([[Lazy load nvim-notify]])
-require("setup.notification")
+import_setup("notification")
 
 vim.cmd([[Lazy load cmp-nvim-lsp]])
 
@@ -50,7 +52,7 @@ if JAVA_DAP_ACTIVE then
   vim.cmd([[Lazy load nvim-dap]])
   vim.cmd([[Lazy load nvim-dap-ui]])
   vim.cmd([[Lazy load nvim-dap-virtual-text]])
-  require("setup.debugger")
+  import_setup("debugger")
 
   vim.list_extend(
     bundles,
@@ -187,6 +189,7 @@ local config = {
       codeGeneration = {
         toString = {
           template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
+          codeStyle = "STRING_FORMAT",
         },
         useBlocks = false,
       },
@@ -320,7 +323,7 @@ vim.cmd("command! -buffer JdtBytecode lua require('jdtls').javap()")
 -- vim.cmd "command! -buffer JdtJshell lua require('jdtls').jshell()"
 
 vim.cmd([[Lazy load which-key.nvim]])
-require("setup.whichkey")
+import_setup("whichkey")
 
 local which_key = require("which-key")
 if which_key == nil then
