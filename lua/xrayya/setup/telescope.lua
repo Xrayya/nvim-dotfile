@@ -57,10 +57,10 @@ local telescope = {
 					},
 				},
 				lsp_references = {
-					theme = "dropdown",
-					layout_config = {
-						width = 0.8,
-					},
+          layout_strategy = "vertical",
+				},
+				lsp_implementations = {
+          layout_strategy = "vertical",
 				},
 			},
 			defaults = {
