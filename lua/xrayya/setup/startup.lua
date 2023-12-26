@@ -41,8 +41,6 @@ local startup = {
 		end
 
 		dashboard.section.footer.val = footer()
-		-- dashboard.section.header.opts.hl = "Include"
-		-- dashboard.section.buttons.opts.hl = "Keyword"
 
 		alpha.setup(dashboard.opts)
 	end,
