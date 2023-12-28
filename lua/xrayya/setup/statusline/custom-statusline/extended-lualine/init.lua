@@ -39,6 +39,7 @@ local extended_lualine = {
     custom_extension.mason,
     custom_extension.telescope,
     custom_extension.trouble,
+    custom_extension.lazygit,
   },
 }
 

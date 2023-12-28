@@ -25,7 +25,7 @@ local custom_extension = {
     sections = {
       lualine_a = {
         function()
-          return "LSP Info"
+          return icons.ui.LSP .. "LSP Info"
         end,
       },
     },
@@ -35,7 +35,7 @@ local custom_extension = {
     sections = {
       lualine_a = {
         function()
-          return "Null LS Info"
+          return icons.ui.LSP .. "Null LS Info"
         end,
       },
     },
@@ -45,7 +45,7 @@ local custom_extension = {
     sections = {
       lualine_a = {
         function()
-          return "LSP Saga Outline"
+          return icons.ui.LSP .. "LSP Saga Outline"
         end,
       },
     },
@@ -65,7 +65,7 @@ local custom_extension = {
     sections = {
       lualine_a = {
         function()
-          return "Lazy"
+          return icons.ui.Socket .. "Lazy"
         end,
       },
     },
@@ -75,11 +75,21 @@ local custom_extension = {
     sections = {
       lualine_a = {
         function()
-          return "Mason"
+          return icons.ui.ToolBox .. "Mason"
         end,
       },
     },
     filetypes = { "mason" },
+  },
+  lazygit = {
+    sections = {
+      lualine_a = {
+        function()
+          return " LazyGit"
+        end,
+      },
+    },
+    filetypes = { "lazygit" },
   },
 }
 
