@@ -65,7 +65,13 @@ local autocompletion = {
 					and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 			end
 
-			vim.keymap.set("i", "<M-Space>", "<cmd>lua vim.lsp.buf.signature_help()<cr>" , { noremap = true, silent = true })
+			vim.keymap.set(
+				"i",
+				"<M-Space>",
+				"<cmd>lua vim.lsp.buf.signature_help()<cr>",
+				{ noremap = true, silent = true }
+			)
+
 			cmp.setup({
 				snippet = {
 					expand = function(args)
