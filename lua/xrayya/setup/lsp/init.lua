@@ -48,6 +48,10 @@ local lsp = {
         },
       })
 
+      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+        border = "rounded",
+      })
+
       local mason_lspconfig = require("mason-lspconfig")
       local lspconfig = require("lspconfig")
 
