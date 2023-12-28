@@ -7,9 +7,10 @@ local vim_habit = {
 		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
 		config = function()
 			require("hardtime").setup({
-        max_time = 2000,
-        max_count = 8,
-      })
+				max_time = 2000,
+				max_count = 8,
+				disable_mouse = false,
+			})
 		end,
 	},
 }
