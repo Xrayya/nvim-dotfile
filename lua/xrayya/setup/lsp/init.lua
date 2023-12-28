@@ -159,17 +159,15 @@ local lsp = {
 	{
 		"j-hui/fidget.nvim",
 		event = "LspAttach",
-		tag = "legacy",
 		config = function()
 			require("fidget").setup({
-				text = {
-					done = "󰄬",
-				},
-				window = {
-					blend = 0,
-				},
-				fmt = {
-					stack_upwards = false,
+				notification = {
+					view = {
+						stack_upwards = false,
+					},
+					window = {
+						winblend = 0,
+					},
 				},
 			})
 		end,
