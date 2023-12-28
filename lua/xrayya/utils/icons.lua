@@ -56,7 +56,7 @@ return {
   -- stylua: ignore
   git = {
     Add       = "",
-    Staged    = "",
+    Staged    = "",
     Mod       = "",
     Remove    = "",
     Unmerged  = "",
