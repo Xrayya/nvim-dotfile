@@ -1,10 +1,13 @@
-local advanced_lsp_config = {}
+local function create_advanced_lsp_config_list(configs)
+  local advanced_lsp_config = {}
 
-local function import_advanced_lsp_config(name)
-	table.insert(advanced_lsp_config, 1, require("xrayya.setup.lsp.advanced-lsp-config." .. name))
+  for _, config in pairs(configs) do
+    table.insert(advanced_lsp_config, 1, require("xrayya.setup.lsp.advanced-lsp-config." .. config))
+  end
+  return advanced_lsp_config
 end
 
-import_advanced_lsp_config("flutter-tools")
-import_advanced_lsp_config("typescript-tools")
-
-return advanced_lsp_config
+return create_advanced_lsp_config_list({
+  "flutter-tools",
+  "typescript-tools"
+})
