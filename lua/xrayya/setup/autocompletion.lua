@@ -124,10 +124,7 @@ local autocompletion = {
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.abort(),
 					["<CR>"] = function(fallback)
-						if
-							not cmp.visible()
-							or not cmp.get_selected_entry()
-						then
+						if not cmp.visible() or not cmp.get_selected_entry() then
 							fallback()
 						else
 							cmp.confirm({
