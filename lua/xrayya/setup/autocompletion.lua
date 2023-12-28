@@ -74,10 +74,7 @@ local autocompletion = {
 				formatting = {
 					fields = { "kind", "abbr", "menu" },
 					format = function(entry, vim_item)
-						local source = entry.source.name
-						-- vim_item.dup = 0
-
-						vim_item.kind = string.format("%s", icons.kind[vim_item.kind])
+						vim_item.kind = icons.kind[vim_item.kind]
 
 						if entry.source.name == "cmp_tabnine" then
 							vim_item.kind = icons.misc.Tabnine
@@ -129,7 +126,6 @@ local autocompletion = {
 						if
 							not cmp.visible()
 							or not cmp.get_selected_entry()
-							or cmp.get_selected_entry().source.name == "nvim_lsp_signature_help"
 						then
 							fallback()
 						else
