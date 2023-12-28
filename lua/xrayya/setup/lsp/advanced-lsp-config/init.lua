@@ -9,5 +9,5 @@ end
 
 return create_advanced_lsp_config_list({
   "flutter-tools",
-  "typescript-tools"
+  "typescript-tools",
 })

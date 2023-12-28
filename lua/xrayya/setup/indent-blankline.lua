@@ -27,7 +27,7 @@ local indent_blankline = {
 
     require("ibl").setup({
       indent = {
-        char = "▏"
+        char = "▏",
       },
       exclude = {
         filetypes = {
@@ -36,8 +36,8 @@ local indent_blankline = {
         },
       },
       scope = {
-        highlight = highlight
-      }
+        highlight = highlight,
+      },
     })
   end,
 }

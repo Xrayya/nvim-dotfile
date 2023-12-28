@@ -1,5 +1,5 @@
 local color_functions = {}
-color_functions.convert_decimal_to_hex = function (decimal_value)
+color_functions.convert_decimal_to_hex = function(decimal_value)
   if decimal_value == nil then
     return nil
   end
