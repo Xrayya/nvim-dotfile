@@ -121,6 +121,7 @@ local autocompletion = {
 					["<C-k>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
 					["<C-j>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
 					["<C-Space>"] = cmp.mapping.complete(),
+					["<M-Space>"] = vim.lsp.buf.signature_help(),
 					["<C-e>"] = cmp.mapping.abort(),
 					["<CR>"] = function(fallback)
 						if
