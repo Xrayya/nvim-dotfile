@@ -115,8 +115,8 @@ local autocompletion = {
 					comparators = {
 						compare.offset,
 						compare.exact,
-						require("cmp_tabnine.compare"),
 						compare.score,
+						require("cmp_tabnine.compare"),
 						compare.recently_used,
 						compare.kind,
 						compare.sort_text,
