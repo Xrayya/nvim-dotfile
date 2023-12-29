@@ -6,6 +6,11 @@ local typescript_tools = {
   },
   config = function()
     require("typescript-tools").setup({
+      init_options = {
+        preferences = {
+          importModuleSpecifierPreference = "non-relative",
+        },
+      },
       capabilities = require("cmp_nvim_lsp").default_capabilities(),
       settings = {
         publish_diagnostic_on = "change",
