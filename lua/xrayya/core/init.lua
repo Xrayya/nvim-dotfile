@@ -1,4 +1,4 @@
-local load = function (module)
+local load = function(module)
   require("xrayya." .. module)
 end
 
