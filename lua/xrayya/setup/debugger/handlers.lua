@@ -1,4 +1,4 @@
-local debugger_config = {
+local debugger_handlers = {
   function(config)
     require("mason-nvim-dap").default_setup(config)
   end,
@@ -141,4 +141,4 @@ local debugger_config = {
   -- })
 }
 
-return debugger_config
+return debugger_handlers
