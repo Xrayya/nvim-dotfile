@@ -25,7 +25,7 @@ local custom_extension = {
     sections = {
       lualine_a = {
         function()
-          return icons.ui.LSP .. "LSP Info"
+          return icons.ui.LSP .. " LSP Info"
         end,
       },
     },
@@ -35,7 +35,7 @@ local custom_extension = {
     sections = {
       lualine_a = {
         function()
-          return icons.ui.LSP .. "Null LS Info"
+          return icons.ui.LSP .. " Null LS Info"
         end,
       },
     },
@@ -45,7 +45,7 @@ local custom_extension = {
     sections = {
       lualine_a = {
         function()
-          return icons.ui.LSP .. "LSP Saga Outline"
+          return icons.ui.LSP .. " LSP Saga Outline"
         end,
       },
     },
@@ -75,7 +75,7 @@ local custom_extension = {
     sections = {
       lualine_a = {
         function()
-          return icons.ui.ToolBox .. "Mason"
+          return icons.ui.ToolBox .. " Mason"
         end,
       },
     },
