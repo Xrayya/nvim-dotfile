@@ -20,7 +20,7 @@ local lsp = {
   {
     "neovim/nvim-lspconfig",
     dependencies = {
-      "hrsh7th/nvim-cmp",
+      "hrsh7th/cmp-nvim-lsp",
       "williamboman/mason-lspconfig.nvim",
       "b0o/SchemaStore.nvim",
     },
