@@ -56,19 +56,20 @@ local lsp = {
       local lspconfig = require("lspconfig")
 
       local function create_lsp_list(servers)
-        local mapping = require("mason-lspconfig.mappings.server").lspconfig_to_package
+        local mapping = require("mason-lspconfig").get_mappings().lspconfig_to_mason
         local ensure_installed = {}
-        local ensure_setted_up = servers
+        local ensure_setup = servers
         for _, server in pairs(servers) do
-          if vim.fn.executable(mapping[server]) < 0 then
+          local server_package = require("mason-registry").get_package(mapping[server])
+          if vim.fn.executable(GET_KEYS(server_package.spec.bin)[1]) < 1 then
             table.insert(ensure_installed, 1, server)
           end
         end
 
-        return ensure_installed, ensure_setted_up
+        return ensure_installed, ensure_setup
       end
 
-      local ensure_installed, ensure_setted_up = create_lsp_list({
+      local ensure_installed, ensure_setup = create_lsp_list({
         "lua_ls",
         "jdtls",
         "clangd",
@@ -87,13 +88,15 @@ local lsp = {
         ensure_installed = ensure_installed,
       })
 
+      vim.tbl_deep_extend("force", ensure_setup, require("mason-lspconfig").get_installed_servers())
+
       local opts = {}
 
       local import_custom_lsp_config = function(server)
         return require("xrayya.setup.lsp.custom-lsp-config." .. server)
       end
 
-      for _, server in pairs(ensure_setted_up) do
+      for _, server in pairs(ensure_setup) do
         opts = {
           capabilities = require("cmp_nvim_lsp").default_capabilities(),
         }
