@@ -7,7 +7,6 @@ local telescope = {
       build = "make",
     },
     "nvim-telescope/telescope-ui-select.nvim",
-    "ahmedkhalf/project.nvim",
   },
   config = function()
     local themes = require("telescope.themes")
@@ -102,7 +101,6 @@ local telescope = {
 
     require("telescope").load_extension("fzf")
     require("telescope").load_extension("ui-select")
-    require("telescope").load_extension("projects")
   end,
 }
 return telescope
