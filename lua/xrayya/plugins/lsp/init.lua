@@ -52,7 +52,7 @@ local lsp = {
         border = "rounded",
       })
 
-      require("xrayya.setup.lsp.lsp(s)-setting").setup()
+      require("xrayya.plugins.lsp.lsp(s)-setting").setup()
     end,
   },
   {
@@ -131,7 +131,7 @@ local lsp = {
   {
     "mfussenegger/nvim-jdtls",
   },
-  require("xrayya.setup.lsp.advanced-lsp-config"),
+  require("xrayya.plugins.lsp.advanced-lsp-config"),
 }
 
 return lsp

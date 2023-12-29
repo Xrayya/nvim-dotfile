@@ -8,7 +8,7 @@ local debugger = {
     config = function()
       require("mason-nvim-dap").setup({
         ensure_installed = { "cppdbg", "python", "javadbg", "javatest", "dart" },
-        handlers = require("xrayya.setup.debugger.handlers"),
+        handlers = require("xrayya.plugins.debugger.handlers"),
       })
     end,
   },
@@ -18,7 +18,7 @@ local debugger = {
       {
         "rcarriga/nvim-dap-ui",
         config = function()
-          local layouts = require("xrayya.setup.debugger.layouts")
+          local layouts = require("xrayya.plugins.debugger.layouts")
           local function setup_dap_with_layout(layout)
             require("dapui").setup({
               layouts = layout,

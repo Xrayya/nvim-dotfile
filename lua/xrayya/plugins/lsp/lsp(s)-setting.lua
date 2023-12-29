@@ -42,7 +42,7 @@ function lsps_setting.setup()
   local opts = {}
 
   local import_custom_lsp_config = function(server)
-    return require("xrayya.setup.lsp.custom-lsp-config." .. server)
+    return require("xrayya.plugins.lsp.custom-lsp-config." .. server)
   end
 
   for _, server in pairs(ensure_setup) do

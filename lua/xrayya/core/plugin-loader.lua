@@ -15,6 +15,6 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = {
     "folke/lazy.nvim",
-    { import = "xrayya.setup" },
+    { import = "xrayya.plugins" },
   },
 })

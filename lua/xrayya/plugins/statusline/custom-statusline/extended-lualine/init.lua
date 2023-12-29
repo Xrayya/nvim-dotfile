@@ -1,5 +1,5 @@
 local import_el_module = function(module)
-  return require("xrayya.setup.statusline.custom-statusline.extended-lualine." .. module)
+  return require("xrayya.plugins.statusline.custom-statusline.extended-lualine." .. module)
 end
 
 local components = import_el_module("components")
