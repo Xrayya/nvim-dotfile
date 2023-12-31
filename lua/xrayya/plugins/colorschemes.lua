@@ -8,10 +8,11 @@ local colorschemes = {
         style = "moon",
         light_style = "day",
         transparent = true,
+        on_highlights = function (highlights, colors)
+          highlights.LineNr.fg = highlights.CursorLineNr.fg
+          highlights.CursorLineNr = highlights.Number
+        end
       })
-
-      vim.api.nvim_set_hl(0, "LineNr", { link = "Number" })
-      vim.api.nvim_set_hl(0, "CursorLineNr", { link = "LineNr" })
     end,
   },
   {
@@ -28,7 +29,8 @@ local colorschemes = {
         highlight_overrides = {
           all = function(colors)
             return {
-              LineNr = { fg = require("catppuccin.groups.editor").get().CursorLineNr.fg },
+              LineNr = require("catppuccin.groups.editor").get().CursorLineNr,
+              CursorLineNr = require("catppuccin.groups.syntax").get().Number,
             }
           end,
         },
