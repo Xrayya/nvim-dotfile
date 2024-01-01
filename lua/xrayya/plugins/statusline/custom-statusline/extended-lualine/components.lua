@@ -54,9 +54,9 @@ return {
   filename = {
     "filename",
     symbols = {
-      modified = " ●",
-      readonly = " ",
-      unnamed = " ",
+      modified = " ● ",
+      readonly = "  ",
+      unnamed = "  ",
     },
   },
   filesize = {
