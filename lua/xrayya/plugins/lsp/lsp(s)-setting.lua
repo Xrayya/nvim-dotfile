@@ -10,7 +10,7 @@ function lsps_setting.setup()
     local ensure_setup = servers
     for _, server in pairs(servers) do
       local server_package = require("mason-registry").get_package(mapping[server])
-      if vim.fn.executable(GET_KEYS(server_package.spec.bin)[1]) < 1 then
+      if vim.fn.executable(vim.tbl_keys(server_package.spec.bin)[1]) < 1 then
         table.insert(ensure_installed, 1, server)
       end
     end
