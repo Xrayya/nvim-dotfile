@@ -52,28 +52,30 @@ function lsps_setting.setup()
 
     if server == "lua_ls" then
       local lua_ls_opts = import_custom_lsp_config("lua_ls")
-      opts = vim.tbl_deep_extend("force", lua_ls_opts, opts)
+      opts = vim.tbl_deep_extend("force", opts, lua_ls_opts)
     end
 
     if server == "clangd" then
       local clangd_opts = import_custom_lsp_config("clangd")
-      opts = vim.tbl_deep_extend("force", clangd_opts, opts)
+      opts = vim.tbl_deep_extend("force", opts, clangd_opts)
     end
 
     if server == "tsserver" then
       goto continue
       local tsserver_opts = import_custom_lsp_config("tsserver")
-      opts = vim.tbl_deep_extend("force", tsserver_opts, opts)
+      opts = vim.tbl_deep_extend("force", opts, tsserver_opts)
     end
 
     if server == "jsonls" then
-      local jsonls = import_custom_lsp_config("jsonls")
-      opts = vim.tbl_deep_extend("force", jsonls, opts)
+      local jsonls_opts = import_custom_lsp_config("jsonls")
+      opts = vim.tbl_deep_extend("force", opts, jsonls_opts)
     end
 
     if server == "yamlls" then
-      local yamlls = import_custom_lsp_config("yamlls")
-      opts = vim.tbl_deep_extend("force", yamlls, opts)
+      local yamlls_opts = import_custom_lsp_config("yamlls")
+      opts = vim.tbl_deep_extend("force", opts, yamlls_opts)
+    end
+
     if server == "phpactor" then
       local phpactor_opts = import_custom_lsp_config("phpactor")
       opts = vim.tbl_deep_extend("force", opts, phpactor_opts)
