@@ -31,6 +31,7 @@ function lsps_setting.setup()
     "rust_analyzer",
     "jsonls",
     "yamlls",
+    "lemminx",
   })
 
   mason_lspconfig.setup({
