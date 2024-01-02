@@ -2,7 +2,7 @@ return {
   single_file_support = true,
   init_options = {
     preferences = {
-      importModuleSpecifierPreference = "non-relative",
+      importModuleSpecifierPreference = "shortest",
     },
   },
   settings = {

@@ -8,7 +8,7 @@ local typescript_tools = {
     require("typescript-tools").setup({
       init_options = {
         preferences = {
-          importModuleSpecifierPreference = "non-relative",
+          importModuleSpecifierPreference = "shortest",
         },
       },
       capabilities = require("cmp_nvim_lsp").default_capabilities(),
