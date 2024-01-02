@@ -74,6 +74,9 @@ function lsps_setting.setup()
     if server == "yamlls" then
       local yamlls = import_custom_lsp_config("yamlls")
       opts = vim.tbl_deep_extend("force", yamlls, opts)
+    if server == "phpactor" then
+      local phpactor_opts = import_custom_lsp_config("phpactor")
+      opts = vim.tbl_deep_extend("force", opts, phpactor_opts)
     end
 
     if server == "jdtls" then
