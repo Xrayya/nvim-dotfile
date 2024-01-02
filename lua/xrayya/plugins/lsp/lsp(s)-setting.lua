@@ -37,7 +37,7 @@ function lsps_setting.setup()
     ensure_installed = ensure_installed,
   })
 
-  ensure_setup = vim.tbl_deep_extend("force", ensure_setup, require("mason-lspconfig").get_installed_servers())
+  ensure_setup = MERGE_TABLE_AS_SET(ensure_setup, require("mason-lspconfig").get_installed_servers())
 
   local opts = {}
 
