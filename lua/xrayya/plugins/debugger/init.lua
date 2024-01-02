@@ -7,7 +7,7 @@ local debugger = {
     },
     config = function()
       require("mason-nvim-dap").setup({
-        ensure_installed = { "cppdbg", "python", "javadbg", "javatest", "dart" },
+        ensure_installed = { "cppdbg", "javadbg", "javatest", "dart" },
         handlers = require("xrayya.plugins.debugger.handlers"),
       })
     end,
