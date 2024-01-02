@@ -65,7 +65,7 @@ local custom_extension = {
     sections = {
       lualine_a = {
         function()
-          return icons.ui.Socket .. "Lazy"
+          return icons.ui.Socket .. " Lazy"
         end,
       },
     },
