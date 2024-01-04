@@ -52,7 +52,10 @@ local debugger = {
       },
     },
     config = function()
-      require("dap").listeners.after.event_initialized["dapui_config"] = function()
+      require("dap").listeners.before.attach.dapui_config = function()
+        require("dapui").open()
+      end
+      require("dap").listeners.before.launch.dapui_config = function()
         require("dapui").open()
       end
     end,
