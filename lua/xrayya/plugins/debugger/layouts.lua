@@ -8,7 +8,7 @@ debug_ui_layouts.running = {
       },
     },
     position = "bottom",
-    size = 0.45,
+    size = 10,
   },
 }
 debug_ui_layouts.running_console = {
@@ -62,7 +62,7 @@ debug_ui_layouts.debugging_console = {
       },
     },
     position = "bottom",
-    size = 10,
+    size = 0.45,
   },
 }
 debug_ui_layouts.debugging = {
