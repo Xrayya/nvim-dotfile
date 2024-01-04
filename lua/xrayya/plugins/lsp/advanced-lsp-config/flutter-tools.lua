@@ -13,6 +13,9 @@ local flutter_tools = {
         enabled = true,
         run_via_dap = true,
       },
+      dev_log = {
+        enabled = false,
+      },
       fvm = true,
       lsp = {
         capabilities = require("cmp_nvim_lsp").default_capabilities(),
