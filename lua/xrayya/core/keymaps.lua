@@ -21,12 +21,8 @@ map("n", "<M-x>", ":bdelete<CR>", opts)
 map("t", "<esc><esc>", "<C-\\><c-n>", opts)
 
 -- Useful for switching between floating windows
-map("n", "<TAB>", "gt", opts)
-map("n", "<S-TAB>", "gT", opts)
-
--- Useful for switching between floating windows
-map("n", "<M-TAB>", ":cnext<CR>", opts)
-map("n", "<M-S-TAB>", ":cprevious<CR>", opts)
+map("n", "<TAB>", ":cnext<CR>", opts)
+map("n", "<S-TAB>", ":cprevious<CR>", opts)
 
 -- <TAB> Completion
 map("i", "<expr> <TAB>", 'pumvisible() ? "\\<C-n>" : "\\<TAB>"', opts)
