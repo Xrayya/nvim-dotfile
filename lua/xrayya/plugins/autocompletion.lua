@@ -9,6 +9,19 @@ local autocompletion = {
 
       luasnip.filetype_extend("php", { "html" })
 
+      luasnip.filetype_extend("typescript", { "tsdoc" })
+      luasnip.filetype_extend("javascript", { "jsdoc" })
+      luasnip.filetype_extend("lua", { "luadoc" })
+      luasnip.filetype_extend("python", { "pydoc" })
+      luasnip.filetype_extend("rust", { "rustdoc" })
+      luasnip.filetype_extend("cs", { "csharpdoc" })
+      luasnip.filetype_extend("c", { "cdoc" })
+      luasnip.filetype_extend("cpp", { "cppdoc" })
+      luasnip.filetype_extend("php", { "phpdoc" })
+      luasnip.filetype_extend("kotlin", { "kdoc" })
+      luasnip.filetype_extend("ruby", { "rdoc" })
+      luasnip.filetype_extend("sh", { "shelldoc" })
+
       local map = vim.keymap.set
       local opts = { noremap = true, silent = true }
 
@@ -93,10 +106,10 @@ local autocompletion = {
 
             local labelDetails = (entry.completion_item.labelDetails or {})
             vim_item.menu = vim_item.menu
-              .. " "
-              .. (labelDetails.detail or "")
-              .. " "
-              .. (labelDetails.description or "")
+                .. " "
+                .. (labelDetails.detail or "")
+                .. " "
+                .. (labelDetails.description or "")
 
             return vim_item
           end,
