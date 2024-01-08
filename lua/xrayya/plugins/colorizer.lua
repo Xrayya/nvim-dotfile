@@ -12,6 +12,7 @@ local colorizer = {
         typescriptreact = { RRGGBBAA = true, css = true, tailwind = "lsp" },
         cmp_docs = { always_update = true },
         cmp_menu = { always_update = true },
+        dart = { AARRGGBB = true },
       },
       user_default_options = {
         RGB = true,
