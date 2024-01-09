@@ -82,6 +82,10 @@ function lsps_setting.setup()
       opts = vim.tbl_deep_extend("force", opts, phpactor_opts)
     end
 
+    if server == "dartls" then
+      goto continue
+    end
+
     if server == "jdtls" then
       goto continue
     end
