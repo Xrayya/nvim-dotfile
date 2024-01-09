@@ -10,6 +10,7 @@ local vim_habit = {
         max_time = 2000,
         max_count = 8,
         disable_mouse = false,
+        allow_different_key = true,
       })
     end,
   },
