@@ -2,6 +2,7 @@
   "rpc.showProblems": false,
   "rpc.lowerDetailsEditing" : "Editing {file_name} on line {current_line}",
   "rpc.detailsViewing" : "Working on [{workspace_folder}] {problems}",
+  "rpc.detailsEditing" : "Working on [{workspace_folder}] {problems}",
   "rpc.largeImage" : "Editing a {Lang} file",
   "rpc.suppressNotifications" : false,
   "suggest.autoTrigger": "none",
