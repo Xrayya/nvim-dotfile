@@ -87,6 +87,7 @@ local whichkey = {
         r = { "<cmd>Lspsaga rename<cr>", "Rename" },
         R = { "<cmd>Telescope lsp_references<cr>", "References" },
       },
+      r = { "<cmd>Triptych<cr>", "Toggle Triptych" },
       w = { "<cmd>write<cr>", "Save" },
       W = { "<cmd>lua vim.lsp.buf.format({timeout_ms=2000})<CR><cmd>write<cr>", "Write and format" },
       [","] = { "<cmd>set wrap<cr>", "Set wrap" },
