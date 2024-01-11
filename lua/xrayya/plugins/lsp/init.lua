@@ -28,9 +28,9 @@ local lsp = {
       local diagnostic_signs = LOAD_UTIL("icons").diagnostics
       local signs = {
         { name = "DiagnosticSignError", text = diagnostic_signs.Error },
-        { name = "DiagnosticSignWarn",  text = diagnostic_signs.Warning },
-        { name = "DiagnosticSignHint",  text = diagnostic_signs.Hint },
-        { name = "DiagnosticSignInfo",  text = diagnostic_signs.Information },
+        { name = "DiagnosticSignWarn", text = diagnostic_signs.Warning },
+        { name = "DiagnosticSignHint", text = diagnostic_signs.Hint },
+        { name = "DiagnosticSignInfo", text = diagnostic_signs.Information },
       }
 
       for _, sign in ipairs(signs) do
@@ -102,12 +102,20 @@ local lsp = {
         virtual_text = false,
         virtual_lines = { only_current_line = true },
       })
+
+      vim.g.lsp_line_enabled = true
     end,
     config = function()
       require("lsp_lines").setup()
 
       vim.api.nvim_create_user_command("LspLineToggle", function(args)
-        require("lsp_lines").toggle()
+        if vim.g.lsp_line_enabled then
+          vim.diagnostic.config({ virtual_lines = false })
+          vim.g.lsp_line_enabled = false
+        else
+          vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
+          vim.g.lsp_line_enabled = true
+        end
       end, {})
     end,
   },
