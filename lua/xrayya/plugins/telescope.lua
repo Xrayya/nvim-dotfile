@@ -26,6 +26,9 @@ local telescope = {
             },
           },
         },
+        diagnostics = {
+          layout_strategy = "vertical",
+        },
         help_tags = {
           layout_config = {
             preview_width = 0.6,

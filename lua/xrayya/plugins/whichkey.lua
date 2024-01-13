@@ -81,6 +81,7 @@ local whichkey = {
         H = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signture help" },
         i = { "<cmd>Telescope lsp_implementations<cr>", "Goto implementation(s)" },
         l = { "<cmd>LspLineToggle<cr>", "Toggle Lsp Line" },
+        L = { "<cmd>Telescope diagnostics<cr>", "Open diagnostic list" },
         o = { "<cmd>Lspsaga outline<cr>", "Outline" },
         p = { "<cmd>Lspsaga peek_definition<cr>", "Preview definition" },
         P = { "<cmd>Lspsaga peek_type_definition<cr>", "Preview type definition" },
