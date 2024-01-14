@@ -121,11 +121,20 @@ return {
   },
   -- stylua: ignore
   diagnostics = {
-    Error       = "",
-    Warning     = "",
-    Information = "",
-    Question    = "",
-    Hint        = "󰌵",
+    filled = {
+      Error       = "",
+      Warning     = "",
+      Information = "",
+      Question    = "",
+      Hint        = "󰌵",
+    },
+    outlined = {
+      Error       = "",
+      Warning     = "",
+      Information = "",
+      Question    = "",
+      Hint        = "",
+    }
   },
   -- stylua: ignore
   misc = {
