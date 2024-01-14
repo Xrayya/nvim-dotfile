@@ -39,6 +39,7 @@ local lsp = {
 
       vim.diagnostic.config({
         update_in_insert = true,
+        severity_sort = true,
         signs = {
           active = signs,
         },
