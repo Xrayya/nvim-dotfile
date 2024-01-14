@@ -16,7 +16,7 @@ function MERGE_TABLE_AS_SET(table1, table2)
     set[key] = true
   end
 
-  local keys = vim.tbl_values(table2)
+  keys = vim.tbl_values(table2)
   for _, key in pairs(keys) do
     set[key] = true
   end
