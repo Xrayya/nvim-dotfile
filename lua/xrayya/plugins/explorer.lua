@@ -73,10 +73,10 @@ local explorer = {
         diagnostics = {
           enable = true,
           icons = {
-            hint = icons.diagnostics.Hint,
-            info = icons.diagnostics.Information,
-            warning = icons.diagnostics.Warning,
-            error = icons.diagnostics.Error,
+            hint = icons.diagnostics.outlined.Hint,
+            info = icons.diagnostics.outlined.Information,
+            warning = icons.diagnostics.outlined.Warning,
+            error = icons.diagnostics.outlined.Error,
           },
         },
         git = {

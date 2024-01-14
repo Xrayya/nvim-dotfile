@@ -1,4 +1,5 @@
 local convert_to_hex = LOAD_UTIL("color-functions").convert_decimal_to_hex
+local icons = LOAD_UTIL("icons")
 
 return {
   mode = {
@@ -84,7 +85,12 @@ return {
   diagnostics = {
     "diagnostics",
     sources = { "nvim_diagnostic" },
-    symbols = { error = " ", warn = " ", info = " ", hint = "󰌵 " },
+    symbols = {
+      error = icons.diagnostics.outlined.Error .. " ",
+      warn = icons.diagnostics.outlined.Warning .. " ",
+      info = icons.diagnostics.outlined.Information .. " ",
+      hint = icons.diagnostics.outlined.Hint .. " ",
+    },
     update_in_insert = true,
     always_visible = false,
   },

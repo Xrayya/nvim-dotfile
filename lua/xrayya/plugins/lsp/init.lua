@@ -27,10 +27,10 @@ local lsp = {
     config = function()
       local diagnostic_signs = LOAD_UTIL("icons").diagnostics
       local signs = {
-        { name = "DiagnosticSignError", text = diagnostic_signs.Error },
-        { name = "DiagnosticSignWarn", text = diagnostic_signs.Warning },
-        { name = "DiagnosticSignHint", text = diagnostic_signs.Hint },
-        { name = "DiagnosticSignInfo", text = diagnostic_signs.Information },
+        { name = "DiagnosticSignError", text = diagnostic_signs.outlined.Error },
+        { name = "DiagnosticSignWarn", text = diagnostic_signs.outlined.Warning },
+        { name = "DiagnosticSignHint", text = diagnostic_signs.outlined.Hint },
+        { name = "DiagnosticSignInfo", text = diagnostic_signs.outlined.Information },
       }
 
       for _, sign in ipairs(signs) do
@@ -97,6 +97,7 @@ local lsp = {
   },
   {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+    enabled = false,
     event = "LspAttach",
     init = function()
       vim.diagnostic.config({
