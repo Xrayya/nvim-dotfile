@@ -32,6 +32,7 @@ function lsps_setting.setup()
     "jsonls",
     "yamlls",
     "lemminx",
+    "ltex"
   })
 
   mason_lspconfig.setup({
