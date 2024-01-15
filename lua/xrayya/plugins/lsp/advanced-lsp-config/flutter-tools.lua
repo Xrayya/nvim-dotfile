@@ -28,7 +28,24 @@ local flutter_tools = {
       },
     })
 
-    vim.cmd("DapSetupDebugging")
+    local dap = require("dap")
+
+    vim.api.nvim_create_user_command("FlutterHotReload", function(args)
+      if dap.status() ~= "" then
+        dap.repl.execute(".hot-reload")
+      end
+    end, {})
+
+    vim.api.nvim_create_augroup("FlutterHotReload", {})
+    vim.api.nvim_create_autocmd({ "BufWritePost", "FileWritePost" }, {
+      pattern = { "*.dart" },
+      group = "FlutterHotReload",
+      callback = function(args)
+        vim.cmd("FlutterHotReload")
+      end,
+    })
+
+    vim.cmd("DapSetupRunning")
   end,
 }
 
