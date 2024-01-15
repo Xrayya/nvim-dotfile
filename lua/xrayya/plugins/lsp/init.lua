@@ -97,7 +97,6 @@ local lsp = {
   },
   {
     "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    enabled = false,
     event = "LspAttach",
     init = function()
       vim.diagnostic.config({
