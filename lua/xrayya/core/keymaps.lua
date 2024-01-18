@@ -54,12 +54,22 @@ map("n", "<M-k>", ":move .-2<CR>==", opts)
 map("i", ".", ".<C-g>u", opts)
 map("i", ",", ",<C-g>u", opts)
 map("i", "=", "=<C-g>u", opts)
+map("i", "+", "+<C-g>u", opts)
+map("i", "-", "-<C-g>u", opts)
+map("i", "*", "*<C-g>u", opts)
+map("i", "%", "%<C-g>u", opts)
 map("i", "<", "<<C-g>u", opts)
 map("i", ">", "><C-g>u", opts)
 map("i", "(", "(<C-g>u", opts)
 map("i", "{", "{<C-g>u", opts)
 map("i", "[", "[<C-g>u", opts)
+map("i", '"', '"<C-g>u', opts)
+map("i", "'", "'<C-g>u", opts)
+map("i", "`", "`<C-g>u", opts)
 map("i", "/", "/<C-g>u", opts)
+map("i", "|", "|<C-g>u", opts)
+map("i", "?", "?<C-g>u", opts)
+map("i", "!", "!<C-g>u", opts)
 map("i", ";", ";<C-g>u", opts)
 map("i", ":", ":<C-g>u", opts)
 map("i", " ", " <C-g>u", opts)
@@ -73,3 +83,10 @@ map("n", "<C-l>", "<C-w>l", opts)
 -- Split windows
 map("n", "<C-\\>", ":vsplit<CR>", opts)
 map("n", "<A-\\>", ":split<CR>", opts)
+
+map(
+  "n",
+  "<leader>=",
+  ":setlocal relativenumber number signcolumn=yes<cr>",
+  { noremap = true, silent = true, desc = "Set essential options for current buffer" }
+)
