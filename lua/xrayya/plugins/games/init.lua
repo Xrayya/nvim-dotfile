@@ -1,13 +1,15 @@
 local games = {
   {
     "theprimeagen/vim-be-good",
+    cmd = { "VimBeGood" },
   },
   {
     "seandewar/nvimesweeper",
+    cmd = { "Nvimesweeper" },
   },
   {
     "jim-fx/sudoku.nvim",
-    cmd = "Sudoku",
+    cmd = { "Sudoku" },
     config = function()
       require("sudoku").setup({})
 

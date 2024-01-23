@@ -1,6 +1,7 @@
 local vim_habit = {
   {
     "m4xshen/hardtime.nvim",
+    event = "VeryLazy",
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
     config = function()
       local disabled_filetypes = require("hardtime.config").config.disabled_filetypes
