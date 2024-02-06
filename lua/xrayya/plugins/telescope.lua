@@ -20,7 +20,6 @@ local telescope = {
         buffers = {
           theme = "dropdown",
           previewer = false,
-          initial_mode = "normal",
           mappings = {
             n = {
               ["dd"] = actions.delete_buffer,
