@@ -139,6 +139,10 @@ local lsp = {
       })
 
       require("lsp-inlayhints").setup()
+
+      vim.api.nvim_create_user_command("LspInlayHintsToggle", function(args)
+        require("lsp-inlayhints").toggle()
+      end, {})
     end,
   },
   {
