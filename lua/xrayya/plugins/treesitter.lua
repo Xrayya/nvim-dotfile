@@ -79,11 +79,6 @@ local treesitter = {
       })
     end,
   },
-  {
-    "luckasRanarison/tree-sitter-hypr",
-    enabled = (vim.fn.executable("Hyprland") > 0 and true or false),
-    dependencies = { "nvim-treesitter/nvim-treesitter" },
-  },
 }
 
 return treesitter
