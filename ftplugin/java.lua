@@ -2,7 +2,7 @@ local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 vim.opt.rtp:prepend(lazypath)
 
 local import_setup = function(module)
-	return require("xrayya.setup." .. module)
+	return require("xrayya.plugins." .. module)
 end
 
 vim.cmd([[Lazy load nvim-notify]])
