@@ -16,11 +16,11 @@ debug_ui_layouts.running_console = {
     elements = {
       {
         id = "repl",
-        size = 27,
+        size = 0.2,
       },
       {
         id = "console",
-        size = 1,
+        size = 0.8,
       },
     },
     position = "bottom",
