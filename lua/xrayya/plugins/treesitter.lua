@@ -5,6 +5,7 @@ local treesitter = {
     dependencies = {
       "windwp/nvim-ts-autotag",
       {
+        "nvim-treesitter/nvim-treesitter-textobjects",
         "JoosepAlviste/nvim-ts-context-commentstring",
         config = function()
           require("ts_context_commentstring").setup()
@@ -78,6 +79,56 @@ local treesitter = {
         },
         endwise = {
           enable = true,
+        },
+        textobjects = {
+          select = {
+            enable = true,
+            lookahead = true,
+            keymaps = {
+              ["if"] = "@function.inner",
+              ["af"] = "@function.outer",
+              ["icl"] = "@class.inner",
+              ["acl"] = "@class.outer",
+              ["ico"] = "@conditional.inner",
+              ["aco"] = "@conditional.outer",
+              ["il"] = "@loop.inner",
+              ["al"] = "@loop.outer",
+              ["ia"] = "@parameter.inner",
+              ["aa"] = "@parameter.outer",
+            },
+          },
+          move = {
+            enable = true,
+            set_jumps = true,
+            goto_next_start = {
+              ["]f"] = "@function.outer",
+              ["]cl"] = "@class.outer",
+              ["]co"] = "@conditional.outer",
+              ["]l"] = "@loop.outer",
+              ["]a"] = "@parameter.inner",
+            },
+            goto_next_end = {
+              ["]F"] = "@function.outer",
+              ["]CL"] = "@class.outer",
+              ["]CO"] = "@conditional.outer",
+              ["]L"] = "@loop.outer",
+              ["]A"] = "@parameter.inner",
+            },
+            goto_previous_start = {
+              ["[f"] = "@function.outer",
+              ["[cl"] = "@class.outer",
+              ["[co"] = "@conditional.outer",
+              ["[l"] = "@loop.outer",
+              ["[a"] = "@parameter.inner",
+            },
+            goto_previous_end = {
+              ["[F"] = "@function.outer",
+              ["[CL"] = "@class.outer",
+              ["[CO"] = "@conditional.outer",
+              ["[L"] = "@loop.outer",
+              ["[A"] = "@parameter.inner",
+            },
+          },
         },
       })
     end,
