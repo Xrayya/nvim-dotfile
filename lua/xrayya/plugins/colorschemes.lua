@@ -8,10 +8,10 @@ local colorschemes = {
         style = "moon",
         light_style = "day",
         transparent = true,
-        on_highlights = function (highlights, colors)
+        on_highlights = function(highlights, colors)
           highlights.LineNr.fg = highlights.CursorLineNr.fg
           highlights.CursorLineNr = highlights.Number
-        end
+        end,
       })
     end,
   },
@@ -29,8 +29,8 @@ local colorschemes = {
         highlight_overrides = {
           all = function(colors)
             return {
-              LineNr = require("catppuccin.groups.editor").get().CursorLineNr,
-              CursorLineNr = require("catppuccin.groups.syntax").get().Number,
+              LineNr = { fg = colors.lavender },
+              CursorLineNr = { fg = colors.peach },
             }
           end,
         },
