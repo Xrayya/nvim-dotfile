@@ -45,7 +45,7 @@ local lsp = {
         },
         float = {
           border = "rounded",
-          source = "always",
+          source = true,
         },
       })
 
