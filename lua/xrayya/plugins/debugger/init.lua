@@ -18,6 +18,9 @@ local debugger = {
     dependencies = {
       {
         "rcarriga/nvim-dap-ui",
+        dependencies = {
+          "nvim-neotest/nvim-nio",
+        },
         config = function()
           local layouts = require("xrayya.plugins.debugger.layouts")
           local function setup_dap_with_layout(layout)
