@@ -4,10 +4,10 @@ function lsps_setting.setup()
   local mason_lspconfig = require("mason-lspconfig")
   local lspconfig = require("lspconfig")
 
+  ---@param servers table
   local function create_lsp_list(servers)
-    local mapping = require("mason-lspconfig").get_mappings().lspconfig_to_mason
+    local mapping = mason_lspconfig.get_mappings().lspconfig_to_mason
     local ensure_installed = {}
-    local ensure_setup = servers
     for _, server in pairs(servers) do
       local server_package = require("mason-registry").get_package(mapping[server])
       if vim.fn.executable(vim.tbl_keys(server_package.spec.bin)[1]) < 1 then
@@ -15,7 +15,7 @@ function lsps_setting.setup()
       end
     end
 
-    return ensure_installed, ensure_setup
+    return ensure_installed, servers
   end
 
   local ensure_installed, ensure_setup = create_lsp_list({
@@ -32,7 +32,7 @@ function lsps_setting.setup()
     "jsonls",
     "yamlls",
     "lemminx",
-    "ltex"
+    "ltex",
   })
 
   mason_lspconfig.setup({
