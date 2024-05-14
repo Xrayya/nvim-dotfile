@@ -26,6 +26,7 @@ function lsps_setting.setup()
     "html",
     "cssls",
     "emmet_ls",
+    "phpactor",
     "tailwindcss",
     "prismals",
     "rust_analyzer",
