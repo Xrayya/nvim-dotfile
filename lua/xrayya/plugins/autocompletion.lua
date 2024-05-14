@@ -58,6 +58,7 @@ local autocompletion = {
           })
         end,
       },
+      { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
     },
     config = function()
       vim.g.completeopt = "menu,menuone,noselect"
@@ -106,7 +107,7 @@ local autocompletion = {
             })[entry.source.name]
 
             local labelDetails = (entry.completion_item.labelDetails or {})
-            vim_item.menu = vim_item.menu
+            vim_item.menu = (vim_item.menu or "")
                 .. " "
                 .. (labelDetails.detail or "")
                 .. " "
@@ -190,6 +191,13 @@ local autocompletion = {
         }, {
           { name = "cmdline" },
         }),
+      })
+
+      cmp.setup.filetype({ "sql" }, {
+        sources = {
+          { name = "vim-dadbod-completion" },
+          { name = "buffer" },
+        },
       })
 
       -- integration with cmp-autopairs
