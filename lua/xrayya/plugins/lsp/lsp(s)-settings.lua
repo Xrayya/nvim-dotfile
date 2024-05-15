@@ -1,6 +1,6 @@
-local lsps_setting = {}
+local lsps_settings = {}
 
-function lsps_setting.setup()
+function lsps_settings.setup()
   local mason_lspconfig = require("mason-lspconfig")
   local lspconfig = require("lspconfig")
 
@@ -102,4 +102,4 @@ function lsps_setting.setup()
   end
 end
 
-return lsps_setting
+return lsps_settings

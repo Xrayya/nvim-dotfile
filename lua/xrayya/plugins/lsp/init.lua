@@ -53,7 +53,7 @@ local lsp = {
         border = "rounded",
       })
 
-      require("xrayya.plugins.lsp.lsp(s)-setting").setup()
+      require("xrayya.plugins.lsp.lsp(s)-settings").setup()
     end,
   },
   {
