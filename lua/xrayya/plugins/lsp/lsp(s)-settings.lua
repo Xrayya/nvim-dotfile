@@ -84,6 +84,11 @@ function lsps_setting.setup()
       opts = vim.tbl_deep_extend("force", opts, phpactor_opts)
     end
 
+    if server == "ltex" then
+      local ltex_opts = import_custom_lsp_config("ltex")
+      opts = vim.tbl_deep_extend("force", opts, ltex_opts)
+    end
+
     if server == "dartls" then
       goto continue
     end
