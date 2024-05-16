@@ -104,14 +104,20 @@ local autocompletion = {
               luasnip = icons.misc.Luasnip,
               cmp_tabnine = icons.ui.HighPriority,
               cmdline = icons.ui.Terminal,
+              ["vim-dadbod-completion"] = icons.ui.Database,
             })[entry.source.name]
 
             local labelDetails = (entry.completion_item.labelDetails or {})
+
+            if entry.source.name == "vim-dadbod-completion" then
+              labelDetails.description = ""
+            end
+
             vim_item.menu = (vim_item.menu or "")
-                .. " "
-                .. (labelDetails.detail or "")
-                .. " "
-                .. (labelDetails.description or "")
+              .. " "
+              .. (labelDetails.detail or "")
+              .. " "
+              .. (labelDetails.description or "")
 
             return vim_item
           end,
