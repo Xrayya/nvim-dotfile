@@ -25,7 +25,7 @@ return {
           [vim.fn.expand("$VIMRUNTIME/lua")] = true,
           [vim.fn.stdpath("config") .. "/lua"] = true,
           [vim.fn.stdpath("config") .. "/ftplugin"] = true,
-          vim.api.nvim_get_runtime_file("", true),
+          [vim.fn.stdpath("data") .. "/lazy"] = true,
         },
       },
       telemetry = {
