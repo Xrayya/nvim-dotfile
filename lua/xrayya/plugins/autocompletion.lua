@@ -47,18 +47,8 @@ local autocompletion = {
       "windwp/nvim-autopairs",
       {
         "tzachar/cmp-tabnine",
-        enabled = true,
+        enabled = false,
         build = vim.fn.has("win32") > 0 and "powershell ./install.ps1" or "./install.sh",
-      },
-      {
-        "github/copilot.vim",
-        config = function()
-          vim.keymap.set("i", "<C-y>", 'copilot#Accept("\\<CR>")', {
-            expr = true,
-            replace_keycodes = false,
-          })
-          vim.g.copilot_no_tab_map = true
-        end,
       },
       {
         "L3MON4D3/cmp-luasnip-choice",
@@ -124,10 +114,10 @@ local autocompletion = {
             end
 
             vim_item.menu = (vim_item.menu or "")
-              .. " "
-              .. (labelDetails.detail or "")
-              .. " "
-              .. (labelDetails.description or "")
+                .. " "
+                .. (labelDetails.detail or "")
+                .. " "
+                .. (labelDetails.description or "")
 
             return vim_item
           end,
@@ -222,6 +212,25 @@ local autocompletion = {
         require("nvim-autopairs.completion.cmp").on_confirm_done({ map_char = { tex = "" } })
       )
     end,
+  },
+  {
+    "github/copilot.vim",
+    config = function()
+      vim.keymap.set("i", "<C-y>", 'copilot#Accept("\\<CR>")', {
+        expr = true,
+        replace_keycodes = false,
+      })
+      vim.g.copilot_no_tab_map = true
+    end,
+  },
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    branch = "canary",
+    dependencies = {
+      { "github/copilot.vim" },
+      { "nvim-lua/plenary.nvim" },
+    },
+    config = true,
   },
 }
 
