@@ -31,6 +31,17 @@ local navigation = {
       })
     end,
   },
+  {
+    "karb94/neoscroll.nvim",
+    enabled = false,
+    event = "VeryLazy",
+    config = function()
+      require("neoscroll").setup({
+        mappings = { "<C-u>", "<C-d>", "<C-b>", "<C-f>", "<C-y>", "<C-e>", "zt", "zz", "zb", "gg", "G" },
+        hide_cursor = false,
+      })
+    end,
+  },
 }
 
 return navigation

@@ -1,6 +1,7 @@
 local presence = {
   {
     "Xrayya/neocord",
+    enabled = false,
     branch = "project_detection_fallback_function",
     event = "VeryLazy",
     config = function()

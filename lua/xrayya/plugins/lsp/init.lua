@@ -1,23 +1,5 @@
 local lsp = {
   {
-    "nvimdev/lspsaga.nvim",
-    event = "LspAttach",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("lspsaga").setup({
-        ui = {
-          border = "rounded",
-        },
-        outline = {
-          win_width = 35,
-        },
-      })
-    end,
-  },
-  {
     "neovim/nvim-lspconfig",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
@@ -28,9 +10,9 @@ local lsp = {
       local diagnostic_signs = LOAD_UTIL("icons").diagnostics
       local signs = {
         { name = "DiagnosticSignError", text = diagnostic_signs.outlined.Error },
-        { name = "DiagnosticSignWarn", text = diagnostic_signs.outlined.Warning },
-        { name = "DiagnosticSignHint", text = diagnostic_signs.outlined.Hint },
-        { name = "DiagnosticSignInfo", text = diagnostic_signs.outlined.Information },
+        { name = "DiagnosticSignWarn",  text = diagnostic_signs.outlined.Warning },
+        { name = "DiagnosticSignHint",  text = diagnostic_signs.outlined.Hint },
+        { name = "DiagnosticSignInfo",  text = diagnostic_signs.outlined.Information },
       }
 
       for _, sign in ipairs(signs) do
@@ -81,6 +63,7 @@ local lsp = {
   },
   {
     "j-hui/fidget.nvim",
+    enabled = false,
     event = "LspAttach",
     config = function()
       require("fidget").setup({
@@ -134,7 +117,9 @@ local lsp = {
 
           local bufnr = args.buf
           local client = vim.lsp.get_client_by_id(args.data.client_id)
-          require("lsp-inlayhints").on_attach(client, bufnr)
+          if client ~= nil then
+            require("lsp-inlayhints").on_attach(client, bufnr, false)
+          end
         end,
       })
 

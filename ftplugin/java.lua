@@ -6,7 +6,7 @@ local import_setup = function(module)
 end
 
 vim.cmd([[Lazy load nvim-notify]])
-import_setup("notification")
+import_setup("ui")
 
 vim.cmd([[Lazy load cmp-nvim-lsp]])
 
