@@ -38,6 +38,10 @@ local ui = {
     end,
   },
   {
+    "https://gitlab.com/HiPhish/rainbow-delimiters.nvim",
+    event = "VeryLazy",
+  },
+  {
     "lukas-reineke/indent-blankline.nvim",
     event = "VeryLazy",
     config = function()
