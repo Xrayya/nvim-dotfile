@@ -8,7 +8,30 @@ local ui = {
       "rcarriga/nvim-notify",
     },
     config = function()
-      require("noice").setup()
+      require("noice").setup({
+        lsp = {
+          override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true,
+          },
+        },
+        presets = {
+          lsp_doc_border = true,
+        },
+        hover = {
+          silent = true,
+        },
+        routes = {
+          {
+            filter = {
+              event = "notify",
+              find = "No information available",
+            },
+            opts = { skip = true },
+          },
+        },
+      })
     end,
   },
   {
@@ -95,9 +118,9 @@ local ui = {
           padding = 0,
           margin = { horizontal = 0 },
         },
-				hide = {
-					cursorline = true,
-				},
+        hide = {
+          cursorline = true,
+        },
         render = function(props)
           local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
           if filename == "" then
