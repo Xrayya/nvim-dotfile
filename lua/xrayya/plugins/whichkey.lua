@@ -85,6 +85,7 @@ local whichkey = {
         r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
         R = { "<cmd>Telescope lsp_references<cr>", "References" },
       },
+      o = { "<cmd>AerialToggle<cr>", "Toggle Symbols Outline" },
       r = { "<cmd>Triptych<cr>", "Toggle Triptych" },
       w = { "<cmd>write<cr>", "Save" },
       W = { "<cmd>lua vim.lsp.buf.format({timeout_ms=2000})<CR><cmd>write<cr>", "Write and format" },
