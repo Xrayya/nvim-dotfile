@@ -230,7 +230,17 @@ local autocompletion = {
       { "github/copilot.vim" },
       { "nvim-lua/plenary.nvim" },
     },
-    config = true,
+    config = function()
+      require("CopilotChat.integrations.cmp").setup()
+
+      require("CopilotChat").setup({
+        mappings = {
+          complete = {
+            insert = "",
+          },
+        },
+      })
+    end,
   },
 }
 
