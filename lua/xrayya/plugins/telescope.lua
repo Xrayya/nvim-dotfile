@@ -18,6 +18,9 @@ local telescope = {
 
       require("telescope").setup({
         pickers = {
+          find_files = {
+            hidden = true,
+          },
           buffers = {
             theme = "dropdown",
             previewer = false,
@@ -64,6 +67,9 @@ local telescope = {
           },
           lsp_implementations = {
             layout_strategy = "vertical",
+          },
+          colorscheme = {
+            enable_preview = true,
           },
         },
         defaults = {
