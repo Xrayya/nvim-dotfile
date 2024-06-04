@@ -39,6 +39,11 @@ local lsp = {
         border = "rounded",
       })
 
+      vim.lsp.inlay_hint.enable(true)
+
+      vim.api.nvim_create_user_command("LspInlayHintsToggle", function(args)
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
+      end, {})
 
       require("xrayya.plugins.lsp.lsp(s)-settings").setup()
     end,
@@ -105,33 +110,6 @@ local lsp = {
           vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
           vim.g.lsp_line_enabled = true
         end
-      end, {})
-    end,
-  },
-  {
-    "lvimuser/lsp-inlayhints.nvim",
-    branch = "anticonceal",
-    config = function()
-      vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
-      vim.api.nvim_create_autocmd("LspAttach", {
-        group = "LspAttach_inlayhints",
-        callback = function(args)
-          if not (args.data and args.data.client_id) then
-            return
-          end
-
-          local bufnr = args.buf
-          local client = vim.lsp.get_client_by_id(args.data.client_id)
-          if client ~= nil then
-            require("lsp-inlayhints").on_attach(client, bufnr, false)
-          end
-        end,
-      })
-
-      require("lsp-inlayhints").setup()
-
-      vim.api.nvim_create_user_command("LspInlayHintsToggle", function(args)
-        require("lsp-inlayhints").toggle()
       end, {})
     end,
   },
