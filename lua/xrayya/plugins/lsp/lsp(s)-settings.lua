@@ -34,7 +34,13 @@ function lsps_settings.setup()
     "yamlls",
     "lemminx",
     "ltex",
-  })
+  }
+
+  if vim.fn.has("win32") < 0 then
+    table.insert(used_servers, "phpactor")
+  end
+
+  local ensure_installed, ensure_setup = create_lsp_list(used_servers)
 
   mason_lspconfig.setup({
     ensure_installed = ensure_installed,
