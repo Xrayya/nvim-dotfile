@@ -5,14 +5,16 @@ local colorschemes = {
     priority = 1000,
     config = function()
       require("tokyonight").setup({
-        style = "moon",
+        style = "night",
         light_style = "day",
         transparent = true,
         on_highlights = function(highlights, colors)
-          highlights.LineNr.fg = highlights.CursorLineNr.fg
-          highlights.CursorLineNr = highlights.Number
+          highlights.LineNr.fg = highlights.LspInlayHint.fg
+          highlights.LineNrAbove.fg = highlights.LspInlayHint.fg
+          highlights.LineNrBelow.fg = highlights.LspInlayHint.fg
         end,
       })
+      vim.cmd.colorscheme("tokyonight")
     end,
   },
   {
@@ -35,7 +37,6 @@ local colorschemes = {
           end,
         },
       })
-      vim.cmd.colorscheme("catppuccin")
     end,
   },
 }
