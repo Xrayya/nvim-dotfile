@@ -96,7 +96,6 @@ local whichkey = {
     })
 
     whichkey.register({
-      d = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Jump to previous diagnostics" },
       h = { '<cmd>lua require"gitsigns.actions".prev_hunk()<CR>', "Jump to previous hunk" },
     }, {
       mode = "n",
@@ -104,7 +103,6 @@ local whichkey = {
     })
 
     whichkey.register({
-      d = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Jump to next diagnostics" },
       h = { '<cmd>lua require"gitsigns.actions".next_hunk()<CR>', "Jump to next hunk" },
     }, {
       mode = "n",
