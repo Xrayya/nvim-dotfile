@@ -82,6 +82,7 @@ local whichkey = {
         I = { "<cmd>LspInlayHintsToggle<cr>", "Toggle LSP inlay hints" },
         l = { "<cmd>Telescope diagnostics<cr>", "Open diagnostic list" },
         L = { "<cmd>LspLineToggle<cr>", "Toggle LSP line" },
+        o = { "<cmd>lua vim.diagnostic.open_float()<cr>", "Open diagnostic under cursor" },
         r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
         R = { "<cmd>Telescope lsp_references<cr>", "References" },
       },
