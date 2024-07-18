@@ -18,6 +18,6 @@ require("lazy").setup({
     { import = "xrayya.plugins" },
   },
   install = {
-    colorscheme = { "catppuccin", "tokyonight" },
+    colorscheme = { "tokyonight", "catppuccin" },
   },
 })
