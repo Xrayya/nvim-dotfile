@@ -52,22 +52,28 @@ local telescope = {
             },
           },
           lsp_definitions = {
-            theme = "ivy",
-            layout_config = {
-              height = 0.4,
-            },
+            layout_strategy = "vertical",
+            hidden = true,
+            no_ignore = true,
+            jump_type = "never"
           },
           lsp_type_definitions = {
-            theme = "ivy",
-            layout_config = {
-              height = 0.4,
-            },
+            layout_strategy = "vertical",
+            hidden = true,
+            no_ignore = true,
+            jump_type = "never"
           },
           lsp_references = {
             layout_strategy = "vertical",
+            hidden = true,
+            no_ignore = true,
+            jump_type = "never"
           },
           lsp_implementations = {
             layout_strategy = "vertical",
+            hidden = true,
+            no_ignore = true,
+            jump_type = "never"
           },
           colorscheme = {
             enable_preview = true,
@@ -77,7 +83,7 @@ local telescope = {
           prompt_prefix = ui.Telescope .. "  ",
           selection_caret = ui.GoTo .. " ",
           path_display = { "smart" },
-          file_ignore_patterns = { ".git/", "node_modules" },
+          file_ignore_patterns = { ".git/" },
           sorting_strategy = "ascending",
           layout_config = {
             prompt_position = "top",
