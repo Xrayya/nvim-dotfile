@@ -9,6 +9,7 @@ local telescope = {
         build = "make",
       },
       "nvim-telescope/telescope-ui-select.nvim",
+      "nvim-tree/nvim-web-devicons",
     },
     config = function()
       local themes = require("telescope.themes")
