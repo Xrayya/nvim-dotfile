@@ -1,4 +1,4 @@
-local presence = {
+local external = {
   {
     "Xrayya/neocord",
     enabled = false,
@@ -23,6 +23,7 @@ local presence = {
       })
     end,
   },
+  { 'wakatime/vim-wakatime', lazy = false }
 }
 
-return presence
+return external
