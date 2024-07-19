@@ -9,10 +9,8 @@ local treesitter = {
           require("nvim-ts-autotag").setup()
         end,
       },
-      {
-        "nvim-treesitter/nvim-treesitter-textobjects",
-        "JoosepAlviste/nvim-ts-context-commentstring",
-      },
+      "nvim-treesitter/nvim-treesitter-textobjects",
+      "JoosepAlviste/nvim-ts-context-commentstring",
       "RRethy/nvim-treesitter-endwise",
       {
         "windwp/nvim-autopairs",
