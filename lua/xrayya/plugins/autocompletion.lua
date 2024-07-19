@@ -9,6 +9,8 @@ local autocompletion = {
       require("luasnip.loaders.from_vscode").lazy_load()
 
       luasnip.filetype_extend("php", { "html" })
+      luasnip.filetype_extend("javascriptreact", { "html" })
+      luasnip.filetype_extend("typescriptreact", { "html" })
 
       luasnip.filetype_extend("typescript", { "tsdoc" })
       luasnip.filetype_extend("javascript", { "jsdoc" })
