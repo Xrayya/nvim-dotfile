@@ -15,7 +15,6 @@ local typescript_tools = {
       settings = {
         publish_diagnostic_on = "change",
         expose_as_code_action = "all",
-        complete_function_calls = true,
         tsserver_file_preferences = {
           includeInlayParameterNameHints = "all",
           includeInlayParameterNameHintsWhenArgumentMatchesName = false,
