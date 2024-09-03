@@ -77,6 +77,25 @@ local ui = {
     event = "VeryLazy",
   },
   {
+    "shellRaining/hlchunk.nvim",
+    config = function()
+      require("hlchunk").setup({
+        chunk = {
+          enable = true,
+        },
+        indent = {
+          enable = true,
+          use_treesitter = true,
+          chars = { "▏" },
+        },
+        line_num = {
+          enable = true,
+          use_treesitter = true,
+        },
+      })
+    end,
+  },
+  {
     "lukas-reineke/indent-blankline.nvim",
     event = "VeryLazy",
     config = function()
