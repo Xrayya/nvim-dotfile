@@ -20,7 +20,17 @@ local treesitter = {
           })
         end,
       },
-      { "nvim-treesitter/nvim-treesitter-context" },
+      {
+        "nvim-treesitter/nvim-treesitter-context",
+        config = function()
+          require("treesitter-context").setup({
+            max_lines = 5,
+            line_numbers = true,
+            multiline_threshold = 1,
+            trim_scope = "outer",
+          })
+        end,
+      },
     },
     config = function()
       require("nvim-treesitter.install").compilers = { "gcc", "clang" }
