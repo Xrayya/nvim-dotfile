@@ -95,6 +95,11 @@ function lsps_settings.setup()
       opts = vim.tbl_deep_extend("force", opts, ltex_opts)
     end
 
+    if server == "pylsp" then
+      local pylsp_opts = import_custom_lsp_config("pylsp")
+      opts = vim.tbl_deep_extend("force", opts, pylsp_opts)
+    end
+
     if server == "dartls" then
       goto continue
     end
