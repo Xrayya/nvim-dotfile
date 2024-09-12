@@ -27,7 +27,7 @@ set.number = true
 set.relativenumber = true
 set.cursorline = true
 set.scrolloff = 9
-set.sidescrolloff = 30
+set.sidescrolloff = 20
 set.showtabline = 1
 set.laststatus = 3
 set.showmode = false
@@ -39,3 +39,6 @@ set.timeoutlen = 300
 set.clipboard:append({ "unnamedplus" })
 set.shortmess:append("c")
 set.termguicolors = true
+
+vim.cmd([[let &t_Cs = "\e[4:3m"]])
+vim.cmd([[let &t_Ce = "\e[4:0m"]])

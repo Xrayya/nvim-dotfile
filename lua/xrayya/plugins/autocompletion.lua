@@ -1,6 +1,7 @@
 local autocompletion = {
   {
     "L3MON4D3/LuaSnip",
+    build = "make install_jsregexp",
     dependencies = { "rafamadriz/friendly-snippets" },
     config = function()
       local luasnip = require("luasnip")
@@ -8,6 +9,8 @@ local autocompletion = {
       require("luasnip.loaders.from_vscode").lazy_load()
 
       luasnip.filetype_extend("php", { "html" })
+      luasnip.filetype_extend("javascriptreact", { "html" })
+      luasnip.filetype_extend("typescriptreact", { "html" })
 
       luasnip.filetype_extend("typescript", { "tsdoc" })
       luasnip.filetype_extend("javascript", { "jsdoc" })
@@ -46,7 +49,7 @@ local autocompletion = {
       "windwp/nvim-autopairs",
       {
         "tzachar/cmp-tabnine",
-        enabled = true,
+        enabled = false,
         build = vim.fn.has("win32") > 0 and "powershell ./install.ps1" or "./install.sh",
       },
       {
@@ -57,6 +60,7 @@ local autocompletion = {
           })
         end,
       },
+      { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
     },
     config = function()
       vim.g.completeopt = "menu,menuone,noselect"
@@ -102,10 +106,16 @@ local autocompletion = {
               luasnip = icons.misc.Luasnip,
               cmp_tabnine = icons.ui.HighPriority,
               cmdline = icons.ui.Terminal,
+              ["vim-dadbod-completion"] = icons.ui.Database,
             })[entry.source.name]
 
             local labelDetails = (entry.completion_item.labelDetails or {})
-            vim_item.menu = vim_item.menu
+
+            if entry.source.name == "vim-dadbod-completion" then
+              labelDetails.description = ""
+            end
+
+            vim_item.menu = (vim_item.menu or "")
                 .. " "
                 .. (labelDetails.detail or "")
                 .. " "
@@ -123,7 +133,7 @@ local autocompletion = {
             compare.offset,
             compare.exact,
             compare.score,
-            require("cmp_tabnine.compare"),
+            -- require("cmp_tabnine.compare"),
             compare.recently_used,
             compare.kind,
             compare.sort_text,
@@ -132,8 +142,8 @@ local autocompletion = {
           },
         },
         mapping = cmp.mapping.preset.insert({
-          ["<C-k>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
-          ["<C-j>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+          ["<C-f>"] = cmp.mapping(cmp.mapping.scroll_docs(1), { "i", "c" }),
+          ["<C-b>"] = cmp.mapping(cmp.mapping.scroll_docs(-1), { "i", "c" }),
           ["<C-Space>"] = cmp.mapping.complete(),
           ["<C-e>"] = cmp.mapping.abort(),
           ["<CR>"] = function(fallback)
@@ -191,11 +201,47 @@ local autocompletion = {
         }),
       })
 
+      cmp.setup.filetype({ "sql" }, {
+        sources = {
+          { name = "vim-dadbod-completion" },
+          { name = "buffer" },
+        },
+      })
+
       -- integration with cmp-autopairs
       cmp.event:on(
         "confirm_done",
         require("nvim-autopairs.completion.cmp").on_confirm_done({ map_char = { tex = "" } })
       )
+    end,
+  },
+  {
+    "github/copilot.vim",
+    config = function()
+      vim.keymap.set("i", "<C-y>", 'copilot#Accept("\\<CR>")', {
+        expr = true,
+        replace_keycodes = false,
+      })
+      vim.g.copilot_no_tab_map = true
+    end,
+  },
+  {
+    "CopilotC-Nvim/CopilotChat.nvim",
+    branch = "canary",
+    dependencies = {
+      { "github/copilot.vim" },
+      { "nvim-lua/plenary.nvim" },
+    },
+    config = function()
+      require("CopilotChat.integrations.cmp").setup()
+
+      require("CopilotChat").setup({
+        mappings = {
+          complete = {
+            insert = "",
+          },
+        },
+      })
     end,
   },
 }

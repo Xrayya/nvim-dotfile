@@ -1,6 +1,7 @@
-local presence = {
+local external = {
   {
     "Xrayya/neocord",
+    enabled = false,
     branch = "project_detection_fallback_function",
     event = "VeryLazy",
     config = function()
@@ -22,6 +23,7 @@ local presence = {
       })
     end,
   },
+  { 'wakatime/vim-wakatime', lazy = false }
 }
 
-return presence
+return external

@@ -1,13 +1,13 @@
-local lsps_setting = {}
+local lsps_settings = {}
 
-function lsps_setting.setup()
+function lsps_settings.setup()
   local mason_lspconfig = require("mason-lspconfig")
   local lspconfig = require("lspconfig")
 
+  ---@param servers table
   local function create_lsp_list(servers)
-    local mapping = require("mason-lspconfig").get_mappings().lspconfig_to_mason
+    local mapping = mason_lspconfig.get_mappings().lspconfig_to_mason
     local ensure_installed = {}
-    local ensure_setup = servers
     for _, server in pairs(servers) do
       local server_package = require("mason-registry").get_package(mapping[server])
       if vim.fn.executable(vim.tbl_keys(server_package.spec.bin)[1]) < 1 then
@@ -15,25 +15,31 @@ function lsps_setting.setup()
       end
     end
 
-    return ensure_installed, ensure_setup
+    return ensure_installed, servers
   end
 
   local ensure_installed, ensure_setup = create_lsp_list({
     "lua_ls",
     "jdtls",
     "clangd",
-    "tsserver",
+    "ts_ls",
     "html",
     "cssls",
     "emmet_ls",
+    "phpactor",
     "tailwindcss",
     "prismals",
     "rust_analyzer",
     "jsonls",
     "yamlls",
     "lemminx",
-    "ltex"
+    "ltex",
   })
+
+  -- if vim.fn.has("win32") < 0 then
+  --   table.insert(used_servers, "phpactor")
+  -- end
+
 
   mason_lspconfig.setup({
     ensure_installed = ensure_installed,
@@ -62,10 +68,10 @@ function lsps_setting.setup()
       opts = vim.tbl_deep_extend("force", opts, clangd_opts)
     end
 
-    if server == "tsserver" then
+    if server == "ts_ls" then
       goto continue
-      local tsserver_opts = import_custom_lsp_config("tsserver")
-      opts = vim.tbl_deep_extend("force", opts, tsserver_opts)
+      local ts_ls_opts = import_custom_lsp_config("ts_ls")
+      opts = vim.tbl_deep_extend("force", opts, ts_ls_opts)
     end
 
     if server == "jsonls" then
@@ -83,6 +89,16 @@ function lsps_setting.setup()
       opts = vim.tbl_deep_extend("force", opts, phpactor_opts)
     end
 
+    if server == "ltex" then
+      local ltex_opts = import_custom_lsp_config("ltex")
+      opts = vim.tbl_deep_extend("force", opts, ltex_opts)
+    end
+
+    if server == "pylsp" then
+      local pylsp_opts = import_custom_lsp_config("pylsp")
+      opts = vim.tbl_deep_extend("force", opts, pylsp_opts)
+    end
+
     if server == "dartls" then
       goto continue
     end
@@ -96,4 +112,4 @@ function lsps_setting.setup()
   end
 end
 
-return lsps_setting
+return lsps_settings

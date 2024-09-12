@@ -1,10 +1,16 @@
 local whichkey = {
   "folke/which-key.nvim",
+  dependencies = {
+    "echasnovski/mini.icons",
+    "nvim-tree/nvim-web-devicons",
+  },
   event = "VeryLazy",
   config = function()
+    local icons = LOAD_UTIL("icons")
+
     local whichkey = require("which-key")
     whichkey.setup({
-      window = {
+      win = {
         border = "rounded",
       },
       layout = {
@@ -12,106 +18,100 @@ local whichkey = {
       },
     })
 
-    whichkey.register({
-      b = { "<cmd>Telescope buffers<cr>", "Buffer explorer" },
-      d = {
-        name = "Debug",
-        b = { "<cmd>DapToggleBreakpoint<cr>", "Toggle breakpoint" },
-        B = {
+    whichkey.add({
+      mode = "n",
+      { "<leader>b", "<cmd>Telescope buffers<cr>", desc = "Buffer explorer" },
+      {
+        { "<leader>d", group = "Debug" },
+        { "<leader>db", "<cmd>DapToggleBreakpoint<cr>", desc = "Toggle breakpoint" },
+        {
+          "<leader>dB",
           '<cmd>lua require("dap").set_breakpoint(vim.fn.input("Breakpoint condition: "))<cr>',
-          "Set conditional breakpoint",
+          desc = "Set conditional breakpoint",
         },
-        c = { "<cmd>DapContinue<cr>", "Run/Continue debug session" },
-        e = { '<cmd>lua require("dapui").eval()<cr>', "Evaluate expression" },
-        f = { '<cmd>lua require("dapui").float_element()<cr>', "Open floating window" },
-        i = { "<cmd>DapStepInto<cr>", "Step into" },
-        l = {
-          name = "Set Layout",
-          c = { "<cmd>DapSetupRunningConsole<cr>", "Running Console" },
-          C = { "<cmd>DapSetupDebuggingConsole<cr>", "Debugging Console" },
-          d = { "<cmd>DapSetupDebugging<cr>", "Debugging" },
-          r = { "<cmd>DapSetupRunning<cr>", "Running" },
+        { "<leader>dc", "<cmd>DapContinue<cr>", desc = "Run/Continue debug session" },
+        { "<leader>de", '<cmd>lua require("dapui").eval()<cr>', desc = "Evaluate expression" },
+        { "<leader>df", '<cmd>lua require("dapui").float_element()<cr>', desc = "Open floating window" },
+        { "<leader>di", "<cmd>DapStepInto<cr>", desc = "Step into" },
+        {
+          { "<leader>dl", group = "Set Layout" },
+          { "<leader>dlc", "<cmd>DapSetupRunningConsole<cr>", desc = "Running Console" },
+          { "<leader>dlC", "<cmd>DapSetupDebuggingConsole<cr>", desc = "Debugging Console" },
+          { "<leader>dld", "<cmd>DapSetupDebugging<cr>", desc = "Debugging" },
+          { "<leader>dlr", "<cmd>DapSetupRunning<cr>", desc = "Running" },
         },
-        L = { "<cmd>DapShowLog<cr>", "Show log" },
-        o = { "<cmd>DapStepOver<cr>", "Step over" },
-        O = { "<cmd>DapStepOut<cr>", "Step out" },
-        r = { "<cmd>DapToggleRepl<cr>", "Toggle repl" },
-        t = { "<cmd>DapTerminate<cr>", "Terminate" },
-        u = { '<cmd>lua require("dapui").toggle()<cr>', "UI open/close toggele" },
+        { "<leader>dL", "<cmd>DapShowLog<cr>", desc = "Show log" },
+        { "<leader>do", "<cmd>DapStepOver<cr>", desc = "Step over" },
+        { "<leader>dO", "<cmd>DapStepOut<cr>", desc = "Step out" },
+        { "<leader>dr", "<cmd>DapToggleRepl<cr>", desc = "Toggle repl" },
+        { "<leader>dt", "<cmd>DapTerminate<cr>", desc = "Terminate" },
+        { "<leader>du", '<cmd>lua require("dapui").toggle()<cr>', desc = "UI open/close toggele" },
       },
-      e = { "<cmd>NvimTreeToggle<cr>", "Toggle Explorer" },
-      f = {
-        name = "Find",
-        c = { "<cmd>Telescope commands<cr>", "Commands" },
-        H = { "<cmd>Telescope command_history<cr>", "Command history" },
-        f = { "<cmd>Telescope find_files<cr>", "File" },
-        g = { "<cmd>Telescope live_grep<cr>", "Grep" },
-        h = { "<cmd>Telescope help_tags<cr>", "Help" },
-        k = { "<cmd>Telescope keymaps<cr>", "Keymapts" },
-        q = { "<cmd>Telescope quickfix<cr>", "Quickfix" },
-        Q = { "<cmd>Telescope quickfixhistory<cr>", "Quickfix history" },
-        s = { "<cmd>Telescope current_buffer_fuzzy_find theme=ivy<cr>", "Search in current buffer" },
+      { "<leader>e", "<cmd>NvimTreeToggle<cr>", desc = "Toggle Explorer" },
+      {
+        { "<leader>f", group = "Find" },
+        { "<leader>fc", "<cmd>Telescope commands<cr>", desc = "Commands" },
+        { "<leader>fH", "<cmd>Telescope command_history<cr>", desc = "Command history" },
+        { "<leader>ff", "<cmd>Telescope find_files<cr>", desc = "File" },
+        { "<leader>fg", "<cmd>Telescope live_grep<cr>", desc = "Grep" },
+        { "<leader>fh", "<cmd>Telescope help_tags<cr>", desc = "Help" },
+        { "<leader>fk", "<cmd>Telescope keymaps<cr>", desc = "Keymapts" },
+        { "<leader>fq", "<cmd>Telescope quickfix<cr>", desc = "Quickfix" },
+        { "<leader>fQ", "<cmd>Telescope quickfixhistory<cr>", desc = "Quickfix history" },
+        { "<leader>fs", "<cmd>Telescope current_buffer_fuzzy_find theme=ivy<cr>", desc = "Search in current buffer" },
       },
-      g = {
-        name = "Git",
-        b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-        c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-        d = { "<cmd>Gitsigns diffthis HEAD<cr>", "Diff" },
-        j = { "<cmd>lua require 'gitsigns'.next_hunk()<cr>", "Next Hunk" },
-        k = { "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", "Prev Hunk" },
-        l = { '<cmd>lua require"gitsigns".blame_line()<CR>', "Line Blame" },
-        t = { "<cmd>LazyGit<cr>", "Open LazyGit" },
-        p = { '<cmd>lua require"gitsigns".preview_hunk()<CR>', "Preview hunk" },
-        r = { '<cmd>lua require"gitsigns".reset_hunk()<CR>', "Reset hunk" },
-        R = { '<cmd>lua require"gitsigns".reset_buffer()<CR>', "Reset buffer" },
-        s = { '<cmd>lua require"gitsigns".stage_hunk()<CR>', "Stage hunk" },
-        u = { '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>', "Undo stage hunk" },
-        o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
+      {
+        { "<leader>g", group = "Git" },
+        { "<leader>gb", "<cmd>Telescope git_branches<cr>", desc = "Checkout branch" },
+        { "<leader>gc", "<cmd>Telescope git_commits<cr>", desc = "Checkout commit" },
+        { "<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", desc = "Diff" },
+        { "<leader>gj", "<cmd>lua require 'gitsigns'.next_hunk()<cr>", desc = "Next Hunk" },
+        { "<leader>gk", "<cmd>lua require 'gitsigns'.prev_hunk()<cr>", desc = "Prev Hunk" },
+        { "<leader>gl", '<cmd>lua require"gitsigns".blame_line()<CR>', desc = "Line Blame" },
+        { "<leader>gt", "<cmd>LazyGit<cr>", desc = "Open LazyGit" },
+        { "<leader>gp", '<cmd>lua require"gitsigns".preview_hunk()<CR>', desc = "Preview hunk" },
+        { "<leader>gr", '<cmd>lua require"gitsigns".reset_hunk()<CR>', desc = "Reset hunk" },
+        { "<leader>gR", '<cmd>lua require"gitsigns".reset_buffer()<CR>', desc = "Reset buffer" },
+        { "<leader>gs", '<cmd>lua require"gitsigns".stage_hunk()<CR>', desc = "Stage hunk" },
+        { "<leader>gu", '<cmd>lua require"gitsigns".undo_stage_hunk()<CR>', desc = "Undo stage hunk" },
+        { "<leader>go", "<cmd>Telescope git_status<cr>", desc = "Open changed file" },
       },
-      h = { "<cmd>set hlsearch!<cr>", "Hightlight text toggle" },
-      l = {
-        name = "LSP",
-        a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-        A = { "<cmd>LspRestart<CR>", "Activate/reactivate LSP" },
-        d = { "<cmd>Telescope lsp_definitions<cr>", "Go to definition(s)" },
-        D = { "<cmd>Telescope lsp_type_definitions<cr>", "Go to type definition(s)" },
-        f = { "<cmd>lua vim.lsp.buf.format({timeout_ms=2000})<CR>", "Format current buffer" },
-        F = { "<cmd>Lspsaga finder<CR>", "Find references and implementations" },
-        h = { "<cmd>Lspsaga hover_doc<cr>", "Hover" },
-        H = { "<cmd>lua vim.lsp.buf.signature_help()<cr>", "Signture help" },
-        i = { "<cmd>Telescope lsp_implementations<cr>", "Goto implementation(s)" },
-        I = { "<cmd>LspInlayHintsToggle<cr>", "Toggle LSP inlay hints" },
-        l = { "<cmd>Telescope diagnostics<cr>", "Open diagnostic list" },
-        L = { "<cmd>LspLineToggle<cr>", "Toggle LSP line" },
-        o = { "<cmd>Lspsaga outline<cr>", "Outline" },
-        p = { "<cmd>Lspsaga peek_definition<cr>", "Preview definition" },
-        P = { "<cmd>Lspsaga peek_type_definition<cr>", "Preview type definition" },
-        r = { "<cmd>Lspsaga rename<cr>", "Rename" },
-        R = { "<cmd>Telescope lsp_references<cr>", "References" },
+      {
+        "<leader>h",
+        "<cmd>set hlsearch!<cr>",
+        desc = "Hightlight text toggle",
       },
-      r = { "<cmd>Triptych<cr>", "Toggle Triptych" },
-      w = { "<cmd>write<cr>", "Save" },
-      W = { "<cmd>lua vim.lsp.buf.format({timeout_ms=2000})<CR><cmd>write<cr>", "Write and format" },
-      [","] = { "<cmd>set wrap<cr>", "Set wrap" },
-    }, {
-      mode = "n",
-      prefix = "<leader>",
-    })
-
-    whichkey.register({
-      d = { "<cmd>lua vim.diagnostic.goto_prev()<CR>", "Jump to previous diagnostics" },
-      h = { '<cmd>lua require"gitsigns.actions".prev_hunk()<CR>', "Jump to previous hunk" },
-    }, {
-      mode = "n",
-      prefix = "[",
-    })
-
-    whichkey.register({
-      d = { "<cmd>lua vim.diagnostic.goto_next()<CR>", "Jump to next diagnostics" },
-      h = { '<cmd>lua require"gitsigns.actions".next_hunk()<CR>', "Jump to next hunk" },
-    }, {
-      mode = "n",
-      prefix = "]",
+      {
+        { "<leader>l", group = "LSP", icon = icons.ui.LSP },
+        { "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", desc = "Code Action" },
+        { "<leader>ld", "<cmd>Telescope lsp_definitions<cr>", desc = "Go to definition(s)" },
+        { "<leader>lD", "<cmd>Telescope lsp_type_definitions<cr>", desc = "Go to type definition(s)" },
+        { "<leader>lf", "<cmd>lua vim.lsp.buf.format({timeout_ms=2000})<CR>", desc = "Format current buffer" },
+        { "<leader>lh", "<cmd>lua vim.lsp.buf.hover()<cr>", desc = "Hover" },
+        { "<leader>lH", "<cmd>lua vim.lsp.buf.signature_help()<cr>", desc = "Signture help" },
+        { "<leader>li", "<cmd>Telescope lsp_implementations<cr>", desc = "Goto implementation(s)" },
+        { "<leader>lI", "<cmd>LspInlayHintsToggle<cr>", desc = "Toggle LSP inlay hints" },
+        { "<leader>ll", "<cmd>Telescope diagnostics<cr>", desc = "Open diagnostic list" },
+        { "<leader>lL", "<cmd>LspLineToggle<cr>", desc = "Toggle LSP line" },
+        { "<leader>lo", "<cmd>lua vim.diagnostic.open_float()<cr>", desc = "Open diagnostic under cursor" },
+        { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
+        { "<leader>lR", "<cmd>Telescope lsp_references<cr>", desc = "References" },
+      },
+      {
+        "<leader>o",
+        "<cmd>AerialToggle<cr>",
+        desc = "Toggle Symbols Outline",
+      },
+      { "<leader>r", "<cmd>Triptych<cr>", desc = "Toggle Triptych" },
+      { "<leader>w", "<cmd>write<cr>", desc = "Save" },
+      { "<leader>W", "<cmd>lua vim.lsp.buf.format({timeout_ms=2000})<CR><cmd>write<cr>", desc = "Write and format" },
+      { "<leader>,", "<cmd>set wrap<cr>", desc = "Set wrap" },
+      {
+        "[h",
+        '<cmd>lua require"gitsigns.actions".prev_hunk()<CR>',
+        desc = "Jump to previous hunk",
+      },
+      { "]h", '<cmd>lua require"gitsigns.actions".next_hunk()<CR>', desc = "Jump to next hunk" },
     })
   end,
 }

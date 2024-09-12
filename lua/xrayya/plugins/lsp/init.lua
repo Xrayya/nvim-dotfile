@@ -1,23 +1,5 @@
 local lsp = {
   {
-    "nvimdev/lspsaga.nvim",
-    event = "LspAttach",
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons",
-    },
-    config = function()
-      require("lspsaga").setup({
-        ui = {
-          border = "rounded",
-        },
-        outline = {
-          win_width = 35,
-        },
-      })
-    end,
-  },
-  {
     "neovim/nvim-lspconfig",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
@@ -28,9 +10,9 @@ local lsp = {
       local diagnostic_signs = LOAD_UTIL("icons").diagnostics
       local signs = {
         { name = "DiagnosticSignError", text = diagnostic_signs.outlined.Error },
-        { name = "DiagnosticSignWarn", text = diagnostic_signs.outlined.Warning },
-        { name = "DiagnosticSignHint", text = diagnostic_signs.outlined.Hint },
-        { name = "DiagnosticSignInfo", text = diagnostic_signs.outlined.Information },
+        { name = "DiagnosticSignWarn",  text = diagnostic_signs.outlined.Warning },
+        { name = "DiagnosticSignHint",  text = diagnostic_signs.outlined.Hint },
+        { name = "DiagnosticSignInfo",  text = diagnostic_signs.outlined.Information },
       }
 
       for _, sign in ipairs(signs) do
@@ -45,7 +27,7 @@ local lsp = {
         },
         float = {
           border = "rounded",
-          source = "always",
+          source = true,
         },
       })
 
@@ -53,7 +35,17 @@ local lsp = {
         border = "rounded",
       })
 
-      require("xrayya.plugins.lsp.lsp(s)-setting").setup()
+      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
+        border = "rounded",
+      })
+
+      vim.lsp.inlay_hint.enable(true)
+
+      vim.api.nvim_create_user_command("LspInlayHintsToggle", function(args)
+        vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
+      end, {})
+
+      require("xrayya.plugins.lsp.lsp(s)-settings").setup()
     end,
   },
   {
@@ -81,6 +73,7 @@ local lsp = {
   },
   {
     "j-hui/fidget.nvim",
+    enabled = false,
     event = "LspAttach",
     config = function()
       require("fidget").setup({
@@ -100,7 +93,7 @@ local lsp = {
     event = "LspAttach",
     init = function()
       vim.diagnostic.config({
-        virtual_text = false,
+        virtual_text = true,
         virtual_lines = { only_current_line = true },
       })
 
@@ -121,34 +114,21 @@ local lsp = {
     end,
   },
   {
-    "lvimuser/lsp-inlayhints.nvim",
-    branch = "anticonceal",
-    config = function()
-      vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
-      vim.api.nvim_create_autocmd("LspAttach", {
-        group = "LspAttach_inlayhints",
-        callback = function(args)
-          if not (args.data and args.data.client_id) then
-            return
-          end
-
-          local bufnr = args.buf
-          local client = vim.lsp.get_client_by_id(args.data.client_id)
-          require("lsp-inlayhints").on_attach(client, bufnr)
-        end,
-      })
-
-      require("lsp-inlayhints").setup()
-
-      vim.api.nvim_create_user_command("LspInlayHintsToggle", function(args)
-        require("lsp-inlayhints").toggle()
-      end, {})
-    end,
-  },
-  {
     "mfussenegger/nvim-jdtls",
   },
   require("xrayya.plugins.lsp.advanced-lsp-config"),
+  {
+    "folke/lazydev.nvim",
+    ft = "lua", -- only load on lua files
+    opts = {
+      library = {
+        -- See the configuration section for more details
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "luvit-meta/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+  { "Bilal2453/luvit-meta", lazy = true }, -- optional `vim.uv` typings
 }
 
 return lsp

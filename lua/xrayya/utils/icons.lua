@@ -118,6 +118,7 @@ return {
     ToolBox           = "󰦬",
     Calendar          = "",
     CloudDownload     = "",
+    Database          = "",
   },
   -- stylua: ignore
   diagnostics = {

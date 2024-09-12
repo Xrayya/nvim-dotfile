@@ -107,7 +107,7 @@ return {
   lsp = {
     function(msg)
       msg = msg or "LS Inactive"
-      local buf_clients = vim.lsp.buf_get_clients()
+      local buf_clients = vim.lsp.get_clients({ bufnr = 0 })
       if next(buf_clients) == nil then
         if type(msg) == "boolean" or #msg == 0 then
           return "LS Inactive"
@@ -160,12 +160,12 @@ return {
   },
   spaces = {
     function()
-      if not vim.api.nvim_buf_get_option(0, "expandtab") then
-        return "Tab size: " .. vim.api.nvim_buf_get_option(0, "tabstop")
+      if not vim.api.nvim_get_option_value("expandtab", { scope = "local" }) then
+        return "Tab size: " .. vim.api.nvim_get_option_value("tabstop", { scope = "local" })
       end
-      local size = vim.api.nvim_buf_get_option(0, "shiftwidth")
+      local size = vim.api.nvim_get_option_value("shiftwidth", { scope = "local" })
       if size == 0 then
-        size = vim.api.nvim_buf_get_option(0, "tabstop")
+        size = vim.api.nvim_get_option_value("tabstop", { scope = "local" })
       end
       return "Spaces: " .. size
     end,

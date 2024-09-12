@@ -13,11 +13,17 @@ local typescript_tools = {
       },
       capabilities = require("cmp_nvim_lsp").default_capabilities(),
       settings = {
+        code_lens = "all",
         publish_diagnostic_on = "change",
         expose_as_code_action = "all",
-        complete_function_calls = true,
         tsserver_file_preferences = {
           includeInlayParameterNameHints = "all",
+          includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+          includeInlayFunctionParameterTypeHints = true,
+          includeInlayVariableTypeHints = true,
+          includeInlayPropertyDeclarationTypeHints = true,
+          includeInlayFunctionLikeReturnTypeHints = true,
+          includeInlayEnumMemberValueHints = true,
         },
       },
     })
