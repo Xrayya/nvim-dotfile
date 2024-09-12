@@ -93,7 +93,7 @@ local lsp = {
     event = "LspAttach",
     init = function()
       vim.diagnostic.config({
-        virtual_text = false,
+        virtual_text = true,
         virtual_lines = { only_current_line = true },
       })
 
