@@ -22,7 +22,7 @@ function lsps_settings.setup()
     "lua_ls",
     "jdtls",
     "clangd",
-    "tsserver",
+    "ts_ls",
     "html",
     "cssls",
     "emmet_ls",
@@ -69,10 +69,10 @@ function lsps_settings.setup()
       opts = vim.tbl_deep_extend("force", opts, clangd_opts)
     end
 
-    if server == "tsserver" then
+    if server == "ts_ls" then
       goto continue
-      local tsserver_opts = import_custom_lsp_config("tsserver")
-      opts = vim.tbl_deep_extend("force", opts, tsserver_opts)
+      local ts_ls_opts = import_custom_lsp_config("ts_ls")
+      opts = vim.tbl_deep_extend("force", opts, ts_ls_opts)
     end
 
     if server == "jsonls" then
