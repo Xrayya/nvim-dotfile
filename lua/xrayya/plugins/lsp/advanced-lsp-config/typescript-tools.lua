@@ -13,6 +13,7 @@ local typescript_tools = {
       },
       capabilities = require("cmp_nvim_lsp").default_capabilities(),
       settings = {
+        code_lens = "all",
         publish_diagnostic_on = "change",
         expose_as_code_action = "all",
         tsserver_file_preferences = {
