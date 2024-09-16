@@ -3,6 +3,7 @@ local set = vim.opt
 set.hidden = true
 set.whichwrap:append("<,>,[,],h,l")
 set.wrap = false
+set.wrapscan = false
 set.linebreak = true
 set.encoding = "utf-8"
 set.fileencoding = "utf-8"
