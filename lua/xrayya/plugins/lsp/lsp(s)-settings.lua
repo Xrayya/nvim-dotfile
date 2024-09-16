@@ -4,15 +4,36 @@ function lsps_settings.setup()
   local mason_lspconfig = require("mason-lspconfig")
   local lspconfig = require("lspconfig")
 
+  local custom_mappings = {
+    ["ccls"] = "ccls",
+  }
+
   ---@param servers table
   local function create_lsp_list(servers)
     local mapping = mason_lspconfig.get_mappings().lspconfig_to_mason
     local ensure_installed = {}
     for _, server in pairs(servers) do
-      local server_package = require("mason-registry").get_package(mapping[server])
+      local server_mapping = mapping[server]
+
+      if not server_mapping then
+        local custom_server_mapping = custom_mappings[server]
+
+        if not custom_server_mapping then
+          vim.notify('No mapping found for "' .. server .. '"', vim.log.levels.ERROR)
+          goto continue
+        end
+
+        if vim.fn.executable(custom_server_mapping) < 1 then
+          vim.notify('"' .. custom_server_mapping .. '" is not installed and need manual install', vim.log.levels.ERROR)
+        end
+        goto continue
+      end
+
+      local server_package = require("mason-registry").get_package(server_mapping)
       if vim.fn.executable(vim.tbl_keys(server_package.spec.bin)[1]) < 1 then
         table.insert(ensure_installed, 1, server)
       end
+      ::continue::
     end
 
     return ensure_installed, servers
@@ -21,7 +42,8 @@ function lsps_settings.setup()
   local ensure_installed, ensure_setup = create_lsp_list({
     "lua_ls",
     "jdtls",
-    "clangd",
+    -- "clangd",
+    "ccls",
     "ts_ls",
     "html",
     "cssls",
@@ -39,7 +61,6 @@ function lsps_settings.setup()
   -- if vim.fn.has("win32") < 0 then
   --   table.insert(used_servers, "phpactor")
   -- end
-
 
   mason_lspconfig.setup({
     ensure_installed = ensure_installed,
@@ -64,8 +85,15 @@ function lsps_settings.setup()
     end
 
     if server == "clangd" then
+      goto continue
       local clangd_opts = import_custom_lsp_config("clangd")
       opts = vim.tbl_deep_extend("force", opts, clangd_opts)
+    end
+
+    if server == "ccls" then
+      goto continue
+      local ccls_opts = import_custom_lsp_config("ccls")
+      opts = vim.tbl_deep_extend("force", opts, ccls_opts)
     end
 
     if server == "ts_ls" then
