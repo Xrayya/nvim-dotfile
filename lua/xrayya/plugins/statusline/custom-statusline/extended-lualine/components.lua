@@ -47,6 +47,7 @@ return {
       local mode_code = vim.api.nvim_get_mode().mode
       return alias[mode_code] or mode_code
     end,
+    color = { gui = "bold" },
   },
   branch = {
     "branch",
@@ -59,6 +60,7 @@ return {
       readonly = "  ",
       unnamed = "  ",
     },
+    color = { gui = "bold" },
   },
   filesize = {
     "filesize",
@@ -187,8 +189,10 @@ return {
   },
   location = {
     "location",
+    color = { gui = "bold" },
   },
   progress = {
     "progress",
+    color = { gui = "bold" },
   },
 }
