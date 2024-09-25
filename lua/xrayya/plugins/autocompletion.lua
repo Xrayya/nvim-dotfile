@@ -61,6 +61,7 @@ local autocompletion = {
         end,
       },
       { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
+      "micangl/cmp-vimtex",
     },
     config = function()
       vim.g.completeopt = "menu,menuone,noselect"
@@ -106,6 +107,7 @@ local autocompletion = {
               luasnip = icons.misc.Luasnip,
               cmp_tabnine = icons.ui.HighPriority,
               cmdline = icons.ui.Terminal,
+              vimtex = icons.ui.Latex,
               ["vim-dadbod-completion"] = icons.ui.Database,
             })[entry.source.name]
 
@@ -116,10 +118,10 @@ local autocompletion = {
             end
 
             vim_item.menu = (vim_item.menu or "")
-                .. " "
-                .. (labelDetails.detail or "")
-                .. " "
-                .. (labelDetails.description or "")
+              .. " "
+              .. (labelDetails.detail or "")
+              .. " "
+              .. (labelDetails.description or "")
 
             return vim_item
           end,
@@ -177,6 +179,7 @@ local autocompletion = {
         }),
         sources = cmp.config.sources({
           { name = "nvim_lsp" },
+          { name = "vimtex" },
           { name = "cmp_tabnine" },
           { name = "luasnip" },
         }, {

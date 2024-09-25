@@ -97,6 +97,7 @@ local whichkey = {
         { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
         { "<leader>lR", "<cmd>Telescope lsp_references<cr>", desc = "References" },
       },
+      { "<leader>L", group = "LaTeX", icon = icons.ui.Latex },
       {
         "<leader>o",
         "<cmd>AerialToggle<cr>",
