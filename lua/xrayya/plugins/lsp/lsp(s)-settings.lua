@@ -55,7 +55,7 @@ function lsps_settings.setup()
     "jsonls",
     "yamlls",
     "lemminx",
-    "ltex",
+    "marksman",
   })
 
   -- if vim.fn.has("win32") < 0 then
