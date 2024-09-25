@@ -71,6 +71,7 @@ local treesitter = {
         },
         highlight = {
           enable = true,
+          disable = { "latex" },
         },
         indent = {
           enable = true,
