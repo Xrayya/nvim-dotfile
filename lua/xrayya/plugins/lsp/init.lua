@@ -10,9 +10,9 @@ local lsp = {
       local diagnostic_signs = LOAD_UTIL("icons").diagnostics
       local signs = {
         { name = "DiagnosticSignError", text = diagnostic_signs.outlined.Error },
-        { name = "DiagnosticSignWarn",  text = diagnostic_signs.outlined.Warning },
-        { name = "DiagnosticSignHint",  text = diagnostic_signs.outlined.Hint },
-        { name = "DiagnosticSignInfo",  text = diagnostic_signs.outlined.Information },
+        { name = "DiagnosticSignWarn", text = diagnostic_signs.outlined.Warning },
+        { name = "DiagnosticSignHint", text = diagnostic_signs.outlined.Hint },
+        { name = "DiagnosticSignInfo", text = diagnostic_signs.outlined.Information },
       }
 
       for _, sign in ipairs(signs) do
@@ -67,6 +67,7 @@ local lsp = {
         sources = {
           formatting.prettier,
           formatting.stylua,
+          formatting.blade_formatter,
         },
       })
     end,
