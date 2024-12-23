@@ -231,13 +231,13 @@ local autocompletion = {
   },
   {
     "CopilotC-Nvim/CopilotChat.nvim",
-    branch = "canary",
     dependencies = {
       { "github/copilot.vim" },
       { "nvim-lua/plenary.nvim" },
     },
+    build = "make tiktoken",
     config = function()
-      require("CopilotChat.integrations.cmp").setup()
+      -- require("CopilotChat.integrations.cmp").setup()
 
       require("CopilotChat").setup({
         mappings = {
