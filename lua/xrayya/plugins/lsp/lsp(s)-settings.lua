@@ -42,13 +42,13 @@ function lsps_settings.setup()
   local ensure_installed, ensure_setup = create_lsp_list({
     "lua_ls",
     "jdtls",
-    -- "clangd",
+    "clangd",
     "ccls",
     "ts_ls",
     "html",
     "cssls",
     "emmet_ls",
-    "phpactor",
+    "intelephense",
     "tailwindcss",
     "prismals",
     "rust_analyzer",
@@ -56,6 +56,7 @@ function lsps_settings.setup()
     "yamlls",
     "lemminx",
     "marksman",
+    "texlab",
   })
 
   -- if vim.fn.has("win32") < 0 then
@@ -85,7 +86,6 @@ function lsps_settings.setup()
     end
 
     if server == "clangd" then
-      goto continue
       local clangd_opts = import_custom_lsp_config("clangd")
       opts = vim.tbl_deep_extend("force", opts, clangd_opts)
     end
@@ -110,11 +110,6 @@ function lsps_settings.setup()
     if server == "yamlls" then
       local yamlls_opts = import_custom_lsp_config("yamlls")
       opts = vim.tbl_deep_extend("force", opts, yamlls_opts)
-    end
-
-    if server == "phpactor" then
-      local phpactor_opts = import_custom_lsp_config("phpactor")
-      opts = vim.tbl_deep_extend("force", opts, phpactor_opts)
     end
 
     if server == "ltex" then
