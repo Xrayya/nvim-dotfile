@@ -14,15 +14,12 @@ map("n", "<M-Left>", ":vertical resize -1<CR>", opts)
 -- Set command to enter visual block mode (since <C-v> always do paste)
 vim.cmd("command! Vb normal! <C-v>")
 
--- Kill buffer
-map("n", "<M-x>", ":bdelete<CR>", opts)
-
 -- Escape from terminal mode
 map("t", "<esc><esc>", "<C-\\><c-n>", opts)
 
--- Useful for switching between floating windows
-map("n", "<TAB>", ":cnext<CR>", opts)
-map("n", "<S-TAB>", ":cprevious<CR>", opts)
+-- -- Useful for switching between floating windows
+-- map("n", "<TAB>", ":cnext<CR>", opts)
+-- map("n", "<S-TAB>", ":cprevious<CR>", opts)
 
 -- <TAB> Completion
 map("i", "<expr> <TAB>", 'pumvisible() ? "\\<C-n>" : "\\<TAB>"', opts)
