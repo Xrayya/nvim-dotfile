@@ -18,8 +18,8 @@ vim.cmd("command! Vb normal! <C-v>")
 map("t", "<esc><esc>", "<C-\\><c-n>", opts)
 
 -- -- Useful for switching between floating windows
--- map("n", "<TAB>", ":cnext<CR>", opts)
--- map("n", "<S-TAB>", ":cprevious<CR>", opts)
+map("n", "<M-]>", ":cnext<CR>", opts)
+map("n", "<M-[>", ":cprevious<CR>", opts)
 
 -- <TAB> Completion
 map("i", "<expr> <TAB>", 'pumvisible() ? "\\<C-n>" : "\\<TAB>"', opts)
