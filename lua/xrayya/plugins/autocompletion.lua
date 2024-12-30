@@ -10,11 +10,11 @@ local autocompletion = {
 
       luasnip.filetype_extend("php", { "html" })
       luasnip.filetype_extend("blade", { "html" })
-      luasnip.filetype_extend("javascriptreact", { "html" })
-      luasnip.filetype_extend("typescriptreact", { "html" })
+      luasnip.filetype_extend("javascriptreact", { "html", "jsdoc" })
+      luasnip.filetype_extend("typescriptreact", { "html", "tsdoc" })
 
-      luasnip.filetype_extend("typescript", { "tsdoc" })
       luasnip.filetype_extend("javascript", { "jsdoc" })
+      luasnip.filetype_extend("typescript", { "tsdoc" })
       luasnip.filetype_extend("lua", { "luadoc" })
       luasnip.filetype_extend("python", { "pydoc" })
       luasnip.filetype_extend("rust", { "rustdoc" })
