@@ -99,6 +99,11 @@ local whichkey = {
       },
       { "<leader>L", group = "LaTeX", icon = icons.ui.Latex },
       {
+        "<leader>n",
+        "<cmd>Noice telescope<cr>",
+        desc = "Open notifcation center",
+      },
+      {
         "<leader>o",
         "<cmd>AerialToggle<cr>",
         desc = "Toggle Symbols Outline",
