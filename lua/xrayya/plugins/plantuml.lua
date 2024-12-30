@@ -6,10 +6,16 @@ vim.api.nvim_create_user_command("PlanumlCompile", function(args)
   local result = vim.fn.system(cmd)
 
   if string.find(result, "Error") or string.find(result, "Warning") then
-    vim.notify(result, vim.log.levels.ERROR)
+    vim.notify(result, vim.log.levels.ERROR, {
+      title = "PlantUML Compilation",
+    })
   else
-    vim.notify("Compiling done", vim.log.levels.INFO)
-    vim.notify("Output file: " .. output_file, vim.log.levels.INFO)
+    vim.notify("Compiling done", vim.log.levels.INFO, {
+      title = "PlantUML Compilation",
+    })
+    vim.notify("Output file: " .. output_file, vim.log.levels.INFO, {
+      title = "PlantUML Compilation",
+    })
     vim.fn.system(string.format('xdg-open "%s"', output_file))
   end
 end, {})

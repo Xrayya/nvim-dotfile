@@ -19,12 +19,20 @@ function lsps_settings.setup()
         local custom_server_mapping = custom_mappings[server]
 
         if not custom_server_mapping then
-          vim.notify('No mapping found for "' .. server .. '"', vim.log.levels.ERROR)
+          vim.notify('No mapping found for "' .. server .. '"', vim.log.levels.ERROR, {
+            title = "Xrayya LSPs Settings",
+          })
           goto continue
         end
 
         if vim.fn.executable(custom_server_mapping) < 1 then
-          vim.notify('"' .. custom_server_mapping .. '" is not installed and need manual install', vim.log.levels.ERROR)
+          vim.notify(
+            '"' .. custom_server_mapping .. '" is not installed and need manual install',
+            vim.log.levels.ERROR,
+            {
+              title = "Xrayya LSPs Settings",
+            }
+          )
         end
         goto continue
       end

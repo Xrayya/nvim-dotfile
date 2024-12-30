@@ -15,8 +15,12 @@ map("n", "<F5>", function()
   local result = vim.fn.system(cmd)
 
   if string.find(result, "error") then
-    vim.notify(result, vim.log.levels.ERROR)
+    vim.notify(result, vim.log.levels.ERROR, {
+      title = "C++ Compilation",
+    })
   else
-    vim.notify("Compiling done", vim.log.levels.INFO)
+    vim.notify("Compiling done", vim.log.levels.INFO, {
+      title = "C++ Compilation",
+    })
   end
 end, opts)
