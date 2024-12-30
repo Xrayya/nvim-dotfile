@@ -3,7 +3,7 @@ local external = {
     "vyfor/cord.nvim",
     event = "VeryLazy",
     branch = "client-server",
-    build = ":Cord fetch",
+    build = ":Cord update",
     config = function()
       require("cord").setup({
         text = {
