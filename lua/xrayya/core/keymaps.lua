@@ -81,6 +81,9 @@ map("n", "<C-l>", "<C-w>l", opts)
 map("n", "<C-\\>", ":vsplit<CR>", opts)
 map("n", "<A-\\>", ":split<CR>", opts)
 
+map("n", "]q", ":cnext<CR>", opts)
+map("n", "[q", ":cprevious<CR>", opts)
+
 map(
   "n",
   "<leader>=",
