@@ -23,7 +23,7 @@ local external = {
           plugin_manager = function(opts)
             return "Managing plugins using " .. opts.tooltip
           end,
-          lsp_manager = function(opts)
+          lsp = function(opts)
             return "Configuring LSP using " .. opts.tooltip
           end,
           docs = function(opts)
