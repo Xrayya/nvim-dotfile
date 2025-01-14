@@ -183,7 +183,7 @@ local config = {
   -- for a list of options
   settings = {
     java = {
-      autobild = {
+      autobuild = {
         enabled = true,
       },
       codeGeneration = {
