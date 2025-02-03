@@ -91,6 +91,7 @@ local autocompletion = {
             require("luasnip").lsp_expand(args.body)
           end,
         },
+        ---@diagnostic disable-next-line: missing-fields
         formatting = {
           fields = { "kind", "abbr", "menu" },
           format = function(entry, vim_item)
@@ -100,6 +101,8 @@ local autocompletion = {
               vim_item.kind = icons.misc.Tabnine
               vim_item.kind_hl_group = "CmpItemKindTabNine"
             end
+
+            -- vim.notify(vim.inspect(entry.source.source))
 
             vim_item.menu = ({
               buffer = icons.ui.Buffer,
@@ -118,11 +121,18 @@ local autocompletion = {
               labelDetails.description = ""
             end
 
-            vim_item.menu = (vim_item.menu or "")
-              .. " "
-              .. (labelDetails.detail or "")
-              .. " "
-              .. (labelDetails.description or "")
+            vim_item.menu = string.format(
+              "%s %s %s",
+              (vim_item.menu or ""),
+              (labelDetails.detail or ""),
+              (labelDetails.description or "")
+            )
+
+            if entry.source.name == "nvim_lsp" and entry.source.source.client._log_prefix then
+              vim_item.menu = vim_item.menu
+                  .. " "
+                  .. string.format("[%s]", entry.source.source.client._log_prefix:match("LSP%[(.-)%]"))
+            end
 
             return vim_item
           end,
@@ -131,6 +141,7 @@ local autocompletion = {
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),
         },
+        ---@diagnostic disable-next-line: missing-fields
         sorting = {
           comparators = {
             compare.offset,
