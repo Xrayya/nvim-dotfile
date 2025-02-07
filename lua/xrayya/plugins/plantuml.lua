@@ -4,6 +4,13 @@ vim.api.nvim_create_user_command(
     local input_file = vim.fn.expand("%:p")
     local output_file = vim.fn.expand("%:p:r") .. ".png"
 
+    if vim.fn.executable("plantuml") < 1 then
+      vim.notify("PlantUML is not installed", vim.log.levels.ERROR, {
+        title = "PlantUML Compilation",
+      })
+      return
+    end
+
     vim.uv.spawn(
       "plantuml",
       ---@diagnostic disable-next-line: missing-fields
