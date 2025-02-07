@@ -12,6 +12,7 @@ local git = {
           changedelete = { text = "~" },
           untracked = { text = "┆" },
         },
+        attach_to_untracked = true,
         preview_config = {
           border = "rounded",
         },
