@@ -63,6 +63,7 @@ local autocompletion = {
       },
       { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
       "micangl/cmp-vimtex",
+      "folke/lazydev.nvim"
     },
     config = function()
       vim.g.completeopt = "menu,menuone,noselect"
@@ -190,6 +191,10 @@ local autocompletion = {
           end, { "i", "s" }),
         }),
         sources = cmp.config.sources({
+          {
+            name = "lazydev",
+            group_index = 0, -- set group index to 0 to skip loading LuaLS completions
+          },
           { name = "nvim_lsp" },
           { name = "vimtex" },
           { name = "cmp_tabnine" },
