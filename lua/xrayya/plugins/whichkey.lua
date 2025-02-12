@@ -100,7 +100,7 @@ local whichkey = {
       { "<leader>L", group = "LaTeX", icon = icons.ui.Latex },
       {
         "<leader>n",
-        "<cmd>Noice telescope<cr>",
+        "<cmd>NoiceAll<cr>",
         desc = "Open notifcation center",
       },
       {
