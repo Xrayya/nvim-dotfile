@@ -2,7 +2,6 @@ local external = {
   {
     "vyfor/cord.nvim",
     event = "VeryLazy",
-    branch = "client-server",
     build = ":Cord update",
     config = function()
       require("cord").setup({
@@ -40,7 +39,7 @@ local external = {
               or hour >= 5 and "🌅 Morning productivity"
               or "🌙 Midnight hacking"
 
-            return string.format("%s: %s", status, opts.workspace_name)
+            return string.format("%s: %s", status, opts.workspace)
           end,
           dashboard = "Home",
         },
@@ -56,7 +55,7 @@ local external = {
         },
         idle = {
           details = function(opts)
-            return string.format("Taking a break from %s", opts.workspace_name)
+            return string.format("Taking a break from %s", opts.workspace)
           end,
         },
       })
