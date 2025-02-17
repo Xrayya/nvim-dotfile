@@ -1,7 +1,4 @@
-local map = vim.keymap.set
-local opts = { noremap = true, silent = true }
-
-map("n", "<F5>", function()
+vim.api.nvim_create_user_command("CppCompile",  function()
   local input_file = vim.fn.expand("%:p")
   local output_file = vim.fn.expand("%:p:r")
 
@@ -11,16 +8,18 @@ map("n", "<F5>", function()
     output_file = output_file .. ".out"
   end
 
-  local cmd = string.format('g++ -fdiagnostics-color=always -g "%s" -o "%s"', input_file, output_file)
-  local result = vim.fn.system(cmd)
-
-  if string.find(result, "error") then
-    vim.notify(result, vim.log.levels.ERROR, {
-      title = "C++ Compilation",
-    })
-  else
-    vim.notify("Compiling done", vim.log.levels.INFO, {
-      title = "C++ Compilation",
-    })
-  end
-end, opts)
+  ---@diagnostic disable-next-line: missing-fields
+  vim.uv.spawn("g++", {
+    args = { "-fdiagnostics-color=always", "-Wall", "-g", input_file, "-o", output_file },
+  }, function(code, _)
+    if code == 0 then
+      vim.notify("Compiling done", vim.log.levels.INFO, {
+        title = "C++ Compilation",
+      })
+    else
+      vim.notify("Compiling failed", vim.log.levels.ERROR, {
+        title = "C++ Compilation",
+      })
+    end
+  end)
+end, {})
