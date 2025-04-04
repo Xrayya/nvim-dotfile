@@ -29,7 +29,23 @@ local lsp = {
           border = "rounded",
           source = true,
         },
+        virtual_text = true,
+        virtual_lines = {
+          current_line = true,
+        },
       })
+
+      vim.g.lsp_line_enabled = true
+
+      vim.api.nvim_create_user_command("LspLineToggle", function(args)
+        if vim.g.lsp_line_enabled then
+          vim.diagnostic.config({ virtual_lines = false })
+          vim.g.lsp_line_enabled = false
+        else
+          vim.diagnostic.config({ virtual_lines = { current_line = true } })
+          vim.g.lsp_line_enabled = true
+        end
+      end, {})
 
       vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.buf.signature_help({
         border = "rounded",
@@ -87,31 +103,6 @@ local lsp = {
           },
         },
       })
-    end,
-  },
-  {
-    "https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-    event = "LspAttach",
-    init = function()
-      vim.diagnostic.config({
-        virtual_text = true,
-        virtual_lines = { only_current_line = true },
-      })
-
-      vim.g.lsp_line_enabled = true
-    end,
-    config = function()
-      require("lsp_lines").setup()
-
-      vim.api.nvim_create_user_command("LspLineToggle", function(args)
-        if vim.g.lsp_line_enabled then
-          vim.diagnostic.config({ virtual_lines = false })
-          vim.g.lsp_line_enabled = false
-        else
-          vim.diagnostic.config({ virtual_lines = { only_current_line = true } })
-          vim.g.lsp_line_enabled = true
-        end
-      end, {})
     end,
   },
   {
