@@ -6,6 +6,8 @@ function lsps_settings.setup()
 
   local custom_mappings = {
     ["ccls"] = "ccls",
+    ccls = "ccls",
+    nushell = "nu",
   }
 
   ---@param servers table
