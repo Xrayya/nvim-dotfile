@@ -17,7 +17,9 @@ local telescope = {
 
       local ui = LOAD_UTIL("icons").ui
 
-      require("telescope").setup({
+      local telescope = require("telescope")
+
+      telescope.setup({
         pickers = {
           find_files = {
             hidden = true,
@@ -55,25 +57,25 @@ local telescope = {
             layout_strategy = "vertical",
             hidden = true,
             no_ignore = true,
-            jump_type = "never"
+            jump_type = "never",
           },
           lsp_type_definitions = {
             layout_strategy = "vertical",
             hidden = true,
             no_ignore = true,
-            jump_type = "never"
+            jump_type = "never",
           },
           lsp_references = {
             layout_strategy = "vertical",
             hidden = true,
             no_ignore = true,
-            jump_type = "never"
+            jump_type = "never",
           },
           lsp_implementations = {
             layout_strategy = "vertical",
             hidden = true,
             no_ignore = true,
-            jump_type = "never"
+            jump_type = "never",
           },
           colorscheme = {
             enable_preview = true,
@@ -116,8 +118,8 @@ local telescope = {
         },
       })
 
-      require("telescope").load_extension("fzf")
-      require("telescope").load_extension("ui-select")
+      telescope.load_extension("fzf")
+      telescope.load_extension("ui-select")
     end,
   },
   {
