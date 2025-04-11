@@ -79,11 +79,6 @@ local autocompletion = {
         exclude = { "java" },
       })
 
-      local has_words_before = function()
-        local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-        return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-      end
-
       vim.keymap.set("i", "<M-Space>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", { noremap = true, silent = true })
 
       cmp.setup({
@@ -116,6 +111,13 @@ local autocompletion = {
               ["vim-dadbod-completion"] = icons.ui.Database,
             })[entry.source.name]
 
+            if entry.source.name == "nvim_lsp" and entry.source.source.client._log_prefix then
+              vim_item.menu = vim_item.menu
+                  .. " "
+                  .. string.format("[%s]", entry.source.source.client._log_prefix:match("LSP%[(.-)%]"))
+            end
+
+
             local labelDetails = (entry.completion_item.labelDetails or {})
 
             if entry.source.name == "vim-dadbod-completion" then
@@ -128,12 +130,6 @@ local autocompletion = {
               (labelDetails.detail or ""),
               (labelDetails.description or "")
             )
-
-            if entry.source.name == "nvim_lsp" and entry.source.source.client._log_prefix then
-              vim_item.menu = vim_item.menu
-                  .. " "
-                  .. string.format("[%s]", entry.source.source.client._log_prefix:match("LSP%[(.-)%]"))
-            end
 
             return vim_item
           end,
@@ -174,8 +170,6 @@ local autocompletion = {
           ["<Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_next_item()
-            elseif has_words_before() then
-              fallback()
             else
               fallback()
             end
@@ -183,8 +177,6 @@ local autocompletion = {
           ["<S-Tab>"] = cmp.mapping(function(fallback)
             if cmp.visible() then
               cmp.select_prev_item()
-            elseif luasnip.jumpable(-1) then
-              luasnip.jump(-1)
             else
               fallback()
             end
