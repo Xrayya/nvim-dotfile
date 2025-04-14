@@ -19,6 +19,7 @@ require("lazy").setup({
   spec = {
     "folke/lazy.nvim",
     { import = "xrayya.plugins.essential" },
+    { import = "xrayya.plugins.extra" },
   },
   install = {
     colorscheme = { "tokyonight", "catppuccin", "solarized-osaka" },
