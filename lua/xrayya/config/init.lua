@@ -3,8 +3,8 @@ local load = function(module)
 end
 
 load("utils.global-functions")
-load("core.options")
-load("core.keymaps")
-load("core.plugin-loader")
+load("config.options")
+load("config.keymaps")
+load("config.plugin-loader")
 load("autocommands")
 load( "user-commands")

@@ -18,7 +18,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup({
   spec = {
     "folke/lazy.nvim",
-    { import = "xrayya.plugins" },
+    { import = "xrayya.plugins.essential" },
   },
   install = {
     colorscheme = { "tokyonight", "catppuccin", "solarized-osaka" },
