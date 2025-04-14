@@ -1,4 +1,5 @@
-local autocompletion = {
+---@type LazySpec
+return {
   {
     "L3MON4D3/LuaSnip",
     build = "make install_jsregexp",
@@ -28,17 +29,37 @@ local autocompletion = {
       luasnip.filetype_extend("ruby", { "rdoc" })
       luasnip.filetype_extend("sh", { "shelldoc" })
 
-      local map = vim.keymap.set
-      local opts = { noremap = true, silent = true }
+      ---@param mode string | string[]
+      ---@param lhs string
+      ---@param rhs function
+      local function map(mode, lhs, rhs)
+        vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true })
+      end
 
-      map("i", "<M-l>", "<cmd>lua require('luasnip').jump(1)<cr>", opts)
-      map("i", "<M-h>", "<cmd>lua require('luasnip').jump(-1)<cr>", opts)
-      map("s", "<M-l>", "<cmd>lua require('luasnip').jump(1)<cr>", opts)
-      map("s", "<M-h>", "<cmd>lua require('luasnip').jump(-1)<cr>", opts)
-      map("i", "<M-L>", "<cmd>lua require('luasnip').change_choice(1)<cr>", opts)
-      map("i", "<M-H>", "<cmd>lua require('luasnip').change_choice(-1)<cr>", opts)
-      map("s", "<M-L>", "<cmd>lua require('luasnip').change_choice(1)<cr>", opts)
-      map("s", "<M-H>", "<cmd>lua require('luasnip').change_choice(-1)<cr>", opts)
+      map("i", "<M-l>", function()
+        luasnip.jump(1)
+      end)
+      map("i", "<M-h>", function()
+        luasnip.jump(-1)
+      end)
+      map("s", "<M-l>", function()
+        luasnip.jump(1)
+      end)
+      map("s", "<M-h>", function()
+        luasnip.jump(-1)
+      end)
+      map("i", "<M-L>", function()
+        luasnip.change_choice(1)
+      end)
+      map("i", "<M-H>", function()
+        luasnip.change_choice(-1)
+      end)
+      map("s", "<M-L>", function()
+        luasnip.change_choice(1)
+      end)
+      map("s", "<M-H>", function()
+        luasnip.change_choice(-1)
+      end)
     end,
   },
   {
@@ -65,22 +86,20 @@ local autocompletion = {
       },
       { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
       "micangl/cmp-vimtex",
-      "folke/lazydev.nvim"
+      "folke/lazydev.nvim",
     },
-    config = function()
+    init = function()
       vim.g.completeopt = "menu,menuone,noselect,popup"
-
+    end,
+    opts = function(_, opts)
       local cmp = require("cmp")
       local compare = require("cmp.config.compare")
       local icons = LOAD_UTIL("icons")
 
       vim.api.nvim_set_hl(0, "CmpItemKindTabNine", { fg = "#bb5df3" })
 
-      require("luasnip.loaders.from_vscode").lazy_load({
-        exclude = { "java" },
-      })
-
-      cmp.setup({
+      ---@type cmp.ConfigSchema
+      return {
         snippet = {
           expand = function(args)
             require("luasnip").lsp_expand(args.body)
@@ -115,7 +134,6 @@ local autocompletion = {
                   .. " "
                   .. string.format("[%s]", entry.source.source.client._log_prefix:match("LSP%[(.-)%]"))
             end
-
 
             local labelDetails = (entry.completion_item.labelDetails or {})
 
@@ -194,7 +212,11 @@ local autocompletion = {
           { name = "buffer" },
           { name = "path" },
         }),
-      })
+      }
+    end,
+    config = function(_, opts)
+      local cmp = require("cmp")
+      cmp.setup(opts)
 
       cmp.setup.cmdline({ "/", "?" }, {
         mapping = cmp.mapping.preset.cmdline(),
@@ -256,5 +278,3 @@ local autocompletion = {
     end,
   },
 }
-
-return autocompletion
