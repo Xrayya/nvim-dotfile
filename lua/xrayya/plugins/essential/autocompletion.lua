@@ -6,7 +6,9 @@ local autocompletion = {
     config = function()
       local luasnip = require("luasnip")
 
-      require("luasnip.loaders.from_vscode").lazy_load()
+      require("luasnip.loaders.from_vscode").lazy_load({
+        exclude = { "java" },
+      })
 
       luasnip.filetype_extend("php", { "html" })
       luasnip.filetype_extend("blade", { "html" })
@@ -66,11 +68,10 @@ local autocompletion = {
       "folke/lazydev.nvim"
     },
     config = function()
-      vim.g.completeopt = "menu,menuone,noselect"
+      vim.g.completeopt = "menu,menuone,noselect,popup"
 
       local cmp = require("cmp")
       local compare = require("cmp.config.compare")
-      local luasnip = require("luasnip")
       local icons = LOAD_UTIL("icons")
 
       vim.api.nvim_set_hl(0, "CmpItemKindTabNine", { fg = "#bb5df3" })
@@ -78,8 +79,6 @@ local autocompletion = {
       require("luasnip.loaders.from_vscode").lazy_load({
         exclude = { "java" },
       })
-
-      vim.keymap.set("i", "<M-Space>", "<cmd>lua vim.lsp.buf.signature_help()<cr>", { noremap = true, silent = true })
 
       cmp.setup({
         snippet = {

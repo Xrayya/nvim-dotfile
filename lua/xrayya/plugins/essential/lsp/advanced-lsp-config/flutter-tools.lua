@@ -45,7 +45,7 @@ local flutter_tools = {
       end,
     })
 
-    vim.cmd("DapSetupRunning")
+    -- vim.cmd("DapSetupRunning")
   end,
 }
 

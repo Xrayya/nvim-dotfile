@@ -4,6 +4,7 @@ local colorschemes = {
     lazy = false,
     priority = 1000,
     config = function()
+      ---@diagnostic disable-next-line: missing-fields
       require("tokyonight").setup({
         style = "night",
         light_style = "day",

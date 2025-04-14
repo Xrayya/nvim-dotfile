@@ -10,6 +10,7 @@ local ui = {
       "rcarriga/nvim-notify",
     },
     config = function()
+      ---@diagnostic disable-next-line: missing-fields
       require("noice").setup({
         lsp = {
           override = {
@@ -290,6 +291,7 @@ local ui = {
   },
   {
     "shellRaining/hlchunk.nvim",
+    enabled = false,
     config = function()
       require("hlchunk").setup({
         chunk = {

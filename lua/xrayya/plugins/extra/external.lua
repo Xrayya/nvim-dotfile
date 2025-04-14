@@ -4,6 +4,7 @@ local external = {
     event = "VeryLazy",
     build = ":Cord update",
     config = function()
+      ---@diagnostic disable-next-line: missing-fields
       require("cord").setup({
         text = {
           viewing = function(opts)

@@ -37,7 +37,7 @@ vim.api.nvim_create_user_command(
   {}
 )
 
-local plantuml = {
+M = {
   "javiorfo/nvim-soil",
   enabled = false,
   lazy = true,
@@ -52,4 +52,4 @@ local plantuml = {
   },
 }
 
-return plantuml
+return M

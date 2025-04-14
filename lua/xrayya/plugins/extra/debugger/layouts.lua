@@ -1,5 +1,5 @@
-local debug_ui_layouts = {}
-debug_ui_layouts.running = {
+M = {}
+M.running = {
   {
     elements = {
       {
@@ -11,7 +11,7 @@ debug_ui_layouts.running = {
     size = 10,
   },
 }
-debug_ui_layouts.running_console = {
+M.running_console = {
   {
     elements = {
       {
@@ -27,7 +27,7 @@ debug_ui_layouts.running_console = {
     size = 0.45,
   },
 }
-debug_ui_layouts.debugging_console = {
+M.debugging_console = {
   {
     elements = {
       {
@@ -65,7 +65,7 @@ debug_ui_layouts.debugging_console = {
     size = 0.45,
   },
 }
-debug_ui_layouts.debugging = {
+M.debugging = {
   {
     elements = {
       {
@@ -99,4 +99,4 @@ debug_ui_layouts.debugging = {
     size = 10,
   },
 }
-return debug_ui_layouts
+return M

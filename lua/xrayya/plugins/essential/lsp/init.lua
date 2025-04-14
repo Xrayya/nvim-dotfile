@@ -72,7 +72,7 @@ local lsp = {
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
       end, {})
 
-      require("xrayya.plugins.lsp.lsp(s)-settings").setup()
+      require("xrayya.plugins.essential.lsp.lsp(s)-settings").setup()
     end,
   },
   {
@@ -119,7 +119,7 @@ local lsp = {
   {
     "mfussenegger/nvim-jdtls",
   },
-  require("xrayya.plugins.lsp.advanced-lsp-config"),
+  require("xrayya.plugins.essential.lsp.advanced-lsp-config"),
   {
     "folke/lazydev.nvim",
     dependencies = {

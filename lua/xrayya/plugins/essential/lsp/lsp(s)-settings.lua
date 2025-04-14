@@ -5,7 +5,6 @@ function lsps_settings.setup()
   local lspconfig = require("lspconfig")
 
   local custom_mappings = {
-    ["ccls"] = "ccls",
     ccls = "ccls",
     nushell = "nu",
   }
@@ -67,12 +66,14 @@ function lsps_settings.setup()
     "lemminx",
     "marksman",
     "texlab",
+    "nushell",
   })
 
   -- if vim.fn.has("win32") < 0 then
   --   table.insert(used_servers, "phpactor")
   -- end
 
+  ---@diagnostic disable-next-line: missing-fields
   mason_lspconfig.setup({
     ensure_installed = ensure_installed,
   })
@@ -82,7 +83,7 @@ function lsps_settings.setup()
   local opts = {}
 
   local import_custom_lsp_config = function(server)
-    return require("xrayya.plugins.lsp.custom-lsp-config." .. server)
+    return require("xrayya.plugins.essential.lsp.custom-lsp-config." .. server)
   end
 
   for _, server in pairs(ensure_setup) do
@@ -131,6 +132,11 @@ function lsps_settings.setup()
       local pylsp_opts = import_custom_lsp_config("pylsp")
       opts = vim.tbl_deep_extend("force", opts, pylsp_opts)
     end
+
+    -- if server == "rust_analyzer" then
+    --   local rust_analyzer_opts = import_custom_lsp_config("rust_analyzer")
+    --   opts = vim.tbl_deep_extend("force", opts, rust_analyzer_opts)
+    -- end
 
     if server == "dartls" then
       goto continue

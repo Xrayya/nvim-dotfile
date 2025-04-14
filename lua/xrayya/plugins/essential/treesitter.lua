@@ -34,6 +34,7 @@ local treesitter = {
     },
     config = function()
       local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+
       parser_config.blade = {
         install_info = {
           url = "https://github.com/EmranMR/tree-sitter-blade",
@@ -51,6 +52,7 @@ local treesitter = {
 
       require("nvim-treesitter.install").compilers = { "gcc", "clang" }
 
+      ---@diagnostic disable-next-line: missing-fields
       require("nvim-treesitter.configs").setup({
         ensure_installed = {
           "bash",

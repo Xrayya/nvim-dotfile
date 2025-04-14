@@ -1,6 +1,6 @@
 local vimtex = {
   "lervag/vimtex",
-  -- enabled = false,
+  enabled = false,
   init = function()
     vim.g.vimtex_mappings_prefix = "<leader>L"
   end,
