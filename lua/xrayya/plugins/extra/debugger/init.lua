@@ -9,7 +9,7 @@ local debugger = {
     config = function()
       require("mason-nvim-dap").setup({
         ensure_installed = { "cppdbg", "javadbg", "javatest", "dart" },
-        handlers = require("xrayya.plugins.debugger.handlers"),
+        handlers = require("xrayya.plugins.extra.debugger.handlers"),
       })
     end,
   },
@@ -22,7 +22,7 @@ local debugger = {
           "nvim-neotest/nvim-nio",
         },
         config = function()
-          local layouts = require("xrayya.plugins.debugger.layouts")
+          local layouts = require("xrayya.plugins.extra.debugger.layouts")
           local function setup_dap_with_layout(layout)
             ---@diagnostic disable-next-line: missing-fields
             require("dapui").setup({
