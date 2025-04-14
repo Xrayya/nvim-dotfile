@@ -19,6 +19,9 @@ local lsp = {
         vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = "" })
       end
 
+      vim.g.diag_virtual_text_enabled = true
+      vim.g.diag_virtual_line_enabled = true
+
       vim.diagnostic.config({
         update_in_insert = true,
         severity_sort = true,
@@ -29,21 +32,29 @@ local lsp = {
           border = "rounded",
           source = true,
         },
-        virtual_text = true,
+        virtual_text = vim.g.diag_virtual_text_enabled,
         virtual_lines = {
-          current_line = true,
+          current_line = vim.g.diag_virtual_line_enabled,
         },
       })
 
-      vim.g.lsp_line_enabled = true
+      vim.api.nvim_create_user_command("DiagnosticVirtualTextToggle", function(args)
+        if vim.g.diag_virtual_text_enabled then
+          vim.diagnostic.config({ virtual_text = false })
+          vim.g.diag_virtual_text_enabled = false
+        else
+          vim.diagnostic.config({ virtual_text = true })
+          vim.g.diag_virtual_text_enabled = true
+        end
+      end, {})
 
-      vim.api.nvim_create_user_command("LspLineToggle", function(args)
-        if vim.g.lsp_line_enabled then
+      vim.api.nvim_create_user_command("DiagnosticVirtualLineToggle", function(args)
+        if vim.g.diag_virtual_line_enabled then
           vim.diagnostic.config({ virtual_lines = false })
-          vim.g.lsp_line_enabled = false
+          vim.g.diag_virtual_line_enabled = false
         else
           vim.diagnostic.config({ virtual_lines = { current_line = true } })
-          vim.g.lsp_line_enabled = true
+          vim.g.diag_virtual_line_enabled = true
         end
       end, {})
 

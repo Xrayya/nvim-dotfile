@@ -169,7 +169,7 @@ whichkey.add({
     { "<leader>li", telescope_builtin.lsp_implementations, desc = "Goto implementation(s)" },
     { "<leader>lI", "<cmd>LspInlayHintsToggle<cr>",        desc = "Toggle LSP inlay hints" },
     { "<leader>ll", telescope_builtin.diagnostics,         desc = "Open diagnostic list" },
-    { "<leader>lL", "<cmd>LspLineToggle<cr>",              desc = "Toggle LSP line" },
+    { "<leader>lL", "<cmd>DiagnosticVirtualLineToggle<cr>",              desc = "Toggle Diagnostic Virtual Line" },
     { "<leader>lo", vim.diagnostic.open_float,             desc = "Open diagnostic under cursor" },
     {
       "<leader>lr",
@@ -177,6 +177,7 @@ whichkey.add({
       desc = "Rename",
     },
     { "<leader>lR", "<cmd>Telescope lsp_references<cr>", desc = "References" },
+    { "<leader>lT", "<cmd>DiagnosticVirtualTextToggle<cr>",              desc = "Toggle Diagnostic Virtual Text" },
   },
   { "<leader>L", group = "LaTeX",           icon = icons.ui.Latex },
   {
