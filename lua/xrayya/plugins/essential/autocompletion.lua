@@ -71,6 +71,7 @@ return {
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-cmdline",
+      "L3MON4D3/LuaSnip",
       "saadparwaiz1/cmp_luasnip",
       "windwp/nvim-autopairs",
       {
@@ -132,8 +133,8 @@ return {
 
             if entry.source.name == "nvim_lsp" and entry.source.source.client._log_prefix then
               vim_item.menu = vim_item.menu
-                .. " "
-                .. string.format("[%s]", entry.source.source.client._log_prefix:match("LSP%[(.-)%]"))
+                  .. " "
+                  .. string.format("[%s]", entry.source.source.client._log_prefix:match("LSP%[(.-)%]"))
             end
 
             local labelDetails = (entry.completion_item.labelDetails or {})
