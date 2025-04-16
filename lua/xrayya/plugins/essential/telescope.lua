@@ -1,17 +1,18 @@
-local telescope = {
+return {
+  { "nvim-lua/plenary.nvim", lazy = true },
+  { "nvim-tree/nvim-web-devicons", lazy = true },
   {
     "nvim-telescope/telescope.nvim",
     event = "VeryLazy",
     dependencies = {
-      "nvim-lua/plenary.nvim",
       {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
       },
       "nvim-telescope/telescope-ui-select.nvim",
-      "nvim-tree/nvim-web-devicons",
     },
-    config = function()
+    opts = {},
+    config = function(_, opts)
       local themes = require("telescope.themes")
       local actions = require("telescope.actions")
 
@@ -19,7 +20,7 @@ local telescope = {
 
       local telescope = require("telescope")
 
-      telescope.setup({
+      local telescope_config = {
         pickers = {
           find_files = {
             hidden = true,
@@ -116,7 +117,11 @@ local telescope = {
             themes.get_dropdown(),
           },
         },
-      })
+      }
+
+      telescope_config = vim.tbl_deep_extend("force", telescope_config, opts)
+
+      telescope.setup(telescope_config)
 
       telescope.load_extension("fzf")
       telescope.load_extension("ui-select")
@@ -127,10 +132,7 @@ local telescope = {
     dependencies = {
       "nvim-telescope/telescope.nvim",
       "kkharji/sqlite.lua",
-      "nvim-telescope/telescope-ui-select.nvim",
     },
-    config = true,
+    opts = {},
   },
 }
-
-return telescope

@@ -1,8 +1,5 @@
-local mason = {
+---@type LazySpec
+return {
   "williamboman/mason.nvim",
-  config = function()
-    require("mason").setup()
-  end,
+  opts = {},
 }
-
-return mason

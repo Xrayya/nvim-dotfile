@@ -1,10 +1,12 @@
-local session_manager = {
+---@type LazySpec
+return {
   "Shatur/neovim-session-manager",
   config = function()
     require("session_manager").setup({
       autoload_mode = require("session_manager.config").AutoloadMode.Disabled,
     })
   end,
+  -- opts = {
+  --   autoload_mode = require("session_manager.config").AutoloadMode.Disabled,
+  -- },
 }
-
-return session_manager

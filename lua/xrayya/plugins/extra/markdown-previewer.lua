@@ -1,7 +1,6 @@
-local markdown_preview = {
+---@type LazySpec
+return {
   "iamcco/markdown-preview.nvim",
   build = "cd app && yarn install",
   ft = "markdown",
 }
-
-return markdown_preview

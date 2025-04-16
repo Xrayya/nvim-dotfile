@@ -28,39 +28,41 @@ return {
       luasnip.filetype_extend("kotlin", { "kdoc" })
       luasnip.filetype_extend("ruby", { "rdoc" })
       luasnip.filetype_extend("sh", { "shelldoc" })
-
-      ---@param mode string | string[]
-      ---@param lhs string
-      ---@param rhs function
-      local function map(mode, lhs, rhs)
-        vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true })
-      end
-
-      map("i", "<M-l>", function()
-        luasnip.jump(1)
-      end)
-      map("i", "<M-h>", function()
-        luasnip.jump(-1)
-      end)
-      map("s", "<M-l>", function()
-        luasnip.jump(1)
-      end)
-      map("s", "<M-h>", function()
-        luasnip.jump(-1)
-      end)
-      map("i", "<M-L>", function()
-        luasnip.change_choice(1)
-      end)
-      map("i", "<M-H>", function()
-        luasnip.change_choice(-1)
-      end)
-      map("s", "<M-L>", function()
-        luasnip.change_choice(1)
-      end)
-      map("s", "<M-H>", function()
-        luasnip.change_choice(-1)
-      end)
     end,
+    keys = {
+      {
+        "<M-l>",
+        function()
+          require("luasnip").jump(1)
+        end,
+        mode = { "i", "s" },
+        desc = "Jump forward",
+      },
+      {
+        "<M-h>",
+        function()
+          require("luasnip").jump(-1)
+        end,
+        mode = { "i", "s" },
+        desc = "Jump backward",
+      },
+      {
+        "<M-L>",
+        function()
+          require("luasnip").change_choice(1)
+        end,
+        mode = { "i", "s" },
+        desc = "Change choice forward",
+      },
+      {
+        "<M-H>",
+        function()
+          require("luasnip").change_choice(-1)
+        end,
+        mode = { "i", "s" },
+        desc = "Change choice backward",
+      },
+    },
   },
   {
     "hrsh7th/nvim-cmp",
@@ -91,7 +93,7 @@ return {
     init = function()
       vim.g.completeopt = "menu,menuone,noselect,popup"
     end,
-    opts = function(_, opts)
+    opts = function()
       local cmp = require("cmp")
       local compare = require("cmp.config.compare")
       local icons = LOAD_UTIL("icons")
@@ -105,7 +107,6 @@ return {
             require("luasnip").lsp_expand(args.body)
           end,
         },
-        ---@diagnostic disable-next-line: missing-fields
         formatting = {
           fields = { "kind", "abbr", "menu" },
           format = function(entry, vim_item)
@@ -131,8 +132,8 @@ return {
 
             if entry.source.name == "nvim_lsp" and entry.source.source.client._log_prefix then
               vim_item.menu = vim_item.menu
-                  .. " "
-                  .. string.format("[%s]", entry.source.source.client._log_prefix:match("LSP%[(.-)%]"))
+                .. " "
+                .. string.format("[%s]", entry.source.source.client._log_prefix:match("LSP%[(.-)%]"))
             end
 
             local labelDetails = (entry.completion_item.labelDetails or {})

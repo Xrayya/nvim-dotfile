@@ -1,15 +1,15 @@
-local illuminate = {
+---@type LazySpec
+return {
   "RRethy/vim-illuminate",
   event = "VeryLazy",
-  config = function()
-    require("illuminate").configure({
-      filetypes_denylist = {
-        "dirvish",
-        "fugitive",
-        "alpha",
-      },
-    })
+  opts = {
+    filetypes_denylist = {
+      "dirvish",
+      "fugitive",
+      "alpha",
+    },
+  },
+  config = function(_, opts)
+    require("illuminate").configure(opts)
   end,
 }
-
-return illuminate

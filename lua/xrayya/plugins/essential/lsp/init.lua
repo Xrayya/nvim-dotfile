@@ -122,16 +122,22 @@ local lsp = {
   require("xrayya.plugins.essential.lsp.advanced-lsp-config"),
   {
     "folke/lazydev.nvim",
-    dependencies = {
-      "rcarriga/nvim-dap-ui",
-    },
-    ft = "lua", -- only load on lua files
+    ft = "lua",
     opts = {
       library = {
-        -- See the configuration section for more details
-        -- Load luvit types when the `vim.uv` word is found
         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-        "nvim-dap-ui",
+        { "nvim-dap-ui", words = { "dapui" } },
+        { "nvim-cmp", words = { "cmp" } },
+        { "lazy.nvim", words = { "Lazy" } },
+        { "tokyonight.nvim", words = { "tokyonight" } },
+        { "catpuccin", words = { "Catppuccin" } },
+        { "nvim-ts-context-commentstring", words = { "ts_context_commentstring" } },
+        { "nvim-ts-autotag", words = { "nvim-ts-autotag" } },
+        { "nvim-treesitter-context", words = { "TSContext" } },
+        { "noice.nvim", words = { "Noice" } },
+        { "nvim-notify", words = { "notify" } },
+        { "undo-glow.nvim", words = { "UndoGlow" } },
+        { "cord.nvim", words = { "Cord" } },
       },
     },
   },

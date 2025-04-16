@@ -1,76 +1,82 @@
 local convert_to_hex = LOAD_UTIL("color-functions").convert_decimal_to_hex
 
-local ui = {
+---@type LazySpec
+return {
   {
     "folke/noice.nvim",
-    -- enabled = false,
     event = "VeryLazy",
     dependencies = {
       "MunifTanjim/nui.nvim",
-      "rcarriga/nvim-notify",
+      {
+        "rcarriga/nvim-notify",
+        ---@type notify.Config|nil
+        ---@diagnostic disable-next-line: missing-fields
+        opts = {
+          timeout = 1000,
+          fps = 30,
+        },
+        config = function(_, opts)
+          local notify = require("notify")
+
+          vim.notify = notify
+
+          if vim.g.has_no_bg_highlight then
+            opts.background_colour = "#000000"
+          end
+
+          notify.setup(opts)
+        end,
+      },
     },
-    config = function()
-      ---@diagnostic disable-next-line: missing-fields
-      require("noice").setup({
-        lsp = {
-          override = {
-            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-            ["vim.lsp.util.stylize_markdown"] = true,
-            ["cmp.entry.get_documentation"] = true,
+    ---@type NoiceConfig
+    opts = {
+      lsp = {
+        override = {
+          ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+          ["vim.lsp.util.stylize_markdown"] = true,
+          ["cmp.entry.get_documentation"] = true,
+        },
+      },
+      presets = {
+        lsp_doc_border = true,
+      },
+      hover = {
+        silent = true,
+      },
+      routes = {
+        {
+          filter = {
+            event = "notify",
+            find = "No information available",
           },
+          opts = { skip = true },
         },
-        presets = {
-          lsp_doc_border = true,
-        },
-        hover = {
-          silent = true,
-        },
-        routes = {
-          {
-            filter = {
-              event = "notify",
-              find = "No information available",
-            },
-            opts = { skip = true },
-          },
-        },
-      })
-
-      vim.keymap.set({ "n", "i", "s" }, "<c-f>", function()
-        if not require("noice.lsp").scroll(1) then
-          return "<c-f>"
-        end
-      end, { silent = true, expr = true })
-
-      vim.keymap.set({ "n", "i", "s" }, "<c-b>", function()
-        if not require("noice.lsp").scroll(-1) then
-          return "<c-b>"
-        end
-      end, { silent = true, expr = true })
-    end,
-  },
-  {
-    "rcarriga/nvim-notify",
-    config = function()
-      local notify = require("notify")
-
-      vim.notify = notify
-
-      local opts = {
-        timeout = 1000,
-        fps = 30,
-      }
-      if vim.g.has_no_bg_highlight then
-        opts.background_colour = "#000000"
-      end
-      notify.setup(opts)
-    end,
+      },
+    },
+    keys = {
+      {
+        "<c-f>",
+        function()
+          if not require("noice.lsp").scroll(1) then
+            return "<c-f>"
+          end
+        end,
+        mode = { "n", "i", "s" },
+      },
+      {
+        "<c-b>",
+        function()
+          if not require("noice.lsp").scroll(-1) then
+            return "<c-b>"
+          end
+        end,
+        mode = { "n", "i", "s" },
+      },
+    },
   },
   {
     "sphamba/smear-cursor.nvim",
-    config = function()
-      require("smear_cursor").setup({})
-    end,
+    opts = {},
   },
   {
     "HiPhish/rainbow-delimiters.nvim",
@@ -97,10 +103,14 @@ local ui = {
           hl_color = { bg = convert_to_hex(vim.api.nvim_get_hl(0, { name = "RainbowDelimiterRed" }).fg) or "#693232" },
         },
         search = {
-          hl_color = { bg = convert_to_hex(vim.api.nvim_get_hl(0, { name = "rainbowdelimiterviolet" }).fg) or "#5c475c" },
+          hl_color = {
+            bg = convert_to_hex(vim.api.nvim_get_hl(0, { name = "rainbowdelimiterviolet" }).fg) or "#5c475c",
+          },
         },
         comment = {
-          hl_color = { bg = convert_to_hex(vim.api.nvim_get_hl(0, { name = "RainbowDelimiterOrange" }).fg) or "#7A5A3D" },
+          hl_color = {
+            bg = convert_to_hex(vim.api.nvim_get_hl(0, { name = "RainbowDelimiterOrange" }).fg) or "#7A5A3D",
+          },
         },
         cursor = {
           hl_color = { bg = convert_to_hex(vim.api.nvim_get_hl(0, { name = "RainbowDelimiterRed" }).fg) or "#793D54" },
@@ -292,22 +302,20 @@ local ui = {
   {
     "shellRaining/hlchunk.nvim",
     enabled = false,
-    config = function()
-      require("hlchunk").setup({
-        chunk = {
-          enable = true,
-        },
-        indent = {
-          enable = true,
-          use_treesitter = true,
-          chars = { "▏" },
-        },
-        line_num = {
-          enable = true,
-          use_treesitter = true,
-        },
-      })
-    end,
+    opts = {
+      chunk = {
+        enable = true,
+      },
+      indent = {
+        enable = true,
+        use_treesitter = true,
+        chars = { "▏" },
+      },
+      line_num = {
+        enable = true,
+        use_treesitter = true,
+      },
+    },
   },
   {
     "lukas-reineke/indent-blankline.nvim",
@@ -355,37 +363,35 @@ local ui = {
   },
   {
     "b0o/incline.nvim",
-    config = function()
-      local helpers = require("incline.helpers")
-      local devicons = require("nvim-web-devicons")
-      require("incline").setup({
-        window = {
-          padding = 0,
-          margin = { horizontal = 0 },
-        },
-        hide = {
-          cursorline = true,
-        },
-        render = function(props)
-          local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
-          if filename == "" then
-            filename = "[No Name]"
-          end
-          local ft_icon, ft_color = devicons.get_icon_color(filename)
-          local modified = vim.bo[props.buf].modified
-          if modified then
-            filename = filename .. " ●"
-          end
-          return {
-            ft_icon and { " ", ft_icon, " ", guibg = ft_color, guifg = helpers.contrast_color(ft_color) } or "",
-            " ",
-            { filename, gui = modified and "bold,italic" or "bold" },
-            " ",
-            guibg = "#44406e",
-          }
-        end,
-      })
-    end,
+    opts = {
+      window = {
+        padding = 0,
+        margin = { horizontal = 0 },
+      },
+      hide = {
+        cursorline = true,
+      },
+      render = function(props)
+        local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+        if filename == "" then
+          filename = "[No Name]"
+        end
+        local ft_icon, ft_color = require("nvim-web-devicons").get_icon_color(filename)
+        local modified = vim.bo[props.buf].modified
+        if modified then
+          filename = filename .. " ●"
+        end
+        return {
+          ft_icon
+              and { " ", ft_icon, " ", guibg = ft_color, guifg = require("incline.helpers").contrast_color(ft_color) }
+            or "",
+          " ",
+          { filename, gui = modified and "bold,italic" or "bold" },
+          " ",
+          guibg = "#44406e",
+        }
+      end,
+    },
   },
   {
     "goolord/alpha-nvim",
@@ -435,5 +441,3 @@ local ui = {
     end,
   },
 }
-
-return ui

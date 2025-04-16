@@ -1,13 +1,12 @@
 local icons = LOAD_UTIL("icons")
 
-local symbols_outline = {
-  "stevearc/aerial.nvim",
-  dependencies = {
-    "nvim-treesitter/nvim-treesitter",
-    "nvim-tree/nvim-web-devicons",
-  },
-  config = function()
-    require("aerial").setup({
+---@type LazySpec
+return {
+  { "nvim-tree/nvim-web-devicons", lazy = true },
+  { "nvim-treesitter/nvim-treesitter", lazy = true },
+  {
+    "stevearc/aerial.nvim",
+    opts = {
       backends = { "lsp", "treesitter", "markdown", "asciidoc", "man" },
       max_width = { 60, 0.45 },
       min_width = 15,
@@ -40,8 +39,6 @@ local symbols_outline = {
         TypeParameter = icons.kind.TypeParameter,
         Variable = icons.kind.Variable,
       },
-    })
-  end,
+    },
+  },
 }
-
-return symbols_outline

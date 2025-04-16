@@ -1,10 +1,13 @@
-local commentary = {
+---@type LazySpec
+return {
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
-    config = function()
-      require("ts_context_commentstring").setup({
-        enable_autocmd = false,
-      })
+    ---@type ts_context_commentstring.Config
+    opts = {
+      enable_autocmd = false,
+    },
+    config = function(_, opts)
+      require("ts_context_commentstring").setup(opts)
 
       local get_option = vim.filetype.get_option
       ---@diagnostic disable-next-line: duplicate-set-field
@@ -16,9 +19,7 @@ local commentary = {
   },
   {
     "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
   },
+  { "nvim-lua/plenary.nvim", lazy = true },
 }
-
-return commentary
