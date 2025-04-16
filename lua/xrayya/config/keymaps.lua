@@ -1,6 +1,6 @@
---- @param mode string | string[]
---- @param lhs string
---- @param rhs string | function Parameter description.
+---@param mode string | string[]
+---@param lhs string
+---@param rhs string | function Parameter description.
 local function map(mode, lhs, rhs)
   vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true })
 end
