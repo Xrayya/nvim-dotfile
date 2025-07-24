@@ -1,8 +1,10 @@
 local set = vim.opt
 
+vim.g.wraptext = false
+
 set.hidden = true
 set.whichwrap:append("<,>,[,],h,l")
-set.wrap = false
+set.wrap = vim.g.wraptext
 set.wrapscan = false
 set.linebreak = true
 set.encoding = "utf-8"
@@ -10,7 +12,9 @@ set.fileencoding = "utf-8"
 set.pumheight = 10
 set.ruler = true
 set.cmdheight = 1
-set.shell = vim.fn.has("win32") > 0 and "pwsh" or vim.fn.executable("fish") > 0 and "fish" or "bash"
+set.shell = vim.fn.has("win32") > 0 and "pwsh"
+    or vim.fn.has("unix") and (vim.fn.executable("nu") > 0 and "nu" or vim.fn.executable("fish") > 0 and "fish")
+    or "bash"
 set.iskeyword:append("-")
 set.mouse = "a"
 set.splitbelow = true

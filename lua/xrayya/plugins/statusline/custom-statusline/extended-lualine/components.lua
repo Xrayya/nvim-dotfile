@@ -1,5 +1,4 @@
-local convert_to_hex = LOAD_UTIL("color-functions").convert_decimal_to_hex
-local icons = LOAD_UTIL("icons")
+local convert_to_hex = Xray.color.convert_decimal_to_hex
 
 return {
   mode = {
@@ -88,10 +87,10 @@ return {
     "diagnostics",
     sources = { "nvim_diagnostic" },
     symbols = {
-      error = icons.diagnostics.outlined.Error .. " ",
-      warn = icons.diagnostics.outlined.Warning .. " ",
-      info = icons.diagnostics.outlined.Information .. " ",
-      hint = icons.diagnostics.outlined.Hint .. " ",
+      error = Xray.config.icons.diagnostics.outlined.Error .. " ",
+      warn = Xray.config.icons.diagnostics.outlined.Warning .. " ",
+      info = Xray.config.icons.diagnostics.outlined.Information .. " ",
+      hint = Xray.config.icons.diagnostics.outlined.Hint .. " ",
     },
     update_in_insert = true,
     always_visible = false,

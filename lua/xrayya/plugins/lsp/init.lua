@@ -7,7 +7,7 @@ local lsp = {
       "b0o/SchemaStore.nvim",
     },
     config = function()
-      local diagnostic_signs = LOAD_UTIL("icons").diagnostics
+      local diagnostic_signs = Xray.config.icons.diagnostics
       local signs = {
         { name = "DiagnosticSignError", text = diagnostic_signs.outlined.Error },
         { name = "DiagnosticSignWarn", text = diagnostic_signs.outlined.Warning },
@@ -72,7 +72,7 @@ local lsp = {
         vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({}))
       end, {})
 
-      require("xrayya.plugins.essential.lsp.lsp(s)-settings").setup()
+      require("xrayya.plugins.lsp.lsp(s)-settings").setup()
     end,
   },
   {
@@ -119,7 +119,7 @@ local lsp = {
   {
     "mfussenegger/nvim-jdtls",
   },
-  require("xrayya.plugins.essential.lsp.advanced-lsp-config"),
+  require("xrayya.plugins.lsp.advanced-lsp-config"),
   {
     "folke/lazydev.nvim",
     ft = "lua",

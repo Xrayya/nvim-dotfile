@@ -2,7 +2,6 @@ local lsps_settings = {}
 
 function lsps_settings.setup()
   local mason_lspconfig = require("mason-lspconfig")
-  local lspconfig = require("lspconfig")
 
   local custom_mappings = {
     ccls = "ccls",
@@ -11,7 +10,7 @@ function lsps_settings.setup()
 
   ---@param servers table
   local function create_lsp_list(servers)
-    local mapping = mason_lspconfig.get_mappings().lspconfig_to_mason
+    local mapping = mason_lspconfig.get_mappings().lspconfig_to_package
     local ensure_installed = {}
     for _, server in pairs(servers) do
       local server_mapping = mapping[server]
@@ -78,12 +77,12 @@ function lsps_settings.setup()
     ensure_installed = ensure_installed,
   })
 
-  ensure_setup = MERGE_TABLE_AS_SET(ensure_setup, require("mason-lspconfig").get_installed_servers())
+  ensure_setup = Xray.merge_table_as_set(ensure_setup, require("mason-lspconfig").get_installed_servers())
 
   local opts = {}
 
   local import_custom_lsp_config = function(server)
-    return require("xrayya.plugins.essential.lsp.custom-lsp-config." .. server)
+    return require("xrayya.plugins.lsp.custom-lsp-config." .. server)
   end
 
   for _, server in pairs(ensure_setup) do
@@ -146,7 +145,8 @@ function lsps_settings.setup()
       goto continue
     end
 
-    lspconfig[server].setup(opts)
+    vim.lsp.config(server, opts)
+    vim.lsp.enable(server)
     ::continue::
   end
 end

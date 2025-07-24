@@ -6,6 +6,7 @@ return {
     dependencies = {
       {
         "windwp/nvim-ts-autotag",
+        ---@module "nvim-ts-autotag"
         ---@type nvim-ts-autotag.PluginSetup
         ---@diagnostic disable-next-line: missing-fields
         opts = {},
@@ -137,16 +138,7 @@ return {
       },
     },
     config = function(_, opts)
-      local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-
-      parser_config.blade = {
-        install_info = {
-          url = "https://github.com/EmranMR/tree-sitter-blade",
-          files = { "src/parser.c" },
-          branch = "main",
-        },
-        filetype = "blade",
-      }
+      -- local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
 
       require("nvim-treesitter.install").compilers = { "gcc", "clang" }
 

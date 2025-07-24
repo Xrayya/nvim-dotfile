@@ -1,4 +1,4 @@
-local icons = LOAD_UTIL("icons")
+local icons = Xray.config.icons
 
 local custom_extension = {
   telescope = {

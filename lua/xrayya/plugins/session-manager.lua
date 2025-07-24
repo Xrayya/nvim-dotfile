@@ -6,7 +6,4 @@ return {
       autoload_mode = require("session_manager.config").AutoloadMode.Disabled,
     })
   end,
-  -- opts = {
-  --   autoload_mode = require("session_manager.config").AutoloadMode.Disabled,
-  -- },
 }

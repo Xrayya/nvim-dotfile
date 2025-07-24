@@ -1,4 +1,5 @@
-return {
+---@class xrayvim.icon
+local M = {
   -- stylua: ignore
   kind = {
     Text          = " ",
@@ -116,6 +117,7 @@ return {
     Table             = "",
     Terminal          = "",
     ToolBox           = "󰦬",
+    TODO              = "",
     Calendar          = "",
     CloudDownload     = "",
     Database          = "",
@@ -149,3 +151,5 @@ return {
     Smiley   = "ﲃ",
   },
 }
+
+return M

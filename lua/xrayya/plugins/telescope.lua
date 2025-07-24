@@ -16,7 +16,6 @@ return {
       local themes = require("telescope.themes")
       local actions = require("telescope.actions")
 
-      local ui = LOAD_UTIL("icons").ui
 
       local telescope = require("telescope")
 
@@ -83,8 +82,8 @@ return {
           },
         },
         defaults = {
-          prompt_prefix = ui.Telescope .. "  ",
-          selection_caret = ui.GoTo .. " ",
+          prompt_prefix = Xray.config.icons.ui.Telescope .. "  ",
+          selection_caret = Xray.config.icons.ui.GoTo .. " ",
           path_display = { "smart" },
           file_ignore_patterns = { ".git/" },
           sorting_strategy = "ascending",

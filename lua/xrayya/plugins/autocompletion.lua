@@ -75,11 +75,6 @@ return {
       "saadparwaiz1/cmp_luasnip",
       "windwp/nvim-autopairs",
       {
-        "tzachar/cmp-tabnine",
-        enabled = false,
-        build = vim.fn.has("win32") > 0 and "powershell ./install.ps1" or "./install.sh",
-      },
-      {
         "L3MON4D3/cmp-luasnip-choice",
         config = function()
           require("cmp_luasnip_choice").setup({
@@ -97,7 +92,7 @@ return {
     opts = function()
       local cmp = require("cmp")
       local compare = require("cmp.config.compare")
-      local icons = LOAD_UTIL("icons")
+      local icons = Xray.config.icons
 
       vim.api.nvim_set_hl(0, "CmpItemKindTabNine", { fg = "#bb5df3" })
 
@@ -248,35 +243,6 @@ return {
         "confirm_done",
         require("nvim-autopairs.completion.cmp").on_confirm_done({ map_char = { tex = "" } })
       )
-    end,
-  },
-  {
-    "github/copilot.vim",
-    config = function()
-      vim.keymap.set("i", "<C-y>", 'copilot#Accept("\\<CR>")', {
-        expr = true,
-        replace_keycodes = false,
-      })
-      vim.g.copilot_no_tab_map = true
-    end,
-  },
-  {
-    "CopilotC-Nvim/CopilotChat.nvim",
-    dependencies = {
-      { "github/copilot.vim" },
-      { "nvim-lua/plenary.nvim" },
-    },
-    build = "make tiktoken",
-    config = function()
-      -- require("CopilotChat.integrations.cmp").setup()
-
-      require("CopilotChat").setup({
-        mappings = {
-          complete = {
-            insert = "",
-          },
-        },
-      })
     end,
   },
 }
