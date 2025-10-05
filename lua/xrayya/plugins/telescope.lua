@@ -1,5 +1,6 @@
+---@type LazySpec
 return {
-  { "nvim-lua/plenary.nvim", lazy = true },
+  { "nvim-lua/plenary.nvim",       lazy = true },
   { "nvim-tree/nvim-web-devicons", lazy = true },
   {
     "nvim-telescope/telescope.nvim",
@@ -16,8 +17,8 @@ return {
       local themes = require("telescope.themes")
       local actions = require("telescope.actions")
 
-
       local telescope = require("telescope")
+      local telescope_builtin = require("telescope.builtin")
 
       local telescope_config = {
         pickers = {
@@ -121,6 +122,13 @@ return {
       telescope_config = vim.tbl_deep_extend("force", telescope_config, opts)
 
       telescope.setup(telescope_config)
+
+      vim.lsp.buf.definition = telescope_builtin.lsp_definitions
+      vim.lsp.buf.type_definition = telescope_builtin.lsp_type_definitions
+      vim.lsp.buf.references = telescope_builtin.lsp_references
+      vim.lsp.buf.implementation = telescope_builtin.lsp_implementations
+      vim.lsp.buf.workspace_symbol = telescope_builtin.lsp_workspace_symbols
+      vim.lsp.buf.document_symbol = telescope_builtin.lsp_document_symbols
 
       telescope.load_extension("fzf")
       telescope.load_extension("ui-select")
