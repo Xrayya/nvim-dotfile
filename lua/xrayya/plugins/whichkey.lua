@@ -1,7 +1,7 @@
 local whichkey = {
   "folke/which-key.nvim",
   dependencies = {
-    "echasnovski/mini.icons",
+    "nvim-mini/mini.icons",
     "nvim-tree/nvim-web-devicons",
   },
   event = "VeryLazy",
