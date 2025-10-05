@@ -76,14 +76,14 @@ map("i", ":", ":<C-g>u")
 map("i", " ", " <C-g>u")
 
 -- Better window navigation
-map("n", "<C-h>", "<C-w>h")
-map("n", "<C-j>", "<C-w>j")
-map("n", "<C-k>", "<C-w>k")
-map("n", "<C-l>", "<C-w>l")
+-- map("n", "<C-h>", "<C-w>h")
+-- map("n", "<C-j>", "<C-w>j")
+-- map("n", "<C-k>", "<C-w>k")
+-- map("n", "<C-l>", "<C-w>l")
 
 -- Split windows
-map("n", "<C-\\>", ":vsplit<CR>")
-map("n", "<A-\\>", ":split<CR>")
+-- map("n", "<C-\\>", ":vsplit<CR>")
+-- map("n", "<A-\\>", ":split<CR>")
 
 vim.keymap.set(
   "n",
@@ -91,3 +91,7 @@ vim.keymap.set(
   ":setlocal relativenumber number signcolumn=yes<cr>",
   { noremap = true, silent = true, desc = "Set essential options for current buffer" }
 )
+
+vim.keymap.set("n", "grd", function()
+  vim.lsp.buf.definition()
+end, { desc = "vim.lsp.buf.definition()", noremap = true, silent = true })

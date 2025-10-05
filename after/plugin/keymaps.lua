@@ -147,8 +147,8 @@ whichkey.add({
     --   lsp_buf.code_action,
     --   desc = "Code Action",
     -- },
-    { "<leader>ld", telescope_builtin.lsp_definitions, desc = "Go to definition(s)" },
-    { "<leader>lD", telescope_builtin.lsp_type_definitions, desc = "Go to type definition(s)" },
+    -- { "<leader>ld", telescope_builtin.lsp_definitions, desc = "Go to definition(s)" },
+    -- { "<leader>lD", telescope_builtin.lsp_type_definitions, desc = "Go to type definition(s)" },
     {
       "<leader>lf",
       function()
@@ -166,7 +166,7 @@ whichkey.add({
     --   lsp_buf.signature_help,
     --   desc = "Signture help",
     -- },
-    { "<leader>li", telescope_builtin.lsp_implementations, desc = "Goto implementation(s)" },
+    -- { "<leader>li", telescope_builtin.lsp_implementations, desc = "Goto implementation(s)" },
     { "<leader>lI", "<cmd>LspInlayHintsToggle<cr>", desc = "Toggle LSP inlay hints" },
     { "<leader>ll", telescope_builtin.diagnostics, desc = "Open diagnostic list" },
     { "<leader>lL", "<cmd>DiagnosticVirtualLineToggle<cr>", desc = "Toggle Diagnostic Virtual Line" },
@@ -176,7 +176,7 @@ whichkey.add({
     --   lsp_buf.rename,
     --   desc = "Rename",
     -- },
-    { "<leader>lR", "<cmd>Telescope lsp_references<cr>", desc = "References" },
+    -- { "<leader>lR", "<cmd>Telescope lsp_references<cr>", desc = "References" },
     { "<leader>lT", "<cmd>DiagnosticVirtualTextToggle<cr>", desc = "Toggle Diagnostic Virtual Text" },
   },
   { "<leader>L", group = "LaTeX", icon = icons.ui.Latex },
