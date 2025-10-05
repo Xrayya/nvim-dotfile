@@ -83,7 +83,7 @@ return {
   },
   {
     "shellRaining/hlchunk.nvim",
-    enabled = false,
+    -- enabled = false,
     opts = {
       chunk = {
         enable = true,
@@ -101,7 +101,7 @@ return {
   },
   {
     "lukas-reineke/indent-blankline.nvim",
-    -- enabled = false,
+    enabled = false,
     event = "VeryLazy",
     config = function()
       local highlight = {
