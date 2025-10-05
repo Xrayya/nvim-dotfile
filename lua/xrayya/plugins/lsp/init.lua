@@ -3,7 +3,7 @@ local lsp = {
     "neovim/nvim-lspconfig",
     dependencies = {
       "hrsh7th/cmp-nvim-lsp",
-      "williamboman/mason-lspconfig.nvim",
+      "mason-org/mason-lspconfig.nvim",
       "b0o/SchemaStore.nvim",
     },
     config = function()
